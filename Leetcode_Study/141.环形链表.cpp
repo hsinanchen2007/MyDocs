@@ -16,7 +16,6 @@
 class Solution {
 public:
 
-    /*
     // 2022.5.30, LG solution
     //   1. Use slow and fast pointers, starts from 1st and 2nd nodes
     //   2. If slow and fast are at same node, there is a cycle
@@ -24,7 +23,7 @@ public:
     //      so flow will go to next node, and fast will go to next next node
     //   4. Stop while loop when fast or fast->next is NULL, that means there
     //      is no cycle in this linked list
-    bool hasCycle(ListNode *head) {
+    bool hasCycle1(ListNode *head) {
         // nullptr head, no cycle
         if (head == NULL) {
             return false;
@@ -47,7 +46,7 @@ public:
         }
         return false;
     }
-    */
+
 
     // 2022.5.30, soulmachine
     //   1. The solution eliminates such null head or sinle node check
