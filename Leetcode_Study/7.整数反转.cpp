@@ -16,7 +16,7 @@ public:
     //   4. Remember if (last != 0), we need to apply it back, also
     //      convert it to long and do integer limit check
     //   5. At the end of return, apply sign back
-    int reverse(int x) {
+    int reverse1(int x) {
         // sanity check, INT_MAX is 2147483648, INT_MIN is -2147483648
         // if the given number is reversed, it will cause over integer limit
         if (x == INT_MAX || x == INT_MIN) return 0;
@@ -66,6 +66,23 @@ public:
 
         return result * sign;
     }
+
+    // 2022.5.31, Leetcode 題目詳解, lvyilong316@163.com
+    // However, need to add the INT_MAX/INT_MIN check as Leetcode
+    // now will check the overflow in the submission cases
+    int reverse(int x) {
+        long result = 0;
+        for (; x; x/=10) {
+            // tricky part, result starts with 0, so (x % 10) returns the 
+            // last digit, then move to next one
+            result = (result * 10) + (x % 10);
+        
+            // need this check to avoid integer overflow
+            if (result >= INT_MAX || result <= INT_MIN) return 0;
+        }
+        return (int)result;
+    }
+
 };
 // @lc code=end
 
