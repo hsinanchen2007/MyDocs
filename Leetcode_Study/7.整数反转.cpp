@@ -71,6 +71,7 @@ public:
     // However, need to add the INT_MAX/INT_MIN check as Leetcode
     // now will check the integer overflow in the submission cases
     int reverse(int x) {
+        // need to define "result" as long, not int, to detect and prevent integer overflow
         long result = 0;
         for (; x; x/=10) {
             // tricky part, result starts with 0, so (x % 10) returns the 
