@@ -69,7 +69,7 @@ public:
 
     // 2022.5.31, Leetcode 題目詳解, lvyilong316@163.com
     // However, need to add the INT_MAX/INT_MIN check as Leetcode
-    // now will check the overflow in the submission cases
+    // now will check the integer overflow in the submission cases
     int reverse(int x) {
         long result = 0;
         for (; x; x/=10) {
