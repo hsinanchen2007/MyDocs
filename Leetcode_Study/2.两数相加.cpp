@@ -18,7 +18,7 @@
 class Solution {
 public:
 
-    // 2022.5.31 LG solution
+    // 2022.5.31 LG solution, use two pointers
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         // define pointers to iterate and trace current pointer
         ListNode* p = l1;
@@ -72,7 +72,7 @@ public:
         // when we create it at the beginning
         return result->next;
     }
-    
+
 };
 // @lc code=end
 
