@@ -26,6 +26,7 @@ public:
         }
         return (target + 1);
     }
+    
 };
 // @lc code=end
 

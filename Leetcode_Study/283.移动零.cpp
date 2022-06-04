@@ -8,7 +8,7 @@
 class Solution {
 public:
 
-    // 2020.6.2, 极客时间覃超算法训练營, very similar to LC 27
+    // 2022.6.2, 极客时间覃超算法训练營, very similar to LC 27
     void moveZeroes1(vector<int>& nums) {
         int target = 0;
         for (int i = 0; i < nums.size(); i++) {
@@ -40,6 +40,7 @@ public:
             nums[size- 1 - i] = 0;
         }
     }
+    
 };
 // @lc code=end
 

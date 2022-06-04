@@ -8,7 +8,7 @@
 class Solution {
 public:
 
-    // 2020.6.3, 极客时间覃超算法训练營, O(n^2)
+    // 2022.6.3, 极客时间覃超算法训练營, O(n^2)
     vector<int> twoSum1(vector<int>& nums, int target) {
         // answer vector to return
         std::vector<int> answer;
@@ -30,7 +30,7 @@ public:
         return answer;
     }
 
-    // 2020.6.3, soulmachine, O(n)
+    // 2022.6.3, soulmachine, O(n)
     // in the 2nd for loop, it only needs to find the corresponding index based on rest value
     vector<int> twoSum(vector<int>& nums, int target) {
         // answer vector to return
