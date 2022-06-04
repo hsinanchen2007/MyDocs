@@ -9,7 +9,7 @@ class Solution {
 public:
 
     // 2022.6.3, 极客时间覃超算法训练營, O(n^2)
-    vector<int> twoSum1(vector<int>& nums, int target) {
+    vector<int> twoSum2(vector<int>& nums, int target) {
         // answer vector to return
         std::vector<int> answer;
 
@@ -32,7 +32,7 @@ public:
 
     // 2022.6.3, soulmachine, O(n)
     // in the 2nd for loop, it only needs to find the corresponding index based on rest value
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum1(vector<int>& nums, int target) {
         // answer vector to return
         std::vector<int> answer;
 
@@ -59,6 +59,22 @@ public:
 
         // no answer here
         return answer;
+    }
+
+    // 2022.6.4, from AcWing https://www.acwing.com/video/1317/
+    // similar to soulmachine's solution, it uses [value, index] in unordered_map
+    // but it use unordered_map.count(value) to check if the given value
+    // is existed or not, then return it by {} way, so no push_back() call
+    // at the end, as we are using C++, although LC already said it will have 
+    // one answer, we need to add that one to compile properly
+    vector<int> twoSum(vector<int>& nums, int target) {
+        std::unordered_map<int, int> heap;
+        for (int i = 0; i < nums.size(); i++) {
+            int r = target - nums[i];
+            if (heap.count(r)) return {heap[r], i};
+            heap[nums[i]] = i;
+        }
+        return {};
     }
 
 };
