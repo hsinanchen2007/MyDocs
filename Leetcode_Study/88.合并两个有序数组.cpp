@@ -9,7 +9,7 @@ class Solution {
 public:
 
     // 2022.6.2, 极客时间李煜东算法训练营2021版二期
-    void merge1(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge2(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers to trace the current one in the array
         int i = 0, j = 0;
 
@@ -40,7 +40,7 @@ public:
     // 2022.6.2, 极客时间李煜东算法训练营2021版二期
     // good example to resolve it by reverse way, and no extra defined
     // variable
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge1(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers, i and j pointed to last elements
         int i = m - 1;
         int j = n - 1;
@@ -60,6 +60,31 @@ public:
                 nums1[k] = nums2[j];
                 j--;
             }
+        }
+    }
+
+    // 2022.6.4, from AcWing https://www.acwing.com/video/1432/
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        // we know nums1 has enough space to keep both nums1 and nums2
+        // so add largest one from nums1 or nums2 to the end of nums1
+        int k = m + n -1;
+        int i = m - 1;
+        int j = n - 1;
+
+        // add largest one to the end of nums1
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
+
+        // only need to deal with rest of nums2, as if nums1 still has
+        // some left, they are already placed at right index location
+        // from the beginning as this is a sorted array
+        while (j >= 0) {
+            nums1[k--] = nums2[j--];
         }
     }
 
