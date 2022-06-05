@@ -19,7 +19,7 @@ class Solution {
 public:
 
     // 2022.6.4, 极客时间覃超算法训练營
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList1(ListNode* head) {
         // define two nodes for previous and current node
         ListNode *prevNode = NULL;
         ListNode *currNode = head;
@@ -47,7 +47,31 @@ public:
         return prevNode;
     }
 
+    // 2022.6.5, from AcWing https://www.acwing.com/video/1584/
+    ListNode* reverseList(ListNode* head) {
+        // corner case when head itself is NULL
+        if (!head) return NULL;
 
+        // define two nodes
+        auto a = head, b = head->next;
+
+        // keep next one until b is NULL
+        while (b) {
+            auto c = b->next;
+            b->next = a;
+            a = b;
+            b = c;
+        }
+
+        // trick, remember set head's next to NULL as it is now end node
+        // below statement is must have
+        head->next = NULL;
+
+        // why a not b? Because above while condition is b, so when
+        // it stops, that means b is NULL and a is the node before b,
+        // so return a not return b
+        return a;
+    }
     
 };
 // @lc code=end
