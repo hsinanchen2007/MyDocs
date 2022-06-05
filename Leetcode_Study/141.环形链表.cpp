@@ -23,7 +23,7 @@ public:
     //      so flow will go to next node, and fast will go to next next node
     //   4. Stop while loop when fast or fast->next is NULL, that means there
     //      is no cycle in this linked list
-    bool hasCycle1(ListNode *head) {
+    bool hasCycle2(ListNode *head) {
         // nullptr head, no cycle
         if (head == NULL) {
             return false;
@@ -54,7 +54,7 @@ public:
     //      NULL head or single node condition
     //   2. The first thing into while loop is to set next node, then 
     //      check if slow and fast pointers are at same node or not
-    bool hasCycle(ListNode *head) {
+    bool hasCycle1(ListNode *head) {
         ListNode* slow = head, *fast = head;
         while (fast && fast->next) {
             slow = slow->next;
@@ -62,6 +62,35 @@ public:
             if (slow == fast) return true;
         }
         
+        return false;
+    }
+
+    // 2022.6.5, from AcWing https://www.acwing.com/video/1513/
+    bool hasCycle(ListNode *head) {
+        // if NULL head or no next, no loop for sure
+        if (!head || !head->next) return false;
+
+        // define slow and fast pointers, here it uses fast pointer
+        // start from head->next, so there is no need to do above
+        // next->next check
+        auto s = head, f = head->next;
+        
+        while (f) {
+            s = s->next, f = f->next;
+
+            // if fast pointer reaches NULL pointer, end
+            // it also prepares for next statement, which
+            // will do f->next, in case of NULL pointer
+            if (!f) return false;
+
+            // here is tricky part, fast pointer will go next
+            // but slow will not until next iteration
+            f = f->next;
+
+            // if fast and slow are same, cycle detected
+            if (s == f) return true;
+        }
+
         return false;
     }
 

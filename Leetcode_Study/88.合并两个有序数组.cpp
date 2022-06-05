@@ -63,7 +63,7 @@ public:
         }
     }
 
-    // 2022.6.4, from AcWing https://www.acwing.com/video/1432/
+    // 2022.6.5, from AcWing https://www.acwing.com/video/1432/
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // we know nums1 has enough space to keep both nums1 and nums2
         // so add largest one from nums1 or nums2 to the end of nums1
