@@ -85,7 +85,7 @@ public:
     }
 
     // 2022.6.4, from AcWing https://www.acwing.com/video/1323/
-    // it can use integer without converting to long long
+    // it can use integer without converting anything to long long
     // two conditions that over limit:
     //   1. r * 10 + x % 10 > INT_MAX
     //      ==> r > (INT_MAX - x % 10) / 10

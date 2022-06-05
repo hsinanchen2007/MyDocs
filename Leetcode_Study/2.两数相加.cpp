@@ -19,7 +19,7 @@ class Solution {
 public:
 
     // 2022.5.31 LG solution, use two pointers
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
         // define pointers to iterate and trace current pointer
         ListNode* p = l1;
         ListNode* q = l2;
@@ -71,6 +71,33 @@ public:
         // return the next node of head node. head node has invalid number -1
         // when we create it at the beginning
         return result->next;
+    }
+
+    // 2022.6.4, from AcWing https://www.acwing.com/video/1318/
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        // a trick that use auto to declare two ListNodes here
+        auto dummy = new ListNode(-1), cur = dummy;
+
+        // t can be used as sum and determine whether it is equal or 
+        // larger 10 or not
+        int t = 0;
+
+        // this while condition covers l1, l2 or if t is 1, aka needed to add 1 to next
+        while (l1 || l2 || t) {
+            if (l1) t = l1->val + t, l1 = l1->next;
+            if (l2) t = l2->val + t, l2 = l2->next;
+       
+            // we only assign number between 0~9, and update cur
+            cur->next = new ListNode(t % 10);
+            cur = cur->next;
+
+            // whether it is equal or over 10, this one will tell
+            t = t / 10;
+        }
+
+        // current is at dummy->next, dummy is just a dummy head w/ value -1
+        // we declare it at the beginning
+        return dummy->next;
     }
 
 };

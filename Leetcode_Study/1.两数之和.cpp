@@ -69,9 +69,16 @@ public:
     // one answer, we need to add that one to compile properly
     vector<int> twoSum(vector<int>& nums, int target) {
         std::unordered_map<int, int> heap;
+
         for (int i = 0; i < nums.size(); i++) {
+            // to see if any corresponding pair already existed or not
             int r = target - nums[i];
+
+            // use unordered_map.count(value) to check if the given value is existed or not
+            // also use {} to return answer without defining a new vector
             if (heap.count(r)) return {heap[r], i};
+
+            // if no pair found, add this {value, index} into unordered_map
             heap[nums[i]] = i;
         }
         return {};
