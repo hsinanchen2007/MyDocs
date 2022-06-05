@@ -16,7 +16,7 @@ public:
     //   level 4 = f(3) + f(2)
     // Think about at level X, if we consider from level (X-1), it needs 
     // one step, from level (x-2), it needs one two-step or two one-step
-    int climbStairs2(int n) {
+    int climbStairs3(int n) {
         // define prev and cur, note that prev is 0 and cur is 1
         int prev = 0;
         int cur = 1;
@@ -34,13 +34,13 @@ public:
     // This is like a fibonacci function, use math function
     // Ideally, this can resolve all such issue but the math function 
     // is hard to remember and convert it to C++ code
-    int climbStairs1(int n) {
+    int climbStairs2(int n) {
         double s = sqrt(5);
         return floor((pow((1+s)/2, n+1) + pow((1-s)/2, n+1))/s + 0.5);
     }
 
     // 2022.6.4, Leetcode解題總結
-    int climbStairs(int n) {
+    int climbStairs1(int n) {
         // initial corner cases
         if (n <= 0) return 0;
         if (n == 1) return 1;
@@ -62,6 +62,22 @@ public:
         }
 
         return always;
+    }
+
+    // 2022.6.4, from AcWing https://www.acwing.com/video/1408/
+    int climbStairs(int n) {
+        int a = 1, b = 1;
+
+        // assume n = 4
+        //   loop 1: n = 3, c = 2, a = 1, b = 2
+        //   loop 2: n = 2, c = 3, a = 2, b = 3
+        //   loop 3: n = 1, c = 5, a = 3, b = 5
+        while (--n) {
+            int c = a + b;
+            a = b; 
+            b = c;
+        }
+        return b;
     }
 
 };
