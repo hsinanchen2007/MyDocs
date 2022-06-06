@@ -9,7 +9,7 @@ class Solution {
 public:
 
     // 2022.6.2, 极客时间覃超算法训练營, very similar to LC 27
-    void moveZeroes1(vector<int>& nums) {
+    void moveZeroes2(vector<int>& nums) {
         int target = 0;
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] != 0) {
@@ -27,7 +27,7 @@ public:
 
     // learned from LC 27 solution, use C++ STL
     // nums = {0, 0, 1, 2, 3, 0, 0, 4, 5}, answer = {1, 2, 3, 4, 5, 0, 0, 0, 0}
-    void moveZeroes(vector<int>& nums) {
+    void moveZeroes1(vector<int>& nums) {
         // get original nums size
         int size = nums.size();
 
@@ -41,6 +41,20 @@ public:
         }
     }
     
+    // 2022.6.5, from AcWing https://www.acwing.com/video/1657/
+    // this one is similar to LC 26 and LC 27
+    void moveZeroes(vector<int>& nums) {
+        int k = 0;
+
+        // use below to get value directly
+        for (auto i : nums) {
+            if (i != 0) nums[k++] = i;
+        }
+
+        // assign 0 to rest elements
+        while (k < nums.size()) nums[k++] = 0;
+    }
+
 };
 // @lc code=end
 
