@@ -4,12 +4,75 @@
  * [26] 删除有序数组中的重复项
  */
 
+/*
+
+https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
+
+26. 删除有序数组中的重复项
+给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。
+
+由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 k 个元素，那么 nums 的前 k 个元素应该保存最终结果。
+
+将最终结果插入 nums 的前 k 个位置后返回 k 。
+
+不要使用额外的空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+
+判题标准:
+
+系统会用下面的代码来测试你的题解:
+
+int[] nums = [...]; // 输入数组
+int[] expectedNums = [...]; // 长度正确的期望答案
+
+int k = removeDuplicates(nums); // 调用
+
+assert k == expectedNums.length;
+for (int i = 0; i < k; i++) {
+    assert nums[i] == expectedNums[i];
+}
+如果所有断言都通过，那么您的题解将被 通过。
+
+ 
+
+示例 1：
+
+输入：nums = [1,1,2]
+输出：2, nums = [1,2,_]
+解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。
+示例 2：
+
+输入：nums = [0,0,1,1,1,2,2,3,3,4]
+输出：5, nums = [0,1,2,3,4]
+解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
+ 
+
+提示：
+
+0 <= nums.length <= 3 * 104
+-104 <= nums[i] <= 104
+nums 已按 升序 排列
+通过次数1,133,649提交次数2,094,788
+请问您在哪类招聘中遇到此题？
+贡献者
+LeetCode
+半年内半年 ~ 1年1年 ~ 2年
+移除元素
+简单
+删除有序数组中的重复项 II
+中等
+In this problem, the key point to focus on is the input array being sorted. As far as duplicate elements are concerned, what is their positioning in the array when the given array is sorted? Look at the image above for the answer. If we know the position of one of the elements, do we also know the positioning of all the duplicate elements?
+
+We need to modify the array in-place and the size of the final array would potentially be smaller than the size of the input array. So, we ought to use a two-pointer approach here. One, that would keep track of the current element in the original array and another one for just the unique elements.
+Essentially, once an element is encountered, you simply need to bypass its duplicates and move on to the next unique element.
+
+*/
+
 // @lc code=start
 class Solution {
 public:
 
     // 2022.6.1, LG solution
-    int removeDuplicates1(vector<int>& nums) {
+    int removeDuplicates2(vector<int>& nums) {
         int target = 0;
         for (int i = 1; i < nums.size(); i++) {
             // target starts from 0, i starts from 1
@@ -28,7 +91,7 @@ public:
     }
 
     // 2022.6.4, from AcWing https://www.acwing.com/video/1348/
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates1(vector<int>& nums) {
         int k = 0;
         for (int i = 0; i < nums.size(); i++) {
             // example {1, 2, 2, 2, 3, 4, 5}
@@ -48,6 +111,17 @@ public:
         return k;
     }
 
+    // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/remove-duplicates-from-sorted-array.cpp
+    int removeDuplicates(vector<int>& nums) {
+        int last = -1;
+        for (const auto& num : nums) {
+            if (last == -1 || nums[last] != num) {
+                nums[++last] = num;
+            }
+        }
+        return last + 1;
+    }
+    
 };
 // @lc code=end
 
