@@ -9,7 +9,7 @@ class Solution {
 public:
 
     // 2022.6.9, from https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/medium/15.3sum
-    vector<vector<int>> threeSum1(vector<int>& nums) {
+    vector<vector<int>> threeSum2(vector<int>& nums) {
         // tricky one, the returned vector is vector<vector<int>>, three
         // numbers, not two numbers
         vector<vector<int>> answer;
@@ -75,7 +75,7 @@ public:
     }
 
     // 2022.6.10, from AcWing https://www.acwing.com/video/1332/
-    vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> threeSum1(vector<int>& nums) {
         // define return answer
         vector<vector<int>> answer;
 
@@ -107,6 +107,39 @@ public:
 
         return answer;
     }
+
+    // 2022.6.11, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/3sum.cpp
+    class Solution {
+    public:
+        vector<vector<int>> threeSum(vector<int> &nums) {
+            sort(begin(nums), end(nums));
+            vector<vector<int>> result;
+            for (int i = size(nums) - 1; i >= 2; --i) {
+                if (i + 1 < size(nums) && nums[i] == nums[i + 1]) {
+                    continue;
+                }
+                const auto& target = -nums[i];
+                int left = 0, right = i - 1;
+                while (left < right) {
+                    if (nums[left] + nums[right] < target) {
+                        ++left;
+                    } else if (nums[left] + nums[right] > target) {
+                        --right;
+                    } else {
+                        result.push_back({nums[left], nums[right], nums[i]});
+                        ++left; --right;
+                        while (left < right && nums[left] == nums[left - 1]) {
+                            ++left;
+                        }
+                        while (left < right && nums[right] == nums[right + 1]) {
+                            --right;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+    };
 
 };
 // @lc code=end
