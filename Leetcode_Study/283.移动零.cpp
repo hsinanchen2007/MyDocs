@@ -34,14 +34,6 @@ https://leetcode.cn/problems/move-zeroes/
 进阶：你能尽量减少完成的操作次数吗？
 
 通过次数768,285提交次数1,200,598
-请问您在哪类招聘中遇到此题？
-贡献者
-LeetCode
-半年内半年 ~ 1年1年 ~ 2年
-移除元素
-简单
-In-place means we should not be allocating any space for extra array. But we are allowed to modify the existing array. However, as a first step, try coming up with a solution that makes use of additional space. For this problem as well, first apply the idea discussed using an additional array and the in-place solution will pop up eventually.
-A two-pointer approach could be helpful here. The idea would be to have one pointer for iterating the array and another pointer that just works on the non-zero elements of the array.
 
 */
 

@@ -39,22 +39,6 @@ https://leetcode.cn/problems/add-two-numbers/
 0 <= Node.val <= 9
 题目数据保证列表表示的数字不含前导零
 通过次数1,364,296提交次数3,262,480
-请问您在哪类招聘中遇到此题？
-贡献者
-LeetCode
-半年内半年 ~ 1年1年 ~ 2年
-字符串相乘
-中等
-二进制求和
-简单
-两整数之和
-中等
-字符串相加
-简单
-两数相加 II
-中等
-数组形式的整数加法
-简单
 
 */
 
@@ -73,7 +57,7 @@ class Solution {
 public:
 
     // 2022.5.31 LG solution, use two pointers
-    ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers3(ListNode* l1, ListNode* l2) {
         // define pointers to iterate and trace current pointer
         ListNode* p = l1;
         ListNode* q = l2;
@@ -128,7 +112,7 @@ public:
     }
 
     // 2022.6.4, from AcWing https://www.acwing.com/video/1318/
-    ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2) {
         // a trick that use auto to declare two ListNodes here
         auto dummy = new ListNode(-1), cur = dummy;
 
@@ -155,7 +139,7 @@ public:
     }
 
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/add-two-numbers.cpp
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
         ListNode dummy{0};
         auto curr = &dummy;
 
@@ -171,6 +155,101 @@ public:
         }
 
         return dummy.next;
+    }
+
+    // 2022.6.14, from https://ke.algomooc.com/detail/v_626e7fc2e4b01c509aaaf545/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_626e7eeee4b01c509aaaf51e
+    // 登录 AlgoMooc 官网获取更多算法图解
+    // https://www.algomooc.com
+    // 作者：程序员吴师兄
+    // 代码有看不懂的地方一定要私聊咨询吴师兄呀
+    // 两数相加(2)：https://leetcode.cn/problems/add-two-numbers/     
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+        // 构建一个链表用来存放 l1 和 l2 两个链表相加的结果
+        // 其中 dummy 这个节点为虚拟头结点
+        ListNode *dummy = new ListNode(-1);
+
+        // 设置一个进位，初始化为 0
+        // 两个个位数相加，进位只能是 1 或者 0
+        // 比如 7 + 8 = 15，进位是 1
+        // 比如 2 + 3 = 6，没有进位，或者说进位是 0
+        int carryBit = 0;
+
+        // l1 和 l2 有可能为空，所以先默认结果链表从虚拟头结点位置开始
+        ListNode *cur = dummy;
+
+        // 同时遍历 l1 和 l2
+        // 只要此时 l1 和 l2 两个链表中的任意链表中节点有值，就一直加下去
+        // 直到两个链表中的所有节点都遍历完毕为止
+        while (l1 != NULL || l2 != NULL) {
+            // 获取 l1 链表中节点的值
+            int x;
+
+            // 观察此时 l1 中的节点是否有值
+            // 如果节点不存在，那么就用 0 来占位
+            if(  l1 == NULL) {
+                // 用 0 来占位
+                x = 0;
+            } else {
+                // 否则，将 l1 的节点值赋值给 x
+                x = l1->val;
+            }
+
+            // 获取 l2 链表中节点的值
+            int y;
+
+            // 观察此时 l2 中的节点是否有值
+            // 如果节点不存在，那么就用 0 来占位
+            if ( l2 == NULL) {
+                // 用 0 来占位
+                y = 0;
+            } else {
+                // 否则，将 l2 的节点值赋值给 y
+                y = l2->val;
+            }
+   
+            // 每一位计算的同时需要考虑上一位的进位情况
+            int sum = x + y + carryBit;
+            
+            // 获取当前计算结果的十位数
+            // 比如 7 + 8 = 15
+            // 那么 sum / 10 = 1，进位为 1
+            carryBit = sum / 10;
+
+            // 获取当前计算结果的个位数
+            // 比如 7 + 8 = 15
+            // 那么 sum % 10 = 5
+            int digit = sum % 10;
+
+            // 构建一个节点用来存放这个个位数
+            ListNode *digitNode = new ListNode(digit);
+
+            // 把这个节点加入到结果链表中
+            cur->next = digitNode;
+
+            // 移动 cur 的位置，观察后面应该存放什么节点
+            cur = cur->next;
+            
+            // l1 链表中还有节点未遍历完毕就继续遍历下去
+            if (l1 != NULL) l1 = l1->next;
+
+            // l2 链表中还有节点未遍历完毕就继续遍历下去
+            if (l2 != NULL) l2 = l2->next;
+        }
+
+        // 两个链表的尾节点相加之后，有可能产生进位的情况
+        // 所以，需要构建一个新的节点用来存放这个进位的结果
+        if (carryBit == 1) {
+            // 构建一个节点用来存放这个进位
+            ListNode *carryBitNode = new ListNode(carryBit);
+
+            // 把这个节点加入到结果链表中
+            cur->next = carryBitNode;
+        }
+
+        // 最后返回结果链表的头节点就行，即虚拟头结点的下一个节点
+        return dummy->next;
+
     }
 
 };

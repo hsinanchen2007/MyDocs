@@ -53,20 +53,6 @@ for (int i = 0; i < len; i++) {
 0 <= nums[i] <= 50
 0 <= val <= 100
 通过次数721,208提交次数1,212,986
-请问您在哪类招聘中遇到此题？
-贡献者
-LeetCode
-半年内半年 ~ 1年1年 ~ 2年
-删除有序数组中的重复项
-简单
-移除链表元素
-简单
-移动零
-简单
-The problem statement clearly asks us to modify the array in-place and it also says that the element beyond the new length of the array can be anything. Given an element, we need to remove all the occurrences of it from the array. We don't technically need to remove that element per-say, right?
-We can move all the occurrences of this element to the end of the array. Use two pointers!
-
-Yet another direction of thought is to consider the elements to be removed as non-existent. In a single pass, if we keep copying the visible elements in-place, that should also solve this problem for us.
 
 */
 

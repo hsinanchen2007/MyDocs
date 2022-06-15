@@ -36,17 +36,6 @@ https://leetcode.cn/problems/climbing-stairs/
 
 1 <= n <= 45
 通过次数850,065提交次数1,582,173
-请问您在哪类招聘中遇到此题？
-贡献者
-LeetCode
-半年内半年 ~ 1年1年 ~ 2年
-使用最小花费爬楼梯
-简单
-斐波那契数
-简单
-第 N 个泰波那契数
-简单
-To reach nth step, what could have been your previous steps? (Think about the step sizes)
 
 */
 
@@ -62,7 +51,7 @@ public:
     //   level 4 = f(3) + f(2)
     // Think about at level X, if we consider from level (X-1), it needs 
     // one step, from level (x-2), it needs one two-step or two one-step
-    int climbStairs5(int n) {
+    int climbStairs6(int n) {
         // define prev and cur, note that prev is 0 and cur is 1
         int prev = 0;
         int cur = 1;
@@ -80,13 +69,13 @@ public:
     // This is like a fibonacci function, use math function
     // Ideally, this can resolve all such issue but the math function 
     // is hard to remember and convert it to C++ code
-    int climbStairs4(int n) {
+    int climbStairs5(int n) {
         double s = sqrt(5);
         return floor((pow((1+s)/2, n+1) + pow((1-s)/2, n+1))/s + 0.5);
     }
 
     // 2022.6.4, Leetcode解題總結
-    int climbStairs3(int n) {
+    int climbStairs4(int n) {
         // initial corner cases
         if (n <= 0) return 0;
         if (n == 1) return 1;
@@ -111,7 +100,7 @@ public:
     }
 
     // 2022.6.4, from AcWing https://www.acwing.com/video/1408/
-    int climbStairs2(int n) {
+    int climbStairs3(int n) {
         int a = 1, b = 1;
 
         // assume n = 4
@@ -128,7 +117,7 @@ public:
 
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/climbing-stairs.cpp
 public:
-    int climbStairs1(int n) {
+    int climbStairs2(int n) {
 	    vector<vector<int>> T = {{1, 1},
                                  {1, 0}};
         return matrixMult({{1, 0}}, matrixExpo(T, n))[0][0];  // [a0, a(-1)] * T^n
@@ -166,7 +155,7 @@ private:
     }
 
 public:
-    int climbStairs(int n) {
+    int climbStairs1(int n) {
         vector<int> steps(3, 0);
         steps[0] = 1;
         steps[1] = 1;
@@ -174,6 +163,40 @@ public:
             steps[i % 3] = steps[(i - 1) % 3] + steps[(i - 2) % 3];
         }
         return steps[n % 3];
+    }
+
+    // 2022.6.14, from https://ke.algomooc.com/detail/v_628a513ce4b01c509ab3e30b/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_628a35d3e4b0812e179cf4bc
+    // 登录 AlgoMooc 官网获取更多算法图解
+    // https://www.algomooc.com
+    // 作者：程序员吴师兄
+    // 代码有看不懂的地方一定要私聊咨询吴师兄呀
+    // 爬楼梯(70)：https://leetcode.cn/problems/climbing-stairs/    
+    int climbStairs(int n) {
+
+        // 使用数组 dp 存储每一级台阶的爬法数量
+        // 由于后面初始化 dp[1] 和 dp[2] 
+        // 为了让当 n = 0 时不越界，保证 dp[1] 和 dp[2] 都有值
+        // 所以 dp 的长度为 n + 2
+        vector<int> dp( n + 2 , 0 );
+        
+        // 初始化 dp[1] 和 dp[2] 
+        // 一级台阶只有一种爬法
+        dp[1] = 1;
+
+        // 二级台阶有两种爬法
+        // 一种爬法是先爬 1 个台阶，再爬 1 个台阶
+        // 一种爬法是爬 2 个台阶
+        dp[2] = 2;
+
+        // 从 3 开始循环至 n，计算 dp[3] 至 dp[n]
+        for (int i = 3; i <= n; i++) {
+            // 第 i 级台阶的结果 dp[i] 等于第 i-1 和 i-2 的结果之和
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        // 最后返回 n 级台阶的结果
+        return dp[n];
+
     }
 
 };

@@ -50,18 +50,6 @@ nums2.length == n
 进阶：你可以设计实现一个时间复杂度为 O(m + n) 的算法解决此问题吗？
 
 通过次数675,801提交次数1,291,196
-请问您在哪类招聘中遇到此题？
-贡献者
-LeetCode
-半年内半年 ~ 1年1年 ~ 2年
-合并两个有序链表
-简单
-有序数组的平方
-简单
-区间列表的交集
-中等
-You can easily solve this problem if you simply think about two elements at a time rather than two arrays. We know that each of the individual arrays is sorted. What we don't know is how they will intertwine. Can we take a local decision and arrive at an optimal solution?
-If you simply consider one element each at a time from the two arrays and make a decision and proceed accordingly, you will arrive at the optimal solution.
 
 */
 
@@ -70,7 +58,7 @@ class Solution {
 public:
 
     // 2022.6.2, 极客时间李煜东算法训练营2021版二期
-    void merge3(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge4(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers to trace the current one in the array
         int i = 0, j = 0;
 
@@ -101,7 +89,7 @@ public:
     // 2022.6.2, 极客时间李煜东算法训练营2021版二期
     // good example to resolve it by reverse way, and no extra defined
     // variable
-    void merge2(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge3(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers, i and j pointed to last elements
         int i = m - 1;
         int j = n - 1;
@@ -125,7 +113,7 @@ public:
     }
 
     // 2022.6.5, from AcWing https://www.acwing.com/video/1432/
-    void merge1(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge2(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // we know nums1 has enough space to keep both nums1 and nums2
         // so add largest one from nums1 or nums2 to the end of nums1
         int k = m + n -1;
@@ -150,7 +138,7 @@ public:
     }
 
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/merge-sorted-array.cpp
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge1(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int i = m + n;
         while (m > 0 && n > 0) {
             if (nums1[m - 1] > nums2[n - 1]) {
@@ -167,6 +155,55 @@ public:
             nums1[i - 1] = nums2[n - 1];
             --n;
             --i;
+        }
+    }
+
+    // 2022.6.14, from https://ke.algomooc.com/detail/v_626e7fbbe4b01c509aaaf53f/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_626e7eeee4b01c509aaaf51e
+    // 登录 AlgoMooc 官网获取更多算法图解
+    // https://www.algomooc.com/555.html
+    // 作者：程序员吴师兄
+    // 代码有看不懂的地方一定要私聊咨询吴师兄呀
+    // 合并两个有序数组( LeetCode 88 ):https://leetcode-cn.com/problems/merge-sorted-array/
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        // 索引从有序数组 nums1 有效元素的末端开始
+        // 数组的下标索引从零开始计数
+        // 索引   0    1     2
+        // 数组 [ 1 ,  2  ,  3 ]
+        int i = m - 1;
+
+        // 索引从有序数组 nums2 的末端开始
+        int j = n - 1;
+
+        // 从有序数组 nums1 最末端的位置开始保存元素
+        int cur = nums1.size() - 1;
+
+        // 通过循环把 num2 的元素都移动到 num1 中
+        while ( j >= 0  ) {
+
+            // 比较 num1 和 num2 中当前的元素大小
+
+            // 如果 num1 中的索引位置为 i 的元素大于 num2 中索引位置为 j 的元素
+            // 为了防止越界 i 必须是大于等于 0 
+            if( i >=0 && nums1[i] > nums2[j] ) {
+
+             // 把 num1 中的索引位置为 i 的元素复制到索引为 cur 的位置
+             // 此时 cur 的元素已经确定下来
+             nums1[cur] = nums1[i];
+            
+             // 接下来去确定 cur 前面一个元素应该放什么数字
+             cur--;
+             // 此时，索引 i 需要向前移动
+             i--;
+             // 否则，如果 num1 中的索引位置为 i 的元素小于或者等于 num2 中索引位置为 j 的元素
+            } else {
+             
+             // 把 num2 中的索引位置为 j 的元素复制到索引为 cur 的位置
+             nums1[cur] = nums2[j];
+             // 接下来去确定 cur 前面一个元素应该放什么数字
+             cur--;
+             // 此时，索引 j 需要向前移动
+             j--;
+            }
         }
     }
 
