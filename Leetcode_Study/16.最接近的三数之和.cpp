@@ -199,6 +199,33 @@ public:
         return ans;
     }
 
+/*
+    // 2022.6.17, from https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
+    // Looks like Amazon interview question
+
+    // 2Sum Closest
+    int twoSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int diff = INT_MAX, res;
+        int i = 0, j = nums.size() - 1;
+        while (i < j) {
+            int sum = nums[i] + nums[j];
+            if (abs(sum - target) < diff) {
+            res = sum;
+            diff = abs(sum - target);
+            }
+            if (sum < target)
+            i++;
+            else if (sum > target)
+            j--;
+            else
+            break;
+        }
+        return res;
+    }
+
+*/
+
 };
 // @lc code=end
 

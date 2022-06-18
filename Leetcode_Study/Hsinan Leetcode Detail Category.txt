@@ -6,6 +6,13 @@
         259. 较小的三数之和/3Sum Smaller, M
         18. 四数之和/4Sum, M
         167. 两数之和 II - 输入有序数组/Two Sum II - Input Array Is Sorted, M
+        Amazon Interview question, Two Sum closest, https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
+
+
+
+
+
+
 
 
         
