@@ -8,8 +8,9 @@
         167. 两数之和 II - 输入有序数组/Two Sum II - Input Array Is Sorted, M
         Amazon Interview question, Two Sum closest, https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
 
-
-
+    * Binary search (given input is sorted and no duplicated element)
+        704. 二分查找/Binary Search, E
+        
 
 
 
