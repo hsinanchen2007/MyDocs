@@ -10,7 +10,7 @@ public:
 
     // 2022.6.18, by Hsinan, follow LC 704, use soluition 1 template
     // also from https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html#%E6%80%9D%E8%B7%AF
-    int searchInsert1(vector<int>& nums, int target) {
+    int searchInsert2(vector<int>& nums, int target) {
         // define left and right pointers
         int left = 0;
         int right = nums.size() - 1;
@@ -38,8 +38,8 @@ public:
         return (right + 1);
     }
 
-    // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/search-insert-position.cpp
-    int searchInsert(vector<int>& nums, int target) {
+    // 2022.6.18, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/search-insert-position.cpp
+    int searchInsert1(vector<int>& nums, int target) {
         int left = 0;
         int right = nums.size() - 1;
 
@@ -52,6 +52,17 @@ public:
             }
         }
 
+        return left;
+    }
+
+    // 2022.6.18, from AcWing https://www.acwing.com/video/1358/
+    int searchInsert(vector<int>& nums, int target) {
+        int left = 0, right = nums.size();
+        while (left < right) {
+            int middle = left + right >> 1;
+            if (nums[middle] >= target) right = middle;
+            else left = middle + 1;
+        }
         return left;
     }
 
