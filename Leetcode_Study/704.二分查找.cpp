@@ -44,7 +44,7 @@ public:
     }
 
     // 2022.6.18, from https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html#_704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE
-    // Solution 1: Use [left, right]
+    // Solution 1 template: Use [left, right]
     //             while condition will be while (left <= right)
     //             if (nums[middle] > target) right = middle -1;
     //             if (nums[middle] < target) left = middle + 1;
@@ -72,7 +72,7 @@ public:
     }
 
     // 2022.6.18, from https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html#_704-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE
-    // Solution 1: Use [left, right)
+    // Solution 2 template: Use [left, right)
     //             while condition will be while (left < right)
     //             if (nums[middle] > target) right = middle;
     //             if (nums[middle] < target) left = middle + 1;

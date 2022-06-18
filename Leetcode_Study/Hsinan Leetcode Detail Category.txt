@@ -10,7 +10,8 @@
 
     * Binary search (given input is sorted and no duplicated element)
         704. 二分查找/Binary Search, E
-        
+        35. 搜索插入位置/Search Insert Position, E
+
 
 
 
