@@ -1,5 +1,5 @@
 * Array
-    * Sum of numbers
+    * Sum of Numbers
         1. 两数之和/Two Sum, E
         15. 三数之和/3Sum, M
         16. 最接近的三数之和/3Sum Closest, M
@@ -8,11 +8,16 @@
         167. 两数之和 II - 输入有序数组/Two Sum II - Input Array Is Sorted, M
         Amazon Interview question, Two Sum closest, https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
 
-    * Binary search (given input is sorted and no duplicated element)
+    * Binary Search (input is sorted and no duplicated element)
         704. 二分查找/Binary Search, E
         35. 搜索插入位置/Search Insert Position, E
         34. 在排序数组中查找元素的第一个和最后一个位置/Find First and Last Position of Element in Sorted Array, M
 
+    * Remove Element in Arrys
+        27. 移除元素/Remove Element, E
+        26. 删除有序数组中的重复项/Remove Duplicates from Sorted Array, E
+        283. 移动零/Move Zeroes, E
+        977. 有序数组的平方/Squares of a Sorted Array, E
 
 
 
