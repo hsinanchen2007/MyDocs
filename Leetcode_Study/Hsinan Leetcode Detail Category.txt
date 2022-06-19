@@ -13,6 +13,8 @@
         35. 搜索插入位置/Search Insert Position, E
         34. 在排序数组中查找元素的第一个和最后一个位置/Find First and Last Position of Element in Sorted Array, M
         69. x的平方根/Sqrt(x), E
+        744. 寻找比目标字母大的最小字母/Find Smallest Letter Greater Than Target, E
+        367. 有效的完全平方数/Valid Perfect Square, E
 
     * Remove Element in Arrys
         27. 移除元素/Remove Element, E
