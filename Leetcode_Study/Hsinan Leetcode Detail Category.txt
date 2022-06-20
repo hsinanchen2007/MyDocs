@@ -16,6 +16,7 @@
         744. 寻找比目标字母大的最小字母/Find Smallest Letter Greater Than Target, E
         367. 有效的完全平方数/Valid Perfect Square, E
         540. 有序数组中的单一元素/Single Element in a Sorted Array, M
+        278. 第一个错误的版本/First Bad Version, E
 
     * Remove Element in Arrys
         27. 移除元素/Remove Element, E
