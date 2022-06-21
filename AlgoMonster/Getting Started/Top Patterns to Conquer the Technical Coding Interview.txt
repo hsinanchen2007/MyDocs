@@ -1,0 +1,98 @@
+Top Patterns to Conquer the Technical Coding Interview
+
+Since the goal of AlgoMonster is to help you get a job in the shortest amount of time possible in a data-driven way, 
+we compiled datasets of tech interview problems and broke them down by patterns. This way, we can determine the most 
+frequently tested and highest return on investment (ROI) area to focus on. We'll look at the breakdown for top problems 
+overall and company-specific investigations.
+
+Trends
+Highest ROI: DFS, BFS, Two pointers, Binary Search
+Depth-first search(DFS), breadth-first search(BFS), binary search and two pointers, make up a good portion of all 
+interview problems. DFS in particular can be used to solve a wide range of problems from tree to graph to combinatorial 
+problems and is very useful in tech interviews. We have a detailed explanation on each of these topics.
+
+Linked list, stack, and queue high ROI
+These problems get asked a lot, but there aren't many variations. For example, the linked list category has several 
+classic problems such as reversing a linked list, finding the middle node of a linked list, and linked list cycle detection 
+that get asked repeatedly.
+
+Priority Queue/heap medium ROI
+Priority queue and heap show up surprisingly more often than most would think. The classic problems include the median 
+of a data stream, k closest points.
+
+Greedy, Dynamic programming
+Dynamic programming (DP) is hard to summarize and does not frequently appear (unless you are interviewing Google, whose 
+engineers like to ask DP problems). There are a few classic problems you may want to know such as house robber and robot paths. 
+Otherwise, you should probably focus on higher ROI areas if you are short on time. Also, if you can't figure out a dynamic 
+programming solution, you can always do DFS + memoization which does the same thing.
+
+Each greedy problem is different, and it's hard to summarize a pattern, and the correctness of your solution often requires 
+rigorous mathematical proof that is hard to learn in a short time. Therefore, we consider the greedy problem to be low ROI.
+
+Trie, Union Find medium-low ROI
+These don't appear often but do show up. Consider them of secondary priority.
+
+Basic programming
+You may have noticed there is a category called "basic programming.” We use this to denote problems that don't fit into any 
+category and are pretty straightforward that you can practice yourself or code-to-specifications problems. This makes up a 
+good portion of all interview problems. You don't need any prior knowledge other than a basic programming concept to solve them, 
+and we don't cover them in this course since you can learn them and practice yourself.
+
+What to study
+We created an ROI table based on the above analysis for your reference.
+
+
+
+Company-specific trends
+Amazon
+Amazon's interview problems haven't changed much since the Cracking the Coding Interview days. Two-pointers, DFS, and BFS make 
+up half the problems. Since the existence of the performance improvement plan, it's relatively easy to fire employees. So the 
+interviews are not intended to be very difficult.
+
+Meta
+Meta likes to ask classic problems and is generally slightly more challenging than Amazon. Word on the streets is that the company 
+cares more about bug-free coding than anything else. Two-pointers, DFS, and BFS still dominate. If you are interviewing Meta, it's 
+good to practice the classic problems we have in this course multiple times.
+
+Google
+Google has an internal policy of not using any problem found on the internet for interviews. Therefore, the engineers constantly 
+reinvent new problems, making the interview more difficult (or easier depending on how you view it since invented problems are often 
+as well-thought-out as classic problems). Some problems require more than one pattern, e.g., prefix sum + binary search, DFS + 
+prefix sum. You have to be very familiar with the basic patterns we have in this course.
+
+20th Century Blue Chips like Oracle, IBM, Expedia
+These companies have a fixed set of problems and don't usually update them. If you master the patterns we teach in this course, 
+you should be able to solve them with ease.
+
+Unicorn Startups
+Unicorn startups like Airbnb, Uber, and Dropbox have a relatively stable problem bank compared to Google, and the problems are more 
+challenging than Amazon. Classic patterns like DFS, BFS, two pointers are still the favorite. You may need to know Trie and union-find, 
+too.
+
+A Note On Academic Algorithms
+We use the term "academic algorithms" to mean algorithms that are taught in university textbooks and are not tested often, if ever, 
+in real-world tech interviews, according to our statistics. A good-enough rule of thumb is an algorithm named after a person(s) you 
+can safely ignore.
+
+Very rarely/Never used list:
+
+Minimal spanning tree: Kruskal's algorithm and Prim's algorithm
+Minimum cut: Ford−Fulkerson algorithm
+Shortest path in weight graphs: Bellman−Ford−Moore algorithm
+String search: Boyer−Moore algorithm
+Knuth−Morris−Pratt (KMP) algorithm helps solve string problems, but interviewers will NOT expect to know how to do this. Typically 
+bug-free brute force coding is required instead of KMP.
+
+Dijkstra's algorithm helps find the shortest path between nodes in a weighted graph. Weighted graphs interview problems exist but 
+are rare. It's good to have a high-level understanding of this algorithm since it uses a priority queue that frequently gets asked.
+
+Robin Karp rolling hash algorithm is sometimes helpful in solving some two-pointer issues.
+
+Reference: you can find the data source here.
+
+Get started on the highest ROI patterns!
+Binary search
+Breadth-first search
+Depth-first search
+Two pointers
+Priority Queue

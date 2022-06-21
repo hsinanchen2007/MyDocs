@@ -1,0 +1,65 @@
+Sorting Summary
+
+Comparisons
+We presented quite a few sorting algorithms, and it is essential to know the advantages and disadvantages of each one.
+
+The basic algorithms are easy to visualize and easy to learn for beginner programmers because of their simplicity. 
+As such, they will suffice if you don't know any advanced sorting algorithms or aren't confident with implementing them. 
+However, they are slower than advanced algorithms as the list grows.
+
+The advanced algorithms are a bit more complicated, so they are not the first to be introduced to new programmers. 
+It also takes them more time to sort a short list because of the constant overhead, although it isn't relevant in most cases. 
+However, as the size of the list grows, the algorithm becomes more and more efficient compared to the naive approach.
+
+Between the basic algorithms, insertion sort and bubble sort are good for sorting lists that are almost sorted. 
+In insertion sort, the number of swaps required to insert an item when the list is almost sorted is close to O(1), and for 
+bubble sort, after close to O(1) bubbles, we can detect that the list is already sorted and stop the sorting. With selection 
+sort, even if the list is almost sorted, we still need to go through each cycle process.
+
+Insertion sort and bubble sort are both stable, so they are helpful in situations where stability is essential, like sorting 
+lines of excel sheets by one column.
+
+On the other hand, because the number of swaps between elements is minimal (O(n)), it is suitable for sorting when the swapping 
+speed is very slow.
+
+Between the advanced algorithm, merge sort is stable and always has a time complexity of O(nlog(n)), so it is more reliable 
+than quick sort. However, merge sort requires way more extra memory than quick sort, and requires memory management of arrays, 
+so quick sort is often preferred if stability is not essential.
+
+A problem with the above quick sort implementation is that when the list is almost sorted, it will take close to O(n^2) time. 
+In other implementations, however, the pivot is selected as the midpoint of the list, so it can help mitigate this problem. 
+If you do that, however, you must remember that the index to the pivot moves with the pivot when swapping.
+
+Other Sorting Algorithms
+Other sorting algorithms utilize the monotonic properties of specific data structures (that is, something to those data structures 
+that makes them inherently ordered by the size of the values).
+
+For example, heap sort utilizes a heap, pulls the elements from it, and orders them. It has a time complexity of O(nlog(n)), 
+is unstable, and can be done in place. See Heap Intro for more details.
+
+A tree sort utilizes a binary search tree built from the list so that we can iterate through it. It has a time complexity of 
+O(nlog(n)) (if balanced), can be stable, but is not in place. See BST Intro for more details.
+
+If there are many integers to be sorted, but the range of these integers is very small, we can use a bucket sort. It uses an array, 
+with the index being the entries from the list and the value being the number of times a number has appeared in the list. 
+It has a low time complexity of O(n), but it has a space complexity of O(m), where m is the range of the integers.
+
+Built-in Sorting
+Now, most modern programming languages have a built-in sorting function, and in an interview, it is sufficient to use these built-in ones.
+
+For example, in Python, you can use list.sort() to sort the content of the list and sorted(list) to return a new list containing 
+the sorted list. They are both stable sorts. Python uses Timsort, which uses merge sort for larger data and insertion sort for smaller data.
+
+In Java, you can use Arrays.sort(array) to sort an array, or Collections.sort(list) to sort a java List. They are both stable. 
+They use a version of the previously mentioned Timsort that allows faster sorting of the partially sorted array.
+
+For the Interview
+Now the real question is - which ones do you need to know for the interviews? The primary sorting algorithms (Insertion, Selection, 
+Bubble Sort) are about writing everyday loops. You should be able to write them very quickly. Practice each one a few times in the 
+provided editor at the top of this page. It may look simple, but it's easy to make off-by-one mistakes.
+
+Merge Sort and Quick Sort are much trickier. Remember that researchers spent years inventing them, so don't feel bad if you don't 
+get it the first time. Merge Sort is a classic Divide and Conquer algorithm and has applications in real-world interview questions 
+such as Count of Smaller Numbers After Self. For Quick Sort, it's unlikely you will be asked to code it up at an interview, but the 
+idea of moving things around a pivot can be seen in Two Pointers interview questions.
+
