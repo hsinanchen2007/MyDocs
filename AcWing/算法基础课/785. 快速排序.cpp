@@ -1,11 +1,11 @@
 /*
 
-785. 快速排序
-   题目
-   提交记录
-   讨论
-   题解
-   视频讲解
+作者：yxc
+链接：https://www.acwing.com/activity/content/code/content/39784/
+来源：AcWing
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+AcWing 785. 快速排序
 
 给定你一个长度为 n 的整数数列。
 
@@ -68,4 +68,3 @@ int main()
 
     return 0;
 }
-
