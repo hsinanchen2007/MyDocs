@@ -25,13 +25,33 @@
         283. 移动零/Move Zeroes, E
         977. 有序数组的平方/Squares of a Sorted Array, E
 
+    * Merge
+        88. 合并两个有序数组/Merge Sorted Array, E
+
+
 
 
 * Linked List
     * Basic operations
-        2. 两数相加
+        2. 两数相加/Add Two Numbers, M
+        206. 反转链表/Reverse Linked List, E
 
-        
+    * Two Pointers
+        141. 环形链表/Linked List Cycle, E
+
+
+
+
+* Math
+    * Integers
+        7. 整数反转/Reverse Integer, M
+
+    * Fibornacci
+        70. 爬楼梯/Climbing Stairs, E
+
+
+
+
 
 
 
