@@ -1,10 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /* 
 
 Insertion Sort
@@ -36,6 +29,13 @@ the later element is smaller, and it is an in-place algorithm because no additio
 is used to store intermediate values.
 
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {
     for (int i = 0; i < unsorted_list.size(); i++) {

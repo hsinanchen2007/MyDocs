@@ -1,12 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator
-#include <map> // map
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <unordered_map> // unordered_map
-#include <vector> // vector
-
 /*
 
 Improvements
@@ -60,6 +51,15 @@ https://en.wikipedia.org/wiki/Hash_table#Separate_chaining
 https://en.wikipedia.org/wiki/Hash_table#Open_addressing
 
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator
+#include <map> // map
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <unordered_map> // unordered_map
+#include <vector> // vector
 
 std::unordered_map<int, int> get_counter(std::vector<int> arr) {
     // initialize a hash map to store each number and its count

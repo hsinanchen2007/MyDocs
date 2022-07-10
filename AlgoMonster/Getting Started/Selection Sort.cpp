@@ -1,10 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /* 
 
 Selection Sort
@@ -34,6 +27,13 @@ the same value during a swap, but the algorithm is in place as it only needs add
 memory to store the index to the minimum element.
 
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {
     int n = unsorted_list.size();

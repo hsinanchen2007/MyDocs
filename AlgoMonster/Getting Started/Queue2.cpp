@@ -1,11 +1,3 @@
-#include <algorithm> // copy
-#include <deque> // deque
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /* 
 
 Implementation
@@ -49,6 +41,14 @@ The function rotate_left_till_zero() takes an integer array containing one 0 and
 https://en.wikipedia.org/wiki/Circular_buffer
 
 */
+
+#include <algorithm> // copy
+#include <deque> // deque
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 std::vector<int> rotate_left_till_zero(std::vector<int> nums) {
     // initialize the queue out of nums

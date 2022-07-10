@@ -1,10 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /* 
 
 Bubble Sort
@@ -32,6 +25,13 @@ It is a stable algorithm because a swap cannot cause an element to move past ano
 the same value, and it is in place because no additional data structure is used.
 
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {
     int n = unsorted_list.size();

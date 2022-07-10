@@ -1,10 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /* 
 
 Quick Sort
@@ -43,6 +36,13 @@ as it does not require additional data structures. Note that this does not mean 
 in constant space: it uses recursion as its core logic, and the minimum recursion layers are equal to log(n).
 
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator, ostream_iterator, prev
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 void sort_list_interval(std::vector<int> &unsorted_list, int start, int end) {
     if (end - start <= 1) return;

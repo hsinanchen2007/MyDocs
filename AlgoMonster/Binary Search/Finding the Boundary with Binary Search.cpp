@@ -1,10 +1,3 @@
-#include <algorithm> // copy
-#include <iostream> // cin, cout
-#include <iterator> // back_inserter, istream_iterator
-#include <sstream> // istringstream
-#include <string> // getline, string
-#include <vector> // vector
-
 /*
 
 Finding the Boundary with Binary Search
@@ -35,7 +28,35 @@ including the current element itself since its index has been recorded by the va
 
 Time Complexity: O(log(n))
 
+The good thing with this approach is that we don't have to modify the while loop logic in the vanilla 
+binary search from the last module, besides introducing a variable.
+
+Alternative approach
+Another approach to handle case 2 above is to keep the current element in the search range instead of 
+discarding it, i.e. if arr[mid]: right = mid instead of right = mid - 1. However, doing this without 
+modifying the while condition will result in an infinite loop. This is because when left == right, 
+right = mid will not modify right and thus, not shrink search range and we will be stuck in the while loop 
+forever. To make this work we have to remove the equality in the while condition. In addition, as mentioned 
+in the last module, a while loop without equality will miss the single-element edge case so we have to 
+add an additional check after the loop to handle this case. Overall, we have to make three modifications 
+to the vanilla binary search to make it work.
+
+Side note: how to not get stuck in an infinite loop
+make progress in each step
+have an exit strategy
+
+Summary
+This problem is a major 🔑 in solving future binary search-related problems. As we will see in the following 
+modules, many problems boil down to finding the boundary in a boolean array.
+
 */
+
+#include <algorithm> // copy
+#include <iostream> // cin, cout
+#include <iterator> // back_inserter, istream_iterator
+#include <sstream> // istringstream
+#include <string> // getline, string
+#include <vector> // vector
 
 int find_boundary(std::vector<bool> arr) {
     int left = 0;
