@@ -1,0 +1,15 @@
+Node<T>* bfs(Node<T>* root) {
+    std::queue<Node<T>*> q;
+    q.push(root);
+    while (q.size() > 0) {
+        Node<T>* node = queue.front();
+        q.pop();
+        for (Node<T>* child : node->children) {
+            if (is_goal(child)) {
+                return FOUND(child);
+            }
+            q.push(child);
+        }
+    }
+    return NOT_FOUND;
+}

@@ -1,0 +1,9 @@
+void dfs(Node<int>* root, std::unordered_set<Node<int>*> visited) {
+    for (Node<int>* neighbor : node->neighbors) {
+        if (visited.count(neighbor)) {
+            continue;
+        }
+        visited.emplace(neighbor);
+        dfs(neighbor, visited);
+    }
+}

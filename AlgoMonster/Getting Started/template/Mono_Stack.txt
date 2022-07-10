@@ -1,0 +1,10 @@
+void mono_stack(std::vector<int> insert_entries) {
+    std::vector<int> stack;
+    for (int entry : insert_entries) {
+        while (!stack.empty() && stack.back() <= entry) {
+            // Do something with the top item in stack here
+            stack.pop_back();
+        }
+        stack.push_back(entry);
+    }
+}
