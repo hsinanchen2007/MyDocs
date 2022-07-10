@@ -25,6 +25,14 @@ Previous
 Next
 And below is an implementation.
 
+For each n item in the list, the time complexity to find the smallest item in the unsorted 
+pile is O(n - i), where i is the index of that item. Overall, the time complexity is O(n * (n + 1) / 2), 
+which is equivalent to O(n^2).
+
+This algorithm is not stable because an earlier element can jump after an element of the 
+the same value during a swap, but the algorithm is in place as it only needs additional 
+memory to store the index to the minimum element.
+
 */
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {

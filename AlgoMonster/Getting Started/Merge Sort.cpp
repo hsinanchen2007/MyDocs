@@ -21,6 +21,20 @@ Previous
 Next
 And below is an implementation.
 
+The overall time complexity is O(nlog(n)) because each item in the list is merged a number of 
+times equal to the number of divisions to make to divide the list to a size of one, which is 
+O(log(n)) times.
+
+Assuming the sorting of the divided list is stable, the overall algorithm is stable because 
+if an element appears before another element with the same value, there are two situations. 
+If they are in the same list, the first element is before the second one in that list, and the 
+first one will be inserted first. If they are in different lists, the first element will be 
+inserted first if the two elements are equal. Note that the base case, where only one element 
+exists in the list, is stable (because there are no two elements of the same size), so the 
+merge sort is stable.
+
+However, merge sort is not in place because of the additional arrays.
+
 */
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {

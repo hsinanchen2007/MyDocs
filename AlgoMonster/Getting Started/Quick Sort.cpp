@@ -31,6 +31,17 @@ Previous
 Next
 And below is an implementation.
 
+The time complexity of quick sort is a bit complicated. On average, where the list is divided somewhere 
+near the center each time, the time complexity is O(nlog(n)). However, in the worst-case scenario, each 
+interval to sort is one less than the current interval, which would make the time complexity O(n^2). 
+This depends heavily on which pivot point you choose: if you select an endpoint as your pivot and the 
+list is already sorted, it will reach this time complexity. Otherwise, the chance of this happening is 
+very low.
+
+This algorithm is not stable, as each swap skips many values. It does sort the array in-place, though, 
+as it does not require additional data structures. Note that this does not mean this algorithm happens 
+in constant space: it uses recursion as its core logic, and the minimum recursion layers are equal to log(n).
+
 */
 
 void sort_list_interval(std::vector<int> &unsorted_list, int start, int end) {

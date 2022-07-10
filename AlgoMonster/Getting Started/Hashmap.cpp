@@ -55,6 +55,10 @@ Here is a demonstration of how you would use a hash table in specific languages:
 
 get_counter() takes an integer array and returns a hash table with the array elements as keys and their frequencies as values.
 
+
+https://en.wikipedia.org/wiki/Hash_table#Separate_chaining
+https://en.wikipedia.org/wiki/Hash_table#Open_addressing
+
 */
 
 std::unordered_map<int, int> get_counter(std::vector<int> arr) {

@@ -25,6 +25,12 @@ Previous
 Next
 And below is an implementation.
 
+The time complexity of this algorithm, like before, is O(n^2), because it is essentially two 
+loops.
+
+It is a stable algorithm because a swap cannot cause an element to move past another one with 
+the same value, and it is in place because no additional data structure is used.
+
 */
 
 std::vector<int> sort_list(std::vector<int> unsorted_list) {

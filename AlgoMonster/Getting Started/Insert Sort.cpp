@@ -8,6 +8,7 @@
 /* 
 
 Insertion Sort
+
 The idea of an insertion sort is this: initially, only the first item is considered sorted. 
 Then, for each item in the sequence, we "insert" that item into the sorted list by swapping 
 it with the item before it until the item is smaller than the current item.
@@ -25,6 +26,14 @@ The green squares represent the sorted list, and the yellow square represents th
 to be inserted.
 
 Below is an implementation.
+
+For each n item in the list, the time complexity to insert it into the sorted list is O(i), 
+where i is the index of that item. Overall, the time complexity is O(n * (n - 1) / 2), which 
+is equivalent to O(n^2).
+
+It is a stable algorithm because later elements will not swap with earlier elements unless 
+the later element is smaller, and it is an in-place algorithm because no additional data structure 
+is used to store intermediate values.
 
 */
 
