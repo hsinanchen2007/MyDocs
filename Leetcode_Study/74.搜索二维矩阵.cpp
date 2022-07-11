@@ -44,7 +44,7 @@ public:
     // 2022.7.10, by Hsinan. Convert m*2 2D array into one, sort then use 
     // C++ STL's find to see if the given target existed in the matrix or not
     // this is a solution without using binary search
-    bool searchMatrix2(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix3(vector<vector<int>>& matrix, int target) {
         vector<int> all;
 
         // convert 2D arrary into one vector
@@ -68,7 +68,7 @@ public:
     // 作者：程序员吴师兄
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // 搜索二维矩阵（ LeetCode 74 ）: https://leetcode-cn.com/problems/search-a-2d-matrix/ 
-    bool searchMatrix1(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix2(vector<vector<int>>& matrix, int target) {
         // 从数组的最左下角位置开始去搜索整个二维数组
         // 1、当发现当前遍历的元素大于 target 时，意味着这个元素后面的所有元素也都大于 target
         // 那么就不用去搜索这一行了
@@ -111,7 +111,7 @@ public:
     }
 
     // 2022.7.10, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/search-a-2d-matrix.cpp
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix1(vector<vector<int>>& matrix, int target) {
         if (matrix.empty()) {
             return false;
         }
