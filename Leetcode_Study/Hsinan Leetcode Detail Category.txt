@@ -40,6 +40,7 @@
         704. 二分查找/Binary Search, E
         278. 第一个错误的版本/First Bad Version, E
         74. 搜索二维矩阵/Search a 2d Matrix, M
+        162. 寻找峰值/Find Peak Element, M
 
     * Duplicated or find cloest/range operations
         69. x的平方根/Sqrt(x), E
@@ -53,7 +54,7 @@
         153. 寻找旋转排序数组中的最小值/Find Minimum in Rotated Sorted Array, M
 
     * Advanced
-
+        4. 寻找两个正序数组的中位数/Median of Two Sorted Arrays, H
 
 
 
