@@ -8,17 +8,6 @@
         167. 两数之和 II - 输入有序数组/Two Sum II - Input Array Is Sorted, M
         Amazon Interview question, Two Sum closest, https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
 
-    * Binary Search (input is sorted and no duplicated element)
-        704. 二分查找/Binary Search, E
-        35. 搜索插入位置/Search Insert Position, E
-        69. x的平方根/Sqrt(x), E
-        744. 寻找比目标字母大的最小字母/Find Smallest Letter Greater Than Target, E
-        367. 有效的完全平方数/Valid Perfect Square, E
-        278. 第一个错误的版本/First Bad Version, E
-        34. 在排序数组中查找元素的第一个和最后一个位置/Find First and Last Position of Element in Sorted Array, M
-        540. 有序数组中的单一元素/Single Element in a Sorted Array, M
-        153. 寻找旋转排序数组中的最小值/Find Minimum in Rotated Sorted Array, M
-
     * Remove Element in Arrys
         27. 移除元素/Remove Element, E
         26. 删除有序数组中的重复项/Remove Duplicates from Sorted Array, E
@@ -46,6 +35,23 @@
         70. 爬楼梯/Climbing Stairs, E
 
 
+* Binary Search
+    * Basic
+        704. 二分查找/Binary Search, E
+        278. 第一个错误的版本/First Bad Version, E
+
+    * Duplicated or find cloest/range operations
+        69. x的平方根/Sqrt(x), E
+        744. 寻找比目标字母大的最小字母/Find Smallest Letter Greater Than Target, E
+        367. 有效的完全平方数/Valid Perfect Square, E
+        35. 搜索插入位置/Search Insert Position, E
+        34. 在排序数组中查找元素的第一个和最后一个位置/Find First and Last Position of Element in Sorted Array, M
+        540. 有序数组中的单一元素/Single Element in a Sorted Array, M
+
+    * Implicitly Sorted Array
+        153. 寻找旋转排序数组中的最小值/Find Minimum in Rotated Sorted Array, M
+
+    * Advanced
 
 
 
