@@ -46,7 +46,7 @@ class Solution {
 public:
 
     // 2022.7.10, very interesting question, it looks pretty easy but actually tricky
-    double findMedianSortedArrays4(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays5(vector<int>& nums1, vector<int>& nums2) {
         vector<int> allNums;
         int size1 = nums1.size(), size2 = nums2.size();
 
@@ -61,7 +61,7 @@ public:
     }
 
     // 2022.7.11, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/median-of-two-sorted-arrays.cpp
-    double findMedianSortedArrays3(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays4(vector<int>& nums1, vector<int>& nums2) {
         if ((nums1.size() + nums2.size()) % 2 == 1) {
             return findKthInTwoSortedArrays(nums1, nums2, (nums1.size() + nums2.size()) / 2 + 1);
         } else {
@@ -101,7 +101,7 @@ public:
     }
 
     // 2022.7.11, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/median-of-two-sorted-arrays.cpp
-    double findMedianSortedArrays2(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays3(vector<int>& nums1, vector<int>& nums2) {
         vector<vector<int> *> arrays{&nums1, &nums2};
         int total = accumulate(cbegin(arrays), cend(arrays), 0,
                                [](const auto& x, const auto& y) {
@@ -179,7 +179,7 @@ private:
         时间复杂度分析：k=(m+n)/2k=(m+n)/2，且每次递归 kk 的规模都减少一半，因此时间复杂度是 O(log(m+n))O(log(m+n)).
     */
 public:
-    double findMedianSortedArrays1(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays2(vector<int>& nums1, vector<int>& nums2) {
         int total = nums1.size() + nums2.size();
         if (total % 2 == 0)
         {
@@ -285,7 +285,7 @@ public:
         时间复杂度：二分长度较短的数组，且每次二分的复杂度是 O(1)O(1)，所以总复杂度是 O(log(min(n,m)))O(log(min(n,m))).
     */
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    double findMedianSortedArrays1(vector<int>& nums1, vector<int>& nums2) {
         int N1 = nums1.size();
         int N2 = nums2.size();
         if (N1 < N2) return findMedianSortedArrays(nums2, nums1);
@@ -304,6 +304,39 @@ public:
             else if (L2 > R1) hi = mid2 - 1;
             else return (max(L1,L2) + min(R1, R2)) / 2;
         }
+        return -1;
+    }
+
+    // 2022.7.11, from https://github.com/grandyang/leetcode/issues/4
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        if (nums2.size() < nums1.size()) return findMedianSortedArrays(nums2, nums1);
+        int left1 = 0, right1 = nums1.size();
+        int half = (nums1.size()+nums2.size()+1)/2; //left median or median
+        int max_left=0, min_right=0;
+
+        while (left1<= right1) {
+            int mid1 = (left1+right1)/2;
+            int mid2 = half-mid1;
+            if (mid1 < nums1.size() && nums1[mid1] < nums2[mid2-1]) {
+                left1 = mid1+1;
+            } else if (mid1 > 0 && nums1[mid1-1] > nums2[mid2]) {
+                right1 = mid1-1;
+            } else {
+                if (mid1 == 0) max_left = nums2[mid2-1];
+                else if (mid2 == 0) max_left = nums1[mid1-1];
+                else max_left = max(nums1[mid1-1], nums2[mid2-1]);
+
+                if ((nums1.size()+ nums2.size()) & 1) return max_left;
+
+                if (mid1 == nums1.size()) min_right = nums2[mid2];
+                else if (mid2 == nums2.size()) min_right = nums1[mid1];
+                else { min_right = min(nums1[mid1], nums2[mid2]);}
+                
+                return (static_cast<double>(min_right) + max_left)/2;
+            }
+        }
+        assert(0);
         return -1;
     }
 
