@@ -39,6 +39,7 @@
     * Basic
         704. 二分查找/Binary Search, E
         278. 第一个错误的版本/First Bad Version, E
+        74. 搜索二维矩阵/Search a 2d Matrix, M
 
     * Duplicated or find cloest/range operations
         69. x的平方根/Sqrt(x), E
