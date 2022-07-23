@@ -19,10 +19,12 @@ https://leetcode.cn/problems/search-insert-position/
 
 输入: nums = [1,3,5,6], target = 5
 输出: 2
+
 示例 2:
 
 输入: nums = [1,3,5,6], target = 2
 输出: 1
+
 示例 3:
 
 输入: nums = [1,3,5,6], target = 7

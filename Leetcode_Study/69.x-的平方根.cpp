@@ -21,6 +21,7 @@ https://leetcode.cn/problems/sqrtx/
 
 输入：x = 4
 输出：2
+
 示例 2：
 
 输入：x = 8

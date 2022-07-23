@@ -21,6 +21,7 @@ https://leetcode.cn/problems/single-element-in-a-sorted-array/
 
 输入: nums = [1,1,2,3,3,4,4,8,8]
 输出: 2
+
 示例 2:
 
 输入: nums =  [3,3,7,7,10,11,11]

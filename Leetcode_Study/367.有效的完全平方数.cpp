@@ -19,6 +19,7 @@ https://leetcode.cn/problems/valid-perfect-square/
 
 输入：num = 16
 输出：true
+
 示例 2：
 
 输入：num = 14

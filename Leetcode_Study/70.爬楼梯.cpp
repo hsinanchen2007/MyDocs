@@ -22,6 +22,7 @@ https://leetcode.cn/problems/climbing-stairs/
 解释：有两种方法可以爬到楼顶。
 1. 1 阶 + 1 阶
 2. 2 阶
+
 示例 2：
 
 输入：n = 3

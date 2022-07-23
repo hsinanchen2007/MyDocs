@@ -24,6 +24,7 @@ https://leetcode.cn/problems/find-peak-element/
 输入：nums = [1,2,3,1]
 输出：2
 解释：3 是峰值元素，你的函数应该返回其索引 2。
+
 示例 2：
 
 输入：nums = [1,2,1,3,5,6,4]

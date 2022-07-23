@@ -21,10 +21,12 @@ https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-a
 
 输入：nums = [5,7,7,8,8,10], target = 8
 输出：[3,4]
+
 示例 2：
 
 输入：nums = [5,7,7,8,8,10], target = 6
 输出：[-1,-1]
+
 示例 3：
 
 输入：nums = [], target = 0

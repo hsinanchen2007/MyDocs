@@ -25,6 +25,7 @@ https://leetcode.cn/problems/first-bad-version/
 调用 isBadVersion(5) -> true 
 调用 isBadVersion(4) -> true
 所以，4 是第一个错误的版本。
+
 示例 2：
 
 输入：n = 1, bad = 1
