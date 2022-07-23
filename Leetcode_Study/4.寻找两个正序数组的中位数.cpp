@@ -46,6 +46,8 @@ class Solution {
 public:
 
     // 2022.7.10, very interesting question, it looks pretty easy but actually tricky
+    // below answer can pass LC, but time O() will not meet the request, however, 
+    // somehow it's not that slow compared with all below answers
     double findMedianSortedArrays5(vector<int>& nums1, vector<int>& nums2) {
         vector<int> allNums;
         int size1 = nums1.size(), size2 = nums2.size();
