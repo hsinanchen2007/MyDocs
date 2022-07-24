@@ -36,7 +36,6 @@ n == height.length
 // @lc code=start
 class Solution100 {
 public:
-
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.md
     // 接雨水问题在面试中还是常见题目的，有必要好好讲一讲。
 
@@ -125,7 +124,6 @@ public:
 
 class Solution99 {
 public:
-
     // 动态规划解法
     // 在上一节的双指针解法中，我们可以看到只要记录左边柱子的最高高度 和 右边柱子的最高高度，就可以计算当前位置的雨水面积，这就是通过列来计算。
     //
@@ -169,7 +167,6 @@ public:
 
 class Solution98 {
 public:
-
     // 单调栈解法
     // 这个解法可以说是最不好理解的了，所以下面我花了大量的篇幅来介绍这种方法。
     //
@@ -295,7 +292,6 @@ public:
 
 class Solution97 {
 public:
-
     // 精简之后的代码，大家就看不出去三种情况的处理了，貌似好像只处理的情况三，其实是把情况一和情况二融合了。 这样的代码不太利于理解。
     int trap(vector<int>& height) {
         stack<int> st;
@@ -397,6 +393,7 @@ public:
     }
 };
 
+
 // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/42.%20Trapping%20Rain%20Water
 // OJ: https://leetcode.com/problems/trapping-rain-water/
 // Author: github.com/lzl124631x
@@ -496,6 +493,7 @@ public:
     }
 };
 
+
 // 2022.7.24, from https://walkccc.me/LeetCode/problems/0042/
 // Time: O(n)
 // Space: O(n)
@@ -547,6 +545,7 @@ public:
   }
 };
 
+
 // 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-42-Trapping-Rain-Water.html?h=trap
 class Solution89 {
 public:
@@ -571,9 +570,10 @@ public:
   }
 };
 
+
 // 2022.7.24, from https://github.com/MaskRay/LeetCode/blob/master/trapping-rain-water.cc
 // Trapping Rain Water
-class Solution {
+class Solution88 {
 public:
   int trap(vector<int> &h) {
     int hl = 0, hr = 0, i = 0, j = h.size(), s = 0;
@@ -590,5 +590,83 @@ public:
   }
 };
 
+
+// 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/trapping-rain-water.cpp
+// Time:  O(n)
+// Space: O(1)
+class Solution87 {
+public:
+    int trap(vector<int>& height) {
+        int result = 0, left = 0, right = height.size() - 1, level = 0;
+        while (left < right) {
+            int lower = height[height[left] < height[right] ? left++ : right--];
+            level = max(level, lower);
+            result += level - lower;
+        }
+        return result;
+    }
+};
+
+// Time:  O(n)
+// Space: O(1)
+class Solution86 {
+public:
+    int trap(vector<int>& height) {
+        if (height.empty()) {
+            return 0;
+        }
+
+        int i = 0, j = height.size() - 1;
+        int left_height = height[0];
+        int right_height = height[height.size() - 1];
+        int trap = 0;
+
+        while (i < j) {
+            if (left_height < right_height) {
+                ++i;
+                // Fill in the gap.
+                trap += max(0, left_height - height[i]);
+                // Update current max height from left.
+                left_height = max(left_height, height[i]);
+            }
+            else {
+                --j;
+                // Fill in the gap.
+                trap += max(0, right_height - height[j]);
+                // Update current max height from right.
+                right_height = max(right_height, height[j]);
+            }
+        }
+
+        return trap;
+    }
+};
+
+
+// 2022.7.24, from AcWing
+// 作者：yxc
+// 链接：https://www.acwing.com/activity/content/code/content/356196/
+// 来源：AcWing
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        stack<int> stk;
+        int res = 0;
+        for (int i = 0; i < height.size(); i ++ ) {
+            int last = 0;
+            while (stk.size() && height[stk.top()] <= height[i]) {
+                res += (height[stk.top()] - last) * (i - stk.top() - 1);
+                last = height[stk.top()];
+                stk.pop();
+            }
+
+            if (stk.size()) res += (i - stk.top() - 1) * (height[i] - last);
+            stk.push(i);
+        }
+
+        return res;
+    }
+};
 // @lc code=end
 
