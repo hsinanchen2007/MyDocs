@@ -14,7 +14,6 @@ https://leetcode.cn/problems/merge-sorted-array/
 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
 
 注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素，后 n 个元素为 0 ，应忽略。nums2 的长度为 n 。
-
  
 
 示例 1：
@@ -56,11 +55,10 @@ nums2.length == n
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.6.2, 极客时间李煜东算法训练营2021版二期
-    void merge4(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // 2022.6.2, from 极客时间李煜东算法训练营2021版二期
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers to trace the current one in the array
         int i = 0, j = 0;
 
@@ -87,11 +85,15 @@ public:
         // put numbers back to nums1
         for (int k = 0; k < m + n; k++) nums1[k] = result[k];
     }
+};
 
-    // 2022.6.2, 极客时间李煜东算法训练营2021版二期
+
+class Solution99 {
+public:
+    // 2022.6.2, from 极客时间李煜东算法训练营2021版二期
     // good example to resolve it by reverse way, and no extra defined
     // variable
-    void merge3(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // two pointers, i and j pointed to last elements
         int i = m - 1;
         int j = n - 1;
@@ -113,9 +115,13 @@ public:
             }
         }
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.5, from AcWing https://www.acwing.com/video/1432/
-    void merge2(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         // we know nums1 has enough space to keep both nums1 and nums2
         // so add largest one from nums1 or nums2 to the end of nums1
         int k = m + n -1;
@@ -138,9 +144,15 @@ public:
             nums1[k--] = nums2[j--];
         }
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/merge-sorted-array.cpp
-    void merge1(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // Time:  O(n)
+    // Space: O(1)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int i = m + n;
         while (m > 0 && n > 0) {
             if (nums1[m - 1] > nums2[n - 1]) {
@@ -159,7 +171,11 @@ public:
             --i;
         }
     }
+}; 
 
+
+class Solution96 {
+public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_626e7fbbe4b01c509aaaf53f/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_626e7eeee4b01c509aaaf51e
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com/555.html
@@ -208,7 +224,66 @@ public:
             }
         }
     }
+};
 
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/88.%20Merge%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/merge-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(M + N)
+    // Space: O(1)
+    void merge(vector<int>& A, int m, vector<int>& B, int n) {
+        for (int i = m - 1, j = n - 1, k = m + n - 1; k >= 0; --k) {
+            if (j < 0 || (i >= 0 && A[i] > B[j])) A[k] = A[i--];
+            else A[k] = B[j--];
+        }
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0088/
+    // Time: O(m + n)
+    // Space: O(1)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;      // nums1's index (actual nums)
+        int j = n - 1;      // nums2's index
+        int k = m + n - 1;  // nums1's index (next filled position)
+
+        while (j >= 0)
+        if (i >= 0 && nums1[i] > nums2[j])
+            nums1[k--] = nums1[i--];
+        else
+            nums1[k--] = nums2[j--];
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-88-Merge-Sorted-Array.html?h=merge
+    // Time complexity: O(m + n) Space complexity: O(m + n)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        if (n == 0) return;
+        vector<int> temp = nums1;
+
+        int p = 0, q = 0;
+        for (int i = 0; i < m + n; ++i) nums1[i] = q < n && temp[p] >= nums2[q] || p == m ? nums2[q++] : temp[p++];
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-88-Merge-Sorted-Array.html?h=merge
+    // Fill nums1 from back to front Time complexity: O(m + n) Space complexity: O(1) in-place
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int p = m - 1, q = n - 1, tail = m + n - 1;
+        while (q >= 0) nums1[tail--] = (p >= 0 && nums1[p] >= nums2[q]) ? nums1[p--] : nums2[q--];
+    }
 };
 // @lc code=end
 
