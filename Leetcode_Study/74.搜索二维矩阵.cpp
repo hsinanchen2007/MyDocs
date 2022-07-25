@@ -37,13 +37,12 @@ n == matrix[i].length
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.7.10, by Hsinan. Convert m*2 2D array into one, sort then use 
+    // 2022.7.10, by Hsinan. Convert m*n 2D array into one, sort then use 
     // C++ STL's find to see if the given target existed in the matrix or not
     // this is a solution without using binary search
-    bool searchMatrix3(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
         vector<int> all;
 
         // convert 2D arrary into one vector
@@ -60,14 +59,18 @@ public:
         // return
         return (answer == all.end()? false : true);
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.10, from 程序员吴师兄
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
     // 作者：程序员吴师兄
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // 搜索二维矩阵（ LeetCode 74 ）: https://leetcode-cn.com/problems/search-a-2d-matrix/ 
-    bool searchMatrix2(vector<vector<int>>& matrix, int target) {
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
         // 从数组的最左下角位置开始去搜索整个二维数组
         // 1、当发现当前遍历的元素大于 target 时，意味着这个元素后面的所有元素也都大于 target
         // 那么就不用去搜索这一行了
@@ -80,7 +83,6 @@ public:
 
         // 第 0 列
         int j = 0;
-
 
         // 从数组的左下角开始出发，只要 i 和 j 没有越界继续判断
         while(i >= 0 && j < matrix[0].size()){
@@ -108,9 +110,15 @@ public:
         // 遍历了整个二维数组，没有找到目标值，返回 false
         return false;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.10, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/search-a-2d-matrix.cpp
-    bool searchMatrix1(vector<vector<int>>& matrix, int target) {
+    // Time:  O(logm + logn)
+    // Space: O(1)
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
         if (matrix.empty()) {
             return false;
         }
@@ -138,8 +146,12 @@ public:
 
         return false;
     }
+};
 
-    // 2022.7.10
+
+class Solution97 {
+public:
+    // 2022.7.10, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/370359/
     // 来源：AcWing
@@ -157,7 +169,128 @@ public:
 
         return matrix[r / m][r % m] == target;
     }
-    
 };
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/74.%20Search%20a%202D%20Matrix
+    // OJ: https://leetcode.com/problems/search-a-2d-matrix/
+    // Author: github.com/lzl124631x
+    // Time: O(log(MN))
+    // Space: O(1)
+    bool searchMatrix(vector<vector<int>>& A, int target) {
+        if (A.empty() || A[0].empty()) return false;
+        int L = 0, R = A.size() - 1;
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (A[M][0] == target) return true;
+            if (A[M][0] < target) L = M + 1;
+            else R = M - 1;
+        }
+        if (R == -1) return false;
+        int row = R;
+        L = 0, R = A[0].size() - 1;
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (A[row][M] == target) return true;
+            if (A[row][M] < target) L = M + 1;
+            else R = M - 1;
+        }
+        return false;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/74.%20Search%20a%202D%20Matrix
+    // OJ: https://leetcode.com/problems/search-a-2d-matrix/
+    // Author: github.com/lzl124631x
+    // Time: O(log(MN))
+    // Space: O(1)
+    // L <= R template:
+    bool searchMatrix(vector<vector<int>>& A, int target) {
+        int M = A.size(), N = A[0].size(), L = 0, R = M * N - 1;
+        while (L <= R) {
+            int M = (L + R) / 2, i = M / N, j = M % N;
+            if (A[i][j] == target) return true;
+            if (A[i][j] < target) L = M + 1;
+            else R = M - 1;
+        }
+        return false;
+    }
+
+    /*
+    // L < R template:
+    class Solution {
+    public:
+        bool searchMatrix(vector<vector<int>>& A, int target) {
+            int M = A.size(), N = A[0].size(), L = 0, R = M * N - 1;
+            while (L < R) {
+                int M = (L + R) / 2, i = M / N, j = M % N;
+                if (A[i][j] < target) L = M + 1;
+                else R = M;
+            }
+            return A[L / N][L % N] == target;
+        }
+    };
+    */
+};
+
+
+class Solution94 {
+public:
+    // 2.220.7.25, from https://walkccc.me/LeetCode/problems/0074/
+    // Time: O(mnlogmn)
+    // Space: O(1)
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if (matrix.empty())
+        return false;
+
+        const int m = matrix.size();
+        const int n = matrix[0].size();
+        int l = 0;
+        int r = m * n;
+
+        while (l < r) {
+        const int mid = (l + r) / 2;
+        const int i = mid / n;
+        const int j = mid % n;
+        if (matrix[i][j] == target)
+            return true;
+        if (matrix[i][j] < target)
+            l = mid + 1;
+        else
+            r = mid;
+        }
+
+        return false;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-74-Search-a-2D-Matrix.html?h=searchmatrix
+    // Time complexity: O(log(row*col)), Space complexity: O(1)
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if (matrix.empty()) return false;
+        if (target < matrix[0][0] || target > matrix.back().back()) return false;
+        const int row = matrix.size(), col = matrix[0].size();
+        int left = 0, right = row * col;
+
+        // Binary Search: No repeat elements.
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            int mid_val = matrix[mid / col][mid % col];
+            if (mid_val == target) return true;
+            else if ( mid_val < target) left = mid + 1;
+            else right = mid;
+        }
+        return false;
+    }
+};
+
 // @lc code=end
 
