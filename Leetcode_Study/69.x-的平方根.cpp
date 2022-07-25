@@ -16,7 +16,6 @@ https://leetcode.cn/problems/sqrtx/
 注意：不允许使用任何内置指数函数和算符，例如 pow(x, 0.5) 或者 x ** 0.5 。
 
  
-
 示例 1：
 
 输入：x = 4
@@ -37,11 +36,10 @@ https://leetcode.cn/problems/sqrtx/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.19, from CyC2018/CS-Notes
-    int mySqrt3(int x) {
+    int mySqrt(int x) {
         // sanity check
         if (x <= 1) return x;
 
@@ -78,9 +76,14 @@ public:
         // After a try, we can also return (left - 1) like other answers below
         // return (left - 1);
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.19, from https://www.guozet.me/leetcode/Leetcode-69-Sqrt-x-3.html?q=sqrt
-    int mySqrt2(int x) {
+    // Time Complexity: O(log n), Space Complexity: O(1)
+    int mySqrt(int x) {
         if (x < 2) return x;
         int left = 0, right = x / 2 + 1;
         while (left < right) {
@@ -91,8 +94,14 @@ public:
 
         return left - 1;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/sqrtx.cpp
+    // Time:  O(logn)
+    // Space: O(1)
     int mySqrt1(int x) {
         if (x < 2) {
             return x;
@@ -110,7 +119,11 @@ public:
 
         return left - 1;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.19, from AcWing https://www.acwing.com/video/1407/
     int mySqrt(int x) {
         int left = 0, right = x;
@@ -123,7 +136,118 @@ public:
 
         return right;
     }
+};
 
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/69.%20Sqrt(x)
+    // OJ: https://leetcode.com/problems/sqrtx/
+    // Author: github.com/lzl124631x
+    // Time: O(sqrt(N))
+    // Space: O(1)
+    int mySqrt(int x) {
+        long i = 0;
+        while (i * i <= x) ++i;
+        return i - 1;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/69.%20Sqrt(x)
+    // L <= R template.
+    // OJ: https://leetcode.com/problems/sqrtx/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int mySqrt(int x) {
+        long L = 0, R = x;
+        while (L <= R) {
+            long M = (L + R) / 2;
+            if (M * M <= x) L = M + 1;
+            else R = M - 1;
+        }
+        return R;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/69.%20Sqrt(x)
+    // use L < R template
+    // OJ: https://leetcode.com/problems/sqrtx/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int mySqrt(int x) {
+        long L = 0, R = x;
+        while (L < R) {
+            long M = (L + R + 1) / 2;
+            if (M * M <= x) L = M;
+            else R = M - 1;
+        }
+        return L;
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/69.%20Sqrt(x)
+    // Newton's method, Reference: https://en.wikipedia.org/wiki/Integer_square_root#Using_only_integer_division
+    // OJ: https://leetcode.com/problems/sqrtx/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int mySqrt(int x) {
+        long r = x;
+        while (r * r > x) r = (r + x / r) / 2;
+        return r;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0069/
+    // Time: O(logx)
+    // Space: O(1)
+    int mySqrt(int x) {
+        unsigned l = 1;
+        unsigned r = x + 1u;
+
+        while (l < r) {
+        const unsigned m = (l + r) / 2;
+        if (m > x / m)
+            r = m;
+        else
+            l = m + 1;
+        }
+
+        // l: smallest number s.t. l * l > x
+        return l - 1;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-69-Sqrt-x-3.html?h=mysqrt
+    // Time Complexity: O(log n), Space Complexity: O(1)
+    int mySqrt(int x) {
+        if (x < 2) return x;
+        int left = 0, right = x / 2 + 1;
+        while (left < right) {
+        int mid = left + (right - left) / 2;
+        // Move left == right, then we need to move left back
+        x / mid < mid ? right = mid : left = mid + 1;
+        }
+
+        return left - 1;
+    }
 };
 // @lc code=end
 
