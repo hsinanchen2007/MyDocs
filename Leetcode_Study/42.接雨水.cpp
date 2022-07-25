@@ -122,8 +122,10 @@ public:
     }
 };
 
+
 class Solution99 {
 public:
+    // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.md
     // 动态规划解法
     // 在上一节的双指针解法中，我们可以看到只要记录左边柱子的最高高度 和 右边柱子的最高高度，就可以计算当前位置的雨水面积，这就是通过列来计算。
     //
@@ -165,8 +167,10 @@ public:
     }
 };
 
+
 class Solution98 {
 public:
+    // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.md
     // 单调栈解法
     // 这个解法可以说是最不好理解的了，所以下面我花了大量的篇幅来介绍这种方法。
     //
@@ -290,8 +294,10 @@ public:
     }
 };
 
+
 class Solution97 {
 public:
+    // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.md
     // 精简之后的代码，大家就看不出去三种情况的处理了，貌似好像只处理的情况三，其实是把情况一和情况二融合了。 这样的代码不太利于理解。
     int trap(vector<int>& height) {
         stack<int> st;
@@ -314,13 +320,13 @@ public:
 };
 
 
-// 登录 AlgoMooc 官网获取更多算法图解
-// https://www.algomooc.com
-// 作者：程序员吴师兄
-// 代码有看不懂的地方一定要私聊咨询吴师兄呀
-// 接雨水（ LeetCode 42 ）:https://leetcode-cn.com/problems/trapping-rain-water/
 class Solution96 {
 public:
+    // 登录 AlgoMooc 官网获取更多算法图解
+    // https://www.algomooc.com
+    // 作者：程序员吴师兄
+    // 代码有看不懂的地方一定要私聊咨询吴师兄呀
+    // 接雨水（ LeetCode 42 ）:https://leetcode-cn.com/problems/trapping-rain-water/
     int trap(vector<int>& height) {
         // 只有两根柱子，必然无法形成一个凹槽，那么水的面积就是 0
         if (height.size() <= 2) return 0; 
@@ -394,15 +400,15 @@ public:
 };
 
 
-// 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/42.%20Trapping%20Rain%20Water
-// OJ: https://leetcode.com/problems/trapping-rain-water/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-// The water that can be held at position i is max(0, min(left[i], right[i]) - A[i]) where left[i] is the maximum 
-// height to the left of i and right[i] is the maximum height to the right of i.
 class Solution95 {
 public:
+    // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/42.%20Trapping%20Rain%20Water
+    // OJ: https://leetcode.com/problems/trapping-rain-water/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(N)
+    // The water that can be held at position i is max(0, min(left[i], right[i]) - A[i]) where left[i] is the maximum 
+    // height to the left of i and right[i] is the maximum height to the right of i.
     int trap(vector<int>& A) {
         int N = A.size(), ans = 0;
         vector<int> left(N, 0), right(N, 0);
@@ -413,12 +419,13 @@ public:
     }
 };
 
-// OJ: https://leetcode.com/problems/trapping-rain-water/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
+
 class Solution94 {
 public:
+    // OJ: https://leetcode.com/problems/trapping-rain-water/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(N)
     int trap(vector<int>& A) {
         int N = A.size(), ans = 0, mx = 0, left = 0;
         vector<int> right(N);
@@ -431,21 +438,22 @@ public:
     }
 };
 
-// OJ: https://leetcode.com/problems/trapping-rain-water/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(N)
-// This solution is similar to the Monotonic Stack solution to 84. Largest Rectangle in Histogram (Hard).
-// 
-// The intuition is that once we see a taller A[i], all A[j] <= A[i] (j < i) are no longer relevant because 
-// we will at most use A[i] as the left edge.
-// 
-// So, we maintain a monotonic stack s storing the relevant indices.
-// 
-// For each A[i], we pop indices <= A[i] from s. For each popped index mid, the index triple s.top(), mid, 
-// i forms a rectangle of water. The width is i - s.top() - 1, the height is min(A[s.top()], A[i]) - A[mid].
+
 class Solution93 {
 public:
+    // OJ: https://leetcode.com/problems/trapping-rain-water/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(N)
+    // This solution is similar to the Monotonic Stack solution to 84. Largest Rectangle in Histogram (Hard).
+    // 
+    // The intuition is that once we see a taller A[i], all A[j] <= A[i] (j < i) are no longer relevant because 
+    // we will at most use A[i] as the left edge.
+    // 
+    // So, we maintain a monotonic stack s storing the relevant indices.
+    // 
+    // For each A[i], we pop indices <= A[i] from s. For each popped index mid, the index triple s.top(), mid, 
+    // i forms a rectangle of water. The width is i - s.top() - 1, the height is min(A[s.top()], A[i]) - A[mid].
     int trap(vector<int>& A) {
         int N = A.size(), ans = 0;
         stack<int> s;
@@ -461,23 +469,24 @@ public:
     }
 };
 
-// OJ: https://leetcode.com/problems/trapping-rain-water/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
-// Can we save the O(N) space in solution 1? The space is taken by the right array storing the maximum heights. 
-//We can try using a single pointer instead.
-// 
-// Let's traverse i from 0 rightwards. For each A[i], instead of using right[i] -- the tallest height to the 
-// right of A[i], we use a pointer j = N-1. As long as A[j] >= A[i], the height of the water filled at index i 
-// is determined only by left -- left - A[i].
-// 
-// So, we keep incrementing i and fill left - A[i] at index i, until A[i] > A[j].
-// 
-// Now, the setup is reversed. Due to symmetry, now we should keep decrementing j and fill right - A[j] at index j, 
-// until A[j] >= A[i].
+
 class Solution92 {
 public:
+    // OJ: https://leetcode.com/problems/trapping-rain-water/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    // Can we save the O(N) space in solution 1? The space is taken by the right array storing the maximum heights. 
+    //We can try using a single pointer instead.
+    // 
+    // Let's traverse i from 0 rightwards. For each A[i], instead of using right[i] -- the tallest height to the 
+    // right of A[i], we use a pointer j = N-1. As long as A[j] >= A[i], the height of the water filled at index i 
+    // is determined only by left -- left - A[i].
+    // 
+    // So, we keep incrementing i and fill left - A[i] at index i, until A[i] > A[j].
+    // 
+    // Now, the setup is reversed. Due to symmetry, now we should keep decrementing j and fill right - A[j] at index j, 
+    // until A[j] >= A[i].
     int trap(vector<int>& A) {
         int i = 0, j = A.size() - 1, left = 0, right = 0, ans = 0;
         while (i < j) {
@@ -494,108 +503,110 @@ public:
 };
 
 
-// 2022.7.24, from https://walkccc.me/LeetCode/problems/0042/
-// Time: O(n)
-// Space: O(n)
 class Solution91 {
 public:
-  int trap(vector<int>& height) {
-    const int n = height.size();
-    int ans = 0;
-    vector<int> l(n);  // l[i] := max(height[0..i])
-    vector<int> r(n);  // r[i] := max(height[i..n))
+    // 2022.7.24, from https://walkccc.me/LeetCode/problems/0042/
+    // Time: O(n)
+    // Space: O(n)
+    int trap(vector<int>& height) {
+        const int n = height.size();
+        int ans = 0;
+        vector<int> l(n);  // l[i] := max(height[0..i])
+        vector<int> r(n);  // r[i] := max(height[i..n))
 
-    for (int i = 0; i < n; ++i)
-      l[i] = i == 0 ? height[i] : max(height[i], l[i - 1]);
+        for (int i = 0; i < n; ++i)
+        l[i] = i == 0 ? height[i] : max(height[i], l[i - 1]);
 
-    for (int i = n - 1; i >= 0; --i)
-      r[i] = i == n - 1 ? height[i] : max(height[i], r[i + 1]);
+        for (int i = n - 1; i >= 0; --i)
+        r[i] = i == n - 1 ? height[i] : max(height[i], r[i + 1]);
 
-    for (int i = 0; i < n; ++i)
-      ans += min(l[i], r[i]) - height[i];
+        for (int i = 0; i < n; ++i)
+        ans += min(l[i], r[i]) - height[i];
 
-    return ans;
-  }
+        return ans;
+    }
 };
 
-// Time: O(n)
-// Space: O(1)
+
 class Solution90 {
 public:
-  int trap(vector<int>& height) {
-    if (height.empty())
-      return 0;
+    // 2022.7.24, from https://walkccc.me/LeetCode/problems/0042/
+    // Time: O(n)
+    // Space: O(1)
+    int trap(vector<int>& height) {
+        if (height.empty())
+        return 0;
 
-    int ans = 0;
-    int l = 0;
-    int r = height.size() - 1;
-    int maxL = height[l];
-    int maxR = height[r];
+        int ans = 0;
+        int l = 0;
+        int r = height.size() - 1;
+        int maxL = height[l];
+        int maxR = height[r];
 
-    while (l < r)
-      if (maxL < maxR) {
-        ans += maxL - height[l];
-        maxL = max(maxL, height[++l]);
-      } else {
-        ans += maxR - height[r];
-        maxR = max(maxR, height[--r]);
-      }
+        while (l < r)
+        if (maxL < maxR) {
+            ans += maxL - height[l];
+            maxL = max(maxL, height[++l]);
+        } else {
+            ans += maxR - height[r];
+            maxR = max(maxR, height[--r]);
+        }
 
-    return ans;
-  }
+        return ans;
+    }
 };
 
 
-// 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-42-Trapping-Rain-Water.html?h=trap
 class Solution89 {
 public:
-  int trap(vector<int>& height) {
-    int res = 0, left_max = 0, right_max = 0;
-    vector<int> diff(height.size(), 0);
-    // Get the left max_hight
-    // For i, the left heightes is the left_max;
-    for (int i = 0; i < height.size(); ++i) {
-      diff[i] = left_max;
-      left_max = max(left_max, height[i]);
-    }
+    // 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-42-Trapping-Rain-Water.html?h=trap
+    int trap(vector<int>& height) {
+        int res = 0, left_max = 0, right_max = 0;
+        vector<int> diff(height.size(), 0);
+        // Get the left max_hight
+        // For i, the left heightes is the left_max;
+        for (int i = 0; i < height.size(); ++i) {
+        diff[i] = left_max;
+        left_max = max(left_max, height[i]);
+        }
 
-    for (int i = height.size() - 1; i >= 0; --i) {
-      // Find the min for the left_max and right_max, and
-      // use this height as the diff value;
-      diff[i] = min(right_max, diff[i]);
-      right_max = max(right_max, height[i]);
-      if (diff[i] > height[i]) res += diff[i] - height[i];
+        for (int i = height.size() - 1; i >= 0; --i) {
+        // Find the min for the left_max and right_max, and
+        // use this height as the diff value;
+        diff[i] = min(right_max, diff[i]);
+        right_max = max(right_max, height[i]);
+        if (diff[i] > height[i]) res += diff[i] - height[i];
+        }
+        return res;
     }
-    return res;
-  }
 };
 
 
-// 2022.7.24, from https://github.com/MaskRay/LeetCode/blob/master/trapping-rain-water.cc
-// Trapping Rain Water
 class Solution88 {
 public:
-  int trap(vector<int> &h) {
-    int hl = 0, hr = 0, i = 0, j = h.size(), s = 0;
-    while (i < j) {
-      if (hl < hr) {
-        s += max(hl-h[i], 0);
-        hl = max(hl, h[i++]);
-      } else {
-        s += max(hr-h[--j], 0);
-        hr = max(hr, h[j]);
-      }
+    // 2022.7.24, from https://github.com/MaskRay/LeetCode/blob/master/trapping-rain-water.cc
+    // Trapping Rain Water
+    int trap(vector<int> &h) {
+        int hl = 0, hr = 0, i = 0, j = h.size(), s = 0;
+        while (i < j) {
+        if (hl < hr) {
+            s += max(hl-h[i], 0);
+            hl = max(hl, h[i++]);
+        } else {
+            s += max(hr-h[--j], 0);
+            hr = max(hr, h[j]);
+        }
+        }
+        return s;
     }
-    return s;
-  }
 };
 
 
-// 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/trapping-rain-water.cpp
-// Time:  O(n)
-// Space: O(1)
 class Solution87 {
 public:
+    // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/trapping-rain-water.cpp
+    // Time:  O(n)
+    // Space: O(1)
     int trap(vector<int>& height) {
         int result = 0, left = 0, right = height.size() - 1, level = 0;
         while (left < right) {
@@ -607,10 +618,12 @@ public:
     }
 };
 
-// Time:  O(n)
-// Space: O(1)
+
 class Solution86 {
 public:
+    // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/trapping-rain-water.cpp
+    // Time:  O(n)
+    // Space: O(1)
     int trap(vector<int>& height) {
         if (height.empty()) {
             return 0;
@@ -643,13 +656,13 @@ public:
 };
 
 
-// 2022.7.24, from AcWing
-// 作者：yxc
-// 链接：https://www.acwing.com/activity/content/code/content/356196/
-// 来源：AcWing
-// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 class Solution {
 public:
+    // 2022.7.24, from AcWing
+    // 作者：yxc
+    // 链接：https://www.acwing.com/activity/content/code/content/356196/
+    // 来源：AcWing
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     int trap(vector<int>& height) {
         stack<int> stk;
         int res = 0;
