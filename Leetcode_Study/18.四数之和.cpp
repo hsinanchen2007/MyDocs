@@ -17,7 +17,6 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 你可以按 任意顺序 返回答案 。
 
  
-
 示例 1：
 
 输入：nums = [1,0,-1,0,-2,2], target = 0

@@ -43,7 +43,7 @@ https://leetcode.cn/problems/3sum/
 class Solution100 {
 public:
     // 2022.6.9, from https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/medium/15.3sum
-    vector<vector<int>> threeSum3(vector<int>& nums) {
+    vector<vector<int>> threeSum(vector<int>& nums) {
         // tricky one, the returned vector is vector<vector<int>>, three
         // numbers, not two numbers
         vector<vector<int>> answer;
