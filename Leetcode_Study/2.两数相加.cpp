@@ -15,7 +15,6 @@ https://leetcode.cn/problems/add-two-numbers/
 
 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 
- 
 
 示例 1：
 
@@ -55,11 +54,10 @@ https://leetcode.cn/problems/add-two-numbers/
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.5.31 LG solution, use two pointers
-    ListNode* addTwoNumbers3(ListNode* l1, ListNode* l2) {
+    // 2022.5.31 from LG solution, use two pointers
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         // define pointers to iterate and trace current pointer
         ListNode* p = l1;
         ListNode* q = l2;
@@ -112,9 +110,13 @@ public:
         // when we create it at the beginning
         return result->next;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.4, from AcWing https://www.acwing.com/video/1318/
-    ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2) {
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         // a trick that use auto to declare two ListNodes here
         auto dummy = new ListNode(-1), cur = dummy;
 
@@ -139,9 +141,15 @@ public:
         // we declare it at the beginning
         return dummy->next;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/add-two-numbers.cpp
-    ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
+    // Time:  O(n)
+    // Space: O(1)
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode dummy{0};
         auto curr = &dummy;
 
@@ -158,7 +166,11 @@ public:
 
         return dummy.next;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_626e7fc2e4b01c509aaaf545/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_626e7eeee4b01c509aaaf51e
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
@@ -253,7 +265,6 @@ public:
         return dummy->next;
 
     }
-
 };
 // @lc code=end
 

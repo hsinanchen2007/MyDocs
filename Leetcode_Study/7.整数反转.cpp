@@ -45,10 +45,9 @@ https://leetcode.cn/problems/reverse-integer/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.5.30, LG solution
+    // 2022.5.30, from LG solution
     //   1. Do integer limit check first, and return 0 if they are over limit
     //   2. Check and convert number to positive first, sign is used to
     //      determine positive or negative number by 1 or -1
@@ -56,7 +55,7 @@ public:
     //   4. Remember if (last != 0), we need to apply it back, also
     //      convert it to long and do integer limit check
     //   5. At the end of return, apply sign back
-    int reverse3(int x) {
+    int reverse(int x) {
         // sanity check, INT_MAX is 2147483648, INT_MIN is -2147483648
         // if the given number is reversed, it will cause over integer limit
         if (x == INT_MAX || x == INT_MIN) return 0;
@@ -106,11 +105,15 @@ public:
 
         return result * sign;
     }
+};
 
-    // 2022.5.31, Leetcode 題目詳解, lvyilong316@163.com
+
+class Solution99 {
+public:
+    // 2022.5.31, from Leetcode 題目詳解, lvyilong316@163.com
     // However, need to add the INT_MAX/INT_MIN check as Leetcode
     // now will check the integer overflow in the submission cases
-    int reverse2(int x) {
+    int reverse(int x) {
         // need to define "result" as long, not int, to detect and prevent integer overflow
         long result = 0;
         for (; x; x/=10) {
@@ -123,7 +126,11 @@ public:
         }
         return (int)result;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.4, from AcWing https://www.acwing.com/video/1323/
     // it can use integer without converting anything to long long
     // two conditions that over limit:
@@ -131,7 +138,7 @@ public:
     //      ==> r > (INT_MAX - x % 10) / 10
     //   2. r * 10 + x % 10 < INT_MIN
     //      ==> r < (INT_MIN - x % 10) / 10
-    int reverse1(int x) {
+    int reverse(int x) {
         int r = 0;
         while (x) {
             if (r > 0 && r > (INT_MAX - x % 10) / 10) return 0;
@@ -141,8 +148,14 @@ public:
         }
         return r;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/reverse-integer.cpp
+    // Time:  O(logn) = O(1)
+    // Space: O(1)
     int reverse(int x) {
         int result = 0;
         while (x) {
@@ -160,7 +173,6 @@ public:
         }
         return result;
     }
-
 };
 // @lc code=end
 

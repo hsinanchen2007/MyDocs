@@ -39,11 +39,10 @@ https://leetcode.cn/problems/3sum-closest/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.12, from AcWing https://www.acwing.com/video/1333/
-    int threeSumClosest3(vector<int>& nums, int target) {
+    int threeSumClosest(vector<int>& nums, int target) {
         // sort the given vector so we can use two pointers
         sort(nums.begin(), nums.end());
 
@@ -76,9 +75,15 @@ public:
 
         return res.second;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.12, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/3sum-closest.cpp
-    int threeSumClosest2(vector<int>& nums, int target) {
+    // Time:  O(n^2)
+    // Space: O(1)
+    int threeSumClosest(vector<int>& nums, int target) {
         sort(begin(nums), end(nums));
         int result = 0, min_diff = numeric_limits<int>::max();
         for (int i = size(nums) - 1; i >= 2; --i) {
@@ -103,10 +108,14 @@ public:
         }
         return result;
     }
+};
 
-    // 2022.6.12, https://www.guozet.me/leetcode/Leetcode-16-3Sum-Closest.html
+
+class Solution98 {
+public:
+    // 2022.6.12, from https://www.guozet.me/leetcode/Leetcode-16-3Sum-Closest.html
     // the solution is better and easier to understand
-    int threeSumClosest1(vector<int>& nums, int target) {
+    int threeSumClosest(vector<int>& nums, int target) {
         // initialize a closest value from first three elements
         int closest = nums[0] + nums[1] + nums[2];
 
@@ -144,7 +153,11 @@ public:
 
         return closest;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_626e73e2e4b01a4851f98e6f/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_6268b1aae4b01c509aa8e2b8
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
@@ -200,33 +213,33 @@ public:
         return ans;
     }
 
-/*
-    // 2022.6.17, from https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
-    // Looks like Amazon interview question
 
-    // 2Sum Closest
-    int twoSumClosest(vector<int>& nums, int target) {
-        sort(nums.begin(), nums.end());
-        int diff = INT_MAX, res;
-        int i = 0, j = nums.size() - 1;
-        while (i < j) {
-            int sum = nums[i] + nums[j];
-            if (abs(sum - target) < diff) {
-            res = sum;
-            diff = abs(sum - target);
+    /*
+        // 2022.6.17, from https://www.guozet.me/leetcode/Leetcode-Interview-Amazon-OA2-2Sum-Closest.html
+        // Looks like Amazon interview question
+
+        // 2Sum Closest
+        int twoSumClosest(vector<int>& nums, int target) {
+            sort(nums.begin(), nums.end());
+            int diff = INT_MAX, res;
+            int i = 0, j = nums.size() - 1;
+            while (i < j) {
+                int sum = nums[i] + nums[j];
+                if (abs(sum - target) < diff) {
+                res = sum;
+                diff = abs(sum - target);
+                }
+                if (sum < target)
+                i++;
+                else if (sum > target)
+                j--;
+                else
+                break;
             }
-            if (sum < target)
-            i++;
-            else if (sum > target)
-            j--;
-            else
-            break;
+            return res;
         }
-        return res;
-    }
 
-*/
-
+    */
 };
 // @lc code=end
 

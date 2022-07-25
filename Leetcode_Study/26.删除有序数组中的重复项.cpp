@@ -57,11 +57,10 @@ nums 已按 升序 排列
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.6.1, LG solution
-    int removeDuplicates2(vector<int>& nums) {
+    // 2022.6.1, from LG solution
+    int removeDuplicates(vector<int>& nums) {
         int target = 0;
         for (int i = 1; i < nums.size(); i++) {
             // target starts from 0, i starts from 1
@@ -78,9 +77,13 @@ public:
         }
         return (target + 1);
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.4, from AcWing https://www.acwing.com/video/1348/
-    int removeDuplicates1(vector<int>& nums) {
+    int removeDuplicates(vector<int>& nums) {
         int k = 0;
         for (int i = 0; i < nums.size(); i++) {
             // example {1, 2, 2, 2, 3, 4, 5}
@@ -99,8 +102,14 @@ public:
         }
         return k;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/remove-duplicates-from-sorted-array.cpp
+    // Time:  O(n)
+    // Space: O(1)
     int removeDuplicates(vector<int>& nums) {
         int last = -1;
         for (const auto& num : nums) {
