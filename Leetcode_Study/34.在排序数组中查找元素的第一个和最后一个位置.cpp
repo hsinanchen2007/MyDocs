@@ -174,6 +174,8 @@ class Solution99 {
 public:
     // 2022.6.18, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/find-first-and-last-position-of-element-in-sorted-array.cpp
     // it uses C++ STL's lower_bound and upper_bound, to get the min/max borders based on given target in given vector
+    // Time:  O(logn)
+    // Space: O(1)
     vector<int> searchRange(vector<int>& nums, int target) {
         // get lower/upper borders, this is a good example to re-use existing C++ STL
         // that it can help to find out borders from a sorted vector based on target

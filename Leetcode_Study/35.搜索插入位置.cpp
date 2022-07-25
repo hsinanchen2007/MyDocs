@@ -196,6 +196,8 @@ public:
 class Solution97 {
 public:
     // 2022.6.18, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/search-insert-position.cpp
+    // Time:  O(logn)
+    // Space: O(1)
     int searchInsert(vector<int>& nums, int target) {
         int left = 0;
         int right = nums.size() - 1;
@@ -229,7 +231,7 @@ public:
 };
 
 
-class Solution {
+class Solution95 {
 public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_6281aa6de4b01a4851ff623b/3?from=p_6281a4bbe4b01a4851ff5f23&type=6&parent_pro_id=
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -291,6 +293,30 @@ public:
         // 2、如果 nums[mid] 小于 target，那么接下来 left 会向右移动，即 left = right + 1，此时搜索区间不存在
         // 那么说明 target 应该插入到 nums[mid] 的后一个位置，而 left 向后移动了一次，这个位置就是插入位置
         return left;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.24, from https://walkccc.me/LeetCode/problems/0035/
+    // Time: O(log n)
+    // Space: O(1)
+    int searchInsert(vector<int>& nums, int target) {
+        int l = 0;
+        int r = nums.size();
+
+        while (l < r) {
+            const int m = (l + r) / 2;
+            if (nums[m] == target)
+                return m;
+            if (nums[m] < target)
+                l = m + 1;
+            else
+                r = m;
+        }
+
+        return l;
     }
 };
 // @lc code=end

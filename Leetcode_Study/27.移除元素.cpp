@@ -178,8 +178,11 @@ public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.md
     /*
        双指针法
+       时间复杂度：O(n)
+       空间复杂度：O(1)
+       
        双指针法（快慢指针法）： 通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。
-      
+
        定义快慢指针
       
        快指针：寻找新数组的元素 ，新数组就是不含有目标元素的数组
@@ -195,8 +198,7 @@ public:
        双指针法（快慢指针法）在数组和链表的操作中是非常常见的，很多考察数组、链表、字符串等操作的面试题，都使用双指针法。
        后续都会一一介绍到，本题代码如下：
     */
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
+    //
     int removeElement(vector<int>& nums, int val) {
         int slowIndex = 0;
         for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {

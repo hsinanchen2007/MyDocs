@@ -497,6 +497,8 @@ public:
 class Solution97 {
 public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0028/?h=strstr
+    // Time: O((m - n)n), where m = haystack, n = needle
+    // Space: O(1)
     int strStr(string haystack, string needle) {
         const int m = haystack.length();
         const int n = needle.length();
