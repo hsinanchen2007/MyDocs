@@ -18,7 +18,6 @@ https://leetcode.cn/problems/reverse-words-in-a-string/
 注意：输入字符串 s中可能会存在前导空格、尾随空格或者单词间的多个空格。返回的结果字符串中，单词间应当仅用单个空格分隔，且不包含任何额外的空格。
 
  
-
 示例 1：
 
 输入：s = "the sky is blue"
@@ -51,19 +50,109 @@ s 中 至少存在一个 单词
 */
 
 // @lc code=start
-class Solution {
-
+class Solution100 {
 private:
     // 2022.7.23, by https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0151.%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D.md
+    /*
+        这道题目可以说是综合考察了字符串的多种操作。
+
+        一些同学会使用split库函数，分隔单词，然后定义一个新的string字符串，最后再把单词倒序相加，那么这道题题目就是一道水题了，失去了它的意义。
+        所以这里我还是提高一下本题的难度：不要使用辅助空间，空间复杂度要求为O(1)。
+
+        不能使用辅助空间之后，那么只能在原字符串上下功夫了。
+
+        想一下，我们将整个字符串都反转过来，那么单词的顺序指定是倒序了，只不过单词本身也倒序了，那么再把单词反转一下，单词不就正过来了。
+
+        所以解题思路如下：
+
+        移除多余空格
+        将整个字符串反转
+        将每个单词反转
+        举个例子，源字符串为："the sky is blue "
+
+        移除多余空格 : "the sky is blue"
+        字符串反转："eulb si yks eht"
+        单词反转："blue is sky the"
+        这样我们就完成了翻转字符串里的单词。
+
+        思路很明确了，我们说一说代码的实现细节，就拿移除多余空格来说，一些同学会上来写如下代码：
+
+        void removeExtraSpaces(string& s) {
+            for (int i = s.size() - 1; i > 0; i--) {
+                if (s[i] == s[i - 1] && s[i] == ' ') {
+                    s.erase(s.begin() + i);
+                }
+            }
+            // 删除字符串最后面的空格
+            if (s.size() > 0 && s[s.size() - 1] == ' ') {
+                s.erase(s.begin() + s.size() - 1);
+            }
+            // 删除字符串最前面的空格
+            if (s.size() > 0 && s[0] == ' ') {
+                s.erase(s.begin());
+            }
+        }
+        逻辑很简单，从前向后遍历，遇到空格了就erase。
+
+        如果不仔细琢磨一下erase的时间复杂度，还以为以上的代码是O(n)的时间复杂度呢。
+
+        想一下真正的时间复杂度是多少，一个erase本来就是O(n)的操作，erase实现原理题目：数组：就移除个元素很难么？，最优的算法来移除元素也要O(n)。
+        erase操作上面还套了一个for循环，那么以上代码移除冗余空格的代码时间复杂度为O(n^2)。
+
+        那么使用双指针法来去移除空格，最后resize（重新设置）一下字符串的大小，就可以做到O(n)的时间复杂度。
+        如果对这个操作比较生疏了，可以再看一下这篇文章：数组：就移除个元素很难么？是如何移除元素的。
+
+        那么使用双指针来移除冗余空格代码如下： fastIndex走的快，slowIndex走的慢，最后slowIndex就标记着移除多余空格后新字符串的长度。
+
+        void removeExtraSpaces(string& s) {
+            int slowIndex = 0, fastIndex = 0; // 定义快指针，慢指针
+            // 去掉字符串前面的空格
+            while (s.size() > 0 && fastIndex < s.size() && s[fastIndex] == ' ') {
+                fastIndex++;
+            }
+            for (; fastIndex < s.size(); fastIndex++) {
+                // 去掉字符串中间部分的冗余空格
+                if (fastIndex - 1 > 0
+                        && s[fastIndex - 1] == s[fastIndex]
+                        && s[fastIndex] == ' ') {
+                    continue;
+                } else {
+                    s[slowIndex++] = s[fastIndex];
+                }
+            }
+            if (slowIndex - 1 > 0 && s[slowIndex - 1] == ' ') { // 去掉字符串末尾的空格
+                s.resize(slowIndex - 1);
+            } else {
+                s.resize(slowIndex); // 重新设置字符串大小
+            }
+        }
+        有的同学可能发现用erase来移除空格，在leetcode上性能也还行。主要是以下几点；：
+
+        leetcode上的测试集里，字符串的长度不够长，如果足够长，性能差距会非常明显。
+        leetcode的测程序耗时不是很准确的。
+        此时我们已经实现了removeExtraSpaces函数来移除冗余空格。
+
+        还做实现反转字符串的功能，支持反转字符串子区间，这个实现我们分别在344.反转字符串和541.反转字符串II里已经讲过了。
+
+        代码如下：
+
+        // 反转字符串s中左闭又闭的区间[start, end]
+        void reverse(string& s, int start, int end) {
+            for (int i = start, j = end; i < j; i++, j--) {
+                swap(s[i], s[j]);
+            }
+        }
+        本题C++整体代码
+    */
     // 版本一
     // 反转字符串s中左闭又闭的区间[start, end]
-    void reverse1(string& s, int start, int end) {
+    void reverse(string& s, int start, int end) {
         for (int i = start, j = end; i < j; i++, j--) {
             swap(s[i], s[j]);
         }
     }
     // 移除冗余空格：使用双指针（快慢指针法）O(n)的算法
-    void removeExtraSpaces1(string& s) {
+    void removeExtraSpaces(string& s) {
         int slowIndex = 0, fastIndex = 0; // 定义快指针，慢指针
         // 去掉字符串前面的空格
         while (s.size() > 0 && fastIndex < s.size() && s[fastIndex] == ' ') {
@@ -87,9 +176,9 @@ private:
     }
 
 public:
-    string reverseWords5(string s) {
-        removeExtraSpaces1(s); // 去掉冗余空格
-        reverse1(s, 0, s.size() - 1); // 将字符串全部反转
+    string reverseWords(string s) {
+        removeExtraSpaces(s); // 去掉冗余空格
+        reverse(s, 0, s.size() - 1); // 将字符串全部反转
         int start = 0; // 反转的单词在字符串里起始位置
         int end = 0; // 反转的单词在字符串里终止位置
         bool entry = false; // 标记枚举字符串的过程中是否已经进入了单词区间
@@ -102,13 +191,13 @@ public:
             if (entry && s[i] == ' ' && s[i - 1] != ' ') {
                 end = i - 1; // 确定单词终止位置
                 entry = false; // 结束单词区间
-                reverse1(s, start, end);
+                reverse(s, start, end);
             }
             // 最后一个结尾单词之后没有空格的情况
             if (entry && (i == (s.size() - 1)) && s[i] != ' ' ) {
                 end = i;// 确定单词终止位置
                 entry = false; // 结束单词区间
-                reverse1(s, start, end);
+                reverse(s, start, end);
             }
         }
         return s;
@@ -128,17 +217,20 @@ public:
         return s;
     }
     */
+};
 
+
+class Solution99 {
 private:
     //版本二：
     //原理同版本1，更简洁实现。
-    void reverse2(string& s, int start, int end){ //翻转，区间写法：闭区间 []
+    void reverse(string& s, int start, int end){ //翻转，区间写法：闭区间 []
         for (int i = start, j = end; i < j; i++, j--) {
             swap(s[i], s[j]);
         }
     }
 
-    void removeExtraSpaces2(string& s) {//去除所有空格并在相邻单词之间添加空格, 快慢指针。
+    void removeExtraSpaces(string& s) {//去除所有空格并在相邻单词之间添加空格, 快慢指针。
         int slow = 0;   //整体思想参考Leetcode: 27. 移除元素：https://leetcode.cn/problems/remove-element/
         for (int i = 0; i < s.size(); ++i) { //
             if (s[i] != ' ') { //遇到非空格就处理，即删除所有空格。
@@ -152,22 +244,29 @@ private:
     }
 
 public:
-    string reverseWords4(string s) {
-        removeExtraSpaces2(s); //去除多余空格，保证单词之间之只有一个空格，且字符串首尾没空格。
-        reverse2(s, 0, s.size() - 1);
+    string reverseWords(string s) {
+        removeExtraSpaces(s); //去除多余空格，保证单词之间之只有一个空格，且字符串首尾没空格。
+        reverse(s, 0, s.size() - 1);
         int start = 0; //removeExtraSpaces后保证第一个单词的开始下标一定是0。
         for (int i = 0; i <= s.size(); ++i) {
             if (i == s.size() || s[i] == ' ') { //到达空格或者串尾，说明一个单词结束。进行翻转。
-                reverse2(s, start, i - 1); //翻转，注意是左闭右闭 []的翻转。
+                reverse(s, start, i - 1); //翻转，注意是左闭右闭 []的翻转。
                 start = i + 1; //更新下一个单词的开始下标start
             }
         }
         return s;
     }
+};
 
+
+class Solution98 {
 public:
     // 2022.7.23, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/151.%20Reverse%20Words%20in%20a%20String
-    void reverseWords3(string &s) {
+    // OJ: https://leetcode.com/problems/reverse-words-in-a-string/
+    // Author: github.com/lzl124631x
+    // Time: O(S)
+    // Space: O(1)
+    void reverseWords(string &s) {
         int i = 0, j = 0;
         while (j < s.size()) {
             while (j < s.size() && s[j] == ' ') ++j;
@@ -183,6 +282,80 @@ public:
             i = j + 1;
         }
         reverse(s.begin(), s.end());
+    }
+};
+
+
+class Solution97 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/151.%20Reverse%20Words%20in%20a%20String
+    // OJ: https://leetcode.com/problems/reverse-words-in-a-string/
+    // Author: github.com/lzl124631x
+    // Time: O(S)
+    // Space: O(S)
+    string reverseWords(string s) {
+        string ans;
+        for (int i = s.size() - 1; i >= 0;) {
+            while (i >= 0 && s[i] == ' ') --i;
+            if (i < 0) break;
+            if (ans.size()) ans += ' ';
+            int j = i;
+            while (j >= 0 && s[j] != ' ') --j;
+            for (int k = j + 1; k <= i; ++k) ans += s[k];
+            i = j;
+        }
+        return ans;
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/151.%20Reverse%20Words%20in%20a%20String
+    // OJ: https://leetcode.com/problems/reverse-words-in-a-string/
+    // Author: github.com/lzl124631x
+    // Time: O(S)
+    // Space: O(S)
+    string reverseWords(string s) {
+        istringstream ss(s);
+        string word, ans;
+        while (ss >> word) {
+            reverse(word.begin(), word.end());
+            if (ans.size()) ans += ' '; 
+            ans += word;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/151.%20Reverse%20Words%20in%20a%20String
+    // OJ: https://leetcode.com/problems/reverse-words-in-a-string/
+    // Author: github.com/lzl124631x
+    // Time: O(S)
+    // Space: O(S)
+    string reverseWords(string s) {
+        istringstream ss(s);
+        string word, ans;
+        while (ss >> word) {
+            if (ans.size()) word += " ";
+            ans = word + ans;
+        }
+        return ans;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.23, from https://walkccc.me/LeetCode/problems/0151/
+    string reverseWords(string s) {
+        reverse(begin(s), end(s));          // reverse the whole string
+        reverseWords(s, s.length());        // reverse each word
+        return cleanSpaces(s, s.length());  // clean up spaces
     }
 
 private:
@@ -217,19 +390,16 @@ private:
 
         return s.substr(0, i);
     }
+};
 
-public:
-    // 2022.7.23, from https://walkccc.me/LeetCode/problems/0151/
-    string reverseWords2(string s) {
-        reverse(begin(s), end(s));          // reverse the whole string
-        reverseWords(s, s.length());        // reverse each word
-        return cleanSpaces(s, s.length());  // clean up spaces
-    }
 
+class Solution93 {
 public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/reverse-words-in-a-string.cpp
     // note that the function return is changed from void to string below
-    string reverseWords1(string &s) {
+    // Time:  O(n)
+    // Space: O(1)
+    string reverseWords(string &s) {
         // Reverse the whole string first.
         reverse(s.begin(), s.end());
 
@@ -251,7 +421,11 @@ public:
         // Modified by Hsinan. LC changed the return from void to string of the given string now
         return s;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/solution/content/245/
@@ -261,10 +435,10 @@ public:
     // (数组翻转) O(n)O(n)
     // 分两步操作：
     //
-    //将字符串中的每个单词逆序，样例输入变为: "eht yks si eulb"；
+    // 将字符串中的每个单词逆序，样例输入变为: "eht yks si eulb"；
     // 将整个字符串逆序，样例输入变为："blue is sky the"；
     // 时间复杂度分析：整个字符串总共扫描两遍，所以时间复杂度是 O(n)O(n)。
-    //且每次翻转一个字符串时，可以用两个指针分别从两端往中间扫描，每次交换两个指针对应的字符，
+    // 且每次翻转一个字符串时，可以用两个指针分别从两端往中间扫描，每次交换两个指针对应的字符，
     // 所以额外空间的复杂度是 O(1)O(1)。
     string reverseWords(string s) {
         int k = 0;
@@ -284,7 +458,6 @@ public:
 
         return s;
     }
-
 };
 // @lc code=end
 

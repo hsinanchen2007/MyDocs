@@ -65,9 +65,8 @@ tokens[i] 是一个算符（"+"、"-"、"*" 或 "/"），或是在范围 [-200, 
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0150.%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md
     // 在上一篇文章中1047.删除字符串中的所有相邻重复项提到了 递归就是用栈来实现的。
     //
@@ -83,7 +82,7 @@ public:
     // 如动画所示： 150.逆波兰表达式求值
     // 
     // 相信看完动画大家应该知道，这和1047. 删除字符串中的所有相邻重复项是差不错的，只不过本题不要相邻元素做消除了，而是做运算！
-    int evalRPN4(vector<string>& tokens) {
+    int evalRPN(vector<string>& tokens) {
         stack<int> st;
         for (int i = 0; i < tokens.size(); i++) {
             if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*" || tokens[i] == "/") {
@@ -103,9 +102,13 @@ public:
         st.pop(); // 把栈里最后一个元素弹出（其实不弹出也没事）
         return result;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/150.%20Evaluate%20Reverse%20Polish%20Notation
-    int evalRPN3(vector<string>& A) {
+    int evalRPN(vector<string>& A) {
         stack<int> s;
         for (auto &t : A) {
             if (isdigit(t.back())) {
@@ -123,9 +126,15 @@ public:
         }
         return s.top();
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.24, from https://walkccc.me/LeetCode/problems/0150/
-    int evalRPN2(vector<string>& tokens) {
+    // Time: O(n)
+    // Space: O(n)
+    int evalRPN(vector<string>& tokens) {
         stack<int> stack;
         const unordered_map<string, function<int(int, int)>> op{
             {"+", plus<int>()},
@@ -146,9 +155,13 @@ public:
 
         return stack.top();
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-150-Evaluate-Reverse-Polish-Notation.html?h=evaluate
-    int evalRPN1(vector<string>& tokens) {
+    int evalRPN(vector<string>& tokens) {
         stack<string> sta;
         for (auto token : tokens) {
         // If this is a number, then push it to the stack.
@@ -175,7 +188,11 @@ public:
     bool is_operator(const string& token) {
         return token.size() == 1 && string("+-*/").find(token) != string::npos; 
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.24, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/solution/content/228/
