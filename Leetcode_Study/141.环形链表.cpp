@@ -15,7 +15,6 @@ https://leetcode.cn/problems/linked-list-cycle/
 
 如果链表中存在环 ，则返回 true 。 否则，返回 false 。
 
- 
 
 示例 1：
 
@@ -58,17 +57,16 @@ pos 为 -1 或者链表中的一个 有效索引 。
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.5.30, LG solution
+    // 2022.5.30, from LG solution
     //   1. Use slow and fast pointers, starts from 1st and 2nd nodes
     //   2. If slow and fast are at same node, there is a cycle
     //   3. If slow and fast are at different nodes, no cycle yet, 
     //      so flow will go to next node, and fast will go to next next node
     //   4. Stop while loop when fast or fast->next is NULL, that means there
     //      is no cycle in this linked list
-    bool hasCycle3(ListNode *head) {
+    bool hasCycle(ListNode *head) {
         // nullptr head, no cycle
         if (head == NULL) {
             return false;
@@ -91,15 +89,18 @@ public:
         }
         return false;
     }
+};
 
 
-    // 2022.5.30, soulmachine
+class Solution99 {
+public:
+    // 2022.5.30, from soulmachine
     //   1. The solution eliminates such null head or sinle node check
     //      and put such check into while loop, so it will take care of 
     //      NULL head or single node condition
     //   2. The first thing into while loop is to set next node, then 
     //      check if slow and fast pointers are at same node or not
-    bool hasCycle2(ListNode *head) {
+    bool hasCycle(ListNode *head) {
         ListNode* slow = head, *fast = head;
         while (fast && fast->next) {
             slow = slow->next;
@@ -109,9 +110,13 @@ public:
         
         return false;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.5, from AcWing https://www.acwing.com/video/1513/
-    bool hasCycle1(ListNode *head) {
+    bool hasCycle(ListNode *head) {
         // if NULL head or no next, no loop for sure
         if (!head || !head->next) return false;
 
@@ -138,8 +143,14 @@ public:
 
         return false;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/linked-list-cycle.cpp
+    // Time:  O(n)
+    // Space: O(1)
     bool hasCycle(ListNode *head) {
         ListNode *slow = head, *fast = head;
 
@@ -151,7 +162,106 @@ public:
         }
         return false;  // No cycle.
     }
-
 };
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8.md
+    /*
+        可以使用快慢指针法， 分别定义 fast 和 slow指针，从头结点出发，fast指针每次移动两个节点，slow指针每次移动一个节点，如果 fast 和 slow指针在途中相遇 ，
+        说明这个链表有环。为什么fast 走两个节点，slow走一个节点，有环的话，一定会在环内相遇呢，而不是永远的错开呢？
+
+        首先第一点： fast指针一定先进入环中，如果fast 指针和slow指针相遇的话，一定是在环中相遇，这是毋庸置疑的。
+        那么来看一下，为什么fast指针和slow指针一定会相遇呢？
+
+        可以画一个环，然后让 fast指针在任意一个节点开始追赶slow指针。
+        会发现最终都是这种情况， 如下图：
+
+        fast和slow各自再走一步， fast和slow就相遇了
+        这是因为fast是走两步，slow是走一步，其实相对于slow来说，fast是一个节点一个节点的靠近slow的，所以fast一定可以和slow重合。
+
+        动画如下：
+        141.环形链表
+    */
+    bool hasCycle(ListNode *head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while(fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            // 快慢指针相遇，说明有环
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/141.%20Linked%20List%20Cycle
+    // OJ: https://leetcode.com/problems/linked-list-cycle/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    bool hasCycle(ListNode *head) {
+        ListNode *p = head, *q = head;
+        while (q && q->next) {
+            p = p->next;
+            q = q->next->next;
+            if (p == q) return true;
+        }
+        return false;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0141/
+    // Time: O(n)
+    // Space: O(1)
+    bool hasCycle(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast)
+                return true;
+        }
+
+        return false;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-141-Linked-List-Cycle.html?h=hascycle
+    /*
+        虽然我刷题不够多，但是还是知道这个经典的检查链表中是否有环的快慢指针方式。设置两个指针，一个快一个慢，快的指针一次走两格，慢的指针一次走一格。
+
+        为什么如果有环的话，快的指针一定可以追上慢的指针呢, 难道不会刚好错过么 快的指针一次走两格，慢的指针一次走一格，他们的相对速度只差是1个格子，
+        那我们这样分析。如果链表中间有环，那么快的在追到慢的之前的话，他们之间之可能相差一个格子或者两个格子：
+
+        如果他们相差一个格子，那么下一步就能够追上
+        如果他们相差两个格子，那么两步之后也可以追上。
+    */
+    bool hasCycle(ListNode* head) {
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (fast == slow) return true;
+        }
+        return false;
+    }
+};
+
+
+
 // @lc code=end
 
