@@ -17,7 +17,6 @@ https://leetcode.cn/problems/find-peak-element/
 
 你必须实现时间复杂度为 O(log n) 的算法来解决此问题。
 
- 
 
 示例 1：
 
@@ -43,12 +42,11 @@ https://leetcode.cn/problems/find-peak-element/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.10, by Hsinan, check the middle and see if it is higher than right side's element
     // then adjust left or right accordingly
-    int findPeakElement3(vector<int>& nums) {
+    int findPeakElement(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
 
         while (left < right) {
@@ -62,14 +60,18 @@ public:
 
         return right;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.10, from 程序员吴师兄
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
     // 作者：程序员吴师兄
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // 寻找峰值(162):https://leetcode-cn.com/problems/find-peak-element/ 
-    int findPeakElement2(vector<int>& nums) {
+    int findPeakElement(vector<int>& nums) {
         
         // left 为当前区间最左侧的元素，可以获取到
         int left = 0;
@@ -118,9 +120,15 @@ public:
         // 跳出循环，此时 left == right，返回这个下标即可
         return left;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.10, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/find-peak-element.cpp
-    int findPeakElement1(vector<int>& nums) {
+    // Time:  O(logn)
+    // Space: O(1)
+    int findPeakElement(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
         
         while (left < right) {
@@ -134,7 +142,74 @@ public:
        
         return left;
     }
+};
 
+
+class Solution97 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/162.%20Find%20Peak%20Element
+    // Solution 1. Binary Search (L <= R)
+    // OJ: https://leetcode.com/problems/find-peak-element/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int findPeakElement(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
+        while (L <= R) {
+            long M = (L + R) / 2, left = M == 0 ? LONG_MIN : A[M - 1], right = M == A.size() - 1 ? LONG_MIN : A[M + 1];
+            if (A[M] > left && A[M] > right) return M;
+            if (A[M] < left) R = M - 1;
+            else L = M + 1;
+        }
+        return -1;
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/162.%20Find%20Peak%20Element
+    // Solution 2. Binary Search (L < R)
+    // OJ: https://leetcode.com/problems/find-peak-element/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int findPeakElement(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (A[M] > A[M + 1]) R = M;
+            else L = M + 1;
+        }
+        return L;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0162/
+    // Time: O(logn)
+    // Space: O(1)
+    int findPeakElement(vector<int>& nums) {
+        int l = 0;
+        int r = nums.size() - 1;
+
+        while (l < r) {
+        const int m = (l + r) / 2;
+        if (nums[m] >= nums[m + 1])
+            r = m;
+        else
+            l = m + 1;
+        }
+
+        return l;
+    }
+};
+
+
+class Solution {
+public:
     // 2022.7.10, from AcWing https://www.acwing.com/activity/content/code/content/411113/
     int findPeakElement(vector<int>& nums) {
         int l = 0, r = nums.size() - 1;
