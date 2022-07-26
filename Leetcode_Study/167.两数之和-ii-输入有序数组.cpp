@@ -49,13 +49,12 @@ numbers 按 非递减顺序 排列
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.17, by Hsinan. Use two pointers as this is an already sorted array
     // Compared with LC 1, we can use two pointers from front and back to check the
     // sum value, increase front is too small, reduce back if too large
-    vector<int> twoSum2(vector<int>& numbers, int target) {
+    vector<int> twoSum(vector<int>& numbers, int target) {
         // define answer vector to return 
         vector<int> answer;
 
@@ -92,18 +91,14 @@ public:
         // if here, no answer
         return answer;
     }
+};
 
-    // 2022.6.17, from AcWing https://www.acwing.com/video/1545/
-    vector<int> twoSum1(vector<int>& numbers, int target) {
-        // below for condition is a trick from AcWing code
-        for (int i = 0, j = numbers.size() - 1; i < j; i++) {
-            while (i < j && numbers[i] + numbers[j] > target) j--;
-            if (numbers[i] + numbers[j] == target) return {i + 1, j + 1};
-        }
-        return {};
-    }
 
+class Solution99 {
+public:
     // 2022.6.17, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/two-sum-ii-input-array-is-sorted.cpp
+    // Time:  O(n)
+    // Space: O(1)
     vector<int> twoSum(vector<int>& numbers, int target) {
         int left = 0, right = numbers.size() - 1;
         
@@ -120,7 +115,79 @@ public:
 
         return {0, 0};
     }
+};
 
+
+class Solution98 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/blob/master/leetcode/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted/s1.cpp
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i = 0, j = nums.size() - 1;
+        while (i < j) {
+            if (nums[i] + nums[j] > target) --j;
+            else if (nums[i] + nums[j] < target) ++i;
+            else return { i + 1, j + 1 };
+        }
+        return {};
+    }
+};
+
+
+class Solution97 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0167/
+    // Time: O(n)
+    // Space: O(1)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int l = 0;
+        int r = numbers.size() - 1;
+
+        while (numbers[l] + numbers[r] != target)
+        if (numbers[l] + numbers[r] < target)
+            ++l;
+        else
+            --r;
+
+        return {l + 1, r + 1};
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/two-sum-ii-input-array-is-sorted.cpp
+    // Time:  O(n)
+    // Space: O(1)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int left = 0, right = numbers.size() - 1;
+        
+        while (left != right) {
+            const auto sum = numbers[left] + numbers[right];
+            if (sum > target) {
+                --right;
+            } else if (sum < target) {
+                ++left;
+            } else {
+                return {left + 1, right + 1};
+            }
+        }
+
+        return {0, 0};
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.6.17, from AcWing https://www.acwing.com/video/1545/
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        // below for condition is a trick from AcWing code
+        for (int i = 0, j = numbers.size() - 1; i < j; i++) {
+            while (i < j && numbers[i] + numbers[j] > target) j--;
+            if (numbers[i] + numbers[j] == target) return {i + 1, j + 1};
+        }
+        return {};
+    }
 };
 // @lc code=end
 
