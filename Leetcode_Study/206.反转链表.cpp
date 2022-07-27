@@ -51,11 +51,10 @@ https://leetcode.cn/problems/reverse-linked-list/
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.6.4, 极客时间覃超算法训练營
-    ListNode* reverseList3(ListNode* head) {
+    // 2022.6.4, from 极客时间覃超算法训练營
+    ListNode* reverseList(ListNode* head) {
         // define two nodes for previous and current node
         ListNode *prevNode = NULL;
         ListNode *currNode = head;
@@ -82,9 +81,13 @@ public:
         // node here, not current node
         return prevNode;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.5, from AcWing https://www.acwing.com/video/1584/
-    ListNode* reverseList2(ListNode* head) {
+    ListNode* reverseList(ListNode* head) {
         // corner case when head itself is NULL
         if (!head) return NULL;
 
@@ -108,9 +111,13 @@ public:
         // so return a not return b
         return a;
     }
-    
+};
+
+
+class Solution98 {
+public:
     //2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/reverse-linked-list.cpp
-    ListNode* reverseList1(ListNode* head) {
+    ListNode* reverseList(ListNode* head) {
         auto dummy = ListNode{0};
 
         while (head) {
@@ -122,7 +129,11 @@ public:
 
         return dummy.next;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_625c124fe4b09dda125c1519/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_624d3a91e4b01a4851edb490
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
@@ -159,7 +170,6 @@ public:
         return cur;
 
     }
-
 };
 // @lc code=end
 

@@ -44,11 +44,10 @@ https://leetcode.cn/problems/sliding-window-maximum/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.24, by Hsinan (Time Limit Exceeded)
-    vector<int> maxSlidingWindow8(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         // return for answer
         std::vector<int> answer;
 
@@ -63,7 +62,11 @@ public:
 
         return answer;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.md
     // 这是使用单调队列的经典题目。
     // 
@@ -185,7 +188,7 @@ private:
         }
     };
 public:
-    vector<int> maxSlidingWindow7(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         MyQueue que;
         vector<int> result;
         for (int i = 0; i < k; i++) { // 先将前k的元素放进队列
@@ -199,7 +202,11 @@ public:
         }
         return result;
     }    
+};
 
+
+class Solution98 {
+public:
     // 2022.7.24, from 程序员吴师兄
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
@@ -207,7 +214,7 @@ public:
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // 滑动窗口最大值（ LeetCode 239 ）：https://leetcode-cn.com/problems/sliding-window-maximum/
 public:
-    vector<int> maxSlidingWindow6(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         // 构建存储最大值的数组
         vector<int> res;
 
@@ -256,7 +263,11 @@ public:
         // 最后返回 res
         return res;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/239.%20Sliding%20Window%20Maximum
     // Assume the array is [3, 1, 2, ...] and k = 3, popping 3 out of the window will result in max value update, 
     // but popping 1 won't. This means that we can just keep track of [3, 2], i.e. a monotonically decreasing sequence of values.
@@ -266,7 +277,7 @@ public:
     // push i into the deque.
     //
     // We need to pop the index which falls out of the window from the deque as well.
-    vector<int> maxSlidingWindow5(vector<int>& A, int k) {
+    vector<int> maxSlidingWindow(vector<int>& A, int k) {
         vector<int> ans;
         deque<int> q;
         for (int i = 0; i < A.size(); ++i) {
@@ -277,9 +288,13 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution96 {
+public:
     // Similar to Solution 1, but here we store the values instead of the indexes in the deque.
-    vector<int> maxSlidingWindow4(vector<int>& A, int k) {
+    vector<int> maxSlidingWindow(vector<int>& A, int k) {
         deque<int> q;
         vector<int> ans;
         for (int i = 0; i < A.size(); ++i) {
@@ -290,9 +305,13 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution95 {
+public:
     // 2022.7.24, from https://walkccc.me/LeetCode/problems/0239/
-    vector<int> maxSlidingWindow3(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> ans;
         deque<int> q;  // max queue
 
@@ -308,11 +327,15 @@ public:
 
         return ans;
     }
+};
 
+
+class Solution94 {
+public:
     // 2022.7.24, from https://github.com/MaskRay/LeetCode/blob/master/sliding-window-maximum.cc
     #define FOR(i, a, b) for (int i = (a); i < (b); i++)
     #define REP(i, n) FOR(i, 0, n)
-    vector<int> maxSlidingWindow2(vector<int> &a, int k) {
+    vector<int> maxSlidingWindow(vector<int> &a, int k) {
         int n = (int)a.size();
         vector<int> b;
         deque<int> q;
@@ -327,9 +350,13 @@ public:
         }
         return b;
     }
+};
 
+
+class Solution93 {
+public:
     // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/sliding-window-maximum.cpp
-    vector<int> maxSlidingWindow1(vector<int>& nums, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> result;
         deque<int> dq;
         for (int i = 0; i < nums.size(); ++i) {
@@ -346,7 +373,11 @@ public:
         }
         return result;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.24, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/445221/
@@ -363,7 +394,6 @@ public:
         }
         return res;
     }
-
 };
 // @lc code=end
 
