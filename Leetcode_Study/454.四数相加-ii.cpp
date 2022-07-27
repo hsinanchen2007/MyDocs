@@ -253,7 +253,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
     /*
@@ -277,6 +277,60 @@ public:
             }
         }
         return cnt;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/454
+    /*
+        这道题是之前那道 4Sum 的延伸，让我们在四个数组中各取一个数字，使其和为0。那么坠傻的方法就是遍历所有的情况，时间复杂度为 O(n4)。
+        但是既然 Two Sum 那道都能将时间复杂度缩小一倍，那么这道题使用 HashMap 是否也能将时间复杂度降到 O(n2) 呢？答案是肯定的，如果把
+        A和B的两两之和都求出来，在 HashMap 中建立两数之和跟其出现次数之间的映射，那么再遍历C和D中任意两个数之和，只要看哈希表存不存在这
+        两数之和的相反数就行了，参见代码如下：
+
+        解法一：
+    */
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+        int res = 0;
+        unordered_map<int, int> m;
+        for (int i = 0; i < A.size(); ++i) {
+            for (int j = 0; j < B.size(); ++j) {
+                ++m[A[i] + B[j]];
+            }
+        }
+        for (int i = 0; i < C.size(); ++i) {
+            for (int j = 0; j < D.size(); ++j) {
+                int target = -1 * (C[i] + D[j]);
+                res += m[target];
+            }
+        }
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/454
+    /*
+        下面这种方法用了两个 HashMap 分别记录 AB 和 CB 的两两之和出现次数，然后遍历其中一个 HashMap，并在另一个 HashMap 中找和的相反数出现的次数，
+        参见代码如下：
+
+        解法二：
+    */
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+        int res = 0, n = A.size();
+        unordered_map<int, int> m1, m2;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                ++m1[A[i] + B[j]];
+                ++m2[C[i] + D[j]];
+            }
+        }
+        for (auto a : m1) res += a.second * m2[-a.first];
+        return res;
     }
 };
 

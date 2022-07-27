@@ -67,6 +67,8 @@ public:
 class Solution99 {
 public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/single-element-in-a-sorted-array.cpp
+    // Time:  O(logn)
+    // Space: O(1)
     int firstBadVersion(int n) {
         int left = 1, right = n;
         while (left <= right) {
@@ -111,7 +113,7 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_6281aa6ce4b01a4851ff6237/3?from=p_6281a4bbe4b01a4851ff5f23&type=6&parent_pro_id=
     int firstBadVersion(int n) {
@@ -158,5 +160,114 @@ public:
         return left;
     }
 };
+
+
+class Solution95 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/278.%20First%20Bad%20Version
+    // OJ: https://leetcode.com/problems/first-bad-version/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    // Solution 1. Binary Search (L <= R)
+    int firstBadVersion(int n) {
+        int L = 1, R = n;
+        while (L <= R) {
+            int M = L + (R - L) / 2;
+            if (isBadVersion(M)) R = M - 1;
+            else L = M + 1;
+        }
+        return L;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/278.%20First%20Bad%20Version
+    // OJ: https://leetcode.com/problems/first-bad-version/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    // Solution 2. Binary Search (L < R)
+    int firstBadVersion(int n) {
+        int L = 1, R = n;
+        while (L < R) {
+            int M = L + (R - L) / 2;
+            if (isBadVersion(M)) R = M;
+            else L = M + 1;
+        }
+        return L;
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.27, from https://walkccc.me/LeetCode/problems/0278/
+    // Time: O(logn)
+    // Space: O(1)
+    int firstBadVersion(int n) {
+        int l = 1;
+        int r = n;
+
+        while (l < r) {
+            const int m = l + (r - l) / 2;
+            if (isBadVersion(m))
+                r = m;
+            else
+                l = m + 1;
+        }
+
+        return l;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/278
+    /*
+        话说这个叫李建超（音译）的哥们太赞了，自从 LeetCode 开始收费后，大多数的免费题都是这哥们出的，还写了所有的 test cases，32 个赞。
+        这道题说是有一系列版本，其中有一个版本是坏的，而且后面跟着的全是坏的，给了一个 API 函数可以用来判定当前版本是否是坏的，让我们尽可能
+        少的调用这个 API，找出第一个坏版本。那么这种搜索题最先开始考虑用二分查找法把，效率高嘛。由于这题很有规律，好版本和坏版本一定有个边界，
+        那么用二分法来找这个边界，对 mid 值调用API函数，如果是坏版本，说明边界在左边，则把 mid 赋值给 right，如果是好版本，则说明边界在
+        右边，则把 mid+1 赋给 left，最后返回 left 即可。需要注意的是，OJ 里有个坑，那就是如果 left 和 right 都特别大的话，那么 left+right 
+        可能会溢出，这里处理方法就是变成 left + (right - left) / 2，很好的避免的溢出问题，参见代码如下：
+    */
+    int firstBadVersion(int n) {
+        int left = 1, right = n;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (isBadVersion(mid)) right = mid;
+            else left = mid + 1;
+        }
+        return left;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/278
+    /*
+        如果习惯了二分搜索法从0开始找，可以用下面的方法：
+    */
+    int firstBadVersion(int n) {
+        int left = 0, right = n - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (isBadVersion(mid + 1)) right = mid;
+            else left = mid + 1;
+        }
+        return right + 1;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

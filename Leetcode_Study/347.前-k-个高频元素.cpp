@@ -397,7 +397,7 @@ public:
 };
 
 
-class Solution {
+class Solution89 {
 public:
     // 2022.7.24, from AcWing
     // 作者：yxc
@@ -416,6 +416,58 @@ public:
         for (auto [x, c]: cnt)
             if (c > i)
                 res.push_back(x);
+        return res;
+    }
+};
+
+
+class Solution88 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/347
+    /*
+        这道题给了我们一个数组，让统计前k个高频的数字，那么对于这类的统计数字的问题，首先应该考虑用 HashMap 来做，建立数字和其出现次数的映射，
+        然后再按照出现次数进行排序。可以用堆排序来做，使用一个最大堆来按照映射次数从大到小排列，在 C++ 中使用 priority_queue 来实现，默认是
+        最大堆，参见代码如下：
+
+        解法一：
+    */
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> m;
+        priority_queue<pair<int, int>> q;
+        vector<int> res;
+        for (auto a : nums) ++m[a];
+        for (auto it : m) q.push({it.second, it.first});
+        for (int i = 0; i < k; ++i) {
+            res.push_back(q.top().second); q.pop();
+        }
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/347
+    /*
+        当然，既然可以使用最大堆，还有一种可以自动排序的数据结构 TreeMap，也是可以的，这里就不写了，因为跟上面的写法基本没啥区别，就是换了一个数据结构。
+        这里还可以使用桶排序，在建立好数字和其出现次数的映射后，按照其出现次数将数字放到对应的位置中去，这样从桶的后面向前面遍历，最先得到的就是出现次数
+        最多的数字，找到k个后返回即可，参见代码如下：
+
+    */
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> m;
+        vector<vector<int>> bucket(nums.size() + 1);
+        vector<int> res;
+        for (auto a : nums) ++m[a];
+        for (auto it : m) {
+            bucket[it.second].push_back(it.first);
+        }
+        for (int i = nums.size(); i >= 0; --i) {
+            for (int j = 0; j < bucket[i].size(); ++j) {
+                res.push_back(bucket[i][j]);
+                if (res.size() == k) return res;
+            }
+        }
         return res;
     }
 };

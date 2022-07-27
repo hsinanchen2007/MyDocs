@@ -154,12 +154,61 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.7.23, from AcWing
     void reverseString(vector<char>& s) {
         for (int i = 0, j = s.size() - 1; i < j; i ++, j -- )
             swap(s[i], s[j]);
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.27, from https://walkccc.me/LeetCode/problems/0344/
+    void reverseString(vector<char>& s) {
+        int l = 0;
+        int r = s.size() - 1;
+
+        while (l < r)
+        swap(s[l++], s[r--]);
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/344
+    /*
+        这道题没什么难度，直接从两头往中间走，同时交换两边的字符即可，参见代码如下：
+
+        解法一：
+    */
+    void reverseString(vector<char>& s) {
+        int left = 0, right = (int)s.size() - 1;
+        while (left < right) {
+            char t = s[left];
+            s[left++] = s[right];
+            s[right--] = t;
+        }
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/344
+    /*
+        我们也可以用 swap 函数来帮助我们翻转：
+
+        解法二：
+    */
+    void reverseString(vector<char>& s) {
+        int left = 0, right = (int)s.size() - 1;
+        while (left < right) {
+            swap(s[left++], s[right--]);
+        }
     }
 };
 

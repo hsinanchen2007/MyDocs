@@ -356,7 +356,7 @@ public:
 };
 
 
-class Solution {
+class Solution91 {
 public:
     // 2022.7.23, from AcWing 
     // 作者：yxc
@@ -373,6 +373,102 @@ public:
                 S.erase(x);
             }
         return res;
+    }
+};
+
+
+class Solution90 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
+    /*
+        这道题让找两个数组交集的部分（不包含重复数字），难度不算大，我们可以用个 HashSet 把 nums1 都放进去，然后遍历 nums2 的元素，
+        如果在 HashSet 中存在，说明是交集的部分，加入结果的 HashSet 中，最后再把结果转为 vector 的形式即可：
+
+        解法一：
+    */
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> st(nums1.begin(), nums1.end()), res;
+        for (auto a : nums2) {
+            if (st.count(a)) res.insert(a);
+        }
+        return vector<int>(res.begin(), res.end());
+    }
+};
+
+
+class Solution89 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
+    /*
+        我们还可以使用两个指针来做，先给两个数组排序，然后用两个指针分别指向两个数组的开头，然后比较两个数组的大小，把小的数字的指针向后移，
+        如果两个指针指的数字相等，那么看结果 res 是否为空，如果为空或者是最后一个数字和当前数字不等的话，将该数字加入结果 res 中，参见代码如下：
+
+        解法二：
+    */
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> res;
+        int i = 0, j = 0;
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+        while (i < nums1.size() && j < nums2.size()) {
+            if (nums1[i] < nums2[j]) ++i;
+            else if (nums1[i] > nums2[j]) ++j;
+            else {
+                if (res.empty() || res.back() != nums1[i]) {
+                    res.push_back(nums1[i]);
+                }
+                ++i; ++j;
+            }
+        }
+        return res;
+    }
+};
+
+
+class Solution88 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
+    /*
+        我们还可以使用二分查找法来做，思路是将一个数组排序，然后遍历另一个数组，把遍历到的每个数字在排序号的数组中用二分查找法搜索，如果能找到则放入
+        结果 set 中，这里我们用到了set的去重复的特性，最后我们将set转为vector即可：
+
+        解法三：
+    */
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> res;
+        sort(nums2.begin(), nums2.end());
+        for (auto a : nums1) {
+            if (binarySearch(nums2, a)) {
+                res.insert(a);
+            }
+        }
+        return vector<int>(res.begin(), res.end());
+    }
+    bool binarySearch(vector<int> &nums, int target) {
+        int left = 0, right = nums.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return true;
+            else if (nums[mid] < target) left = mid + 1;
+            else right = mid;
+        }
+        return false;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
+    /*
+        或者我们也可以使用STL的 set_intersection 函数来找出共同元素，很方便：
+
+        解法四：
+    */
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        set<int> s1(nums1.begin(), nums1.end()), s2(nums2.begin(), nums2.end()), res;
+        set_intersection(s1.begin(), s1.end(), s2.begin(), s2.end(), inserter(res, res.begin()));
+        return vector<int>(res.begin(), res.end());
     }
 };
 

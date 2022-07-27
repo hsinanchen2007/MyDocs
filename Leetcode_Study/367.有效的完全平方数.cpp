@@ -241,7 +241,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.27, from https://github.com/MaskRay/LeetCode/blob/master/valid-perfect-square.cc
     // Valid Perfect Square
@@ -252,6 +252,61 @@ public:
         while ((y = (x+num/x)>>1) < x)
         x = y;
         return x*x == num;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/367
+    // Note, its solution 1 cannot work!!
+    bool isPerfectSquare(int num) {
+        for (int i = 1; i <= num / i; ++i) {
+            if (i * i == num) return true;
+        }
+        return false;
+    }
+}; 
+
+
+class Solution91 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/367
+    bool isPerfectSquare(int num) {
+        long left = 0, right = num;
+        while (left <= right) {
+            long mid = left + (right - left) / 2, t = mid * mid;
+            if (t == num) return true;
+            if (t < num) left = mid + 1;
+            else right = mid - 1;
+        }
+        return false;
+    }
+};
+
+
+class Solution90 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/367
+    bool isPerfectSquare(int num) {
+        int i = 1;
+        while (num > 0) {
+            num -= i;
+            i += 2;
+        }
+        return num == 0;
+    }
+};
+
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        long x = num;
+        while (x * x > num) {
+            x = (x + num / x) / 2;
+        }
+        return x * x == num;
     }
 };
 
