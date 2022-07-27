@@ -46,6 +46,22 @@ n == nums4.length
 class Solution100 {
 public:
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0454.%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0II.md
+    /*
+        本题咋眼一看好像和0015.三数之和，0018.四数之和差不多，其实差很多。
+
+        本题是使用哈希法的经典题目，而0015.三数之和，0018.四数之和并不合适使用哈希法，因为三数之和和四数之和这两道题目使用哈希法在不超时的情况下做到对结果去重是很困难的，很有多细节需要处理。
+        而这道题目是四个独立的数组，只要找到A[i] + B[j] + C[k] + D[l] = 0就可以，不用考虑有重复的四个元素相加等于0的情况，所以相对于题目18. 四数之和，题目15.三数之和，还是简单了不少！
+
+        如果本题想难度升级：就是给出一个数组（而不是四个数组），在这里找出四个元素相加等于0，答案中不可以包含重复的四元组，大家可以思考一下，后续的文章我也会讲到的。
+
+        本题解题步骤：
+
+        首先定义 一个unordered_map，key放a和b两数之和，value 放a和b两数之和出现的次数。
+        遍历大A和大B数组，统计两个数组元素之和，和出现的次数，放到map中。
+        定义int变量count，用来统计 a+b+c+d = 0 出现的次数。
+        在遍历大C和大D数组，找到如果 0-(c+d) 在map中出现过的话，就用count把map中key对应的value也就是出现次数统计出来。
+        最后返回统计值 count 就可以了
+    */
     int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
         unordered_map<int, int> umap; //key:a+b的数值，value:a+b数值出现的次数
         // 遍历大A和大B数组，统计两个数组元素之和，和出现的次数，放到map中
@@ -118,6 +134,8 @@ public:
 class Solution97 {
 public:
     // 2022.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/4sum-ii.cpp
+    // Time:  O(n^2)
+    // Space: O(n^2)
     int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
         unordered_map<int, int> A_B_sum;
         for (const auto& a : A) {
@@ -138,7 +156,7 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.7.23, from AcWing
     // 作者：yxc
@@ -157,5 +175,115 @@ public:
         return res;
     }
 };
+
+
+
+class Solution95 {
+private:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
+    /*
+        Solution 1. Map + Bi-directional Search
+        Use map to store the counts of different sums in AB and CD. Use two pointers one from smallest in AB going to greater values, 
+        and the other one from greatest in CD to smaller values. Whenever found a pair summing to 0, add count1 * count2 to the result.
+
+        Time complexity
+        The sum function iterates through O(N^2) pairs and accessing the map at most take O(log(N^2))=O(logN) time. So the sum takes 
+        O(N^2 * logN) time.
+
+        Each map has O(N^2) data in the worst case and the bi-directional search only traverse each map once at most, so the searching 
+        takes O(N^2) time.
+
+        So, overall it takes O(N^2 * logN) time.
+    */
+    // OJ: https://leetcode.com/problems/4sum-ii
+    // Author: github.com/lzl124631x
+    // Time: O(N^2 * logN)
+    // Space: O(N^2)
+    void sum(vector<int> &A, vector<int> &B, map<int, int> &m) {
+        for (auto a : A) {
+            for (auto b : B) m[a + b]++;
+        }
+    }
+public:
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+        map<int, int> a, b;
+        sum(A, B, a);
+        sum(C, D, b);
+        auto i = a.begin();
+        auto j = b.rbegin();
+        int ans = 0;
+        while (i != a.end() && j != b.rend()) {
+            if (i->first + j->first == 0) {
+                ans += i->second * j->second;
+                ++i;
+                ++j;
+            } else if (i->first + j->first < 0) ++i;
+            else ++j;
+        }
+        return ans;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
+    /*
+        Solution 2. Two unordered_map
+        Similar to Solution 1, but use unordered_map instead. Loop through one of it, and find if the counterpart exists.
+    */
+    // OJ: https://leetcode.com/problems/4sum-ii
+    // Author: github.com/lzl124631x
+    // Time: O(N^2)
+    // Space: O(N^2)
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+        int N = A.size(), ans = 0;
+        unordered_map<int, int> a, b;
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                a[A[i] + B[j]]++;
+                b[C[i] + D[j]]++;
+            }
+        } 
+        for (auto &[m, cnt] : a) {
+            if (b.count(-m)) ans += cnt * b[-m];
+        }
+        return ans;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
+    /*
+        Solution 3. One unordered_map
+    */
+    // OJ: https://leetcode.com/problems/4sum-ii
+    // Author: github.com/lzl124631x
+    // Time: O(N^2)
+    // Space: O(N^2)
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+        unordered_map<int, int> m;
+        for (auto a : A) {
+            for (auto b : B) m[a + b]++;
+        }
+        int cnt = 0;
+        for (auto c : C) {
+            for (auto d : D) {
+                if (m.find(-c - d) != m.end()) {
+                    cnt += m[-c - d];
+                }
+            }
+        }
+        return cnt;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
