@@ -167,6 +167,42 @@ public:
 class Solution98 {
 public:
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.md
+    /*
+        关于本题，我录制了讲解视频：学透哈希表，set使用有技巧！Leetcode：349. 两个数组的交集，看视频配合题解，事半功倍。
+        这道题目，主要要学会使用一种哈希数据结构：unordered_set，这个数据结构可以解决很多类似的问题。
+        注意题目特意说明：输出结果中的每个元素一定是唯一的，也就是说输出的结果的去重的， 同时可以不考虑输出结果的顺序
+        这道题用暴力的解法时间复杂度是O(n^2)，那来看看使用哈希法进一步优化。
+
+        那么用数组来做哈希表也是不错的选择，例如242. 有效的字母异位词
+        但是要注意，使用数组来做哈希的题目，是因为题目都限制了数值的大小。
+        而这道题目没有限制数值的大小，就无法使用数组来做哈希表了。
+        而且如果哈希值比较少、特别分散、跨度非常大，使用数组就造成空间的极大浪费。
+
+        此时就要使用另一种结构体了，set ，关于set，C++ 给提供了如下三种可用的数据结构：
+
+        std::set
+        std::multiset
+        std::unordered_set
+        std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。
+
+        思路如图所示：
+
+        拓展
+        那有同学可能问了，遇到哈希问题我直接都用set不就得了，用什么数组啊。
+
+        直接使用set 不仅占用空间比数组大，而且速度要比数组慢，set把数值映射到key上都要做hash计算的。
+
+        不要小瞧 这个耗时，在数据量大的情况，差距是很明显的。
+
+        后记
+        本题后面 力扣改了 题目描述 和 后台测试数据，增添了 数值范围：
+
+        1 <= nums1.length, nums2.length <= 1000
+        0 <= nums1[i], nums2[i] <= 1000
+        所以就可以 使用数组来做哈希表了， 因为数组都是 1000以内的。
+
+        对应C++代码如下：
+    */
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         unordered_set<int> result_set; // 存放结果，之所以用set是为了给结果集去重
         int hash[1005] = {0}; // 默认数值为0
@@ -225,6 +261,8 @@ public:
 class Solution95 {
 public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/intersection-of-two-arrays.cpp
+    // Time:  O(mlogm + nlogn)
+    // Space: O(m + n)
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> result;
         sort(begin(nums1), end(nums1)); sort(begin(nums2), end(nums2));
@@ -237,6 +275,10 @@ public:
 
 class Solution94 {
 public:
+    // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/intersection-of-two-arrays.cpp
+    // Time:  O(max(m, n) * log(max(m, n)))
+    // Space: O(1)
+    // Two pointers solution.
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> result;
         sort(nums1.begin(), nums1.end());
@@ -261,6 +303,10 @@ public:
 
 class Solution93 {
 public:
+    // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/intersection-of-two-arrays.cpp
+    // Time:  O(max(m, n) * log(max(m, n)))
+    // Space: O(1)
+    // Binary search solution.
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         if (nums1.size() > nums2.size()) {
             return intersection(nums2, nums1);
@@ -286,6 +332,10 @@ public:
 
 class Solution92 {
 public:
+    // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/intersection-of-two-arrays.cpp
+    // Time:  O(m + n)
+    // Space: O(min(m, n))
+    // Hash solution.
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         if (nums1.size() > nums2.size()) {
             return intersection(nums2, nums1);
@@ -325,5 +375,11 @@ public:
         return res;
     }
 };
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

@@ -76,6 +76,8 @@ public:
 class Solution99 {
 public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/valid-perfect-square.cpp
+    // Time:  O(logn)
+    // Space: O(1)
     bool isPerfectSquare(int num) {
         int left = 1, right = num;
         while (left <= right) {
@@ -108,7 +110,7 @@ public:
 };
 
 
-class Solution {
+class Solution97 {
 public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_6281aa77e4b09dda1268b09c/3?from=p_6281a4bbe4b01a4851ff5f23&type=6&parent_pro_id=
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -180,5 +182,83 @@ public:
         return false;
     }
 };
+
+
+class Solution96 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/367.%20Valid%20Perfect%20Square
+    // OJ: https://leetcode.com/problems/valid-perfect-square/
+    // Author: github.com/lzl124631x
+    // Time: O(sqrt(num))
+    // Space: O(1)
+    bool isPerfectSquare(int num) {
+        long i = 0;
+        while (i * i < num) ++i;
+        return i * i == num;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/367.%20Valid%20Perfect%20Square
+    // OJ: https://leetcode.com/problems/valid-perfect-square/
+    // Author: github.com/lzl124631x
+    // Time: O(log(num))
+    // Space: O(1)
+    bool isPerfectSquare(int num) {
+        long L = 1, R = num;
+        while (L <= R) {
+            long M = L + (R - L) / 2;
+            if (M * M == num) return true;
+            if (num / M < M) R = M - 1;
+            else L = M + 1;
+        }
+        return false;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.27, from https://walkccc.me/LeetCode/problems/0367/
+    // Time: O(lognum)
+    // Space: O(1)
+    bool isPerfectSquare(int num) {
+        long l = 1;
+        long r = num;
+
+        while (l < r) {
+            const long m = (l + r) / 2;
+            if (m >= num / m)
+                r = m;
+            else
+                l = m + 1;
+        }
+
+        return l * l == num;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/MaskRay/LeetCode/blob/master/valid-perfect-square.cc
+    // Valid Perfect Square
+    // Hacker's Delight (2nd) 11.1.1
+    // 46340 = floor(sqrt(INT_MAX))
+    bool isPerfectSquare(int num) {
+        int x = 46340, y;
+        while ((y = (x+num/x)>>1) < x)
+        x = y;
+        return x*x == num;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

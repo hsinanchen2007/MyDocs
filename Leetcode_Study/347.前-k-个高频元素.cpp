@@ -157,6 +157,7 @@ public:
 
 class Solution98 {
 public:
+    // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/347.%20Top%20K%20Frequent%20Elements
     // make_heap and pop_heap
     vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
@@ -179,6 +180,7 @@ public:
 
 class Solution97 {
 public:
+    // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/347.%20Top%20K%20Frequent%20Elements
     // quick sort
     vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
@@ -214,6 +216,7 @@ public:
 
 class Solution96 {
 public:
+    // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/347.%20Top%20K%20Frequent%20Elements
     // STL's nth_element
     vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
@@ -288,6 +291,7 @@ public:
 
 class Solution93 {
 public:
+    // 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-347-Top-K-Frequent-Elements.html?h=top%20k%20
     // Bucket sort
     // Runtime: 12ms > 99.14%
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -313,6 +317,8 @@ class Solution92 {
 public:
     // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/top-k-frequent-elements.cpp
     // Bucket Sort Solution
+    // Time:  O(n)
+    // Space: O(n)
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
@@ -339,7 +345,10 @@ public:
 
 class Solution91 {
 public:
+    // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/top-k-frequent-elements.cpp
     // Quick Select Solution
+    // Time:  O(n) ~ O(n^2), O(n) on average.
+    // Space: O(n)
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
@@ -361,7 +370,10 @@ public:
 
 class Solution90 {
 public:
+    // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/top-k-frequent-elements.cpp
     // Heap solution
+    // Time:  O(nlogk)
+    // Space: O(n)
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
@@ -407,5 +419,11 @@ public:
         return res;
     }
 };
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
