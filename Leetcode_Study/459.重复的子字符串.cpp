@@ -39,12 +39,11 @@ s 由小写英文字母组成
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0459.%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2.md
     // 这里使用了前缀表统一减一的实现方式
-    void getNext2 (int* next, const string& s){
+    void getNext (int* next, const string& s){
         next[0] = -1;
         int j = -1;
         for(int i = 1;i < s.size(); i++){
@@ -57,21 +56,25 @@ public:
             next[i] = j;
         }
     }
-    bool repeatedSubstringPattern9 (string s) {
+    bool repeatedSubstringPattern (string s) {
         if (s.size() == 0) {
             return false;
         }
         int next[s.size()];
-        getNext2(next, s);
+        getNext(next, s);
         int len = s.size();
         if (next[len - 1] != -1 && len % (len - (next[len - 1] + 1)) == 0) {
             return true;
         }
         return false;
     }
+};
 
+
+class Solution99 {
+public:
     // 前缀表（不减一）的C++代码实现
-    void getNext1 (int* next, const string& s){
+    void getNext (int* next, const string& s){
         next[0] = 0;
         int j = 0;
         for(int i = 1;i < s.size(); i++){
@@ -84,22 +87,26 @@ public:
             next[i] = j;
         }
     }
-    bool repeatedSubstringPattern8 (string s) {
+    bool repeatedSubstringPattern (string s) {
         if (s.size() == 0) {
             return false;
         }
         int next[s.size()];
-        getNext1(next, s);
+        getNext(next, s);
         int len = s.size();
         if (next[len - 1] != 0 && len % (len - (next[len - 1] )) == 0) {
             return true;
         }
         return false;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/459.%20Repeated%20Substring%20Pattern
     // Solution 1. Brute force
-    bool repeatedSubstringPattern7(string s) {
+    bool repeatedSubstringPattern(string s) {
         int N = s.size();
         for (int len = 1; len <= N / 2; ++len) {
             if (N % len) continue;
@@ -111,9 +118,13 @@ public:
         }
         return false;
     }
+};
 
+
+class Solution97 {
+public:
     // Solution 2. Brute force with string_view
-    bool repeatedSubstringPattern6(string s) {
+    bool repeatedSubstringPattern(string s) {
         string_view p = s, sv = s;
         for (int len = s.size() / 2; len >= 1; --len) {
             if (s.size() % len) continue;
@@ -124,9 +135,13 @@ public:
         }
         return false;
     }
+};
 
+
+class Solution96 {
+public:
     // Solution 3. KMP
-    bool repeatedSubstringPattern5(string s) {
+    bool repeatedSubstringPattern(string s) {
         int N = s.size(), j = -1;
         vector<int> lps(N + 1, -1);
         for (int i = 1; i <= N; ++i) {
@@ -135,19 +150,27 @@ public:
         }
         return lps[N] && (lps[N] % (N - lps[N])) == 0;
     }
+};
 
+
+class Solution95 {
+public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0459/
-    bool repeatedSubstringPattern4(string s) {
+    bool repeatedSubstringPattern(string s) {
         const string ss = s + s;
         return ss.substr(1, ss.length() - 2).find(s) != string::npos;
     }
+};
 
+
+class Solution94 {
+public:
     // 2022.7.23, from https://www.guozet.me/leetcode/Leetcode-459-Repeated-Substring-Pattern.html?h=repeated
     // 给定一个字符串，问其是否有n个重复的子串组成。如果字符串的长度是len，那么我们在0-n/2之间进行判断，是否是字符串。
     // 如果子字符串的长度不能被len整除，那么这肯定不是可以重复N次组建成给定字符串的子字符串
     // 如果能够被字符串长度len整除，那么就使用整除得到的数值n，进行n次子字符串重复，重复完成之后，判断是否和输入的字符串相等， 
     // 如果相等，那就返回true，如果不相等，那就是false
-    bool repeatedSubstringPattern3(string s) {
+    bool repeatedSubstringPattern(string s) {
       int len = s.size();
       for(int i = 0; i < len/2; ++i) {
         if(len % (i+1) == 0) {
@@ -161,9 +184,13 @@ public:
       }
       return false;
     }
+};
 
+
+class Solution93 {
+public:
     // 2022.7.23, from https://github.com/MaskRay/LeetCode/blob/master/repeated-substring-pattern.cc
-    bool repeatedSubstringPattern2(string str) {
+    bool repeatedSubstringPattern(string str) {
         vector<int> pi(str.size());
         for (int j = 0, i = 1; i < str.size(); i++) {
         while (j && str[i] != str[j]) j = pi[j-1];
@@ -172,7 +199,10 @@ public:
         }
         return pi.back() && str.size()%(str.size()-pi.back()) == 0;
     }
+};
 
+
+class Solution92 {
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/repeated-substring-pattern.cpp
 private:
     vector<int> getPrefix(const string& pattern) {
@@ -191,12 +221,16 @@ private:
     }
 
 public:
-    bool repeatedSubstringPattern1(string str) {
+    bool repeatedSubstringPattern(string str) {
         vector<int> prefix = getPrefix(str);
         return prefix.back() != -1 &&
                (prefix.back() + 1) % (str.length() - prefix.back() - 1) == 0;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/555694/
@@ -214,7 +248,6 @@ public:
         int t = n - next[n];
         return t < n && n % t == 0;
     }
-
 };
 // @lc code=end
 

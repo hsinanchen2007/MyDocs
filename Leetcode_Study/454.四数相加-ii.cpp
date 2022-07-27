@@ -43,11 +43,10 @@ n == nums4.length
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0454.%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0II.md
-    int fourSumCount4(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
         unordered_map<int, int> umap; //key:a+b的数值，value:a+b数值出现的次数
         // 遍历大A和大B数组，统计两个数组元素之和，和出现的次数，放到map中
         for (int a : A) {
@@ -66,9 +65,13 @@ public:
         }
         return count;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0454/
-    int fourSumCount3(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
         int ans = 0;
         unordered_map<int, int> count;
 
@@ -83,9 +86,13 @@ public:
 
         return ans;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, from https://github.com/liuyubobobo/Play-Leetcode/blob/master/0001-0500/0454-4Sum-II/cpp-0454/main2.cpp
-    int fourSumCount2(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
 
         unordered_map<int,int> hashtable1;
         unordered_map<int,int> hashtable2;
@@ -105,9 +112,13 @@ public:
 
         return res;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/4sum-ii.cpp
-    int fourSumCount1(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
+    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
         unordered_map<int, int> A_B_sum;
         for (const auto& a : A) {
             for (const auto& b : B) {
@@ -124,7 +135,11 @@ public:
         }
         return result;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/547030/
@@ -141,7 +156,6 @@ public:
                 res += cnt[-(a + b)];
         return res;
     }
-
 };
 // @lc code=end
 
