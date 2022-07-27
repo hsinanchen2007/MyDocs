@@ -44,9 +44,8 @@ target 是一个小写字母
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.19, by Hsinan, use template first then adjust the code
     // refer CS-Notes/CyC2018
     // finalize with https://www.guozet.me/leetcode/Leetcode-744-Find-Smallest-Letter-Greater-Than-Target
@@ -54,7 +53,7 @@ public:
     // so the consideration should be from left, not right, as once it existed while loop, right
     // pointer is actually at left pointer's left side, right pointer may actually point to target itself
     // but left pointer should be over target, which is the one "NEXT" we are looking for
-    char nextGreatestLetter4(vector<char>& letters, char target) {
+    char nextGreatestLetter(vector<char>& letters, char target) {
         int left = 0;
         int right = letters.size() - 1;
 
@@ -78,18 +77,26 @@ public:
 
         return letters[res];
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.19, from https://www.guozet.me/leetcode/Leetcode-744-Find-Smallest-Letter-Greater-Than-Target
     // why should we do binary search?! This simply does what question asked for
-    char nextGreatestLetter3(vector<char>& letters, char target) {
+    char nextGreatestLetter(vector<char>& letters, char target) {
         for (const char c : letters)
             if (c > target) return c;
         return letters.front();
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.19, from https://www.guozet.me/leetcode/Leetcode-744-Find-Smallest-Letter-Greater-Than-Target
     // Binary Search Way
-    char nextGreatestLetter2(vector<char>& letters, char target) {
+    char nextGreatestLetter(vector<char>& letters, char target) {
         int left = 0, right = letters.size();
         while (left < right) {
             const int mid = left + (right - left) / 2;
@@ -101,14 +108,22 @@ public:
         int res = left % letters.size();
         return letters[res];
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/find-smallest-letter-greater-than-target.cpp
     // Again, it reminds that "range" question and can use C++ STL's lower_bound/upper_bound on a sorted vector
-    char nextGreatestLetter1(vector<char>& letters, char target) {
+    char nextGreatestLetter(vector<char>& letters, char target) {
         const auto cit = upper_bound(letters.cbegin(), letters.cend(), target);
         return cit != letters.cend() ? *cit : letters.front();
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from AcWing https://www.acwing.com/video/2638/
     char nextGreatestLetter(vector<char>& letters, char target) {
         int left = 0, right = letters.size() - 1;
@@ -120,7 +135,6 @@ public:
         if (letters[right] > target) return letters[right];
         return letters[0];
     }
-
 };
 // @lc code=end
 
