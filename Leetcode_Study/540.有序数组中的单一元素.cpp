@@ -81,6 +81,8 @@ public:
 class Solution99 {
 public:
     // 2022.6.19 from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/single-element-in-a-sorted-array.cpp
+    // Time:  O(logn)
+    // Space: O(1)
     int singleNonDuplicate(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
         while (left <= right) {
@@ -98,7 +100,7 @@ public:
 };
 
 
-class Solution {
+class Solution98 {
 public:
     // 2022.6.19, from AcWing 
     int singleNonDuplicate(vector<int>& nums) {
@@ -123,6 +125,94 @@ public:
         return nums[right * 2];
     }
 };
-// @lc code=end
+
+
+class Solution97 {
+public:
+    // 2022.7.26, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/single-element-in-a-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int singleNonDuplicate(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
+        while (L < R) {
+            int M = (L + R) / 2;
+            if ((M % 2 == 0 && A[M] == A[M + 1])
+               || (M % 2 == 1 && A[M] == A[M - 1])) L = M + 1;
+                else R = M;
+        }
+        return A[L];
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.7.26, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/single-element-in-a-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int singleNonDuplicate(vector<int>& A) {
+        int L = 0, R = A.size() - 1;
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (M % 2) M--;
+            if (A[M] == A[M + 1]) L = M + 2;
+            else R = M;
+        }
+        return A[L];
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.26, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/540.%20Single%20Element%20in%20a%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/single-element-in-a-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    int singleNonDuplicate(vector<int>& A) {
+        int N = A.size(), L = 0, R = N - 1;
+        auto valid = [&](int M) { // returns `true` is the index of the single element < M
+            return M % 2 ? (M + 1 < N && A[M] == A[M + 1]) : (M - 1 >= 0 && A[M] == A[M - 1]);
+        };
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (valid(M)) R = M - 1;
+            else L = M + 1;
+        }
+        return A[R];
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.26, from https://walkccc.me/LeetCode/problems/0540/
+    int singleNonDuplicate(vector<int>& nums) {
+        int l = 0;
+        int r = nums.size() - 1;
+
+        while (l < r) {
+            int m = (l + r) / 2;
+            if (m & 1)
+                --m;
+            if (nums[m] == nums[m + 1])
+                l = m + 2;
+            else
+                r = m;
+        }
+
+        return nums[l];
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
 
   

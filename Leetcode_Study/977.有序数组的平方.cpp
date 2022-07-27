@@ -277,7 +277,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.26, from https://www.guozet.me/leetcode/Leetcode-977-Squares-of-a-Sorted-Array.html?h=sortedSqu
     vector<int> sortedSquares(vector<int>& A) {
@@ -286,6 +286,48 @@ public:
         }
         sort(A.begin(), A.end());
         return A;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.26, from https://github.com/grandyang/leetcode/issues/977
+    /*
+        这道题给了一个非降序排列的数组，可以有负数存在，现在让求出每个数字的平方数，并且也是非降序排列。若数组中只有正数存在的话，
+        则平方后的数组跟原数组的顺序还是相同的。但是负数的平方是正数，则顺序就会被打乱。最简单暴力的方法就是把平方数存入一个 TreeSet，
+        利用其自动排序的功能可以得到所求的顺序了，注意这里需要用 multiset，因为可能存在重复值，参见代码如下：
+        解法一：
+    */
+    vector<int> sortedSquares(vector<int>& A) {
+		multiset<int> st;
+		for (int num : A) st.insert(num * num);
+		return vector<int>(st.begin(), st.end());
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.26, from https://github.com/grandyang/leetcode/issues/977
+    /*
+        当然若想进一步优化时间复杂度的话，可以使用双指针来做，用两个变量分别指向开头和结尾，然后比较，每次将绝对值较大的那个数的平方值
+        先加入数组的末尾，然后依次往前更新，最后得到的就是所求的顺序，参见代码如下：
+        解法二：
+    */
+    vector<int> sortedSquares(vector<int>& A) {
+        int n = A.size(), i = 0, j = n - 1;
+        vector<int> res(n);
+        for (int k = n - 1; k >= 0; --k) {
+            if (abs(A[i]) > abs(A[j])) {
+                res[k] = A[i] * A[i];
+                ++i;
+            } else {
+                res[k] = A[j] * A[j];
+                --j;
+            }
+        }
+        return res;
     }
 };
 

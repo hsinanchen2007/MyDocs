@@ -280,10 +280,31 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.26, from https://www.guozet.me/leetcode/summary/2019-01-15-Algorithms-Binary-Search.html?h=704
     // Time complexity: O(log n), Space complexity: O(1)
+    int search(vector<int>& nums, int target) {
+        int left = 0, right = nums.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] < target) left = mid + 1;
+            else right = mid;
+        }
+        return -1;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.26, from https://github.com/grandyang/leetcode/issues/704
+    /*
+        这道题就是最基本的二分搜索法了，这是博主之前总结的LeetCode Binary Search Summary 二分搜索法小结的四种之中的第一类，也是最简单的一类，
+        写法什么很模版啊，注意right的初始化值，还有while的循环条件，以及right的更新值，这三点不同的人可能会有不同的写法，选一种自己最习惯的就好啦，
+        参见代码如下：
+    */
     int search(vector<int>& nums, int target) {
         int left = 0, right = nums.size();
         while (left < right) {
