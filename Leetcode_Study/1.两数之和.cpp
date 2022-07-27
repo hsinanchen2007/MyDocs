@@ -196,6 +196,96 @@ public:
 };
 
 
+class Solution95 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/1.%20Two%20Sum
+    // OJ: https://leetcode.com/problems/two-sum/
+    // Author: github.com/lzl124631x
+    // Time: O(NlogN)
+    // Space: O(N)
+    vector<int> twoSum(vector<int>& A, int target) {
+        vector<vector<int>> v; 
+        int N = A.size(), L = 0, R = N - 1;
+        for (int i = 0; i < N; ++i) v.push_back({ A[i], i });
+        sort(begin(v), end(v));
+        while (L < R) {
+            int sum = v[L][0] + v[R][0];
+            if (sum == target) return { v[L][1], v[R][1] };
+            if (sum < target) ++L;
+            else --R;
+        }
+        return {};
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/1.%20Two%20Sum
+    // OJ: https://leetcode.com/problems/two-sum/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(N)
+    vector<int> twoSum(vector<int>& A, int target) {
+        unordered_map<int, int> m;
+        for (int i = 0; i < A.size(); ++i) {
+            int t = target - A[i];
+            if (m.count(t)) return { m[t], i };
+            m[A[i]] = i;
+        }
+        return {};
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0001/
+    // Time: O(n)
+    // Space: O(n)
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> numToIndex;
+
+        for (int i = 0; i < nums.size(); ++i) {
+        if (numToIndex.count(target - nums[i]))
+            return {numToIndex[target - nums[i]], i};
+        numToIndex[nums[i]] = i;
+        }
+
+        throw;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-1-Two-Sum.html?h=two%20sum
+    /*
+        这道题目给了我们一个数组以及一个目标数target, 让我们在数组中找到这两个数字, 使其和为target. 这道题目的输入保证了一定会找到这样的
+        一对数据,所以就不用判断输入数据不符合的情况了.
+
+        O(n^2) runtime, O(1) space – Brute force
+
+        如果使用暴力搜索，那么时间复杂度为O(n^2))，这会造成Time Limit Exceeded. 所以需要使用O(n)的算法来实现。
+
+        O(n) runtime, O(n) space – Hash table
+
+        先遍历一遍数组，建立HashMap数据
+        第二遍遍历，开始查找，如果找到，则记录下来
+    */
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> numsMap;
+        for (int i = 0; i < nums.size(); ++i) {
+        const int diff = target - nums[i];
+        if (numsMap.find(diff) != numsMap.end())
+            return {numsMap[diff], i};
+        numsMap[nums[i]] = i;
+        }
+        return {};
+    }
+};
+
+
 class Solution {
 public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0001.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md

@@ -422,7 +422,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.24, from https://github.com/grandyang/leetcode/issues/4
     /*
@@ -519,5 +519,69 @@ public:
         return -1;
     }
 };
+
+
+class Solution92 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/4.%20Median%20of%20Two%20Sorted%20Arrays
+    // OJ: https://leetcode.com/problems/median-of-two-sorted-arrays/
+    // Author: github.com/lzl124631x
+    // Time: O(log(min(M, N)))
+    // Space: O(1)
+    // Ref: https://leetcode.com/problems/median-of-two-sorted-arrays/solution/
+    // Ref: https://youtu.be/LPFhl65R7ww
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        if (nums1.size() > nums2.size()) swap(nums1, nums2);
+        int M = nums1.size(), N = nums2.size(), L = 0, R = M, K = (M + N + 1) / 2;
+        while (true) {
+            int i = (L + R) / 2, j = K - i;
+            if (i < M && nums2[j - 1] > nums1[i]) L = i + 1;
+            else if (i > L && nums1[i - 1] > nums2[j]) R = i - 1;
+            else {
+                int maxLeft = max(i ? nums1[i - 1] : INT_MIN, j ? nums2[j - 1] : INT_MIN);
+                if ((M + N) % 2) return maxLeft;
+                int minRight = min(i == M ? INT_MAX : nums1[i], j == N ? INT_MAX : nums2[j]);
+                return (maxLeft + minRight) / 2.0;
+            }
+        }
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0004/
+    // Time: O(logmin(m,n))
+    // Space: O(1)
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        const int n1 = nums1.size();
+        const int n2 = nums2.size();
+        if (n1 > n2)
+        return findMedianSortedArrays(nums2, nums1);
+
+        int l = 0;
+        int r = n1;
+
+        while (l <= r) {
+        const int partition1 = (l + r) / 2;
+        const int partition2 = (n1 + n2 + 1) / 2 - partition1;
+        const int maxLeft1 = partition1 == 0 ? INT_MIN : nums1[partition1 - 1];
+        const int maxLeft2 = partition2 == 0 ? INT_MIN : nums2[partition2 - 1];
+        const int minRight1 = partition1 == n1 ? INT_MAX : nums1[partition1];
+        const int minRight2 = partition2 == n2 ? INT_MAX : nums2[partition2];
+        if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1)
+            return (n1 + n2) % 2 == 0
+                    ? (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) * 0.5
+                    : max(maxLeft1, maxLeft2);
+        else if (maxLeft1 > minRight2)
+            r = partition1 - 1;
+        else
+            l = partition1 + 1;
+        }
+
+        throw;
+    }
+};
+
 // @lc code=end
 

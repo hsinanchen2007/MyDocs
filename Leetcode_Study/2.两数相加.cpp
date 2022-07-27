@@ -169,7 +169,7 @@ public:
 };
 
 
-class Solution {
+class Solution97 {
 public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_626e7fc2e4b01c509aaaf545/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_626e7eeee4b01c509aaaf51e
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -266,5 +266,61 @@ public:
 
     }
 };
+
+
+class Solution96 {
+public:
+    // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/2.%20Add%20Two%20Numbers
+    // OJ: https://leetcode.com/problems/add-two-numbers/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    ListNode* addTwoNumbers(ListNode* a, ListNode* b) {
+        int carry = 0;
+        ListNode dummy, *tail = &dummy;
+        while (a || b || carry) {
+            if (a) {
+                carry += a->val;
+                a = a->next;
+            }
+            if (b) {
+                carry += b->val;
+                b = b->next;
+            }
+            tail->next = new ListNode(carry % 10);
+            tail = tail->next;
+            carry /= 10;
+        }
+        return dummy.next;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.25, from https://walkccc.me/LeetCode/problems/0002/
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode dummy(0);
+        ListNode* curr = &dummy;
+        int carry = 0;
+
+        while (l1 || l2 || carry) {
+            if (l1) {
+                carry += l1->val;
+                l1 = l1->next;
+            }
+            if (l2) {
+                carry += l2->val;
+                l2 = l2->next;
+            }
+            curr->next = new ListNode(carry % 10);
+            carry /= 10;
+            curr = curr->next;
+        }
+
+        return dummy.next;
+    }
+};
+
 // @lc code=end
 

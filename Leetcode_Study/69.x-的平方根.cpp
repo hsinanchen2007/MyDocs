@@ -102,7 +102,7 @@ public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/sqrtx.cpp
     // Time:  O(logn)
     // Space: O(1)
-    int mySqrt1(int x) {
+    int mySqrt(int x) {
         if (x < 2) {
             return x;
         }

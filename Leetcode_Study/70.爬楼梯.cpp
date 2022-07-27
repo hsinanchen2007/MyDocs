@@ -50,7 +50,7 @@ public:
     //   level 4 = f(3) + f(2)
     // Think about at level X, if we consider from level (X-1), it needs 
     // one step, from level (x-2), it needs one two-step or two one-step
-    int climbStairs6(int n) {
+    int climbStairs(int n) {
         // define prev and cur, note that prev is 0 and cur is 1
         int prev = 0;
         int cur = 1;
@@ -72,7 +72,7 @@ public:
     // This is like a fibonacci function, use math function
     // Ideally, this can resolve all such issue but the math function 
     // is hard to remember and convert it to C++ code
-    int climbStairs5(int n) {
+    int climbStairs(int n) {
         double s = sqrt(5);
         return floor((pow((1+s)/2, n+1) + pow((1-s)/2, n+1))/s + 0.5);
     }
@@ -82,7 +82,7 @@ public:
 class Solution98 {
 public:
     // 2022.6.4, from Leetcode解題總結
-    int climbStairs4(int n) {
+    int climbStairs(int n) {
         // initial corner cases
         if (n <= 0) return 0;
         if (n == 1) return 1;
@@ -111,7 +111,7 @@ public:
 class Solution97 {
 public:
     // 2022.6.4, from AcWing https://www.acwing.com/video/1408/
-    int climbStairs3(int n) {
+    int climbStairs(int n) {
         int a = 1, b = 1;
 
         // assume n = 4
@@ -133,7 +133,7 @@ public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/climbing-stairs.cpp
     // Time:  O(logn)
     // Space: O(1)
-    int climbStairs2(int n) {
+    int climbStairs(int n) {
 	    vector<vector<int>> T = {{1, 1},
                                  {1, 0}};
         return matrixMult({{1, 0}}, matrixExpo(T, n))[0][0];  // [a0, a(-1)] * T^n
