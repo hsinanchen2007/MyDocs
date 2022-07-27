@@ -35,9 +35,9 @@ n == nums.length
 
 */
 
-class Solution {
+class Solution100 {
 public:
-    int threeSumSmaller1(vector<int>& nums, int target) {
+    int threeSumSmaller(vector<int>& nums, int target) {
         // sanity check if nums didn't have enough numbers
         if (nums.size() < 3) return 0;
     
@@ -65,7 +65,11 @@ public:
 
         return res;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.12, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/3sum-smaller.cpp
     int threeSumSmaller(vector<int>& nums, int target) {
         sort(nums.begin(), nums.end());
@@ -86,5 +90,4 @@ public:
 
         return count;
     }
-
 };

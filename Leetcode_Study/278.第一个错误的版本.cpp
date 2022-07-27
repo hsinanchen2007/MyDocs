@@ -43,11 +43,10 @@ https://leetcode.cn/problems/first-bad-version/
 // The API isBadVersion is defined for you.
 // bool isBadVersion(int version);
 
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.19, by Hsinan. Use Binary Search
-    int firstBadVersion4(int n) {
+    int firstBadVersion(int n) {
         // define left and right pointers, since the starting version is 1
         // so we use left = 1, and right is latest version n
         int left = 1, right = n;
@@ -62,9 +61,13 @@ public:
         }
         return left;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/single-element-in-a-sorted-array.cpp
-    int firstBadVersion3(int n) {
+    int firstBadVersion(int n) {
         int left = 1, right = n;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -76,9 +79,13 @@ public:
         }
         return left;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.19, from https://www.guozet.me/leetcode/Leetcode-278-First-Bad-Version.html?h=first%20bad
-    int firstBadVersion2(int n) {
+    int firstBadVersion(int n) {
         int left = 1, right = n;
         while (left < right) {
             int mid = left + (right - left) / 2;
@@ -86,9 +93,13 @@ public:
         }
         return left;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.19, from AcWing https://www.acwing.com/video/1653/
-    int firstBadVersion1(int n) {
+    int firstBadVersion(int n) {
         int left = 1, right = n;
         while (left < right) {
             int middle = left + (long long)right >> 1;
@@ -97,7 +108,11 @@ public:
         }
         return right;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_6281aa6ce4b01a4851ff6237/3?from=p_6281a4bbe4b01a4851ff5f23&type=6&parent_pro_id=
     int firstBadVersion(int n) {
         // 注意到题目的第一个版本下标为 1 ，所以边界情况为 [ 1 , n ]
@@ -142,7 +157,6 @@ public:
         // 这个版本就是【第一个错误的版本】
         return left;
     }
-
 };
 // @lc code=end
 

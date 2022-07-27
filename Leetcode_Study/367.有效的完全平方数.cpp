@@ -12,7 +12,6 @@ https://leetcode.cn/problems/valid-perfect-square/
 给定一个 正整数 num ，编写一个函数，如果 num 是一个完全平方数，则返回 true ，否则返回 false 。
 
 进阶：不要 使用任何内置的库函数，如  sqrt 。
-
  
 
 示例 1：
@@ -34,12 +33,11 @@ https://leetcode.cn/problems/valid-perfect-square/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.19, by Hsinan. Very similar to LC 69, we are looking for a middle value
     // by binary search as question required a O(logn)
-    bool isPerfectSquare3(int num) {
+    bool isPerfectSquare(int num) {
         // sanity check
         if (num < 2) return num;
 
@@ -72,9 +70,13 @@ public:
 
         return false;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/valid-perfect-square.cpp
-    bool isPerfectSquare2(int num) {
+    bool isPerfectSquare(int num) {
         int left = 1, right = num;
         while (left <= right) {
             const int mid = left + (right - left) / 2;
@@ -86,9 +88,13 @@ public:
         }
         return left == num / left && num % left == 0;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.19, from AcWing https://www.acwing.com/video/1753/
-    bool isPerfectSquare1(int num) {
+    bool isPerfectSquare(int num) {
         int left = 0, right = num;
         while (left < right) {
             // tricky below that "+1", in case of overflow, it uses "1ll" long long
@@ -99,7 +105,11 @@ public:
         // Actually (left * left == num) can also work
         return (right * right == num);
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_6281aa77e4b09dda1268b09c/3?from=p_6281a4bbe4b01a4851ff5f23&type=6&parent_pro_id=
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
@@ -169,7 +179,6 @@ public:
         // 查找完区间中的所有元素都没有找到，返回 false
         return false;
     }
-
 };
 // @lc code=end
 

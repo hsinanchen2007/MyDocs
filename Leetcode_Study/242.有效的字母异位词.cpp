@@ -37,11 +37,10 @@ s 和 t 仅包含小写字母
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, by Hsinan, reference https://github.com/lzl124631x/LeetCode/tree/master/leetcode/242.%20Valid%20Anagram
-    bool isAnagram6(string s, string t) {
+    bool isAnagram(string s, string t) {
         // quick sanity check, if the size is already different, they musy be different
         if (s.size() != t.size()) return false;
 
@@ -59,12 +58,16 @@ public:
         }
         return true;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0242/
     // different size is handled at the beginning
     // if any different happened from 2nd string, it will be < 0 value 
     // as it didn't show up in 1st string
-    bool isAnagram5(string s, string t) {
+    bool isAnagram(string s, string t) {
         if (s.length() != t.length())
         return false;
 
@@ -79,14 +82,18 @@ public:
 
         return true;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, from 程序员吴师兄
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
     // 作者：程序员吴师兄
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // 有效的字母异位词（LeetCode 242）：https://leetcode.cn/problems/valid-anagram/
-    bool isAnagram4(string s, string t) {
+    bool isAnagram(string s, string t) {
         // 如果两个字符串的长度都不一致，那么肯定是无法成为字母异位词的
         if(s.length() != t.length()){
 
@@ -135,9 +142,13 @@ public:
         // 否则，说明是字母异位词
         return true;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0242.%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D.md
-    bool isAnagram3(string s, string t) {
+    bool isAnagram(string s, string t) {
         int record[26] = {0};
         for (int i = 0; i < s.size(); i++) {
             // 并不需要记住字符a的ASCII，只要求出一个相对数值就可以了
@@ -155,9 +166,13 @@ public:
         // record数组所有元素都为零0，说明字符串s和t是字母异位词
         return true;
     }
+};
 
+
+class Solution96 {
+public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/valid-anagram.cpp
-    bool isAnagram2(string s, string t) {
+    bool isAnagram(string s, string t) {
         if (size(s) != size(t)) {
             return false;
         }
@@ -174,9 +189,13 @@ public:
         }
         return true;
     }
+};
 
+
+class Solution95 {
+public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/valid-anagram.cpp
-    bool isAnagram1(string s, string t) {
+    bool isAnagram(string s, string t) {
         if (size(s) != size(t)) {
             return false;
         }
@@ -185,7 +204,11 @@ public:
         sort(begin(t), end(t));
         return s == t;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing https://www.acwing.com/activity/content/code/content/445280/
     // use C++ STL's build-in "==" to check the difference
     bool isAnagram(string s, string t) {
@@ -194,7 +217,6 @@ public:
         for (auto c: t) b[c] ++ ;
         return a == b;
     }
-
 };
 // @lc code=end
 

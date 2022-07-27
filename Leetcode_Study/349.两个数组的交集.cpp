@@ -33,11 +33,10 @@ https://leetcode.cn/problems/intersection-of-two-arrays/
 
 */
 
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, by Hsinan
-    vector<int> intersection9(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         // sanity check
         if (nums1.size() == 0 || nums2.size() == 0) {
             return {};
@@ -66,14 +65,18 @@ public:
 
         return answer;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.23
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com
     // 作者：程序员吴师兄
     // 代码有看不懂的地方一定要私聊咨询吴师兄呀
     // https://leetcode-cn.com/problems/intersection-of-two-arrays/
-    vector<int> intersection8(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
 
         // 首先对两个数组进行排序
         sort(nums1.begin(), nums1.end());
@@ -158,9 +161,13 @@ public:
         return res;
 
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.md
-    vector<int> intersection7(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         unordered_set<int> result_set; // 存放结果，之所以用set是为了给结果集去重
         int hash[1005] = {0}; // 默认数值为0
         for (int num : nums1) { // nums1中出现的字母在hash数组中做记录
@@ -173,9 +180,13 @@ public:
         }
         return vector<int>(result_set.begin(), result_set.end());
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.7.23, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/349.%20Intersection%20of%20Two%20Arrays
-    vector<int> intersection6(vector<int>& A, vector<int>& B) {
+    vector<int> intersection(vector<int>& A, vector<int>& B) {
         sort(begin(A), end(A));
         sort(begin(B), end(B));
         vector<int> ans;
@@ -192,9 +203,13 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution96 {
+public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0349/
-    vector<int> intersection5(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> ans;
         unordered_set<int> set{begin(nums1), end(nums1)};
 
@@ -204,17 +219,25 @@ public:
 
         return ans;
     }
+};
 
+
+class Solution95 {
+public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/intersection-of-two-arrays.cpp
-    vector<int> intersection4(vector<int>& nums1, vector<int>& nums2) {
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> result;
         sort(begin(nums1), end(nums1)); sort(begin(nums2), end(nums2));
         set_intersection(cbegin(nums1), cend(nums1), cbegin(nums2), cend(nums2), back_inserter(result));
         result.erase(unique(begin(result), end(result)), end(result));
         return result;
     }
+};
 
-    vector<int> intersection3(vector<int>& nums1, vector<int>& nums2) {
+
+class Solution94 {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> result;
         sort(nums1.begin(), nums1.end());
         sort(nums2.begin(), nums2.end());
@@ -233,8 +256,12 @@ public:
         }
         return result;
     }
+};
 
-    vector<int> intersection2(vector<int>& nums1, vector<int>& nums2) {
+
+class Solution93 {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         if (nums1.size() > nums2.size()) {
             return intersection(nums2, nums1);
         }
@@ -254,8 +281,12 @@ public:
         
         return result;
     }
+};
 
-    vector<int> intersection1(vector<int>& nums1, vector<int>& nums2) {
+
+class Solution92 {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         if (nums1.size() > nums2.size()) {
             return intersection(nums2, nums1);
         }
@@ -272,7 +303,11 @@ public:
 
         return result;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing 
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/487556/
@@ -289,7 +324,6 @@ public:
             }
         return res;
     }
-
 };
 // @lc code=end
 

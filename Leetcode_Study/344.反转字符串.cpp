@@ -34,11 +34,10 @@ s[i] 都是 ASCII 码表中的可打印字符
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, by Hsinan
-    void reverseString4(vector<char>& s) {
+    void reverseString(vector<char>& s) {
         // get size and sanity check
         int size = s.size();
         if (size <= 1) {
@@ -57,31 +56,46 @@ public:
         }
         return;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0344.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2.md
-    void reverseString3(vector<char>& s) {
+    void reverseString(vector<char>& s) {
         for (int i = 0, j = s.size() - 1; i < s.size()/2; i++, j--) {
             swap(s[i],s[j]);
         }
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, https://github.com/lzl124631x/LeetCode/tree/master/leetcode/344.%20Reverse%20String
-    void reverseString2(vector<char>& s) {
+    void reverseString(vector<char>& s) {
         int i = 0, j = s.size() - 1;
         while (i < j) swap(s[i++], s[j--]);
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/reverse-string.cpp
-    void reverseString1(vector<char>& s) {
+    void reverseString(vector<char>& s) {
         reverse(s.begin(), s.end());
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing
     void reverseString(vector<char>& s) {
         for (int i = 0, j = s.size() - 1; i < j; i ++, j -- )
             swap(s[i], s[j]);
     }
-    
 };
 // @lc code=end
 

@@ -13,7 +13,6 @@ https://leetcode.cn/problems/move-zeroes/
 
 请注意 ，必须在不复制数组的情况下原地对数组进行操作。
 
- 
 
 示例 1:
 
@@ -39,11 +38,10 @@ https://leetcode.cn/problems/move-zeroes/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
-    // 2022.6.2, 极客时间覃超算法训练營, very similar to LC 27
-    void moveZeroes4(vector<int>& nums) {
+    // 2022.6.2, from 极客时间覃超算法训练營, very similar to LC 27
+    void moveZeroes(vector<int>& nums) {
         int target = 0;
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] != 0) {
@@ -58,10 +56,14 @@ public:
             }
         }
     }
+};
 
+
+class Solution99 {
+public:
     // learned from LC 27 solution, use C++ STL
     // nums = {0, 0, 1, 2, 3, 0, 0, 4, 5}, answer = {1, 2, 3, 4, 5, 0, 0, 0, 0}
-    void moveZeroes3(vector<int>& nums) {
+    void moveZeroes(vector<int>& nums) {
         // get original nums size
         int size = nums.size();
 
@@ -74,10 +76,14 @@ public:
             nums[size- 1 - i] = 0;
         }
     }
-    
+};
+
+
+class Solution98 {
+public:
     // 2022.6.5, from AcWing https://www.acwing.com/video/1657/
     // this one is similar to LC 26 and LC 27
-    void moveZeroes2(vector<int>& nums) {
+    void moveZeroes(vector<int>& nums) {
         int k = 0;
 
         // use below to get value directly
@@ -88,9 +94,13 @@ public:
         // assign 0 to rest elements
         while (k < nums.size()) nums[k++] = 0;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/move-zeroes.cpp
-    void moveZeroes1(vector<int>& nums) {
+    void moveZeroes(vector<int>& nums) {
         int pos = 0;
         for (auto& num : nums) {
             if (num) {
@@ -98,7 +108,12 @@ public:
             }
         }
     }
+};
 
+
+class Solution {
+public:
+    // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/move-zeroes.cpp
     void moveZeroes(vector<int>& nums) {
         int pos = 0;
         for (const auto& num : nums) {
@@ -108,7 +123,6 @@ public:
         }
         fill(next(nums.begin(), pos), nums.end(), 0);
     }
-
 };
 // @lc code=end
 

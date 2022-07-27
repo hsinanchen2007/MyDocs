@@ -37,9 +37,8 @@ k 的取值范围是 [1, 数组中不相同的元素的个数]
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0347.%E5%89%8DK%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0.md
     // 这道题目主要涉及到如下三块内容：
     // 
@@ -97,7 +96,7 @@ public:
             return lhs.second > rhs.second;
         }
     };
-    vector<int> topKFrequent11(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         // 要统计元素出现频率
         unordered_map<int, int> map; // map<nums[i],对应出现的次数>
         for (int i = 0; i < nums.size(); i++) {
@@ -125,10 +124,14 @@ public:
         return result;
 
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.24, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/347.%20Top%20K%20Frequent%20Elements
     // heap
-    vector<int> topKFrequent10(vector<int>& A, int k) {
+    vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
         unordered_map<int, int> cnt;
         for (int n : A) cnt[n]++;
@@ -149,9 +152,13 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution98 {
+public:
     // make_heap and pop_heap
-    vector<int> topKFrequent9(vector<int>& A, int k) {
+    vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
         unordered_map<int, int> cnt;
         for (int n : A) cnt[n]++;
@@ -167,9 +174,13 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution97 {
+public:
     // quick sort
-    vector<int> topKFrequent8(vector<int>& A, int k) {
+    vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
         unordered_map<int, int> cnt;
         for (int n : A) cnt[n]++;
@@ -198,9 +209,13 @@ public:
         ans.resize(k);
         return ans;
     }
+};
 
+
+class Solution96 {
+public:
     // STL's nth_element
-    vector<int> topKFrequent7(vector<int>& A, int k) {
+    vector<int> topKFrequent(vector<int>& A, int k) {
         if (A.size() == k) return A;
         unordered_map<int, int> cnt;
         for (int n : A) cnt[n]++;
@@ -211,14 +226,18 @@ public:
         ans.resize(k);
         return ans;
     }
+};
 
+
+class Solution95 {
+public:
     // 2022.7.24, from https://walkccc.me/LeetCode/problems/0347/
     struct T {
         int num;
         int freq;
         T(int num, int freq) : num(num), freq(freq) {}
     };
-    vector<int> topKFrequent6(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         const int n = nums.size();
         vector<int> ans;
         unordered_map<int, int> count;
@@ -239,11 +258,15 @@ public:
 
         return ans;
     }
+};
 
+
+class Solution94 {
+public:
     // 2022.7.24, from https://www.guozet.me/leetcode/Leetcode-347-Top-K-Frequent-Elements.html?h=top%20k%20
     // Bucket sort
     // Runtime: 12ms > 99.14%
-    vector<int> topKFrequent5(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         vector<int> ans;
         unordered_map<int, int> m_;
         int max_freq = 1;
@@ -260,10 +283,14 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution93 {
+public:
     // Bucket sort
     // Runtime: 12ms > 99.14%
-    vector<int> topKFrequent4(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         vector<int> ans;
         unordered_map<int, int> m_;
         for (int& num : nums) ++m_[num];
@@ -279,10 +306,14 @@ public:
         }
         return ans;
     }
+};
 
+
+class Solution92 {
+public:
     // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/top-k-frequent-elements.cpp
     // Bucket Sort Solution
-    vector<int> topKFrequent3(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
             ++counts[i];
@@ -303,9 +334,13 @@ public:
         }
         return result;
     }
+};
 
+
+class Solution91 {
+public:
     // Quick Select Solution
-    vector<int> topKFrequent2(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
             ++counts[i];
@@ -321,9 +356,13 @@ public:
         }
         return result;
     }
+};
 
+
+class Solution90 {
+public:
     // Heap solution
-    vector<int> topKFrequent1(vector<int>& nums, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> counts;
         for (const auto& i : nums) {
             ++counts[i];
@@ -343,7 +382,11 @@ public:
         reverse(result.begin(), result.end());
         return result;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.24, from AcWing
     // 作者：yxc
     // 链接：https://www.acwing.com/activity/content/code/content/487547/
@@ -363,7 +406,6 @@ public:
                 res.push_back(x);
         return res;
     }
-
 };
 // @lc code=end
 
