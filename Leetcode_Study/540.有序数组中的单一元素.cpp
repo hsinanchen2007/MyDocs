@@ -14,7 +14,6 @@ https://leetcode.cn/problems/single-element-in-a-sorted-array/
 请你找出并返回只出现一次的那个数。
 
 你设计的解决方案必须满足 O(log n) 时间复杂度和 O(1) 空间复杂度。
-
  
 
 示例 1:
@@ -37,9 +36,8 @@ https://leetcode.cn/problems/single-element-in-a-sorted-array/
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.19, by Hsinan. Hint is O(logn) and sorted vector, that means binary search
     // key is how to determine this is the only one number that happened only once in this
     // given vector
@@ -47,7 +45,7 @@ public:
     // be odd number, so size/2 will return a even number, 
     // For example, [1,1,2,3,3,4,4,8,8]
     // Also refer CS-Notes/CyC2018
-    int singleNonDuplicate2(vector<int>& nums) {
+    int singleNonDuplicate(vector<int>& nums) {
         // sanity check
         if (nums.size() == 1) {
             return nums[0];
@@ -77,9 +75,13 @@ public:
         }
         return nums[left];
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.19 from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/single-element-in-a-sorted-array.cpp
-    int singleNonDuplicate1(vector<int>& nums) {
+    int singleNonDuplicate(vector<int>& nums) {
         int left = 0, right = nums.size() - 1;
         while (left <= right) {
             auto mid = left + (right - left) / 2;
@@ -93,7 +95,11 @@ public:
         }
         return nums[left];
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from AcWing 
     int singleNonDuplicate(vector<int>& nums) {
         // based on the question, we know the size of given vector will be odd number
@@ -116,7 +122,6 @@ public:
         // very tricky return!
         return nums[right * 2];
     }
-
 };
 // @lc code=end
 

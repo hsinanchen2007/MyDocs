@@ -36,11 +36,10 @@ s 仅由小写英文组成
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.7.23, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0541.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2II.md
-    string reverseStr5(string s, int k) {
+    string reverseStr(string s, int k) {
         for (int i = 0; i < s.size(); i += (2 * k)) {
             // 1. 每隔 2k 个字符的前 k 个字符进行反转
             // 2. 剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符
@@ -53,16 +52,24 @@ public:
         }
         return s;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.7.23, from https://github.com/lzl124631x/LeetCode/blob/master/leetcode/541.%20Reverse%20String%20II/s1.cpp
-    string reverseStr4(string s, int k) {
+    string reverseStr(string s, int k) {
         for (int i = 0; i < s.size(); i += 2 * k)
         reverse(s.begin() + i, s.begin() + min((int)s.size(), i + k));
         return s;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.7.23, from https://walkccc.me/LeetCode/problems/0541/
-    string reverseStr3(string s, int k) {
+    string reverseStr(string s, int k) {
         for (size_t i = 0; i < s.length(); i += 2 * k) {
         int l = i;
         int r = min(i + k - 1, s.length() - 1);
@@ -72,9 +79,13 @@ public:
 
         return s;
     }
-  
+};
+
+
+class Solution97 {
+public:
     // 2022.7.23, from https://www.guozet.me/leetcode/Leetcode-541-Reverse-String-II.html?h=reverses
-    string reverseStr2(string s, int k) {
+    string reverseStr(string s, int k) {
         int n = s.size(), count = n/2;
         for (int i = 0; i < count; ++i) {
             if(i % 2 == 0) {
@@ -86,9 +97,13 @@ public:
         }
         return s;
     }
+};
 
+
+class Solution96 {
+public:
     // 2022.7.23, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/reverse-string-ii.cpp
-    string reverseStr1(string s, int k) {
+    string reverseStr(string s, int k) {
         for (int left = 0; left < s.size(); left += 2 * k) {
             for (int i = left, j = min(left + k - 1, static_cast<int>(s.size()) - 1);
                  i < j; ++i, --j) {
@@ -97,7 +112,11 @@ public:
         }
         return s;
     }
+};
 
+
+class Solution {
+public:
     // 2022.7.23, from AcWing https://www.acwing.com/activity/content/code/content/597655/
     string reverseStr(string s, int k) {
         for (int i = 0; i < s.size(); i += k * 2) {
@@ -106,7 +125,6 @@ public:
         }
         return s;
     }
-
 };
 // @lc code=end
 
