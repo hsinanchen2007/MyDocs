@@ -12,7 +12,6 @@ https://leetcode.cn/problems/squares-of-a-sorted-array/
 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
 
  
-
 示例 1：
 
 输入：nums = [-4,-1,0,3,10]
@@ -61,6 +60,45 @@ public:
     // By using two pointers, as the given vector is already sorted, 
     // that means the max or min number will always be from either nums[0] or nums[size-1]
     // so define left and right pointers, and put the answers back to vector
+    /*
+        为了易于大家理解，我还特意录制了视频，本题视频讲解
+
+        暴力排序
+        最直观的想法，莫过于：每个数平方之后，排个序，美滋滋，代码如下：
+
+        class Solution {
+        public:
+            vector<int> sortedSquares(vector<int>& A) {
+                for (int i = 0; i < A.size(); i++) {
+                    A[i] *= A[i];
+                }
+                sort(A.begin(), A.end()); // 快速排序
+                return A;
+            }
+        };
+        class Solution:
+            def sortedSquares(self, nums: List[int]) -> List[int]:
+                res=[]
+                for num in nums: 
+                    res.append(num**2)
+                return sorted(res)   
+        这个时间复杂度是 O(n + nlogn)， 可以说是O(nlogn)的时间复杂度，但为了和下面双指针法算法时间复杂度有鲜明对比，我记为 O(n + nlog n)。
+
+        双指针法
+        数组其实是有序的， 只不过负数平方之后可能成为最大数了。
+
+        那么数组平方的最大值就在数组的两端，不是最左边就是最右边，不可能是中间。
+        此时可以考虑双指针法了，i指向起始位置，j指向终止位置。
+
+        定义一个新数组result，和A数组一样的大小，让k指向result数组终止位置。
+
+        如果A[i] * A[i] < A[j] * A[j] 那么result[k--] = A[j] * A[j]; 。
+        如果A[i] * A[i] >= A[j] * A[j] 那么result[k--] = A[i] * A[i]; 。
+
+        如动画所示：
+
+        不难写出如下代码：
+    */
     vector<int> sortedSquares(vector<int>& nums) {
         int k = nums.size() - 1;
         vector<int> answer(nums.size(), 0);
@@ -87,6 +125,8 @@ public:
 class Solution98 {
 public:
     // 2022.6.18, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/squares-of-a-sorted-array.cpp
+    // Time:  O(n)
+    // Space: O(1)
     vector<int> sortedSquares(vector<int>& nums) {
         int right = distance(nums.cbegin(), lower_bound(nums.cbegin(), nums.cend(), 0));
         int left = right - 1;
@@ -131,7 +171,7 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_626e7fcae4b01c509aaaf552/3?from=p_626e7eeee4b01c509aaaf51e&type=6&parent_pro_id=
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -189,5 +229,70 @@ public:
         return result;
     }
 };
+
+
+class Solution95 {
+public:
+    // 2022.7.26, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/977.%20Squares%20of%20a%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/squares-of-a-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    vector<int> sortedSquares(vector<int>& A) {
+        int N = A.size();
+        for (int &n : A) n *= n;
+        vector<int> ans(N);
+        for (int i = 0, j = N - 1, k = N - 1; i <= j; ) {
+            if (A[i] > A[j] ) {
+                ans[k--] = A[i];
+                ++i;
+            } else {
+                ans[k--] = A[j];
+                --j;
+            }
+        }
+        return ans;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.26, from https://walkccc.me/LeetCode/problems/0977/
+    // Time: O(n)
+    // Space: O(n)
+    vector<int> sortedSquares(vector<int>& A) {
+        const int n = A.size();
+        vector<int> ans(n);
+        int i = n - 1;
+
+        for (int l = 0, r = n - 1; l <= r;)
+        if (abs(A[l]) > abs(A[r]))
+            ans[i--] = A[l] * A[l++];
+        else
+            ans[i--] = A[r] * A[r--];
+
+        return ans;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.26, from https://www.guozet.me/leetcode/Leetcode-977-Squares-of-a-Sorted-Array.html?h=sortedSqu
+    vector<int> sortedSquares(vector<int>& A) {
+        for (int i = 0; i < A.size(); ++i) {
+            A[i] = A[i] * A[i];
+        }
+        sort(A.begin(), A.end());
+        return A;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

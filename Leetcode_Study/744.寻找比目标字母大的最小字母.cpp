@@ -84,6 +84,7 @@ class Solution99 {
 public:
     // 2022.6.19, from https://www.guozet.me/leetcode/Leetcode-744-Find-Smallest-Letter-Greater-Than-Target
     // why should we do binary search?! This simply does what question asked for
+    // Solution 1: Line Scan
     char nextGreatestLetter(vector<char>& letters, char target) {
         for (const char c : letters)
             if (c > target) return c;
@@ -111,10 +112,12 @@ public:
 };
 
 
-class Solution {
+class Solution97{
 public:
     // 2022.6.19, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/find-smallest-letter-greater-than-target.cpp
     // Again, it reminds that "range" question and can use C++ STL's lower_bound/upper_bound on a sorted vector
+    // Time:  O(logn)
+    // Space: O(1)
     char nextGreatestLetter(vector<char>& letters, char target) {
         const auto cit = upper_bound(letters.cbegin(), letters.cend(), target);
         return cit != letters.cend() ? *cit : letters.front();
@@ -122,7 +125,26 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
+public:
+    // 2022.7.26, from https://www.guozet.me/leetcode/Leetcode-744-Find-Smallest-Letter-Greater-Than-Target#solution-1-line-scan
+    // Solution 2: Binary Search
+    char nextGreatestLetter(vector<char>& letters, char target) {
+        int left = 0, right = letters.size();
+        while (left < right) {
+        const int mid = left + (right - left) / 2;
+        if (letters[mid] <= target)
+            left = mid + 1;
+        else
+            right = mid;
+        }
+        int res = left % letters.size();
+        return letters[res];
+    }
+};
+
+
+class Solution95 {
 public:
     // 2022.6.19, from AcWing https://www.acwing.com/video/2638/
     char nextGreatestLetter(vector<char>& letters, char target) {
@@ -136,5 +158,47 @@ public:
         return letters[0];
     }
 };
+
+
+class Solution94 {
+public:
+    // 2022.7.26, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target
+    // OJ: https://leetcode.com/problems/find-smallest-letter-greater-than-target/
+    // Author: github.com/lzl124631x
+    // Time: O(NlogN)
+    // Space: O(1)
+    char nextGreatestLetter(vector<char>& letters, char target) {
+        auto i = upper_bound(letters.begin(), letters.end(), target);
+        return i == letters.end() ? letters[0] : *i;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.26, from https://walkccc.me/LeetCode/problems/0744/
+    // Time: O(logn)
+    // Space: O(1)
+    char nextGreatestLetter(vector<char>& letters, char target) {
+        int l = 0;
+        int r = letters.size();
+
+        while (l < r) {
+        const int m = (l + r) / 2;
+        if (letters[m] > target)
+            r = m;
+        else
+            l = m + 1;
+        }
+
+        return letters[l % letters.size()];
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
