@@ -41,11 +41,10 @@ nums 已按 非递减顺序 排序
 */
 
 // @lc code=start
-class Solution {
+class Solution100 {
 public:
-
     // 2022.6.18, by Hsinan. Do sqrt then sort the answers by order
-    vector<int> sortedSquares4(vector<int>& nums) {
+    vector<int> sortedSquares(vector<int>& nums) {
         for (int i = 0; i < nums.size(); i++) {
             long answer = nums[i] * nums[i];
             nums[i] = (int)answer;
@@ -53,12 +52,16 @@ public:
         sort(nums.begin(), nums.end());
         return nums;
     }
+};
 
+
+class Solution99 {
+public:
     // 2022.6.18, from https://programmercarl.com/0977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.html#%E6%9A%B4%E5%8A%9B%E6%8E%92%E5%BA%8F
     // By using two pointers, as the given vector is already sorted, 
     // that means the max or min number will always be from either nums[0] or nums[size-1]
     // so define left and right pointers, and put the answers back to vector
-    vector<int> sortedSquares3(vector<int>& nums) {
+    vector<int> sortedSquares(vector<int>& nums) {
         int k = nums.size() - 1;
         vector<int> answer(nums.size(), 0);
 
@@ -78,9 +81,13 @@ public:
 
         return answer;
     }
+};
 
+
+class Solution98 {
+public:
     // 2022.6.18, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/squares-of-a-sorted-array.cpp
-    vector<int> sortedSquares2(vector<int>& nums) {
+    vector<int> sortedSquares(vector<int>& nums) {
         int right = distance(nums.cbegin(), lower_bound(nums.cbegin(), nums.cend(), 0));
         int left = right - 1;
         vector<int> result;
@@ -96,9 +103,13 @@ public:
         }
         return result;
     }
+};
 
+
+class Solution97 {
+public:
     // 2022.6.18, from AcWing https://www.acwing.com/video/3272/
-    vector<int> sortedSquares1(vector<int>& nums) {
+    vector<int> sortedSquares(vector<int>& nums) {
         int size = nums.size();
 
         // as below operations to answer is like an array operation,
@@ -117,7 +128,11 @@ public:
         }
         return answer;
     }
+};
 
+
+class Solution {
+public:
     // 2022.6.19, from https://ke.algomooc.com/detail/v_626e7fcae4b01c509aaaf552/3?from=p_626e7eeee4b01c509aaaf51e&type=6&parent_pro_id=
     // 登录 AlgoMooc 官网获取更多算法图解
     // https://www.algomooc.com/582.html 
@@ -173,7 +188,6 @@ public:
         // 最后返回我们设置的结果数组即可
         return result;
     }
-
 };
 // @lc code=end
 
