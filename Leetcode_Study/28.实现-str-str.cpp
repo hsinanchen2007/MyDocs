@@ -595,7 +595,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.23, from AcWing
     // 作者：yxc
@@ -624,5 +624,150 @@ public:
     }
 
 };
+
+
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/28.%20Implement%20strStr()
+    // OJ: https://leetcode.com/problems/implement-strstr/
+    // Author: github.com/lzl124631x
+    // Time: O(MN)
+    // Space: O(1)
+    // Solution 1. Brute Force
+    int strStr(string haystack, string needle) {
+        if (needle.size() > haystack.size()) return -1;
+        for (int i = 0; i <= haystack.size() - needle.size(); ++i) {
+            int j = 0;
+            for (; j < needle.size() && haystack[i + j] == needle[j]; ++j);
+            if (j == needle.size()) return i;
+        }
+        return -1;
+    }
+};
+
+
+
+class Solution91 {
+    typedef long long LL;
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/28.%20Implement%20strStr()
+    // OJ: https://leetcode.com/problems/implement-strstr/
+    // Author: github.com/lzl124631x
+    // Time: average O(S+T), worst O(ST)
+    // Space: O(1)
+    // Solution 2. Rabin Karp
+    int strStr(string s, string t) {
+        int S = s.size(), T = t.size(), d = 128; 
+        if (!S || !T || T > S) return T ? -1 : 0;
+        LL m = 1e9+7, p = 1, hs = s[0], ht = t[0];
+        for (int i = 1; i < T; ++i) {
+            p = (p * d) % m; // we need d^(T-1)
+            ht = (ht * d + t[i]) % m;
+            hs = (hs * d + s[i]) % m;
+        }
+        for (int i = 0; i <= S - T; ++i) { // Loop for each start/pop point
+            if (hs == ht) { // in case of collision, check the equity.
+                int j = 0;
+                for (; j < T && s[i + j] == t[j]; ++j);
+                if (j == T) return i;
+            }
+            if (i < S - T) hs = ((hs - s[i] * p) * d + s[i + T]) % m;
+            if (hs < 0) hs += m; // we might get negative hs, converting it to positive
+        }
+        return -1;
+    }
+};
+
+
+class Solution90 {
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/28.%20Implement%20strStr()
+    // OJ: https://leetcode.com/problems/implement-strstr/
+    // Author: github.com/lzl124631x
+    // Time: O(M+N)
+    // Space: O(N)
+    // Solution 3. KMP
+    vector<int> getLps(string &s) {
+        int N = s.size(), j = 0;
+        vector<int> lps(N);
+        for (int i = 1; i < N; ++i) {
+            while (j > 0 && s[i] != s[j]) j = lps[j - 1];
+            j += s[i] == s[j];
+            lps[i] = j;
+        }
+        return lps;
+    }
+public:
+    int strStr(string s, string t) {
+        if (t.empty()) return 0;
+        int M = s.size(), N = t.size(), i = 0, j = 0;
+        auto lps = getLps(t);
+        while (i < M) {
+            if (s[i] == t[j]) {
+                ++i;
+                ++j;
+            }
+            if (j == N) return i - j;
+            if (i < M && s[i] != t[j]) {
+                if (j) j = lps[j - 1];
+                else ++i;
+            }
+        }
+        return -1;
+    }
+};
+
+
+class Solution89 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/28
+    /*
+        这道题让我们在一个字符串中找另一个字符串第一次出现的位置，那首先要做一些判断，如果子字符串为空，则返回0，如果子字符串长度大于母字符串长度，
+        则返回 -1。然后开始遍历母字符串，这里并不需要遍历整个母字符串，而是遍历到剩下的长度和子字符串相等的位置即可，这样可以提高运算效率。然后对于
+        每一个字符，都遍历一遍子字符串，一个一个字符的对应比较，如果对应位置有不等的，则跳出循环，如果一直都没有跳出循环，则说明子字符串出现了，
+        则返回起始位置即可，代码如下：
+    */
+    int strStr(string haystack, string needle) {
+        if (needle.empty()) return 0;
+        int m = haystack.size(), n = needle.size();
+        if (m < n) return -1;
+        for (int i = 0; i <= m - n; ++i) {
+            int j = 0;
+            for (j = 0; j < n; ++j) {
+                if (haystack[i + j] != needle[j]) break;
+            }
+            if (j == n) return i;
+        }
+        return -1;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/28
+    /*
+        我们也可以写的更加简洁一些，开头直接套两个 for 循环，不写终止条件，然后判断假如j到达 needle 的末尾了，此时返回i；若此时 i+j 到达 
+        haystack 的长度了，返回 -1；否则若当前对应的字符不匹配，直接跳出当前循环，参见代码如下：
+
+        解法二：
+    */
+    int strStr(string haystack, string needle) {
+        for (int i = 0; ; ++i) {
+            for (int j = 0; ; ++j) {
+                if (j == needle.size()) return i;
+                if (i + j == haystack.size()) return -1;
+                if (needle[j] != haystack[i + j]) break;
+            }
+        }
+        return -1;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
