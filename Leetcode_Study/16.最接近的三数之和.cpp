@@ -14,7 +14,6 @@ https://leetcode.cn/problems/3sum-closest/
 返回这三个数的和。
 
 假定每组输入只存在恰好一个解。
-
  
 
 示例 1：
@@ -156,7 +155,7 @@ public:
 };
 
 
-class Solution {
+class Solution97 {
 public:
     // 2022.6.14, from https://ke.algomooc.com/detail/v_626e73e2e4b01a4851f98e6f/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_6268b1aae4b01c509aa8e2b8
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -241,5 +240,183 @@ public:
 
     */
 };
+
+
+class Solution96 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/16.%203Sum%20Closest
+    // OJ: https://leetcode.com/problems/3sum-closest/
+    // Author: github.com/lzl124631x
+    // Time: O(N^2)
+    // Space: O(1)
+    int threeSumClosest(vector<int>& A, int target) {
+        sort(begin(A), end(A));
+        int N = A.size(), ans = A[0] + A[1] + A[2];
+        for (int i = 0; i < N - 2; ++i) {
+            int L = i + 1, R = N - 1;
+            while (L < R) {
+                long sum = A[L] + A[R] + A[i];
+                if (abs(sum - target) < abs(ans - target)) ans = sum;
+                if (sum == target) return target;
+                if (sum > target) --R;
+                else ++L;
+            }
+        }
+        return ans;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.28, from https://github.com/wisdompeak/LeetCode/blob/master/Two_Pointers/016.3Sum-Closest/16.3Sum_Closest.cpp
+    int threeSumClosest(vector<int>& nums, int target) 
+    {
+        sort(nums.begin(),nums.end());
+        
+        int temp = INT_MAX;
+        int result;
+        
+        for (int a=0; a<nums.size(); a++)
+        {
+            int left = a+1;
+            int right = nums.size()-1;
+            int sum = target - nums[a];
+            
+            while (left<right)
+            {
+                if (temp > abs(nums[left]+nums[right]-sum))
+                {
+                    temp = abs(nums[left]+nums[right]-sum);
+                    result = nums[a]+nums[left]+nums[right];
+                }
+                if (nums[left]+nums[right]==sum)
+                    return target;
+                else if (nums[left]+nums[right]>sum)
+                    right--;
+                else if (nums[left]+nums[right]<sum)    
+                    left++;
+            }
+            
+        }
+        
+        return result;
+        
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.28, from https://walkccc.me/LeetCode/problems/0016/
+    // Time: O(n^2)
+    // Space: O(∣ans∣)
+    int threeSumClosest(vector<int>& nums, int target) {
+        int ans = nums[0] + nums[1] + nums[2];
+
+        sort(begin(nums), end(nums));
+
+        for (int i = 0; i + 2 < nums.size(); ++i) {
+        if (i > 0 && nums[i] == nums[i - 1])
+            continue;
+        // choose nums[i] as the first num in the triplet,
+        // and search the remaining nums in [i + 1, n - 1]
+        int l = i + 1;
+        int r = nums.size() - 1;
+        while (l < r) {
+            const int sum = nums[i] + nums[l] + nums[r];
+            if (sum == target)
+            return sum;
+            if (abs(sum - target) < abs(ans - target))
+            ans = sum;
+            if (sum < target)
+            ++l;
+            else
+            --r;
+        }
+        }
+
+        return ans;
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/16
+    /*
+        这道题让我们求最接近给定值的三数之和，是在之前那道 3Sum 的基础上又增加了些许难度，那么这道题让返回这个最接近于给定值的值，
+        即要保证当前三数和跟给定值之间的差的绝对值最小，所以需要定义一个变量 diff 用来记录差的绝对值，然后还是要先将数组排个序，
+        然后开始遍历数组，思路跟那道三数之和很相似，都是先确定一个数，然后用两个指针 left 和 right 来滑动寻找另外两个数，每确定
+        两个数，求出此三数之和，然后算和给定值的差的绝对值存在 newDiff 中，然后和 diff 比较并更新 diff 和结果 closest 即可，代码如下：
+
+        解法一：
+    */
+    int threeSumClosest(vector<int>& nums, int target) {
+        int closest = nums[0] + nums[1] + nums[2];
+        int diff = abs(closest - target);
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() - 2; ++i) {
+            int left = i + 1, right = nums.size() - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+                int newDiff = abs(sum - target);
+                if (diff > newDiff) {
+                    diff = newDiff;
+                    closest = sum;
+                }
+                if (sum < target) ++left;
+                else --right;
+            }
+        }
+        return closest;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/16
+    /*
+        我们还可以稍稍进行一下优化，每次判断一下，当 nums[i]*3 > target 的时候，就可以直接比较 closest 和 nums[i] + nums[i+1] + nums[i+2] 
+        的值，返回较小的那个，因为数组已经排过序了，后面的数字只会越来越大，就不必再往后比较了，参见代码如下：
+
+        解法二：
+    */
+    int threeSumClosest(vector<int>& nums, int target) {
+        int closest = nums[0] + nums[1] + nums[2];
+        int diff = abs(closest - target);
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() - 2; ++i) {
+            // Note, original code has a bug here
+            if (nums[i] * 3 > target) {
+                int total = nums[i] + nums[i + 1] + nums[i + 2];
+                if (abs(total-target) < diff) { 
+                    return total;
+                } else {
+                    return closest;
+                }
+            }
+            int left = i + 1, right = nums.size() - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+                int newDiff = abs(sum - target);
+                if (diff > newDiff) {
+                    diff = newDiff;
+                    closest = sum;
+                }
+                if (sum < target) ++left;
+                else --right;
+            }
+        }
+        return closest;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

@@ -336,7 +336,7 @@ public:
 };
 
 
-class Solution {
+class Solution95 {
 public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.md
     /*
@@ -477,6 +477,164 @@ public:
         return result;
     }
 };
+
+
+
+class Solution94 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/15.%203Sum
+    /*
+        Sort the array in ascending order.
+        Pin the first number as A[i]. For the other two numbers, we can use two pointers to scan A[(i+1)..(N-1)], 
+        one from i+1 rightward, one from N-1 leftward.
+    */
+    // OJ: https://leetcode.com/problems/3sum/
+    // Author: github.com/lzl124631x
+    // Time: O(N^2)
+    // Space: O(1)
+    vector<vector<int>> threeSum(vector<int>& A) {
+        sort(begin(A), end(A));
+        vector<vector<int>> ans;
+        int N = A.size();
+        for (int i = 0; i < N - 2; ++i) {
+            if (i && A[i] == A[i - 1]) continue;
+            int L = i + 1, R = N - 1;
+            while (L < R) {
+                int sum = A[i] + A[L] + A[R];
+                if (sum == 0) ans.push_back({ A[i], A[L], A[R] });
+                if (sum >= 0) {
+                    --R;
+                    while (L < R && A[R] == A[R + 1]) --R;
+                }
+                if (sum <= 0) {
+                    ++L;
+                    while (L < R && A[L] == A[L - 1]) ++L;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.28, from https://walkccc.me/LeetCode/problems/0015/
+    // Time: O(n^2)
+    // Space: O(∣ans∣)
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        if (nums.size() < 3)
+        return {};
+
+        vector<vector<int>> ans;
+
+        sort(begin(nums), end(nums));
+
+        for (int i = 0; i + 2 < nums.size(); ++i) {
+        if (i > 0 && nums[i] == nums[i - 1])
+            continue;
+        // choose nums[i] as the first num in the triplet,
+        // and search the remaining nums in [i + 1, n - 1]
+        int l = i + 1;
+        int r = nums.size() - 1;
+        while (l < r) {
+            const int sum = nums[i] + nums[l] + nums[r];
+            if (sum == 0) {
+            ans.push_back({nums[i], nums[l++], nums[r--]});
+            while (l < r && nums[l] == nums[l - 1])
+                ++l;
+            while (l < r && nums[r] == nums[r + 1])
+                --r;
+            } else if (sum < 0) {
+            ++l;
+            } else {
+            --r;
+            }
+        }
+        }
+
+        return ans;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/15
+    /*
+        这道题让我们求三数之和，比之前那道 Two Sum 要复杂一些，博主考虑过先 fix 一个数，然后另外两个数使用 Two Sum 那种 HashMap 的解法，
+        但是会有重复结果出现，就算使用 TreeSet 来去除重复也不行，会 TLE，看来此题并不是考 Two Sum 的解法。来分析一下这道题的特点，要找出三个
+        数且和为0，那么除了三个数全是0的情况之外，肯定会有负数和正数，还是要先 fix 一个数，然后去找另外两个数，只要找到两个数且和为第一个 fix 
+        数的相反数就行了，既然另外两个数不能使用 Two Sum 的那种解法来找，如何能更有效的定位呢？我们肯定不希望遍历所有两个数的组合吧，所以如果
+        数组是有序的，那么就可以用双指针以线性时间复杂度来遍历所有满足题意的两个数组合。
+
+        对原数组进行排序，然后开始遍历排序后的数组，这里注意不是遍历到最后一个停止，而是到倒数第三个就可以了。这里可以先做个剪枝优化，就是当遍历
+        到正数的时候就 break，为啥呢，因为数组现在是有序的了，如果第一个要 fix 的数就是正数了，则后面的数字就都是正数，就永远不会出现和为0的
+        情况了。然后还要加上重复就跳过的处理，处理方法是从第二个数开始，如果和前面的数字相等，就跳过，因为不想把相同的数字fix两次。对于遍历到的数，
+        用0减去这个 fix 的数得到一个 target，然后只需要再之后找到两个数之和等于 target 即可。用两个指针分别指向 fix 数字之后开始的数组首尾
+        两个数，如果两个数和正好为 target，则将这两个数和 fix 的数一起存入结果中。然后就是跳过重复数字的步骤了，两个指针都需要检测重复数字。
+        如果两数之和小于 target，则将左边那个指针i右移一位，使得指向的数字增大一些。同理，如果两数之和大于 target，则将右边那个指针j左移一位，
+        使得指向的数字减小一些，代码如下：
+
+        解法一：
+    */
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        if (nums.empty() || nums.back() < 0 || nums.front() > 0) return {};
+        for (int k = 0; k < (int)nums.size() - 2; ++k) {
+            if (nums[k] > 0) break;
+            if (k > 0 && nums[k] == nums[k - 1]) continue;
+            int target = 0 - nums[k], i = k + 1, j = (int)nums.size() - 1;
+            while (i < j) {
+                if (nums[i] + nums[j] == target) {
+                    res.push_back({nums[k], nums[i], nums[j]});
+                    while (i < j && nums[i] == nums[i + 1]) ++i;
+                    while (i < j && nums[j] == nums[j - 1]) --j;
+                    ++i; --j;
+                } else if (nums[i] + nums[j] < target) ++i;
+                else --j;
+            }
+        }
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/15
+    /*
+        或者我们也可以利用 TreeSet 的不能包含重复项的特点来防止重复项的产生，那么就不需要检测数字是否被 fix 过两次，
+        不过个人觉得还是前面那种解法更好一些，参见代码如下：
+
+        解法二：
+    */
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        set<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        if (nums.empty() || nums.back() < 0 || nums.front() > 0) return {};
+        for (int k = 0; k < (int)nums.size() - 2; ++k) {
+            if (nums[k] > 0) break;
+            int target = 0 - nums[k], i = k + 1, j = (int)nums.size() - 1;
+            while (i < j) {
+                if (nums[i] + nums[j] == target) {
+                    res.insert({nums[k], nums[i], nums[j]});
+                    while (i < j && nums[i] == nums[i + 1]) ++i;
+                    while (i < j && nums[j] == nums[j - 1]) --j;
+                    ++i; --j;
+                } else if (nums[i] + nums[j] < target) ++i;
+                else --j;
+            }
+        }
+        return vector<vector<int>>(res.begin(), res.end());
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
 
 // @lc code=end
 
