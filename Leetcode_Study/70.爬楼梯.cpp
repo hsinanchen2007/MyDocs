@@ -369,7 +369,7 @@ public:
 };
 
 
-class Solution {
+class Solution91 {
 public:
     // 2022.7.25, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0070.%E7%88%AC%E6%A5%BC%E6%A2%AF%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E7%89%88%E6%9C%AC.md
     /*
@@ -428,5 +428,309 @@ public:
         return dp[n];
     }
 };
+
+
+class Solution90 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/70.%20Climbing%20Stairs
+    // OJ: https://leetcode.com/problems/climbing-stairs/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    int climbStairs(int n) {
+        int ans = 1, prev = 1;
+        while (--n) {
+            ans += prev;
+            prev = ans - prev;
+        }
+        return ans;
+    }
+};
+
+
+class Solution89 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/70.%20Climbing%20Stairs
+    // OJ: https://leetcode.com/problems/climbing-stairs/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    int climbStairs(int n) {
+        int prev = 0, cur = 1;
+        while (n--) {
+            int next = cur + prev;
+            prev = cur;
+            cur = next;
+        }
+        return cur;
+    }
+};
+
+
+class Solution88 {
+public:
+    // 2022.7.27, from https://walkccc.me/LeetCode/problems/0070/
+    // Time: O(n)
+    // Space: O(n)
+    // Approach 1: 2D DP
+    int climbStairs(int n) {
+        // dp[i] := # of distinct ways to climb to i-th stair
+        vector<int> dp(n + 1);
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; ++i)
+        dp[i] = dp[i - 1] + dp[i - 2];
+
+        return dp[n];
+    }
+};
+
+
+class Solution87 {
+public:
+    // 2022.7.27, from https://walkccc.me/LeetCode/problems/0070/
+    // Time: O(n)
+    // Space: O(1)
+    // Approach 2: 1D DP
+    int climbStairs(int n) {
+        int prev1 = 1;  // dp[i - 1]
+        int prev2 = 1;  // dp[i - 2]
+
+        for (int i = 2; i <= n; ++i) {
+        const int dp = prev1 + prev2;
+        prev2 = prev1;
+        prev1 = dp;
+        }
+
+        return prev1;
+    }
+};
+
+
+class Solution86 {
+    // 2022.7.27, from https://www.guozet.me/leetcode/Leetcode-70-Climbing-Stairs.html?h=clim
+    /*
+        假设f(n)表示爬到n阶阶梯，的不同方法数量，为了爬到第n阶阶梯，有两种情况：
+
+        从第n-1阶前进1步
+        从第n-1阶前进2步
+        所以这就可以得到：f(n) = f(n-1) + f(n-2) 这就是一个斐波那契数列，所以这一个题目相当于是求解第n个参数的数值。
+
+        方案二： 斐波那契数列的第n项计算公式为：
+
+        Solution
+        Solution 1: Top-Down Dynamic Programming(Or Memoization)
+        class Solution {
+            public:
+            int climbStairs(int n) {
+                vector<int> rec(n + 1, 0);
+                return climbStairs(n, rec);
+        }
+
+        private:
+            int climbStairs(int n, vector<int>& rec) {
+                if (n <= 0) return n == 0;
+
+                if (rec[n] == 0) rec[n] = climbStairs(n - 1, rec) + climbStairs(n - 2, rec);
+                return rec[n];
+            }
+        };
+
+        Buttom-Up Dynamic Programming
+
+        class Solution {
+        public:
+            int climbStairs(int n) {
+                if (n <= 1) return n >= 0;
+
+                vector<int> rec(n, 1);　// rec[0] = 1, rec[1] = 1
+                for (int i = 2; i < n; ++i) rec[i] = rec[i - 1] + rec[i - 2];
+                return rec[n - 1] + rec[n - 2];
+            }
+        };
+        
+        We don't need the meno[n], we use a, b:
+
+        class Solution {
+        public:
+        int climbStairs(int n) {
+                int prev = 0;
+                int cur = 1;
+                for (int i = 1; i <= n; ++i) {
+                    int temp = cur;
+                    cur += prev;
+                    prev = temp;
+                }
+                return cur;
+            }
+        };
+
+        Solution 2:使用公式直接计算
+        class Solution {
+        public:
+            int climbStairs(int n) {
+                const double s = sqrt(5);
+                return floor((pow((1 + s) / 2, n + 1) + pow((1 - s) / 2, n + 1)) / s + 0.5);
+            }
+        };
+
+        Other Question
+        如果將这个题目稍微修改一下:
+
+        Triple Step: A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3 steps at a time. 
+        Implement a method to count how many possible ways the child can run up the stairs.
+        Let's think about: What is the lastest step that is done: The very last step: 3-step hop, a 2-step hop, or 1-step hop.
+        How many ways then are there to get up to the n-th step? We can get up to the n-th step by any of the following.
+
+        Going to the (n -1)-st step and hopping 1 step;
+        Goint to the (n-2)nd step and hopping 2 steps;
+        Going to the (n-3)rd step and hopping 3 steps;
+        Then, We just need to add the number of these paths together.
+
+        Solution
+        Solution 1: Brute Force Solution
+        First, the fairly straightforward algorithm to implement recursively, followed logic:
+
+        countWays(n-1) + countWays(n-2) + countWays(n-3)
+
+        There is a quesiton: what is countWays(0)? Is it 1 or ) It's a lot earier to define it as 1.
+
+        Implementation code.
+
+        int countWays(int n) {
+            if(n < 0) return 0;
+            else if (n == 0) return 1;
+            else {
+                return countWays(n - 1) + countWays(n - 2) + countWays(n - 3);
+            }
+        }
+
+        Like the Fibonacci problem, the runtime of this algorithm is exponential($O(3^n)$).
+
+        Solution 2: Add Memoization in this Solution 1
+        The previous solution for countWays is called many times for the same values, which is unnecessary. We need to fix it.
+
+        class Solution {
+        public:
+        int climbStairs(int n) {
+            vector<int> rec(n + 1, -1);
+            return countWays(n, rec);
+        }
+
+        private:
+        int countWays(int n, vector<int>& rec) {
+            if (n < 0) return 0;
+            else if (n == 0) return 1;
+            else if (rec[n] > -1) {
+            return rec[n];
+            } else {
+            rec[n] = climbStairs(n - 1, rec) + climbStairs(n - 2, rec) + climbStairs(n - 3, rec);
+            return rec[n];
+            }
+        };
+    */
+public:
+    int climbStairs(int n) {
+        vector<int> rec(n + 1, 0);
+        return climbStairs(n, rec);
+    }
+
+private:
+    int climbStairs(int n, vector<int>& rec) {
+        if (n <= 0) return n == 0;
+
+        if (rec[n] == 0) rec[n] = climbStairs(n - 1, rec) + climbStairs(n - 2, rec);
+        return rec[n];
+    }
+};
+
+
+class Solution85 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
+    /*
+        这篇博客最开始名字叫做爬梯子问题，总是有童鞋向博主反映移动端打不开这篇博客，博主觉得非常奇怪，自己也试了一下，果然打不开。
+        心想着是不是这个博客本身有问题，于是想再开一个相同的帖子，结果还是打不开，真是见了鬼了。于是博主换了个名字，结果居然打开了？！
+        进经过排查后发现，原来是“爬梯子”这三个字是敏感词，放到标题里面，博客就被屏蔽了，我也真是醉了，完全是躺枪好么，无奈之下，
+        只好改名为爬楼梯问题了 -。-|||。
+
+        这个爬梯子问题最开始看的时候没搞懂是让干啥的，后来看了别人的分析后，才知道实际上跟斐波那契数列非常相似，假设梯子有n层，
+        那么如何爬到第n层呢，因为每次只能爬1或2步，那么爬到第n层的方法要么是从第 n-1 层一步上来的，要不就是从 n-2 层2步上来的，
+        所以递推公式非常容易的就得出了：dp[n] = dp[n-1] + dp[n-2]。 由于斐波那契额数列的求解可以用递归，所以博主最先尝试了递归，
+        拿到 OJ 上运行，显示 Time Limit Exceeded，就是说运行时间超了，因为递归计算了很多分支，效率很低，这里需要用动态规划 
+        (Dynamic Programming) 来提高效率，代码如下：
+
+        C++ 解法一：
+    */
+    int climbStairs(int n) {
+        if (n <= 1) return 1;
+        vector<int> dp(n);
+        dp[0] = 1; dp[1] = 2;
+        for (int i = 2; i < n; ++i) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp.back();
+    }
+};
+
+
+class Solution84 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
+    /*
+        虽然前面说过递归的写法会超时，但是只要加上记忆数组，那就不一样了，因为记忆数组可以保存计算过的结果，这样就不会存在重复计算了，
+        大大的提高了运行效率，其实递归加记忆数组跟迭代的 DP 形式基本是大同小异的，参见代码如下：
+
+        C++ 解法三：
+    */
+    // Note that C++ 解法二 will not work, can revisit it later to fix its overflow issue
+    int climbStairs(int n) {
+        vector<int> memo(n + 1);
+        return helper(n, memo);
+    }
+    int helper(int n, vector<int>& memo) {
+        if (n <= 1) return 1;
+        if (memo[n] > 0) return memo[n];
+        return memo[n] = helper(n - 1, memo) + helper(n - 2, memo);
+    }
+};
+
+
+class Solution83 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
+    /*
+        论坛上还有一种分治法 Divide and Conquer 的解法，用的是递归形式，可以通过，但是博主没有十分理解，希望各位看官大神可以跟博主讲一讲～
+
+        C++ 解法四：
+    */
+    int climbStairs(int n) {
+        if(n <= 1) return 1;       
+        return climbStairs(n / 2) * climbStairs(n - n / 2) + climbStairs(n / 2 - 1) * climbStairs(n - n / 2 - 1);
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
+    /*
+        最后来看一种叼炸天的方法，其实斐波那契数列是可以求出通项公式的，推理的过程请参见 知乎上的这个贴子，那么有了通项公式后，直接在常数级的
+        时间复杂度范围内就可以求出结果了，参见代码如下：
+
+        C++ 解法五：
+    */
+    int climbStairs(int n) {
+        double root5 = sqrt(5);
+        return (1 / root5) * (pow((1 + root5) / 2, n + 1) - pow((1 - root5) / 2, n + 1));
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
