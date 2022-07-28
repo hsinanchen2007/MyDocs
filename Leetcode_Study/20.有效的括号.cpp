@@ -187,7 +187,6 @@ public:
 };
 
 
-
 class Solution98 {
 public:
     // 2022.7.24, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/valid-parentheses.cpp
@@ -289,7 +288,7 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.7.24, from AcWing
     // 作者：yxc
@@ -310,5 +309,111 @@ public:
         return stk.empty();
     }
 };
+
+
+class Solution95 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/20.%20Valid%20Parentheses
+    // OJ: https://leetcode.com/problems/valid-parentheses/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(N)
+    bool isValid(string s) {
+        stack<char> stk;
+        for (char c : s) {
+            if (c == '(' || c == '{' || c == '[') stk.push(c);
+            else if (stk.empty() || (c == ')' && stk.top() != '(') || (c == '}' && stk.top() != '{')
+                || (c == ']' && stk.top() != '[')) return false;
+            else stk.pop();
+        }
+        return stk.empty();
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.28, from https://walkccc.me/LeetCode/problems/0020/
+    // Time: O(n)
+    // Space: O(n)
+    bool isValid(string s) {
+        stack<char> stack;
+
+        for (const char c : s)
+        if (c == '(')
+            stack.push(')');
+        else if (c == '{')
+            stack.push('}');
+        else if (c == '[')
+            stack.push(']');
+        else if (stack.empty() || pop(stack) != c)
+            return false;
+
+        return stack.empty();
+    }
+
+private:
+    int pop(stack<char>& stack) {
+        const int c = stack.top();
+        stack.pop();
+        return c;
+    }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.28, from https://www.guozet.me/leetcode/Leetcode-20-Valid-Parentheses.html?h=isvalid
+    /*
+        验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。在这里使用一个栈来实现, 如果扫描到的是左边的括号(,{,[, 那么就把其压入到栈中，
+        之后如果扫描到的不是左边的符号的话，那么就把堆栈最上面的数据出栈，然后如果出栈的数据是对应的右括号的话，那么就pop 出栈这个数据，如果不是对应
+        的有括号，那么就返回false.
+    */
+    bool isValid(string s) {
+        std::stack<char> parentheses;
+        for (int i = 0; i < s.size(); ++i) {
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[')
+            parentheses.push(s[i]);
+        else {
+            if (parentheses.empty()) return false;
+            if (s[i] == ')' && parentheses.top() != '(') return false;
+            if (s[i] == '}' && parentheses.top() != '{') return false;
+            if (s[i] == ']' && parentheses.top() != '[') return false;
+            parentheses.pop();
+        }
+        }
+        return parentheses.empty();
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/20
+    /*
+        这道题让我们验证输入的字符串是否为括号字符串，包括大括号，中括号和小括号。这里需要用一个栈，开始遍历输入字符串，如果当前字符为左半边括号时，则将其压入栈中，
+        如果遇到右半边括号时，若此时栈为空，则直接返回 false，如不为空，则取出栈顶元素，若为对应的左半边括号，则继续循环，反之返回 false，代码如下：
+    */
+    bool isValid(string s) {
+        stack<char> parentheses;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(' || s[i] == '[' || s[i] == '{') parentheses.push(s[i]);
+            else {
+                if (parentheses.empty()) return false;
+                if (s[i] == ')' && parentheses.top() != '(') return false;
+                if (s[i] == ']' && parentheses.top() != '[') return false;
+                if (s[i] == '}' && parentheses.top() != '{') return false;
+                parentheses.pop();
+            }
+        }
+        return parentheses.empty();
+    }
+}; 
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

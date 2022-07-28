@@ -134,10 +134,12 @@ public:
 class Solution98 {
 public:
     // 2022.6.12, from https://github.com/grandyang/leetcode/issues/18
-    // LeetCode 中关于数字之和还有其他几道，分别是 Two Sum ，3Sum ，3Sum Closest，虽然难度在递增，但是整体的套路都是一样的，
-    // 在这里为了避免重复项，我们使用了 STL 中的 TreeSet，其特点是不能有重复，如果新加入的数在 TreeSet 中原本就存在的话，插入
-    // 操作就会失败，这样能很好的避免的重复项的存在。此题的 O(n^3) 解法的思路跟 3Sum 基本没啥区别，就是多加了一层 for 循环，
-    //其他的都一样，代码如下：
+    /*
+        LeetCode 中关于数字之和还有其他几道，分别是 Two Sum ，3Sum ，3Sum Closest，虽然难度在递增，但是整体的套路都是一样的，
+        在这里为了避免重复项，我们使用了 STL 中的 TreeSet，其特点是不能有重复，如果新加入的数在 TreeSet 中原本就存在的话，插入
+        操作就会失败，这样能很好的避免的重复项的存在。此题的 O(n^3) 解法的思路跟 3Sum 基本没啥区别，就是多加了一层 for 循环，
+        其他的都一样，代码如下：
+    */
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> res;
         int n = nums.size();
@@ -168,9 +170,11 @@ public:
 class Solution97 {
 public:
     // 2022.7.24, from https://github.com/grandyang/leetcode/issues/18
-    // 但是毕竟用 TreeSet 来进行去重复的处理还是有些取巧，可能在 Java 中就不能这么做，那么还是来看一种比较正统的做法吧，手动进行去重复处理。
-    // 主要可以进行的有三个地方，首先在两个 for 循环下可以各放一个，因为一旦当前的数字跟上面处理过的数字相同了，那么找下来肯定还是重复的。之后就是当 
-    // sum 等于 target 的时候了，在将四个数字加入结果 res 之后，left 和 right 都需要去重复处理，分别像各自的方面遍历即可，参见代码如下：
+    /*
+        但是毕竟用 TreeSet 来进行去重复的处理还是有些取巧，可能在 Java 中就不能这么做，那么还是来看一种比较正统的做法吧，手动进行去重复处理。
+        主要可以进行的有三个地方，首先在两个 for 循环下可以各放一个，因为一旦当前的数字跟上面处理过的数字相同了，那么找下来肯定还是重复的。之后就是当 
+        sum 等于 target 的时候了，在将四个数字加入结果 res 之后，left 和 right 都需要去重复处理，分别像各自的方面遍历即可，参见代码如下：
+    */
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         vector<vector<int>> res;
         int n = nums.size();
@@ -198,7 +202,7 @@ public:
 };
 
 
-class Solution {
+class Solution96 {
 public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0018.%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C.md
     /*
@@ -285,5 +289,17 @@ public:
         return result;
     }
 };
+
+
+// Note that below solutions will NOT work now due to new tricky testcases!!
+// https://github.com/MaskRay/LeetCode/blob/master/4sum.cc
+// https://walkccc.me/LeetCode/problems/0018/
+// https://github.com/lzl124631x/LeetCode/tree/master/leetcode/18.%204Sum
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

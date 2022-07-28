@@ -15,7 +15,6 @@ https://leetcode.cn/problems/remove-element/
 
 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
 
- 
 
 说明:
 
@@ -210,7 +209,8 @@ public:
     }
 };
 
-class Solution {
+
+class Solution94 {
 public:
     // 2022.7.24, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.md
     /*
@@ -245,5 +245,73 @@ public:
         return leftIndex;   // leftIndex一定指向了最终数组末尾的下一个元素
     }
 };
+
+
+class Solution93 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/27.%20Remove%20Element
+    // OJ: https://leetcode.com/problems/remove-element/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    int removeElement(vector<int>& A, int val) {
+        int j = 0, N = A.size();
+        for (int i = 0; i < N; ++i) {
+            if (A[i] != val) A[j++] = A[i];
+        }
+        return j;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.28, from https://walkccc.me/LeetCode/problems/0027/
+    int removeElement(vector<int>& nums, int val) {
+        int i = 0;
+
+        for (const int num : nums)
+        if (num != val)
+            nums[i++] = num;
+
+        return i;
+    }
+};
+
+
+class Solution91 {
+public:
+    // 2022.7.28, from https://github.com/MaskRay/LeetCode/blob/master/remove-element.cc
+    int removeElement(vector<int> &a, int val) {
+        int i = 0, j = 0;
+        for (; i < a.size(); i++)
+        if (a[i] != val)
+            a[j++] = a[i];
+        return j;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/27
+    /*
+        这道题让我们移除一个数组中和给定值相同的数字，并返回新的数组的长度。是一道比较容易的题，只需要一个变量用来计数，然后遍历原数组，
+        如果当前的值和给定值不同，就把当前值覆盖计数变量的位置，并将计数变量加1。代码如下：
+    */
+    int removeElement(vector<int>& nums, int val) {
+        int res = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] != val) nums[res++] = nums[i];
+        }
+        return res;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

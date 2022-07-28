@@ -105,7 +105,7 @@ public:
 };
 
 
-class Solution {
+class Solution98 {
 public:
     // 2022.6.8, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/remove-duplicates-from-sorted-array.cpp
     // Time:  O(n)
@@ -121,5 +121,145 @@ public:
     }
     
 };
+
+
+class Solution97 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    int removeDuplicates(vector<int>& A) {
+        int j = 0;
+        for (int n : A) {
+            if (j - 1 < 0 || A[j - 1] != n) A[j++] = n;
+        }
+        return j;
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.7.28, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array
+    // OJ: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    int removeDuplicates(vector<int>& A) {
+        int i = 0, j = 0, N = A.size();
+        while (i < N) {
+            A[j++] = A[i++];
+            while (i < N && A[i] == A[i - 1]) ++i;
+        }
+        return j;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.7.28, from https://walkccc.me/LeetCode/problems/0026/
+    // Time: O(n)
+    // Space: O(1)
+    int removeDuplicates(vector<int>& nums) {
+        int i = 0;
+
+        for (const int num : nums)
+        if (i < 1 || num > nums[i - 1])
+            nums[i++] = num;
+
+        return i;
+    }
+};
+
+
+class Solution94 {
+public:
+    // 2022.7.28, from https://www.guozet.me/leetcode/Leetcode-26-Remove-Duplicates-From-Sorted-Array.html?h=removedupli
+    int removeDuplicates(vector<int>& nums) { return distance(nums.begin(), unique(nums.begin(), nums.end())); }
+};
+
+
+class Solution93 {
+public:
+    // 2022.7.28, from https://www.guozet.me/leetcode/Leetcode-26-Remove-Duplicates-From-Sorted-Array.html?h=removedupli
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        int index = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+        if (nums[index] != nums[i])
+            nums[++index] = nums[i];
+        }
+        return index + 1;
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/26
+    /*
+        这道题要我们从有序数组中去除重复项，和之前那道 Remove Duplicates from Sorted List 的题很类似，但是要简单一些，因为毕竟数组的值可以通过
+        下标直接访问，而链表不行。那么这道题的解题思路是使用快慢指针来记录遍历的坐标，最开始时两个指针都指向第一个数字，如果两个指针指的数字相同，则快指针
+        向前走一步，如果不同，则两个指针都向前走一步，这样当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数字的个数，代码如下：
+
+        解法一：
+    */
+    int removeDuplicates(vector<int>& nums) {
+        int pre = 0, cur = 0, n = nums.size();
+        while (cur < n) {
+            if (nums[pre] == nums[cur]) ++cur;
+            else nums[++pre] = nums[cur++];
+        }
+        return nums.empty() ? 0 : (pre + 1);
+    }
+};
+
+
+class Solution91 {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/26
+    /*
+        我们也可以用 for 循环来写，这里的j就是上面解法中的 pre，i就是 cur，所以本质上都是一样的，参见代码如下：
+
+        解法二：
+    */
+    int removeDuplicates(vector<int>& nums) {
+        int j = 0, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] != nums[j]) nums[++j] = nums[i];
+        }
+        return nums.empty() ? 0 : (j + 1);
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.28, from https://github.com/grandyang/leetcode/issues/26
+    /*
+        这里也可以换一种写法，用变量i表示当前覆盖到到位置，由于不能有重复数字，则只需要用当前数字 num 跟上一个覆盖到到数字 nums[i-1] 
+        做个比较，只要 num 大，则一定不会有重复（前提是数组必须有序），参见代码如下：
+
+        解法三：
+    */
+    int removeDuplicates(vector<int>& nums) {
+        int i = 0;
+        for (int num : nums) {
+            if (i < 1 || num > nums[i - 1]) {
+                nums[i++] = num;
+            }
+        }
+        return i;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
