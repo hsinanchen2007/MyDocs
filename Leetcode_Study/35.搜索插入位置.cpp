@@ -297,7 +297,7 @@ public:
 };
 
 
-class Solution {
+class Solution94 {
 public:
     // 2022.7.24, from https://walkccc.me/LeetCode/problems/0035/
     // Time: O(log n)
@@ -319,5 +319,94 @@ public:
         return l;
     }
 };
+
+
+class Solution93 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/35
+    /*
+        这道题基本没有什么难度，实在不理解为啥还是 Medium 难度的，完完全全的应该是 Easy 啊（貌似现在已经改为 Easy 类了），三行代码搞定的题，
+        只需要遍历一遍原数组，若当前数字大于或等于目标值，则返回当前坐标，如果遍历结束了，说明目标值比数组中任何一个数都要大，则返回数组长度n即可，代码如下：
+
+        解法一：
+    */
+    int searchInsert(vector<int>& nums, int target) {
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] >= target) return i;
+        }
+        return nums.size();
+    }
+};
+
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/35
+    /*
+        当然，我们还可以用二分搜索法来优化时间复杂度，而且个人认为这种方法应该是面试官们想要考察的算法吧，属于博主之前的总结帖 LeetCode Binary Search 
+        Summary 二分搜索法小结 中第二类 - 查找不小于目标值的数，参见代码如下：
+
+        解法二：
+    */
+    int searchInsert(vector<int>& nums, int target) {
+        if (nums.back() < target) return nums.size();
+        int left = 0, right = nums.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) left = mid + 1;
+            else right = mid;
+        }
+        return right;
+    }
+};
+
+
+
+class Solution91 {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/35.%20Search%20Insert%20Position
+    // OJ: https://leetcode.com/problems/search-insert-position/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    // Solution 1. Binary Search (L <= R)
+    int searchInsert(vector<int>& A, int target) {
+        int L = 0, R = A.size() - 1;
+        while (L <= R) {
+            int M = (L + R) / 2;
+            if (A[M] == target) return M;
+            if (A[M] < target) L = M + 1;
+            else R = M - 1;
+        }
+        return L;
+    }
+};
+
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/35.%20Search%20Insert%20Position
+    // OJ: https://leetcode.com/problems/search-insert-position/
+    // Author: github.com/lzl124631x
+    // Time: O(logN)
+    // Space: O(1)
+    // Solution 2. Binary Search (L < R)
+    int searchInsert(vector<int>& A, int target) {
+        int L = 0, R = A.size();
+        while (L < R) {
+            int M = (L + R) / 2;
+            if (A[M] < target) L = M + 1;
+            else R = M;
+        }
+        return L;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
