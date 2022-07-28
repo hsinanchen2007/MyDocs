@@ -276,7 +276,7 @@ public:
 };
 
 
-class Solution {
+class Solution92 {
 public:
     // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-88-Merge-Sorted-Array.html?h=merge
     // Fill nums1 from back to front Time complexity: O(m + n) Space complexity: O(1) in-place
@@ -285,5 +285,53 @@ public:
         while (q >= 0) nums1[tail--] = (p >= 0 && nums1[p] >= nums2[q]) ? nums1[p--] : nums2[q--];
     }
 };
+
+
+class Solution91 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/88
+    /*
+        混合插入有序数组，由于两个数组都是有序的，所有只要按顺序比较大小即可。题目中说了 nums1 数组有足够大的空间，说明不用 resize 数组，
+        又给了m和n，那就知道了混合之后的数组的大小，这样就从 nums1 和 nums2 数组的末尾开始一个一个比较，把较大的数，按顺序从后往前加入混合
+        之后的数组末尾。需要三个变量 i，j，k，分别指向 nums1，nums2，和混合数组的末尾。进行 while 循环，如果i和j都大于0，再看如果 
+        nums1[i] > nums2[j]，说明要先把 nums1[i] 加入混合数组的末尾，加入后k和i都要自减1；反之就把 nums2[j] 加入混合数组的末尾，
+        加入后k和j都要自减1。循环结束后，有可能i或者j还大于等于0，若j大于0，那么还需要继续循环，将 nums2 中的数字继续拷入 nums1。若是i
+        大于等于0，那么就不用管，因为混合数组本身就放在 nums1 中，参见代码如下：
+
+        解法一： 
+    */
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) nums1[k--] = nums1[i--];
+            else nums1[k--] = nums2[j--];
+        }
+        while (j >= 0) nums1[k--] = nums2[j--];
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/88
+    /*
+        我们还可以写的更简洁一些，将两个 while 循环融合到一起，只要加上 i>=0 且 nums1[i] > nums2[j] 的判断条件，就可以从 nums1 中取数，
+        否则就一直从 nums2 中取数，参见代码如下:
+
+        解法二：
+    */
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1, j = n - 1, k = m + n - 1;
+        while (j >= 0) {
+            nums1[k--] = (i >= 0 && nums1[i] > nums2[j]) ? nums1[i--] : nums2[j--];
+        }
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
