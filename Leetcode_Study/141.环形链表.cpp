@@ -238,7 +238,7 @@ public:
 };
 
 
-class Solution {
+class Solution93 {
 public:
     // 2022.7.25, from https://www.guozet.me/leetcode/Leetcode-141-Linked-List-Cycle.html?h=hascycle
     /*
@@ -261,6 +261,42 @@ public:
     }
 };
 
+
+class Solution92 {
+public:
+    // 2022.7.27, from https://github.com/MaskRay/LeetCode/blob/master/linked-list-cycle.cc
+    bool hasCycle(ListNode *head) {
+        set<ListNode *> s;
+        while (head && ! s.count(head)) {
+            s.insert(head);
+            head = head->next;
+        }
+        return !!head;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/141
+    /*
+        这道题是快慢指针的经典应用。只需要设两个指针，一个每次走一步的慢指针和一个每次走两步的快指针，如果链表里有环的话，两个指针最终肯定会相遇。
+        实在是太巧妙了，要是我肯定想不出来。代码如下：
+    */
+    bool hasCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
 
 
 // @lc code=end

@@ -237,7 +237,7 @@ public:
 };
 
 
-class Solution {
+class Solution91 {
 public:
     // 2022.7.25, from AcWing
     /*
@@ -271,5 +271,75 @@ public:
         return nums[l];
     }
 };
+
+
+class Solution90 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
+    /*
+        这道题说是对一个有序数组进行了若干次旋转，让找出旋转数组的最小值，这里肯定不能通过直接遍历整个数组来寻找，过于简单粗暴，这样的话，旋不旋转就没有意义。
+        但是可以利用旋转特点来进行优化，传统的找最小值是要遍历所有的数字的，这里由于旋转前是有序的，则数组中的第一个数字是最小的，发生旋转之后，第一个数字就
+        不一定是最小的，但是如果从第一个数字往后遍历的话，应该是递增的，但如果遇到较小的数字，则一定是转折点，大家可以自行举例验证，这种方法在极端情况下还是
+        线性的复杂度，但只要能过 OJ 的就是好方法，曾经代码如下
+
+        解法一：
+    */
+    int findMin(vector<int>& nums) {
+        if (nums[0] <= nums.back()) return nums[0];
+        for (int num : nums) {
+            if (num < nums[0]) return num;
+        }
+        return -1;
+    }
+};
+
+
+class Solution89 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
+    /*
+        我们可以将时间复杂度从 O(n) 缩小到 O(lgn)，这时候二分查找法就浮现在脑海。这里的二分法属于博主之前的总结帖 LeetCode Binary Search Summary 
+        二分搜索法小结 中的第五类，也是比较难的那一类，没有固定的 target 值比较，而是要跟数组中某个特定位置上的数字比较，决定接下来去哪一边继续搜索。
+        这里用中间的值 nums[mid] 和右边界值 nums[right] 进行比较，若数组没有旋转或者旋转点在左半段的时候，中间值是一定小于右边界值的，所以要去左半边
+        继续搜索，反之则去右半段查找，最终返回 nums[right] 即可，参见代码如下：
+
+        解法二：
+    */
+    int findMin(vector<int>& nums) {
+        int left = 0, right = (int)nums.size() - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[right]) left = mid + 1;
+            else right = mid;
+        }
+        return nums[right];
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
+    /*
+        下面这种分治法 Divide and Conquer 的解法，由热心网友 howard144 提供，这里每次将区间 [start, end] 从中间 mid 位置分为两段，分别调用递归函数，
+        并比较返回值，每次取返回值较小的那个即可，参见代码如下：
+
+        解法三：
+    */
+    int findMin(vector<int>& nums) {
+        return helper(nums, 0, (int)nums.size() - 1);
+    }
+    int helper(vector<int>& nums, int start, int end) {
+        if (nums[start] <= nums[end]) return nums[start];
+        int mid = (start + end) / 2;
+        return min(helper(nums, start, mid), helper(nums, mid + 1, end));
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

@@ -177,7 +177,7 @@ public:
 };
 
 
-class Solution {
+class Solution95 {
 public:
     // 2022.6.17, from AcWing https://www.acwing.com/video/1545/
     vector<int> twoSum(vector<int>& numbers, int target) {
@@ -189,5 +189,61 @@ public:
         return {};
     }
 };
+
+
+class Solution94 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/167
+    /*
+        这又是一道Two Sum的衍生题，作为LeetCode开山之题，我们务必要把Two Sum及其所有的衍生题都拿下，这道题其实应该更容易一些，
+        因为给定的数组是有序的，而且题目中限定了一定会有解，我最开始想到的方法是二分法来搜索，因为一定有解，而且数组是有序的，那么
+        第一个数字肯定要小于目标值target，那么我们每次用二分法来搜索target - numbers[i]即可，代码如下：
+
+        解法一：
+    */
+    // O(nlgn)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        for (int i = 0; i < numbers.size(); ++i) {
+            int t = target - numbers[i], left = i + 1, right = numbers.size();
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                if (numbers[mid] == t) return {i + 1, mid + 1};
+                else if (numbers[mid] < t) left = mid + 1;
+                else right = mid;
+            }
+        }
+        return {};
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/167
+    /*
+        但是上面那种方法并不efficient，时间复杂度是O(nlgn)，我们再来看一种O(n)的解法，我们只需要两个指针，一个指向开头，一个指向末尾，
+        然后向中间遍历，如果指向的两个数相加正好等于target的话，直接返回两个指针的位置即可，若小于target，左指针右移一位，若大于target，
+        右指针左移一位，以此类推直至两个指针相遇停止，参见代码如下：
+
+        解法二：
+    */
+    // O(n)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int l = 0, r = numbers.size() - 1;
+        while (l < r) {
+            int sum = numbers[l] + numbers[r];
+            if (sum == target) return {l + 1, r + 1};
+            else if (sum < target) ++l;
+            else --r;
+        }
+        return {};
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 

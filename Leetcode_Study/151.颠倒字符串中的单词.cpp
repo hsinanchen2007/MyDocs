@@ -222,6 +222,7 @@ public:
 
 class Solution99 {
 private:
+    // 2022.7.23, by https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0151.%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D.md
     //版本二：
     //原理同版本1，更简洁实现。
     void reverse(string& s, int start, int end){ //翻转，区间写法：闭区间 []
@@ -424,7 +425,7 @@ public:
 };
 
 
-class Solution {
+class Solution92 {
 public:
     // 2022.7.23, from AcWing
     // 作者：yxc
@@ -459,5 +460,89 @@ public:
         return s;
     }
 };
+
+
+class Solution91 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/151
+    /*
+        这道题让我们翻转字符串中的单词，题目中给了我们写特别说明，如果单词之间遇到多个空格，只能返回一个，而且首尾不能有单词，并且对C语言程序员
+        要求空间复杂度为O(1)，所以我们只能对原字符串s之间做修改，而不能声明新的字符串。那么我们如何翻转字符串中的单词呢，我们的做法是，先整个字符
+        串整体翻转一次，然后再分别翻转每一个单词（或者先分别翻转每一个单词，然后再整个字符串整体翻转一次），此时就能得到我们需要的结果了。那么
+        这里我们需要定义一些变量来辅助我们解题，storeIndex表示当前存储到的位置，n为字符串的长度。我们先给整个字符串反转一下，然后我们开始循环，
+        遇到空格直接跳过，如果是非空格字符，我们此时看storeIndex是否为0，为0的话表示第一个单词，不用增加空格；如果不为0，说明不是第一个单词，
+        需要在单词中间加一个空格，然后我们要找到下一个单词的结束位置我们用一个while循环来找下一个为空格的位置，在此过程中继续覆盖原字符串，找到
+        结束位置了，下面就来翻转这个单词，然后更新i为结尾位置，最后遍历结束，我们剪裁原字符串到storeIndex位置，就可以得到我们需要的结果，代码如下：
+
+        C++ 解法一：
+    */
+    // Note, need to change the return from void to string, and add return at the end to pass new LC
+    string reverseWords(string &s) {
+        int storeIndex = 0, n = s.size();
+        reverse(s.begin(), s.end());
+        for (int i = 0; i < n; ++i) {
+            if (s[i] != ' ') {
+                if (storeIndex != 0) s[storeIndex++] = ' ';
+                int j = i;
+                while (j < n && s[j] != ' ') s[storeIndex++] = s[j++];
+                reverse(s.begin() + storeIndex - (j - i), s.begin() + storeIndex);
+                i = j;
+            }
+        }
+        s.resize(storeIndex);
+        return s;
+    }
+};
+
+
+class Solution90 {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/151
+    /*
+        下面我们来看使用字符串流类stringstream的解法，我们先把字符串装载入字符串流中，然后定义一个临时变量tmp，然后把第一个单词赋给s，
+        这里需要注意的是，如果含有非空格字符，那么每次>>操作就会提取连在一起的非空格字符，那么我们每次将其加在s前面即可；如果原字符串为空，
+        那么就不会进入while循环；如果原字符串为许多空格字符连在一起，那么第一个>>操作就会提取出这些空格字符放入s中，然后不进入while循环，
+        这时候我们只要判断一下s的首字符是否为空格字符，是的话就将s清空即可，参见代码如下：
+
+        C++ 解法二：
+    */
+    string reverseWords(string &s) {
+        istringstream is(s);
+        string tmp;
+        is >> s;
+        while(is >> tmp) s = tmp + " " + s;
+        if(!s.empty() && s[0] == ' ') s = "";
+        return s;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.7.27, from https://github.com/grandyang/leetcode/issues/151
+    /*
+        下面这种方法也是使用stringstream来做，但是我们使用了getline来做，第三个参数是设定分隔字符，我们用空格字符来分隔，这个跟上面的>>
+        操作是有不同的，每次只能过一个空格字符，如果有多个空格字符连在一起，那么t会赋值为空字符串，所以我们在处理t的时候首先要判断其是否为空，
+        是的话直接跳过，参见代码如下：
+
+        C++ 解法三：
+    */
+    string reverseWords(string &s) {
+        istringstream is(s);
+        s = "";
+        string t = "";
+        while (getline(is, t, ' ')) {
+            if (t.empty()) continue;
+            s = (s.empty() ? t : (t + " " + s));
+        }
+        return s;
+    }
+};
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
 // @lc code=end
 
