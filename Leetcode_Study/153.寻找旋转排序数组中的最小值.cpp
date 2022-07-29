@@ -86,7 +86,8 @@ class Solution98 {
 public:
     // 2022.6.22, from https://github.com/liuyubobobo/Play-Leetcode/blob/master/0001-0500/0153-Find-Minimum-in-Rotated-Sorted-Array/cpp-0153/main.cpp
     int findMin(vector<int>& nums) {
-        // this solution uses C++ STL's min_element() to find smallest one and return its pointer
+        // this solution uses C++ STL's min_element() to find smallest one and 
+        // return its pointer
         // so if the answer is asking the value, return this pointer with *
         // if the answer is asking the index, use std::distance(nums.begin(), result)
         // refer https://en.cppreference.com/w/cpp/algorithm/min_element
@@ -171,7 +172,8 @@ public:
     // 2022.7.25, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array
     /*
         Use two pointers L and R to define the search range. Initially L = 0, R = N - 1.
-        If there is only one element, then we don't need to search. So the while condition should be L < R instead of L <= R.
+        If there is only one element, then we don't need to search. So the while condition 
+        should be L < R instead of L <= R.
         Let M = (L + R) / 2. Since M might = L, we compare A[M] with A[R].
         If A[M] > A[R], the min point must be to the right of A[M], so we let L = M + 1.
         Otherwise, the min point must be to the left of A[M] including A[M], so we let R = M.
@@ -243,13 +245,15 @@ public:
     /*
         算法
         (二分) O(logn)O(logn)
-        处理这种问题有个常用技巧：如果不想处理边界情况，比如当数组只有两三个数的时候，代码会出问题。我们可以在数组长度太短(这道题中我们判断数组长度小于5)时，
-        直接暴力循环做；数组有一定长度时再用二分做。这样做并不会影响算法的时间复杂度，但会缩短写代码的时间。
+        处理这种问题有个常用技巧：如果不想处理边界情况，比如当数组只有两三个数的时候，代码会出问题。
+        我们可以在数组长度太短(这道题中我们判断数组长度小于5)时，直接暴力循环做；数组有一定长度时再
+        用二分做。这样做并不会影响算法的时间复杂度，但会缩短写代码的时间。
 
         为了便于理解，我们将数组中的数画在二维坐标系中，横坐标表示数组下标，纵坐标表示数值，如下所示：
 
-        我们会发现数组中最小值前面的数 nums[i]nums[i] 都满足：nums[i]≥nums[0]nums[i]≥nums[0]，其中 nums[n−1]nums[n−1] 是数组最后一个元素；而数组
-        中最小值后面的数（包括最小值）都不满足这个条件。所以我们可以二分出最小值的位置。
+        我们会发现数组中最小值前面的数 nums[i]nums[i] 都满足：nums[i]≥nums[0]nums[i]≥nums[0]，
+        其中 nums[n−1]nums[n−1] 是数组最后一个元素；而数组中最小值后面的数（包括最小值）都不满足
+        这个条件。所以我们可以二分出最小值的位置。
 
         另外，不要忘记处理数组完全单调的特殊情况。
 
@@ -277,10 +281,12 @@ class Solution90 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
     /*
-        这道题说是对一个有序数组进行了若干次旋转，让找出旋转数组的最小值，这里肯定不能通过直接遍历整个数组来寻找，过于简单粗暴，这样的话，旋不旋转就没有意义。
-        但是可以利用旋转特点来进行优化，传统的找最小值是要遍历所有的数字的，这里由于旋转前是有序的，则数组中的第一个数字是最小的，发生旋转之后，第一个数字就
-        不一定是最小的，但是如果从第一个数字往后遍历的话，应该是递增的，但如果遇到较小的数字，则一定是转折点，大家可以自行举例验证，这种方法在极端情况下还是
-        线性的复杂度，但只要能过 OJ 的就是好方法，曾经代码如下
+        这道题说是对一个有序数组进行了若干次旋转，让找出旋转数组的最小值，这里肯定不能通过直接遍历整
+        个数组来寻找，过于简单粗暴，这样的话，旋不旋转就没有意义。但是可以利用旋转特点来进行优化，
+        传统的找最小值是要遍历所有的数字的，这里由于旋转前是有序的，则数组中的第一个数字是最小的，发生
+        旋转之后，第一个数字就不一定是最小的，但是如果从第一个数字往后遍历的话，应该是递增的，但如果
+        遇到较小的数字，则一定是转折点，大家可以自行举例验证，这种方法在极端情况下还是线性的复杂度，
+        但只要能过 OJ 的就是好方法，曾经代码如下
 
         解法一：
     */
@@ -298,10 +304,12 @@ class Solution89 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
     /*
-        我们可以将时间复杂度从 O(n) 缩小到 O(lgn)，这时候二分查找法就浮现在脑海。这里的二分法属于博主之前的总结帖 LeetCode Binary Search Summary 
-        二分搜索法小结 中的第五类，也是比较难的那一类，没有固定的 target 值比较，而是要跟数组中某个特定位置上的数字比较，决定接下来去哪一边继续搜索。
-        这里用中间的值 nums[mid] 和右边界值 nums[right] 进行比较，若数组没有旋转或者旋转点在左半段的时候，中间值是一定小于右边界值的，所以要去左半边
-        继续搜索，反之则去右半段查找，最终返回 nums[right] 即可，参见代码如下：
+        我们可以将时间复杂度从 O(n) 缩小到 O(lgn)，这时候二分查找法就浮现在脑海。这里的二分法属于博主
+        之前的总结帖 LeetCode Binary Search Summary 二分搜索法小结 中的第五类，也是比较难的那一类，
+        没有固定的 target 值比较，而是要跟数组中某个特定位置上的数字比较，决定接下来去哪一边继续搜索。
+        这里用中间的值 nums[mid] 和右边界值 nums[right] 进行比较，若数组没有旋转或者旋转点在左半段的
+        时候，中间值是一定小于右边界值的，所以要去左半边继续搜索，反之则去右半段查找，最终返回 
+        nums[right] 即可，参见代码如下：
 
         解法二：
     */
@@ -321,8 +329,8 @@ class Solution {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
     /*
-        下面这种分治法 Divide and Conquer 的解法，由热心网友 howard144 提供，这里每次将区间 [start, end] 从中间 mid 位置分为两段，分别调用递归函数，
-        并比较返回值，每次取返回值较小的那个即可，参见代码如下：
+        下面这种分治法 Divide and Conquer 的解法，由热心网友 howard144 提供，这里每次将区间 [start, end] 
+        从中间 mid 位置分为两段，分别调用递归函数，并比较返回值，每次取返回值较小的那个即可，参见代码如下：
 
         解法三：
     */

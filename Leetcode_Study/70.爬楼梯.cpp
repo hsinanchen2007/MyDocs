@@ -266,18 +266,19 @@ public:
         例如强行安慰自己爬到第0层，也有一种方法，什么都不做也就是一种方法即：dp[0] = 1，相当于直接站在楼顶。
         但总有点牵强的成分。
 
-        那还这么理解呢：我就认为跑到第0层，方法就是0啊，一步只能走一个台阶或者两个台阶，然而楼层是0，直接站楼顶上了，就是不用方法，
-        dp[0]就应该是0.
+        那还这么理解呢：我就认为跑到第0层，方法就是0啊，一步只能走一个台阶或者两个台阶，然而楼层是0，直接站楼顶上了，
+        就是不用方法，dp[0]就应该是0.
         
-        其实这么争论下去没有意义，大部分解释说dp[0]应该为1的理由其实是因为dp[0]=1的话在递推的过程中i从2开始遍历本题就能过，然后就往结果
-        上靠去解释dp[0] = 1。从dp数组定义的角度上来说，dp[0] = 0 也能说得通。
+        其实这么争论下去没有意义，大部分解释说dp[0]应该为1的理由其实是因为dp[0]=1的话在递推的过程中i从2开始遍历
+        本题就能过，然后就往结果上靠去解释dp[0] = 1。从dp数组定义的角度上来说，dp[0] = 0 也能说得通。
 
         需要注意的是：题目中说了n是一个正整数，题目根本就没说n有为0的情况。
         所以本题其实就不应该讨论dp[0]的初始化！
 
         我相信dp[1] = 1，dp[2] = 2，这个初始化大家应该都没有争议的。
 
-        所以我的原则是：不考虑dp[0]如果初始化，只初始化dp[1] = 1，dp[2] = 2，然后从i = 3开始递推，这样才符合dp[i]的定义。
+        所以我的原则是：不考虑dp[0]如果初始化，只初始化dp[1] = 1，dp[2] = 2，然后从i = 3开始递推，这样才符合
+        dp[i]的定义。
 
         确定遍历顺序
         从递推公式dp[i] = dp[i - 1] + dp[i - 2];中可以看出，遍历顺序一定是从前向后遍历的
@@ -314,14 +315,15 @@ public:
     /*
         当然依然也可以，优化一下空间复杂度，代码如下：
 
-        后面将讲解的很多动规的题目其实都是当前状态依赖前两个，或者前三个状态，都可以做空间上的优化，但我个人认为面试中能写出版本一就够了哈，清晰明了，
-        如果面试官要求进一步优化空间的话，我们再去优化。因为版本一才能体现出动规的思想精髓，递推的状态变化。
+        后面将讲解的很多动规的题目其实都是当前状态依赖前两个，或者前三个状态，都可以做空间上的优化，但我个人认为面试中能
+        写出版本一就够了哈，清晰明了，如果面试官要求进一步优化空间的话，我们再去优化。因为版本一才能体现出动规的思想精髓，
+        递推的状态变化。
 
         拓展
         这道题目还可以继续深化，就是一步一个台阶，两个台阶，三个台阶，直到 m个台阶，有多少种方法爬到n阶楼顶。
 
-        这又有难度了，这其实是一个完全背包问题，但力扣上没有这种题目，所以后续我在讲解背包问题的时候，今天这道题还会拿从背包问题的角度上来再讲一遍。
-        这里我先给出我的实现代码：
+        这又有难度了，这其实是一个完全背包问题，但力扣上没有这种题目，所以后续我在讲解背包问题的时候，今天这道题还会拿从
+        背包问题的角度上来再讲一遍。这里我先给出我的实现代码：
 
         class Solution {
         public:
@@ -339,9 +341,10 @@ public:
 
         代码中m表示最多可以爬m个台阶。
         以上代码不能运行哈，我主要是为了体现只要把m换成2，粘过去，就可以AC爬楼梯这道题，不信你就粘一下试试，哈哈。
-        此时我就发现一个绝佳的大厂面试题，第一道题就是单纯的爬楼梯，然后看候选人的代码实现，如果把dp[0]的定义成1了，就可以发难了，为什么dp[0]一定要初始化为1，
-        此时可能候选人就要强行给dp[0]应该是1找各种理由。那这就是一个考察点了，对dp[i]的定义理解的不深入。然后可以继续发难，如果一步一个台阶，两个台阶，三个台阶，
-        直到 m个台阶，有多少种方法爬到n阶楼顶。这道题目leetcode上并没有原题，绝对是考察候选人算法能力的绝佳好题。
+        此时我就发现一个绝佳的大厂面试题，第一道题就是单纯的爬楼梯，然后看候选人的代码实现，如果把dp[0]的定义成1了，就可以发难了，
+        为什么dp[0]一定要初始化为1，此时可能候选人就要强行给dp[0]应该是1找各种理由。那这就是一个考察点了，对dp[i]的定义理解
+        的不深入。然后可以继续发难，如果一步一个台阶，两个台阶，三个台阶，直到 m个台阶，有多少种方法爬到n阶楼顶。这道题目
+        leetcode上并没有原题，绝对是考察候选人算法能力的绝佳好题。
 
         这一连套问下来，候选人算法能力如何，面试官心里就有数了。
 
@@ -393,15 +396,16 @@ public:
         dp[i]：爬到有i个台阶的楼顶，有dp[i]种方法。
 
         确定递推公式
-        在动态规划：494.目标和 、 动态规划：518.零钱兑换II、动态规划：377. 组合总和 Ⅳ中我们都讲过了，求装满背包有几种方法，递推公式一般都是
-        dp[i] += dp[i - nums[j]];
+        在动态规划：494.目标和 、 动态规划：518.零钱兑换II、动态规划：377. 组合总和 Ⅳ中我们都讲过了，求装满背包有几种方法，
+        递推公式一般都是dp[i] += dp[i - nums[j]];
 
         本题呢，dp[i]有几种来源，dp[i - 1]，dp[i - 2]，dp[i - 3] 等等，即：dp[i - j]
 
         那么递推公式为：dp[i] += dp[i - j]
 
         dp数组如何初始化
-        既然递归公式是 dp[i] += dp[i - j]，那么dp[0] 一定为1，dp[0]是递归中一切数值的基础所在，如果dp[0]是0的话，其他数值都是0了。
+        既然递归公式是 dp[i] += dp[i - j]，那么dp[0] 一定为1，dp[0]是递归中一切数值的基础所在，如果dp[0]是0的话，
+        其他数值都是0了。
 
         下标非0的dp[i]初始化为0，因为dp[i]是靠dp[i-j]累计上来的，dp[i]本身为0这样才不会影响结果
 
@@ -581,10 +585,11 @@ class Solution86 {
         Other Question
         如果將这个题目稍微修改一下:
 
-        Triple Step: A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3 steps at a time. 
-        Implement a method to count how many possible ways the child can run up the stairs.
-        Let's think about: What is the lastest step that is done: The very last step: 3-step hop, a 2-step hop, or 1-step hop.
-        How many ways then are there to get up to the n-th step? We can get up to the n-th step by any of the following.
+        Triple Step: A child is running up a staircase with n steps and can hop either 1 step, 2 steps, 
+        or 3 steps at a time. Implement a method to count how many possible ways the child can run up the stairs.
+        Let's think about: What is the lastest step that is done: The very last step: 3-step hop, 
+        a 2-step hop, or 1-step hop. How many ways then are there to get up to the n-th step? We can get 
+        up to the n-th step by any of the following.
 
         Going to the (n -1)-st step and hopping 1 step;
         Goint to the (n-2)nd step and hopping 2 steps;
@@ -612,7 +617,8 @@ class Solution86 {
         Like the Fibonacci problem, the runtime of this algorithm is exponential($O(3^n)$).
 
         Solution 2: Add Memoization in this Solution 1
-        The previous solution for countWays is called many times for the same values, which is unnecessary. We need to fix it.
+        The previous solution for countWays is called many times for the same values, which is unnecessary. 
+        We need to fix it.
 
         class Solution {
         public:
@@ -704,7 +710,8 @@ class Solution83 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
     /*
-        论坛上还有一种分治法 Divide and Conquer 的解法，用的是递归形式，可以通过，但是博主没有十分理解，希望各位看官大神可以跟博主讲一讲～
+        论坛上还有一种分治法 Divide and Conquer 的解法，用的是递归形式，可以通过，但是博主没有十分理解，希望各位看官大神可以
+        跟博主讲一讲～
 
         C++ 解法四：
     */
@@ -719,8 +726,8 @@ class Solution {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/70
     /*
-        最后来看一种叼炸天的方法，其实斐波那契数列是可以求出通项公式的，推理的过程请参见 知乎上的这个贴子，那么有了通项公式后，直接在常数级的
-        时间复杂度范围内就可以求出结果了，参见代码如下：
+        最后来看一种叼炸天的方法，其实斐波那契数列是可以求出通项公式的，推理的过程请参见 知乎上的这个贴子，那么有了通项公式后，
+        直接在常数级的时间复杂度范围内就可以求出结果了，参见代码如下：
 
         C++ 解法五：
     */

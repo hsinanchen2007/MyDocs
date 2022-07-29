@@ -187,15 +187,16 @@ private:
     // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
     /*
         Solution 1. Map + Bi-directional Search
-        Use map to store the counts of different sums in AB and CD. Use two pointers one from smallest in AB going to greater values, 
-        and the other one from greatest in CD to smaller values. Whenever found a pair summing to 0, add count1 * count2 to the result.
+        Use map to store the counts of different sums in AB and CD. Use two pointers one from smallest in 
+        AB going to greater values, and the other one from greatest in CD to smaller values. Whenever found 
+        a pair summing to 0, add count1 * count2 to the result.
 
         Time complexity
-        The sum function iterates through O(N^2) pairs and accessing the map at most take O(log(N^2))=O(logN) time. So the sum takes 
-        O(N^2 * logN) time.
+        The sum function iterates through O(N^2) pairs and accessing the map at most take O(log(N^2))=O(logN) 
+        time. So the sum takes O(N^2 * logN) time.
 
-        Each map has O(N^2) data in the worst case and the bi-directional search only traverse each map once at most, so the searching 
-        takes O(N^2) time.
+        Each map has O(N^2) data in the worst case and the bi-directional search only traverse each map 
+        once at most, so the searching takes O(N^2) time.
 
         So, overall it takes O(N^2 * logN) time.
     */
@@ -234,7 +235,8 @@ public:
     // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/454.%204Sum%20II
     /*
         Solution 2. Two unordered_map
-        Similar to Solution 1, but use unordered_map instead. Loop through one of it, and find if the counterpart exists.
+        Similar to Solution 1, but use unordered_map instead. Loop through one of it, and find if the 
+        counterpart exists.
     */
     // OJ: https://leetcode.com/problems/4sum-ii
     // Author: github.com/lzl124631x
@@ -319,8 +321,8 @@ class Solution {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/454
     /*
-        下面这种方法用了两个 HashMap 分别记录 AB 和 CB 的两两之和出现次数，然后遍历其中一个 HashMap，并在另一个 HashMap 中找和的相反数出现的次数，
-        参见代码如下：
+        下面这种方法用了两个 HashMap 分别记录 AB 和 CB 的两两之和出现次数，然后遍历其中一个 HashMap，并在另一个 HashMap 中找和的相反
+        数出现的次数，参见代码如下：
 
         解法二：
     */

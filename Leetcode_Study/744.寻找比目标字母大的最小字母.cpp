@@ -200,10 +200,10 @@ class Solution92 {
 public:
     // 2022.7.26, from https://github.com/grandyang/leetcode/issues/744
     /*
-        这道题给了我们一堆有序的字母，然后又给了我们一个target字母，让我们求字母数组中第一个大于target的字母，数组是循环的，如果没有，那就返回第一个字母。
-        像这种在有序数组中找数字，二分法简直不要太适合啊。题目中说了数组至少有两个元素，那么我们首先用数组的尾元素来跟target比较，如果target大于等于尾元素的话，
-        直接返回数组的首元素即可。否则就利用二分法来做，这里是查找第一个大于目标值的数组，博主之前做过二分法的总结，参见这个帖子LeetCode Binary Search Summary 
-        二分搜索法小结，参见代码如下：
+        这道题给了我们一堆有序的字母，然后又给了我们一个target字母，让我们求字母数组中第一个大于target的字母，数组是循环的，如果没有，
+        那就返回第一个字母。像这种在有序数组中找数字，二分法简直不要太适合啊。题目中说了数组至少有两个元素，那么我们首先用数组的尾元素来
+        跟target比较，如果target大于等于尾元素的话，直接返回数组的首元素即可。否则就利用二分法来做，这里是查找第一个大于目标值的数组，
+        博主之前做过二分法的总结，参见这个帖子LeetCode Binary Search Summary 二分搜索法小结，参见代码如下：
     */
     char nextGreatestLetter(vector<char>& letters, char target) {
         if (target >= letters.back()) return letters[0];

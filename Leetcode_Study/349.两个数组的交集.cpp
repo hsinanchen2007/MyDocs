@@ -183,8 +183,8 @@ public:
         std::set
         std::multiset
         std::unordered_set
-        std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用unordered_set 读写效率是最高的，并不需要对数据进行排序，
-        而且还不要让数据重复，所以选择unordered_set。
+        std::set和std::multiset底层实现都是红黑树，std::unordered_set的底层实现是哈希表， 使用
+        unordered_set 读写效率是最高的，并不需要对数据进行排序，而且还不要让数据重复，所以选择unordered_set。
 
         思路如图所示：
 
@@ -382,8 +382,9 @@ class Solution90 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
     /*
-        这道题让找两个数组交集的部分（不包含重复数字），难度不算大，我们可以用个 HashSet 把 nums1 都放进去，然后遍历 nums2 的元素，
-        如果在 HashSet 中存在，说明是交集的部分，加入结果的 HashSet 中，最后再把结果转为 vector 的形式即可：
+        这道题让找两个数组交集的部分（不包含重复数字），难度不算大，我们可以用个 HashSet 把 nums1 都放进去，
+        然后遍历 nums2 的元素，如果在 HashSet 中存在，说明是交集的部分，加入结果的 HashSet 中，最后再把结果
+        转为 vector 的形式即可：
 
         解法一：
     */
@@ -401,8 +402,9 @@ class Solution89 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
     /*
-        我们还可以使用两个指针来做，先给两个数组排序，然后用两个指针分别指向两个数组的开头，然后比较两个数组的大小，把小的数字的指针向后移，
-        如果两个指针指的数字相等，那么看结果 res 是否为空，如果为空或者是最后一个数字和当前数字不等的话，将该数字加入结果 res 中，参见代码如下：
+        我们还可以使用两个指针来做，先给两个数组排序，然后用两个指针分别指向两个数组的开头，然后比较两个数组的大小，
+        把小的数字的指针向后移，如果两个指针指的数字相等，那么看结果 res 是否为空，如果为空或者是最后一个数字和当
+        前数字不等的话，将该数字加入结果 res 中，参见代码如下：
 
         解法二：
     */
@@ -430,8 +432,8 @@ class Solution88 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/349
     /*
-        我们还可以使用二分查找法来做，思路是将一个数组排序，然后遍历另一个数组，把遍历到的每个数字在排序号的数组中用二分查找法搜索，如果能找到则放入
-        结果 set 中，这里我们用到了set的去重复的特性，最后我们将set转为vector即可：
+        我们还可以使用二分查找法来做，思路是将一个数组排序，然后遍历另一个数组，把遍历到的每个数字在排序号的数组中用
+        二分查找法搜索，如果能找到则放入结果 set 中，这里我们用到了set的去重复的特性，最后我们将set转为vector即可：
 
         解法三：
     */

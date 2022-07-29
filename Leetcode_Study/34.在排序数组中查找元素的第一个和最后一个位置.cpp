@@ -50,7 +50,8 @@ public:
     // as the given vector may contain same value in different elements, although they are all sorted
     // Below code is a copy/paste with some additional comments!
     /*
-        这道题目如果基础不是很好，不建议大家看简短的代码，简短的代码隐藏了太多逻辑，结果就是稀里糊涂把题AC了，但是没有想清楚具体细节！
+        这道题目如果基础不是很好，不建议大家看简短的代码，简短的代码隐藏了太多逻辑，结果就是稀里糊涂把题AC了，但是没有
+        想清楚具体细节！
 
         对二分还不了解的同学先做这两题：
 
@@ -60,7 +61,8 @@ public:
 
         寻找target在数组里的左右边界，有如下三种情况：
 
-        情况一：target 在数组范围的右边或者左边，例如数组{3, 4, 5}，target为2或者数组{3, 4, 5},target为6，此时应该返回{-1, -1}
+        情况一：target 在数组范围的右边或者左边，例如数组{3, 4, 5}，target为2或者数组{3, 4, 5},target为6，此时应
+        该返回{-1, -1}
         情况二：target 在数组范围中，且数组中不存在target，例如数组{3,6,7},target为5，此时应该返回{-1, -1}
         情况三：target 在数组范围中，且数组中存在target，例如数组{3,6,7},target为6，此时应该返回{1, 1}
         这三种情况都考虑到，说明就想的很清楚了。
@@ -69,14 +71,15 @@ public:
 
         采用二分法来去寻找左右边界，为了让代码清晰，我分别写两个二分来寻找左边界和右边界。
 
-        刚刚接触二分搜索的同学不建议上来就想用一个二分来查找左右边界，很容易把自己绕进去，建议扎扎实实的写两个二分分别找左边界和右边界
+        刚刚接触二分搜索的同学不建议上来就想用一个二分来查找左右边界，很容易把自己绕进去，建议扎扎实实的写两个二分分别找
+        左边界和右边界
 
         寻找右边界
-        先来寻找右边界，至于二分查找，如果看过704.二分查找就会知道，二分查找中什么时候用while (left <= right)，有什么时候用while (left < right)，
-        其实只要清楚循环不变量，很容易区分两种写法。
+        先来寻找右边界，至于二分查找，如果看过704.二分查找就会知道，二分查找中什么时候用while (left <= right)，有什么
+        时候用while (left < right)，其实只要清楚循环不变量，很容易区分两种写法。
 
-        那么这里我采用while (left <= right)的写法，区间定义为[left, right]，即左闭右闭的区间（如果这里有点看不懂了，强烈建议把704.二分查找这篇文章先看了，
-        704题目做了之后再做这道题目就好很多了）
+        那么这里我采用while (left <= right)的写法，区间定义为[left, right]，即左闭右闭的区间（如果这里有点看不懂了，
+        强烈建议把704.二分查找这篇文章先看了，704题目做了之后再做这道题目就好很多了）
 
         确定好：计算出来的右边界是不包含target的右边界，左边界同理。
         可以写出如下代码
@@ -198,10 +201,12 @@ class Solution98 {
 public:
     // 2022.6.18, from https://www.guozet.me/leetcode/summary/2019-01-15-Algorithms-Binary-Search.html
     /*
-        Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half 
-        the portion of the list that could contain the item, until you've narrowed down the possible locations to just one.
+        Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by 
+        repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed 
+        down the possible locations to just one.
 
-        For example, binary search in the guessing game. Here, try it for a number from 1 to 300. You should need no more than 9 guesses.
+        For example, binary search in the guessing game. Here, try it for a number from 1 to 300. You should 
+        need no more than 9 guesses.
 
         Here's a step-by-step description of using binary search to play the guessing game:
 
@@ -217,26 +222,27 @@ public:
 
         The requirment for the Binary Search is the sorted input data.
 
-        Each node needs to make decision go to left or right. For the Binary Search method, the input data will include three partition: 
-        Mid, left array, right array.
+        Each node needs to make decision go to left or right. For the Binary Search method, the input data will 
+        include three partition: Mid, left array, right array.
 
         If the mid number is less than the target number, then go to right array to find the target number.
         If the mid number is larger than the target number, then go to left array to find the target number.
-        When you go to the left or right way, you can choose the recursive function or not recursive function to solve it.
+        When you go to the left or right way, you can choose the recursive function or not recursive function to 
+        solve it.
 
-        The answer for this question is that the last mid point is the target number which you want to find if there is a target number 
-        in the array. If there is no target number in the array, when you find the last mid number and then you can return false or use 
-        this number to do something.
+        The answer for this question is that the last mid point is the target number which you want to find 
+        if there is a target number in the array. If there is no target number in the array, when you find the 
+        last mid number and then you can return false or use this number to do something.
 
         Why we need Binary Search.
 
 
         There are some states for the above picture:
 
-        The O(eval) is the time to compare the mid number with the target number and the search space need to move to left part or right 
-        part. It may be: O(1), O(n), or O(logn).
-        SO, you can use the input dataset range to choose which mothod you can use to solve this problem. There are two tips which you 
-        can use to think which method is good for you to solve this problem.
+        The O(eval) is the time to compare the mid number with the target number and the search space need to 
+        move to left part or right part. It may be: O(1), O(n), or O(logn).
+        SO, you can use the input dataset range to choose which mothod you can use to solve this problem. 
+        There are two tips which you can use to think which method is good for you to solve this problem.
 
         Template
         Template 1: Unique and sorted elements
@@ -254,25 +260,27 @@ public:
             l + m + 1
         return l #or not find, return the min number
 
-        As the above picture, if the input element is unique and sorted, then we can easily use this template to deal with these similar 
-        problems. Like the example 1.
+        As the above picture, if the input element is unique and sorted, then we can easily use this template 
+        to deal with these similar problems. Like the example 1.
 
         If the Input data's element is not unique. And it have repetitive numbers.
 
         Template 2: Repetitive and sorted elements
 
 
-        The lower_bound function will return the first index of i, such that A[i] >= x, So, when you find it, you need to check out if this 
-        A[i] may not = x. If the index > len, then there is no number > this.
+        The lower_bound function will return the first index of i, such that A[i] >= x, So, when you find it, 
+        you need to check out if this A[i] may not = x. If the index > len, then there is no number > this.
 
         Example
 
         Leetcode 69
 
-        It is not way to find the real number to fit the requrtment. So, we can find the number the first time bigger than the input.
+        It is not way to find the real number to fit the requrtment. So, we can find the number the first time 
+        bigger than the input.
 
         Relative Questions
-        二分查找算法在实际使用中可能会出现各种变体，我们要抓住有序的特点，一旦发现输入有有序的特点，我们就可以考虑是否可以运用二分查找算法来解决该问题。
+        二分查找算法在实际使用中可能会出现各种变体，我们要抓住有序的特点，一旦发现输入有有序的特点，我们就可以考虑是否可以运用
+        二分查找算法来解决该问题。
 
         Questions:
 
@@ -343,8 +351,9 @@ public:
         };
 
         Binary Search(LC.704)
-        Problem: Given a sorted (in ascending order) integer array nums of n elements and a targetvalue, write a function 
-        to search target in nums. If target exists, then return its index, otherwise return -1.
+        Problem: Given a sorted (in ascending order) integer array nums of n elements and a targetvalue, 
+        write a function to search target in nums. If target exists, then return its index, otherwise 
+        return -1.
         Time complexity: O(log n), Space complexity: O(1)
         class Solution {
         public:
@@ -496,8 +505,9 @@ public:
         };
         
         Find Peak Element(LC.162)
-        题目要求是 O(log n) 的时间复杂度，考虑使用类似于二分查找法来缩短时间。由于只是需要找到任意一个峰值，那么我们在确定二分查找折半后中间那个元素后，
-        和紧跟的那个元素比较下大小，如果大于，则说明峰值在前面，如果小于则在后面。这样就可以找到一个峰值了。
+        题目要求是 O(log n) 的时间复杂度，考虑使用类似于二分查找法来缩短时间。由于只是需要找到任意一个峰值，那么我们在
+        确定二分查找折半后中间那个元素后，和紧跟的那个元素比较下大小，如果大于，则说明峰值在前面，如果小于则在后面。
+        这样就可以找到一个峰值了。
         class Solution {
         public:
             int findPeakElement(vector<int>& A) {
@@ -620,9 +630,10 @@ public:
         L and R might go out of boundary.
         Solution: Simply do a out-of-boundary check.
         Need to think about using L or R in the end.
-        Solution: Take the first binary search for example, if A[M] < target, we move L. If A[M] >= target, we move R. In the end, L and R 
-        will swap order, so R will point to the last A[i] < target, and L will point to the first A[i] >= target. Thus, we should use L as 
-        the left boundary.
+        Solution: Take the first binary search for example, if A[M] < target, we move L. 
+        If A[M] >= target, we move R. In the end, L and R will swap order, so R will point 
+        to the last A[i] < target, and L will point to the first A[i] >= target. Thus, 
+        we should use L as the left boundary.
     */
     // Author: github.com/lzl124631x
     // Time: O(logN)
@@ -658,11 +669,13 @@ public:
         In the end, L and R points to the same position.
 
         Con:
-        Need to think about setting L = M or R = M. Solution: Take the first binary search for example. If A[M] < target, we want to 
-        move L to M + 1 because A[M] != target. If A[M] >= target, we want to move R to M. Since we are using R = M, we need to make 
+        Need to think about setting L = M or R = M. Solution: Take the first binary search 
+        for example. If A[M] < target, we want to move L to M + 1 because A[M] != target. 
+        If A[M] >= target, we want to move R to M. Since we are using R = M, we need to make 
         sure M != R, thus we should round down M as (L + R) / 2.
-        Now consider the second binary search. If A[M] > target, we want to move R to M - 1. If A[M] <= target, we want to move L to M. 
-        Since we are using L = M, we need to make sure M != R, thus we should round up M as (L + R + 1) / 2.
+        Now consider the second binary search. If A[M] > target, we want to move R to M - 1. 
+        If A[M] <= target, we want to move L to M. Since we are using L = M, we need to make 
+        sure M != R, thus we should round up M as (L + R + 1) / 2.
 
         Overall, if we do L = M, we round up. If we do R = M, we round down.
 
@@ -713,8 +726,9 @@ class Solution93 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/34
     /*
-        这道题让我们在一个有序整数数组中寻找相同目标值的起始和结束位置，而且限定了时间复杂度为 O(logn)，这是典型的二分查找法的时间复杂度，
-        所以这里也需要用此方法，思路是首先对原数组使用二分查找法，找出其中一个目标值的位置，然后向两边搜索找出起始和结束的位置，代码如下：
+        这道题让我们在一个有序整数数组中寻找相同目标值的起始和结束位置，而且限定了时间复杂度为 O(logn)，
+        这是典型的二分查找法的时间复杂度，所以这里也需要用此方法，思路是首先对原数组使用二分查找法，
+        找出其中一个目标值的位置，然后向两边搜索找出起始和结束的位置，代码如下：
 
         解法一:
     */
@@ -740,9 +754,10 @@ class Solution92 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/34
     /*
-        可能有些人会觉得上面的算法不是严格意义上的 O(logn) 的算法，因为在最坏的情况下会变成 O(n)，比如当数组里的数全是目标值的话，
-        从中间向两边找边界就会一直遍历完整个数组，那么下面来看一种真正意义上的 O(logn) 的算法，使用两次二分查找法，第一次找到左边界，
-        第二次调用找到右边界即可，具体代码如下：
+        可能有些人会觉得上面的算法不是严格意义上的 O(logn) 的算法，因为在最坏的情况下会变成 O(n)，
+        比如当数组里的数全是目标值的话，从中间向两边找边界就会一直遍历完整个数组，那么下面来看一种
+        真正意义上的 O(logn) 的算法，使用两次二分查找法，第一次找到左边界，第二次调用找到右边界即可，
+        具体代码如下：
 
         解法二：
     */
@@ -772,10 +787,13 @@ class Solution {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/34
     /*
-        其实我们也可以只使用一个二分查找的子函数，来同时查找出第一个和最后一个位置。如何只用查找第一个大于等于目标值的二分函数来查找整个范围呢，
-        这里用到了一个小 trick，首先来查找起始位置的 target，就是在数组中查找第一个大于等于 target 的位置，当返回的位置越界，或者该位置上的
-        值不等于 target 时，表示数组中没有 target，直接返回 {-1, -1} 即可。若查找到了 target 值，则再查找第一个大于等于 target+1 的位置，
-        然后把返回的位置减1，就是 target 的最后一个位置，即便是返回的值越界了，减1后也不会越界，这样就实现了使用一个二分查找函数来解题啦，参见代码如下：
+        其实我们也可以只使用一个二分查找的子函数，来同时查找出第一个和最后一个位置。如何只用查找
+        第一个大于等于目标值的二分函数来查找整个范围呢，这里用到了一个小 trick，首先来查找起始
+        位置的 target，就是在数组中查找第一个大于等于 target 的位置，当返回的位置越界，或者该
+        位置上的值不等于 target 时，表示数组中没有 target，直接返回 {-1, -1} 即可。若查找到了 
+        target 值，则再查找第一个大于等于 target+1 的位置，然后把返回的位置减1，就是 target 
+        的最后一个位置，即便是返回的值越界了，减1后也不会越界，这样就实现了使用一个二分查找函数
+        来解题啦，参见代码如下：
 
         解法三：
     */

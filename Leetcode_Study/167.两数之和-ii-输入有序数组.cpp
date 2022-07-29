@@ -9,7 +9,8 @@
 https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
 
 167. 两数之和 II - 输入有序数组
-给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，请你从数组中找出满足相加之和等于目标数 target 的两个数。如果设这两个数分别是 
+给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，请你从数组中找出满足相加之和
+等于目标数 target 的两个数。如果设这两个数分别是 
 numbers[index1] 和 numbers[index2] ，则 1 <= index1 < index2 <= numbers.length 。
 
 以长度为 2 的整数数组 [index1, index2] 的形式返回这两个整数的下标 index1 和 index2。
@@ -196,9 +197,10 @@ class Solution94 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/167
     /*
-        这又是一道Two Sum的衍生题，作为LeetCode开山之题，我们务必要把Two Sum及其所有的衍生题都拿下，这道题其实应该更容易一些，
-        因为给定的数组是有序的，而且题目中限定了一定会有解，我最开始想到的方法是二分法来搜索，因为一定有解，而且数组是有序的，那么
-        第一个数字肯定要小于目标值target，那么我们每次用二分法来搜索target - numbers[i]即可，代码如下：
+        这又是一道Two Sum的衍生题，作为LeetCode开山之题，我们务必要把Two Sum及其所有的衍生题都拿下，
+        这道题其实应该更容易一些，因为给定的数组是有序的，而且题目中限定了一定会有解，我最开始想到的方法是
+        二分法来搜索，因为一定有解，而且数组是有序的，那么第一个数字肯定要小于目标值target，那么我们每次
+        用二分法来搜索target - numbers[i]即可，代码如下：
 
         解法一：
     */
@@ -222,9 +224,10 @@ class Solution {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/167
     /*
-        但是上面那种方法并不efficient，时间复杂度是O(nlgn)，我们再来看一种O(n)的解法，我们只需要两个指针，一个指向开头，一个指向末尾，
-        然后向中间遍历，如果指向的两个数相加正好等于target的话，直接返回两个指针的位置即可，若小于target，左指针右移一位，若大于target，
-        右指针左移一位，以此类推直至两个指针相遇停止，参见代码如下：
+        但是上面那种方法并不efficient，时间复杂度是O(nlgn)，我们再来看一种O(n)的解法，我们只需要两个指针，
+        一个指向开头，一个指向末尾，然后向中间遍历，如果指向的两个数相加正好等于target的话，直接返回两个指针
+        的位置即可，若小于target，左指针右移一位，若大于target，右指针左移一位，以此类推直至两个指针相遇停止，
+        参见代码如下：
 
         解法二：
     */
