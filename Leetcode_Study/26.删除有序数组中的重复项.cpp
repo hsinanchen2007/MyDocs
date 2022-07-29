@@ -31,7 +31,6 @@ for (int i = 0; i < k; i++) {
     assert nums[i] == expectedNums[i];
 }
 如果所有断言都通过，那么您的题解将被 通过。
-
  
 
 示例 1：

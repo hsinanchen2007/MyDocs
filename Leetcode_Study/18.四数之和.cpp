@@ -9,7 +9,8 @@
 https://leetcode.cn/problems/4sum/
 
 18. 四数之和
-给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 [nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：
+给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 
+[nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：
 
 0 <= a, b, c, d < n
 a、b、c 和 d 互不相同
@@ -209,7 +210,8 @@ public:
        四数之和，和15.三数之和是一个思路，都是使用双指针法, 基本解法就是在15.三数之和 的基础上再套一层for循环。
       
        但是有一些细节需要注意，例如： 不要判断nums[k] > target 就返回了，三数之和 可以通过 nums[i] > 0 就返回了，因为 0 已经是确定的数了，四数之和这道题目 
-       target是任意值。比如：数组是[-4, -3, -2, -1]，target是-10，不能因为-4 > -10而跳过。但是我们依旧可以去做剪枝，逻辑变成nums[i] > target && (nums[i] >=0 || target >= 0)就可以了。
+       target是任意值。比如：数组是[-4, -3, -2, -1]，target是-10，不能因为-4 > -10而跳过。但是我们依旧可以去做剪枝，逻辑变成nums[i] > target && 
+       (nums[i] >=0 || target >= 0)就可以了。
       
        15.三数之和的双指针解法是一层for循环num[i]为确定值，然后循环内有left和right下标作为双指针，找到nums[i] + nums[left] + nums[right] == 0。
       
@@ -292,6 +294,7 @@ public:
 
 
 // Note that below solutions will NOT work now due to new tricky testcases!!
+// Will revisit them later with my owned fix
 // https://github.com/MaskRay/LeetCode/blob/master/4sum.cc
 // https://walkccc.me/LeetCode/problems/0018/
 // https://github.com/lzl124631x/LeetCode/tree/master/leetcode/18.%204Sum
