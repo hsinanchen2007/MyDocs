@@ -72,9 +72,11 @@ public:
         刚刚接触二分搜索的同学不建议上来就想用一个二分来查找左右边界，很容易把自己绕进去，建议扎扎实实的写两个二分分别找左边界和右边界
 
         寻找右边界
-        先来寻找右边界，至于二分查找，如果看过704.二分查找就会知道，二分查找中什么时候用while (left <= right)，有什么时候用while (left < right)，其实只要清楚循环不变量，很容易区分两种写法。
+        先来寻找右边界，至于二分查找，如果看过704.二分查找就会知道，二分查找中什么时候用while (left <= right)，有什么时候用while (left < right)，
+        其实只要清楚循环不变量，很容易区分两种写法。
 
-        那么这里我采用while (left <= right)的写法，区间定义为[left, right]，即左闭右闭的区间（如果这里有点看不懂了，强烈建议把704.二分查找这篇文章先看了，704题目做了之后再做这道题目就好很多了）
+        那么这里我采用while (left <= right)的写法，区间定义为[left, right]，即左闭右闭的区间（如果这里有点看不懂了，强烈建议把704.二分查找这篇文章先看了，
+        704题目做了之后再做这道题目就好很多了）
 
         确定好：计算出来的右边界是不包含target的右边界，左边界同理。
         可以写出如下代码
@@ -251,7 +253,7 @@ public:
             else:
             l + m + 1
         return l #or not find, return the min number
-        Copy
+
         As the above picture, if the input element is unique and sorted, then we can easily use this template to deal with these similar 
         problems. Like the example 1.
 
@@ -618,8 +620,9 @@ public:
         L and R might go out of boundary.
         Solution: Simply do a out-of-boundary check.
         Need to think about using L or R in the end.
-        Solution: Take the first binary search for example, if A[M] < target, we move L. If A[M] >= target, we move R. In the end, L and R will swap order, 
-        so R will point to the last A[i] < target, and L will point to the first A[i] >= target. Thus, we should use L as the left boundary.
+        Solution: Take the first binary search for example, if A[M] < target, we move L. If A[M] >= target, we move R. In the end, L and R 
+        will swap order, so R will point to the last A[i] < target, and L will point to the first A[i] >= target. Thus, we should use L as 
+        the left boundary.
     */
     // Author: github.com/lzl124631x
     // Time: O(logN)
