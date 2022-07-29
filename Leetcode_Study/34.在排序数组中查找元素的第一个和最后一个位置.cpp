@@ -253,7 +253,7 @@ public:
             else:
             l + m + 1
         return l #or not find, return the min number
-        Copy
+
         As the above picture, if the input element is unique and sorted, then we can easily use this template to deal with these similar 
         problems. Like the example 1.
 

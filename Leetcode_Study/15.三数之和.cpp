@@ -410,14 +410,13 @@ public:
           } else {
           }
        }
+
        但细想一下，这种去重其实对提升程序运行效率是没有帮助的。
       
        拿right去重为例，即使不加这个去重逻辑，依然根据 while (right > left) 和 if (nums[i] + nums[left] + nums[right] > 0) 去完成right-- 的操作。
-      
        多加了 while (left < right && nums[right] == nums[right + 1]) right--; 这一行代码，其实就是把 需要执行的逻辑提前执行了，但并没有减少 判断的逻辑。
       
        最直白的思考过程，就是right还是一个数一个数的减下去的，所以在哪里减的都是一样的。
-      
        所以这种去重 是可以不加的。 仅仅是 把去重的逻辑提前了而已。
       
        思考题
@@ -479,7 +478,6 @@ public:
         return result;
     }
 };
-
 
 
 class Solution94 {
