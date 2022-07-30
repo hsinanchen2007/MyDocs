@@ -86,6 +86,8 @@ public:
 class Solution99 {
 public:
     // 2022.7.30, from https://walkccc.me/LeetCode/problems/0033/
+    // Time: O(logn)
+    // Space: O(1)
     int search(vector<int>& nums, int target) {
         int l = 0;
         int r = nums.size() - 1;
