@@ -68,7 +68,8 @@ int main()
         cout << "At least one number is larger than 100!" << endl;
     }
 
-    // easier to remember is, whether "function" of them is "condition"?
+    // easier to remember is, whether "function" them is "condition"? Then use this to for return true/false 
+    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // Some numbers are even!
