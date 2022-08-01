@@ -69,9 +69,22 @@ int main()
     for_each(myV.begin(), myV.end(), myFunc3);
     cout << "Result4 of sum is " << another_result << endl;
 
+    // define a local variable used by lambdas function, initializes it 0, and return its sum 
+    // every time it is called. Note that "myResult" cannot be defined by int or auto here
+    // inside lambdas function
+    for_each(myV.begin(), myV.end(), [myResult = 0](int value) mutable { 
+        myResult = myResult + value; cout << "Result5 of sum now is " << myResult << endl; });
+
+    // from C++ 20, these functions will be under std::ranges, not under std::
+
     return 0;
     // Result1 of sum is 25
     // Result2 of sum is 25
     // Result3 of sum is 50
     // Result4 of sum is 75
+    // Result5 of sum now is 1
+    // Result5 of sum now is 4
+    // Result5 of sum now is 9
+    // Result5 of sum now is 16
+    // Result5 of sum now is 25
 }
