@@ -191,6 +191,22 @@ public:
 };
 
 
+class Solution95 {
+public:
+    // 2022.7.31, from https://github.com/grandyang/leetcode/issues/875
+    int minEatingSpeed(vector<int>& piles, int H) {
+        int left = 1, right = 1e9;
+        while (left <= right) {
+            long long mid = left + (right - left) / 2, cnt = 0;
+            for (int pile : piles) cnt += (pile + mid - 1) / mid;
+            if (cnt > H) left = mid + 1;
+            else right = mid - 1;
+        }
+        return left;
+    }
+};
+
+
 class Solution {
 public:
     // 2022.7.31, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/koko-eating-bananas.cpp
