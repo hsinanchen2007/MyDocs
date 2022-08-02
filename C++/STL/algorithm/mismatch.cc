@@ -67,6 +67,7 @@ int main()
 
     // 2022.8.1
     // Note, this function seems a good way to do LC string question
+    // from C++ 20, these functions will be under std::ranges, not under std::
     // The input string is abXYZba, and do mismatch from forward and backward
     // First mismatched is X, and second mismatched is Z
     // The matched string is ab
