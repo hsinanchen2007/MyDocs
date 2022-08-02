@@ -270,7 +270,7 @@ public:
 };
 
 
-class Solution {
+class Solution91 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/162
     /*
@@ -295,6 +295,16 @@ public:
 /************************************************************************************************************/
 /************************************************************************************************************/
 
+
+class Solution {
+public:
+    // 2022.8.2, by Hsinan, use max_element() to find max one in the given vector
+    // then get its index by distance()
+    int findPeakElement(vector<int>& nums) {
+        auto top = max_element(nums.begin(), nums.end());
+        return (top != nums.end() ? distance(nums.begin(), top) : -1);
+    }
+};
 
 // @lc code=end
 
