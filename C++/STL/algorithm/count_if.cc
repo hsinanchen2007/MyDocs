@@ -50,6 +50,7 @@ int main()
     // count_if()
     cout << "Number equal or larger than 7 in myV vector is " << count_if(myV.begin(), myV.end(), [](int value){ return (value >= 7); }) << endl;
 
+    // 2022.7.31
     // when we need lambdas function, we need to use count_if(). count() can only hold a specific value
     // from C++ 20, these functions will be under std::ranges, not under std:: 
 
