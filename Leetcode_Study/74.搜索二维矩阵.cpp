@@ -358,7 +358,7 @@ public:
 };
 
 
-class Solution {
+class Solution90 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/74
     /*
@@ -385,6 +385,36 @@ public:
 /************************************************************************************************************/
 /************************************************************************************************************/
 
+
+class Solution89 {
+public:
+    // 2022.8.2, by Hsinan
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        for (int row = 0; row < matrix.size(); row++) {
+            if (binary_search(matrix[row].begin(), matrix[row].end(), target)) return true;
+        }
+        return false;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.8.2, by Hsinan
+    // lower_bound() will find the first value <= target
+    // while upper_bound() will find the first value > target
+    // so when we use this way to find target, better use lower_bound()
+    // and we can use (*iterator == target) to do final check
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        for (int row = 0; row < matrix.size(); row++) {
+            auto lower = lower_bound(matrix[row].begin(), matrix[row].end(), target);
+            if ((lower != matrix[row].end()) && (*lower == target)) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
 
 // @lc code=end
 
