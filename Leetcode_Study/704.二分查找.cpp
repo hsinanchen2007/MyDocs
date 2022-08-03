@@ -300,7 +300,7 @@ public:
 };
 
 
-class Solution {
+class Solution92 {
 public:
     // 2022.7.26, from https://github.com/grandyang/leetcode/issues/704
     /*
@@ -468,6 +468,22 @@ public:
 /************************************************************************************************************/
 /************************************************************************************************************/
 
+
+class Solution {
+public:
+    // 2022.8.2, by Hsinan, can't use binary_search() as this function return boolean, but this LC
+    // ask for index value. Also, why don't use upper_bound()? because it will for sure return the 
+    // next one instead of target, so even if we check return and -1 to get "maybe" target value,
+    // it just makes code ugly
+    int search(vector<int>& nums, int target) {
+        auto ret = lower_bound(nums.begin(), nums.end(), target);
+        if (ret != nums.end() && *ret == target) {
+            return (distance(nums.begin(), ret));
+        } else { 
+            return -1;
+        }
+    }
+};
 
 // @lc code=end
 
