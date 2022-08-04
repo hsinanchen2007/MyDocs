@@ -126,7 +126,7 @@ Hash
         475. 供暖器/Heaters, M
         611. 有效三角形的个数/Valid Triangle Number, M
         981. 基于时间的键值存储/Time Based Key-Value Store, M
-
+        875. 爱吃香蕉的珂珂/Koko Eating Bananas, M
 
 
 
