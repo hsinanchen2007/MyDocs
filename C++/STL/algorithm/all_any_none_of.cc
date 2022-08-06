@@ -25,9 +25,10 @@ https://en.cppreference.com/w/cpp/algorithm/all_any_none_of
 1) Checks if unary predicate p returns true for all elements in the range [first, last).
 3) Checks if unary predicate p returns true for at least one element in the range [first, last).
 5) Checks if unary predicate p returns true for no elements in the range [first, last).
-2,4,6) Same as (1,3,5), but executed according to policy. These overloads do not participate in overload 
-resolution unless std::is_execution_policy_v<std::decay_t<ExecutionPolicy>> (until C++20) 
-std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>> (since C++20) is true.
+2,4,6) Same as (1,3,5), but executed according to policy. These overloads do not participate 
+in overload resolution unless std::is_execution_policy_v<std::decay_t<ExecutionPolicy>> 
+(until C++20) std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>> (since C++20) 
+is true.
 
 See also Notes below.
 

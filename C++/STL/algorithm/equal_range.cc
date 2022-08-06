@@ -157,7 +157,8 @@ int main()
         cout << "Element of 3 we found in vector is "<< *element << endl;
     }
 
-    // 2022.8.3, again, the return of equal_range() is std::pair that contains first and last 
+    // 2022.8.3
+    // again, the return of equal_range() is std::pair that contains first and last 
     // elements found, also the criteria to use this function is a fully sorted source
     
 
