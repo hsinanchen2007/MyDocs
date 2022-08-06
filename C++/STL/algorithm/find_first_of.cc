@@ -160,6 +160,7 @@ int main()
     // 2022.8.6
     // find_first_of() will try to find any matched element from test to myV1, and return the first matched
     // element iterator. This can be used to find any first matched string/character in string question
+    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // Returned from find_end() is 1, index 9
