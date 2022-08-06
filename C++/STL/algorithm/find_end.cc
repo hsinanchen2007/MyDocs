@@ -76,11 +76,14 @@ pred：用于自定义查找规则。该规则实际上是一个包含 2 个参�
 #include <iostream>     // std::cout
 #include <algorithm>    // std::find_end
 #include <vector>       // std::vector
+
 using namespace std;
+
 //以普通函数的形式定义一个匹配规则
 bool mycomp1(int i, int j) {
     return (i%j == 0);
 }
+
 //以函数对象的形式定义一个匹配规则
 class mycomp2 {
 public:
@@ -88,6 +91,7 @@ public:
         return (i%j == 0);
     }
 };
+
 int main() {
     vector<int> myvector{ 1,2,3,4,8,12,18,1,2,3 };
     int myarr[] = { 1,2,3 };
@@ -104,6 +108,7 @@ int main() {
     }
     return 0;
 }
+
 程序执行结果为：
 匹配{1,2,3}的起始位置为：7,*it = 1
 匹配{2,3,4}的起始位置为：4,*it = 8
@@ -139,6 +144,7 @@ ForwardIterator1 find_end(ForwardIterator1 first1, ForwardIterator1 last1,
     }
     return ret;
 }
+
 另外，C++ STL 标准库还提供了和 find_end() 函数功能恰恰相反的 search() 函数，有关该函数的用法，
 可阅读《C++ search() 函数》一节。
 
@@ -164,6 +170,7 @@ int main()
     // 2022.8.5
     // note that the check from myV2 is strict, that means it needed to find exact match in myV1
     // if it is not 100% match, end iterator will return
+    // this may be useful for string question to find last happened substring from a given string
 
     return 0;
     // Returned from find_end() is 6, index 11

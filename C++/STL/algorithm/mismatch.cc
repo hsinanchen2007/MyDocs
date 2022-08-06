@@ -64,8 +64,10 @@ iter1 加上第二个序列的长度。
 #include <algorithm>                                     // For equal() algorithm
 #include <string>                                        // For string class
 #include <iterator>                                      // For stream iterators
+
 using std::string;
 using word_iter = std::vector<string>::iterator;
+
 int main()
 {
     std::vector<string> words1 {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -102,6 +104,7 @@ int main()
     std::cout << "\nCompare from words1[1] to end with words2[0] to second-to-last:";
     print_match(std::mismatch(iter1 + 1, end_iter1, iter2, end_iter2 - 1), end_iter1);
 }
+
 注意 words2 中的内容和前面示例中的有些不同。每一次应用 mismatch() 的结果都是由定义为 print_match 的 lambda 
 表达式生成的。它的参数是一个 pair 对象和一个 vector<string> 容器的迭代器。使用 using 指令生成 word_iter 
 别名可以使 lambda 表达式的定义更简单。
@@ -189,11 +192,11 @@ int main()
     // Note, this function seems a good way to do LC string question
     // from C++ 20, these functions will be under std::ranges, not under std::
     // The input string is abXYZba, and do mismatch from forward and backward
+
+    return 0;
     // First mismatched is X, and second mismatched is Z
     // The matched string is ab
     // ab
     // a
     // aba
-
-    return 0;
 }

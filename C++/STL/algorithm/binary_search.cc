@@ -67,9 +67,13 @@ element<val（或者 comp(val, element）成立的元素都位于不成立元素
 #include <iostream>     // std::cout
 #include <algorithm>    // std::binary_search
 #include <vector>       // std::vector
+
 using namespace std;
+
 //以普通函数的方式定义查找规则
+
 bool mycomp(int i, int j) { return i > j; }
+
 //以函数对象的形式定义查找规则
 class mycomp2 {
 public:
@@ -77,6 +81,7 @@ public:
         return i > j;
     }
 };
+
 int main() {
     int a[7] = { 1,2,3,4,5,6,7 };
     //从 a 数组中查找元素 4
@@ -88,6 +93,7 @@ int main() {
     cout << "haselem2：" << haselem2;
     return 0;
 }
+
 程序执行结果为：
 haselem：1
 haselem2：1
@@ -97,6 +103,7 @@ haselem2：1
 不符合的元素都位于其右侧，因此 binary_search() 函数仍可正常执行。
 
 C++ STL标准库给出了 binary_search() 函数底层实现的参考代码（如下所示），感兴趣的读者可自行研究，这里不再赘述：
+
 //第一种语法格式的实现
 template <class ForwardIterator, class T>
 bool binary_search (ForwardIterator first, ForwardIterator last, const T& val)
@@ -104,6 +111,7 @@ bool binary_search (ForwardIterator first, ForwardIterator last, const T& val)
     first = std::lower_bound(first,last,val);
     return (first!=last && !(val<*first));
 }
+
 //第二种语法格式的底层实现
 template<class ForwardIt, class T, class Compare>
 bool binary_search(ForwardIt first, ForwardIt last, const T& val, Compare comp)
@@ -111,6 +119,7 @@ bool binary_search(ForwardIt first, ForwardIt last, const T& val, Compare comp)
     first = std::lower_bound(first, last, val, comp);
     return (!(first == last) && !(comp(val, *first)));
 }
+
 有关 lower_bound() 函数的功能和用法，可阅读《C++ lower_bound()函数》一节；有关 upper_bound() 函数的功能
 和用法，可阅读《C++ upper_bound()函数》一节。
 

@@ -77,9 +77,11 @@ ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last,
 //在 [first, last) 区域内查找第一个不符合 comp 规则的元素
 ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last,
                              const T& val, Compare comp);
+
 其中，first 和 last 都为正向迭代器，[first, last) 用于指定函数的作用范围；val 用于指定目标元素；comp 用于自定
 义比较规则，此参数可以接收一个包含 2 个形参（第二个形参值始终为 val）且返回值为 bool 类型的函数，可以是普通函数，
 也可以是函数对象。
+
 实际上，第一种语法格式也设定有比较规则，只不过此规则无法改变，即使用 < 小于号比较 [first, last) 区域内某些元素和 
 val 的大小，直至找到一个不小于 val 的元素。这也意味着，如果使用第一种语法格式，则 [first,last) 范围的元素类型必须
 支持 < 运算符。
@@ -94,9 +96,12 @@ val 的大小，直至找到一个不小于 val 的元素。这也意味着，�
 #include <iostream>     // std::cout
 #include <algorithm>    // std::lower_bound
 #include <vector>       // std::vector
+
 using namespace std;
+
 //以普通函数的方式定义查找规则
 bool mycomp(int i,int j) { return i>j; }
+
 //以函数对象的形式定义查找规则
 class mycomp2 {
 public:
@@ -104,6 +109,7 @@ public:
         return i>j;
     }
 };
+
 int main() {
     int a[5] = { 1,2,3,4,5 };
     //从 a 数组中找到第一个不小于 3 的元素
@@ -115,6 +121,7 @@ int main() {
     cout << "*iter = " << *iter;
     return 0;
 }
+
 程序执行结果为：
 *p = 3
 *iter = 3
@@ -169,8 +176,9 @@ int main()
     if (ret4 != myV2.end()) cout << "upper_bound returns " << *ret4 << " at index " << distance(myV2.begin(), ret4) << endl;
 
     // 2022.8.2
-    // Note, that means when lower_bound and upper_bound returns one iterator and same, that doesn't mean the given target
-    // value existed based on above example. It may return the next one that is >= or > target value
+    // Note, that means when lower_bound and upper_bound returns one iterator and same, that doesn't 
+    // mean the given target value existed based on above example. It may return the next one that 
+    // is >= or > target value
     // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;

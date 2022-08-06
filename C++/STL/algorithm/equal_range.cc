@@ -83,9 +83,12 @@ element<val（或者 comp(element,val）成立的元素都位于不成立元素�
 #include <iostream>     // std::cout
 #include <algorithm>    // std::equal_range
 #include <vector>       // std::vector
+
 using namespace std;
+
 //以普通函数的方式定义查找规则
 bool mycomp(int i, int j) { return i > j; }
+
 //以函数对象的形式定义查找规则
 class mycomp2 {
 public:
@@ -93,6 +96,7 @@ public:
         return i > j;
     }
 };
+
 int main() {
     int a[9] = { 1,2,3,4,4,4,5,6,7};
     //从 a 数组中找到所有的元素 4
@@ -111,6 +115,7 @@ int main() {
     }
     return 0;
 }
+
 程序执行结果为：
 a[9]：4 4 4
 myvector：3 3 3 3
@@ -130,6 +135,7 @@ const T& val)
     ForwardIterator it = std::lower_bound (first,last,val);
     return std::make_pair ( it, std::upper_bound(it,last,val) );
 }
+
 //对应第二种语法格式
 template<class ForwardIterator, class T, class Compare>
 std::pair<ForwardIt,ForwardIt> equal_range(ForwardIterator first, ForwardIterator last, const T& val, 
@@ -138,6 +144,7 @@ Compare comp)
     ForwardIterator it = std::lower_bound (first,last,val,comp);
     return std::make_pair ( it, std::upper_bound(it,last,val,comp) );
 }
+
 有关 lower_bound() 函数的功能和用法，可阅读《C++ lower_bound()函数》一节；有关 upper_bound() 函数的功能和用法，
 可阅读《C++ upper_bound()函数》一节。
 
@@ -151,7 +158,7 @@ int main()
     vector<int> myV = {1, 2, 3, 3, 3, 3, 4, 5, 6, 7, 8};
     auto ret = equal_range(myV.begin(), myV.end(), 3);
 
-    // note that the ret is a pair that contains first is the first element we found, seonc is 
+    // note that the ret is a pair that contains first is the first element we found, second is 
     // the last element we found in the given vector
     for (auto element = ret.first; element != ret.second; element++) {
         cout << "Element of 3 we found in vector is "<< *element << endl;
@@ -160,7 +167,6 @@ int main()
     // 2022.8.3
     // again, the return of equal_range() is std::pair that contains first and last 
     // elements found, also the criteria to use this function is a fully sorted source
-    
 
     return 0;
     // Element of 3 we found in vector is 3

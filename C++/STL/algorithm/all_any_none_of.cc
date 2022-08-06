@@ -46,15 +46,17 @@ algorithm 头文件中定义了 3 种算法，用来检查在算法应用到序�
 
 例如，可以检查所有学生是否通过了考试，或者检查所有学生是否都参加了课程，或者检查有没有眼睛发绿的 Person 对象，
 甚至可以检查每个 Dog 对象是否度过了它自己的一天。谓词可以简单，也可以复杂，这取决于你。检查元素属性的三种算法是：
-all_of() 算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。
-any_of() 算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。
-none_of() 算法会返回 true，前提是序列中没有元素可以使谓词返回 true。
+    all_of() 算法会返回 true，前提是序列中的所有元素都可以使谓词返回 true。
+    any_of() 算法会返回 true，前提是序列中的任意一个元素都可以使谓词返回 true。
+    none_of() 算法会返回 true，前提是序列中没有元素可以使谓词返回 true。
 
 想象它们是如何工作的并不难。下面的一些代码用来说明如何使用 none_of() 算法：
+
 std::vector<int> ages {22, 19, 46, 75, 54, 19, 27, 66, 61, 33, 22, 19};
 int min_age{18};
 std::cout << "There are "<< (std::none_of(std::begin(ages), std::end(ages),[min_age](int age) 
 { return age < min_age; }) ? "no": "some") << " people under " << min_age << std::endl;
+
 这个谓词是一个 lambda 表达式，用来将传入的 ages 容器中的元素和 min_age 的值作比较。用 none_of() 返回的布尔值
 来选择包含在输出信息中的是“no”还是“some”。当 ages 中没有元素小于 min_age 时，none_of() 算法会返回 true。
 在这种情况下，会选择“no”。当然，用 any_of() 也能产生同样的结果：
@@ -68,6 +70,7 @@ std::cout << "There are "<< (std::any_of(std::begin(ages), std::end(ages),[min_a
 int good_age{100};
 std::cout << (std::all_of(std::begin(ages), std::end(ages),[good_age] (int age) 
 { return age < good_age; }) ? "None": "Some") << " of the people are centenarians." << std::endl;
+
 这个 lambda 表达式会将 ages 中的元素和 good_age 的值作比较，good_age 的值为 100。所有的元素都小于 100，
 所以 all_of() 会返回 true，而且输出消息会正确报告没有记录的百岁老人。
 
@@ -82,6 +85,7 @@ people aged "<< the_age << std::endl;
 int max_age{60};
 std::cout << "There are "<< std::count_if(std::begin(ages), std::end(ages),[max_age](int age) 
 { return age > max_age; }) << " people aged over " << max_age << std::endl;
+
 在第一条输出语句中使用 count() 算法来确定 ages 中等于 the_age 的元素个数，第二条输出语句使用 count_if() 
 来报告大于 max_age 的元素个数。
 
@@ -125,7 +129,8 @@ int main()
     }
 
     // 2022.7.31
-    // easier to remember is, whether "function" them is "condition"? Then use this to for return true/false 
+    // easier to remember by logic is, whether "function" them is "condition"? Then use this to for 
+    // return true/false 
     // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;

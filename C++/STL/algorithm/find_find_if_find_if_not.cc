@@ -55,7 +55,9 @@ InputIterator find (InputIterator first, InputIterator last, const T& val);
 #include <iostream>     // std::cout
 #include <algorithm>    // std::find
 #include <vector>       // std::vector
+
 using namespace std;
+
 int main() {
     //find() 函数作用于普通数组
     char stl[] ="http://c.biancheng.net/stl/";
@@ -75,6 +77,7 @@ int main() {
         cout << "查找失败";
     return 0;
 }
+
 程序执行结果为：
 c.biancheng.net/stl/
 查找成功：30
@@ -142,11 +145,14 @@ find_if() 函数查找失败，则该迭代器的指向和 last 迭代器相同�
 #include <iostream>     // std::cout
 #include <algorithm>    // std::find_if
 #include <vector>       // std::vector
+
 using namespace std;
+
 //自定义一元谓词函数
 bool mycomp(int i) {
     return ((i % 2) == 1);
 }
+
 //以函数对象的形式定义一个 find_if() 函数的查找规则
 class mycomp2 {
 public:
@@ -154,6 +160,7 @@ public:
         return ((i % 2) == 1);
     }
 };
+
 int main() {
     vector<int> myvector{ 4,2,3,1,5 };
     //调用 find_if() 函数，并以 IsOdd() 一元谓词函数作为查找规则
@@ -161,6 +168,7 @@ int main() {
     cout << "*it = " << *it;
     return 0;
 }
+
 程序执行结果为：
 *it = 3
 
@@ -197,11 +205,14 @@ InputIterator find_if_not (InputIterator first, InputIterator last, UnaryPredica
 #include <iostream>     // std::cout
 #include <algorithm>    // std::find_if_not
 #include <vector>       // std::vector
+
 using namespace std;
+
 //自定义一元谓词函数
 bool mycomp(int i) {
     return ((i % 2) == 1);
 }
+
 int main() {
     vector<int> myvector{4,2,3,1,5};
     //调用 find_if() 函数，并以 mycomp() 一元谓词函数作为查找规则
@@ -209,6 +220,7 @@ int main() {
     cout << "*it = " << *it;
     return 0;
 }
+
 程序执行结果为：
 *it = 4
 
@@ -227,6 +239,7 @@ InputIterator find_if_not (InputIterator first, InputIterator last, UnaryPredica
     }
     return last;
 }
+
 关注公众号「站长严长生」，在手机上阅读所有教程，随时随地都能学习。本公众号由站长亲自运营，长期更新，坚持原创，
 专注于分享创业故事+学习历程+工作记录+生活日常+编程资料。
 
