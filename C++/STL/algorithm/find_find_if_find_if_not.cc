@@ -263,6 +263,9 @@ int main()
     // 2022.8.5
     // need to ensure find_if() is looking for true condition, while
     // find_if_not() is looking for false condition
+    // from C++ 20, these functions will be under std::ranges, not under std::
+    // Starting from C++ 23, there are few new functions like:
+    // find_last(), find_last_if(), find_last_if_not()
 
     return 0;
     // Found 7
