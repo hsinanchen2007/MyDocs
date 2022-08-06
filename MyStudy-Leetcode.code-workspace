@@ -79,7 +79,8 @@
 			"typeinfo": "cpp",
 			"valarray": "cpp",
 			"variant": "cpp",
-			"__split_buffer": "cpp"
+			"__split_buffer": "cpp",
+			"any": "cpp"
 		}
 	}
 }
