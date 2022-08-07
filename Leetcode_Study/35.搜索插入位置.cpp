@@ -424,6 +424,7 @@ public:
                 return 0;
             }
         } else {
+            // somewhere found
             if (*ret == target) { 
                 return distance(A.begin(), ret); 
             } else {
