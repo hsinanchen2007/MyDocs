@@ -68,7 +68,7 @@ public:
         // the tricky part is the end of return answer 
         // when it is not found in the while loop,
         // that means left > right, so the return should be
-        // (right + 1)
+        // either (right + 1) or left
         // {1, 3, 5, 6}, target 2
         return (right + 1);
     }
