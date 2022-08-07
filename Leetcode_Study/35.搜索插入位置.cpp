@@ -387,7 +387,7 @@ public:
 
 
 
-class Solution {
+class Solution90 {
 public:
     // 2022.7.27, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/35.%20Search%20Insert%20Position
     // OJ: https://leetcode.com/problems/search-insert-position/
@@ -410,6 +410,28 @@ public:
 /************************************************************************************************************/
 /************************************************************************************************************/
 
+
+class Solution {
+public:
+    // 2022.8.6 by Hsinan, use lower_bound() to get >= target index
+    int searchInsert(vector<int>& A, int target) {
+        auto ret = lower_bound(A.begin(), A.end(), target);
+        if (ret == A.end()) {
+            // either bigger than max or lesser than A[0]
+            if (target > A[0]) {
+                return A.size(); 
+            } else {
+                return 0;
+            }
+        } else {
+            if (*ret == target) { 
+                return distance(A.begin(), ret); 
+            } else {
+                return distance(A.begin(), ret); 
+            }
+        }
+    }
+};
 
 // @lc code=end
 
