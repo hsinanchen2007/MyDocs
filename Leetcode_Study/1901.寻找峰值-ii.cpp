@@ -105,6 +105,8 @@ public:
 class Solution98 {
 public:
     // 2022.8.7, from https://walkccc.me/LeetCode/problems/1901/
+    // Time: O(nlogm)
+    // Space: O(1)
     vector<int> findPeakGrid(vector<vector<int>>& mat) {
         int l = 0;
         int r = mat.size() - 1;
