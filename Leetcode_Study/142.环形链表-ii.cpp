@@ -59,7 +59,7 @@ pos 的值为 -1 或者链表中的一个有效索引
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class Solution100 {
 public:
     // 2022.8.8, from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.md
     ListNode *detectCycle(ListNode *head) {
@@ -199,5 +199,204 @@ public:
         return NULL;
     }
 };
+
+
+class Solution99 {
+public:
+    // 2022.8.9, from https://github.com/lzl124631x/LeetCode/tree/master/leetcode/142.%20Linked%20List%20Cycle%20II
+    // OJ: https://leetcode.com/problems/linked-list-cycle-ii/
+    // Author: github.com/lzl124631x
+    // Time: O(N)
+    // Space: O(1)
+    ListNode *detectCycle(ListNode *head) {
+        if (!head) return nullptr;
+        auto p = head, q = head;
+        while (p && p->next) {
+            p = p->next->next;
+            q = q->next;
+            if (p == q) break;
+        }
+        if (!p || !p->next) return nullptr; // The list is finite
+        p = head;
+        for (; p != q; p = p->next, q = q->next);
+        return p;
+    }
+};
+
+
+class Solution98 {
+public:
+    // 2022.8.9, from https://github.com/grandyang/leetcode/issues/142
+    /*
+        这个求单链表中的环的起始点是之前那个判断单链表中是否有环的延伸，可参之前那道 Linked List Cycle。这里还是要设快慢指针，
+        不过这次要记录两个指针相遇的位置，当两个指针相遇了后，让其中一个指针从链表头开始，一步两步，一步一步似爪牙，似魔鬼的步伐
+        。。。哈哈，打住打住。。。此时再相遇的位置就是链表中环的起始位置，为啥是这样呢，这里直接贴上热心网友「飞鸟想飞」的解释哈，
+        因为快指针每次走2，慢指针每次走1，快指针走的距离是慢指针的两倍。而快指针又比慢指针多走了一圈。所以 head 到环的起点+环的
+        起点到他们相遇的点的距离 与 环一圈的距离相等。现在重新开始，head 运行到环起点 和 相遇点到环起点 的距离也是相等的，相当于
+        他们同时减掉了 环的起点到他们相遇的点的距离。代码如下：
+    */
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) break;
+        }
+        if (!fast || !fast->next) return NULL;
+        slow = head;
+        while (slow != fast) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return fast;
+    }
+};
+
+
+class Solution97 {
+public:
+    // 2022.8.9, from https://github.com/kamyu104/LeetCode-Solutions/blob/master/C++/linked-list-cycle-ii.cpp
+    // Time:  O(n)
+    // Space: O(1)
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next, fast = fast->next->next;
+            if (slow == fast) {  // There is a cycle.
+                slow = head;
+                // Both pointers advance at the same time.
+                while (slow != fast) {
+                    slow = slow->next, fast = fast->next;
+                }
+                return slow;  // slow is the begin of cycle.
+            }
+        }
+        return nullptr;  // No cycle.
+    }
+};
+
+
+class Solution96 {
+public:
+    // 2022.8.9, from https://walkccc.me/LeetCode/problems/0142/
+    // Time: O(n)
+    // Space: O(1)
+    ListNode* detectCycle(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {
+            slow = head;
+            while (slow != fast) {
+            slow = slow->next;
+            fast = fast->next;
+            }
+            return slow;
+        }
+        }
+
+        return nullptr;
+    }
+};
+
+
+class Solution95 {
+public:
+    // 2022.8.9, from https://github.com/wisdompeak/LeetCode/blob/master/Linked_List/142.Linked-List-Cycle-II/142.Linked-List-Cycle-II.cpp
+    /*
+        从第141题已知，用快慢指针的方法可以判断是否链表存在环。
+
+        假设两个指针相遇时，快指针走过了m步进入环的入口然后转了k1圈（每圈n步）又多p步；同理，慢指针走过了m步进入环的入口然后
+        转了k2圈又多p步。由于两者是两倍关系，所以 m+k1*n+p = 2*(m+k2*n+p)。
+
+        化简之后得到 m = (k1-2k2)*n-p，变换一下 p+m = (k1-2k2)*n
+
+        因为慢指针目前已经比整数圈多走了p步，结合这个数学式子，这说明如果慢指针再走m步的话，又会凑成整数圈，即到了环的入口。
+        怎么确定m呢？只要另开一个指针从head开始与慢指针一齐走，它们相遇的地方就是环的入口。
+
+        本题的算法还有一个非常巧妙的应用：287. Find the Duplicate Number
+    */
+    ListNode *detectCycle(ListNode *head) 
+    {
+        if (head==NULL) return NULL;
+        
+        ListNode* slow=head;
+        ListNode* fast=head;
+        int flag=0;
+        
+        while (fast->next!=NULL && fast->next->next!=NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+            
+            if (fast==slow) 
+            {
+                flag=1;
+                break;
+            }
+        }
+        
+        if (flag==0) return NULL;
+        
+        fast=head;
+        while (fast!=slow)
+        {
+            fast=fast->next;
+            slow=slow->next;
+        }
+        
+        return fast;
+        
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.8.9, from https://www.guozet.me/leetcode/Leetcode-142-Linked-List-Cycle-II.html?h=cycle
+    /*
+        这道题目，感觉更多的是考虑数学公式的推导的样子，如果是一个环，可以得到下面这个图形：
+        图片来自于博客: [算法][LeetCode]Linked List Cycle & Linked List Cycle II——单链表中的环
+
+        先对图中符号做下面的定义：
+
+        X是链表头
+        Y是环的第一个节点，也就是环的起点
+        'Z'是快慢节点的相遇位置
+        环的长度是r = c + b
+        slow指针走过的距离是 s = a + b
+        fast指针走过的距离是 2s = a + n(c+b) + b
+        相遇的时候fast指针在环里面已经走了n圈了
+        根据上面的图形，得到下面的推导：
+
+        2s = a + n(c+b) + b
+        2(a+b) = a + n(c+b) + b
+        a+b = n(c+b)
+        a = n(c+b) - b = （n-1)×（c+b） + c = (n-1)*r + c
+        所以如果在相遇的时候，重新定义一个slow2的慢指针，每次走一步，那么他们一定可以在环的起点位置相遇的。
+    */
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *slow = head, *fast = head;
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                ListNode *slow2 = head;
+                while (slow2 != slow) {
+                    slow2 = slow2->next;
+                    slow = slow->next;
+                }
+                return slow2;
+            }
+        }
+        return nullptr;
+    }
+};
+
+
 // @lc code=end
 
