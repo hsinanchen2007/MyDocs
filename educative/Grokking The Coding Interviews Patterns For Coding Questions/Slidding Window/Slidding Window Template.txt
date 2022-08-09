@@ -28,8 +28,8 @@ Non-Fixed Windows Size:
         minLength = min(minLength, windowEnd - windowStart + 1);
         windowSum -= arr[windowStart];
         windowStart++;
-        }      
-      }
+      }      
+    }
     return minLength == numeric_limits<int>::max() ? 0 : minLength;
 
 
