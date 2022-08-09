@@ -20,7 +20,7 @@ Fixed Windows Size:
 Non-Fixed Windows Size:
     int minLength = numeric_limits<int>::max();
     int windowSum = 0;
-      int windowStart = 0;
+    int windowStart = 0;
     for (int windowEnd = 0; windowEnd < arr.size(); windowEnd++) {
       windowSum += arr[windowEnd];
       // shrink the window as small as possible until the 'windowSum' is smaller than 'S'
