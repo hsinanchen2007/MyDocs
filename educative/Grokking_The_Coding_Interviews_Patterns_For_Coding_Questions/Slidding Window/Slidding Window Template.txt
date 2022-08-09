@@ -3,6 +3,7 @@
 3. Remove arr[windowStart], so now subarry contains k-1 elements
 4. Move windowStart to next one
 
+Fixed Windows Size:
     double windowSum = 0;
     int windowStart = 0;
     for (int windowEnd = 0; windowEnd < arr.size(); windowEnd++) {
@@ -14,6 +15,8 @@
         windowStart++;                        // slide the window ahead
       }
     }
+
+
 
 
 

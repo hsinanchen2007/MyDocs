@@ -27,6 +27,7 @@ using namespace std;
 
 class MaxSumSubArrayOfSizeK {
  public:
+  // 2022.8.9, by Hsinan, follow template
   static int findMaxSumSubArray(int k, const vector<int>& arr) {
     int maxSum = 0;
     // TODO: Write your code here
