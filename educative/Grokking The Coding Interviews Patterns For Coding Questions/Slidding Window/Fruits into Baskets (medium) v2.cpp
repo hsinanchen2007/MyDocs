@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/Bn2KLlOR0lQ
+
 Solution#
 This problem follows the Sliding Window pattern and is quite similar to Longest 
 Substring with K Distinct Characters. In this problem, we need to find the length 

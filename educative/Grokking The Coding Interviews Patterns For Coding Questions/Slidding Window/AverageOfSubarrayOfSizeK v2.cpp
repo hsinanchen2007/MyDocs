@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/7D5NNZWQ8Wr
+
 Time complexity: Since for every element of the input array, we are calculating 
 the sum of its next ‘K’ elements, the time complexity of the above algorithm will 
 be O(N*K), where ‘N’ is the number of elements in the input array.

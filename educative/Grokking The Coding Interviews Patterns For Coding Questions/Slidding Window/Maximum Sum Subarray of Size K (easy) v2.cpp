@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/JPKr0kqLGNP
+
 A basic brute force solution will be to calculate the sum of all ‘k’ 
 sized subarrays of the given array to find the subarray with the highest 
 sum. We can start from every index of the given array and add the 

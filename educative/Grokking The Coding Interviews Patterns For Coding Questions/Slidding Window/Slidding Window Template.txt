@@ -1,9 +1,8 @@
-1. Calculate elements before k-1 index
-2. Once at k-1 index, sum up all elements
-3. Remove arr[windowStart], so now subarry contains k-1 elements
-4. Move windowStart to next one
+* Basic Fixed Slidding Windows Size:
+  --> AverageOfSubarrayOfSizeK
 
-* Fixed Slidding Windows Size:
+  static vector<double> findAverages(int K, const vector<int>& arr) {
+    vector<double> result(arr.size() - K + 1);
     double windowSum = 0;
     int windowStart = 0;
     for (int windowEnd = 0; windowEnd < arr.size(); windowEnd++) {
@@ -16,24 +15,40 @@
       }
     }
 
+    return result;
+  }
+
+
+
 
 * Non-Fixed Slidding Windows Size:
-    int minLength = numeric_limits<int>::max();
-    int windowSum = 0;
+  --> Maximum Sum Subarray of Size K
+  --> Smallest Subarray With a Greater Sum
+
+  static int findMaxSumSubArray(int k, const vector<int>& arr) {
+    int windowSum = 0, maxSum = 0;
     int windowStart = 0;
     for (int windowEnd = 0; windowEnd < arr.size(); windowEnd++) {
-      windowSum += arr[windowEnd];
-      // shrink the window as small as possible until the 'windowSum' is smaller than 'S'
-      while (windowSum >= S) {
-        minLength = min(minLength, windowEnd - windowStart + 1);
-        windowSum -= arr[windowStart];
-        windowStart++;
-      }      
+      windowSum += arr[windowEnd];  // add the next element
+      // slide the window, we don't need to slide if we've not hit the required window size of 'k'
+      if (windowEnd >= k - 1) {
+        maxSum = max(maxSum, windowSum);
+        windowSum -= arr[windowStart];  // subtract the element going out
+        windowStart++;                  // slide the window ahead
+      }
     }
-    return minLength == numeric_limits<int>::max() ? 0 : minLength;
+
+    return maxSum;
+  }
 
 
-* Use hash Table to trace # of distinct elements in Slidding Window:
+
+
+* Distinct Elements In Slidding Window:
+  --> Longest Substring with maximum K Distinct Characters
+  --> Fruits into Baskets
+
+  static int findLength(const string &str, int k) {
     int windowStart = 0, maxLength = 0;
     unordered_map<char, int> charFrequencyMap;
     // in the following loop we'll try to extend the range [windowStart, windowEnd]
@@ -53,8 +68,16 @@
       maxLength = max(maxLength, windowEnd - windowStart + 1); // remember the maximum length so far
     }
 
+    return maxLength;
+  }
 
-* Use hash table to check item first, move start of Slidding Window, then add end into hash table:
+
+
+
+* Distinct Elements In Slidding Window, where windowStart may move more than 1 index
+  --> Longest Substring with Distinct Characters
+
+  static int findLength(const string& str) {
     int windowStart = 0, maxLength = 0;
     unordered_map<char, int> charIndexMap;
     // try to extend the range [windowStart, windowEnd]
@@ -73,6 +96,72 @@
           max(maxLength, windowEnd - windowStart + 1);  // remember the maximum length so far
     }
 
+    return maxLength;
+  }
 
+
+
+
+* Distinct Elements In Slidding Window with replacement:
+--> Longest Substring with Same Letters after Replacement
+
+  static int findLength(const string &str, int k) {
+    int windowStart = 0, maxLength = 0, maxRepeatLetterCount = 0;
+    unordered_map<char, int> letterFrequencyMap;
+    // try to extend the range [windowStart, windowEnd]
+    for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+      char rightChar = str[windowEnd];
+      letterFrequencyMap[rightChar]++;
+
+      // we don't need to place the maxRepeatLetterCount under the below 'if', see the 
+      // explanation in the 'Solution' section above.
+      maxRepeatLetterCount = max(maxRepeatLetterCount, letterFrequencyMap[rightChar]);
+
+      // current window size is from windowStart to windowEnd, overall we have a letter which is
+      // repeating 'maxRepeatLetterCount' times, this means we can have a window which has one
+      // letter repeating 'maxRepeatLetterCount' times and the remaining letters we should replace.
+      // if the remaining letters are more than 'k', it is the time to shrink the window as we
+      // are not allowed to replace more than 'k' letters
+      if (windowEnd - windowStart + 1 - maxRepeatLetterCount > k) {
+        char leftChar = str[windowStart];
+        letterFrequencyMap[leftChar]--;
+        windowStart++;
+      }
+      maxLength = max(maxLength, windowEnd - windowStart + 1);
+    }
+
+    return maxLength;
+  }
+
+
+
+
+* Distinct Elements In Slidding Window with specific replacement:
+--> Longest Subarray with Ones after Replacement
+
+  static int findLength(const vector<int>& arr, int k) {
+    int windowStart = 0, maxLength = 0, maxOnesCount = 0;
+    // try to extend the range [windowStart, windowEnd]
+    for (int windowEnd = 0; windowEnd < arr.size(); windowEnd++) {
+      if (arr[windowEnd] == 1) {
+        maxOnesCount++;
+      }
+
+      // current window size is from windowStart to windowEnd, overall we have a maximum of 1s
+      // repeating a maximum of 'maxOnesCount' times, this means that we can have a window with
+      // 'maxOnesCount' 1s and the remaining are 0s which should replace with 1s.
+      // now, if the remaining 0s are more than 'k', it is the time to shrink the window as we
+      // are not allowed to replace more than 'k' Os
+      if (windowEnd - windowStart + 1 - maxOnesCount > k) {
+        if (arr[windowStart] == 1) {
+          maxOnesCount--;
+        }
+        windowStart++;
+      }
+      maxLength = max(maxLength, windowEnd - windowStart + 1);
+    }
+
+    return maxLength;
+  }
 
 

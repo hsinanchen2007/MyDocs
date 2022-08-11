@@ -1,5 +1,9 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/7XMlMEQPnnQ
+
+Solution#
+
 This problem follows the Sliding Window pattern, and we can use a similar strategy 
 as discussed in Maximum Sum Subarray of Size K. There is one difference though: 
 in this problem, the sliding window size is not fixed. Here is how we will solve 
@@ -50,8 +54,8 @@ class MinSizeSubArraySum {
         minLength = min(minLength, windowEnd - windowStart + 1);
         windowSum -= arr[windowStart];
         windowStart++;
-        }      
-      }
+      }      
+    }
     return minLength == numeric_limits<int>::max() ? 0 : minLength;
   }
 };

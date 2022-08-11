@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/JPKr0kqLGNP
+
 A better approach#
 If you observe closely, you will realize that to calculate the sum 
 of a contiguous subarray, we can utilize the sum of the previous 
