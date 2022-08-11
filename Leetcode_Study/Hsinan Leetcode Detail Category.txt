@@ -127,6 +127,8 @@ Hash
         611. 有效三角形的个数/Valid Triangle Number, M
         981. 基于时间的键值存储/Time Based Key-Value Store, M
         875. 爱吃香蕉的珂珂/Koko Eating Bananas, M
+        1060. 有序数组中的缺失元素/Missing Element In Sorted Array, M
+        1901. 寻找峰值 II/Find A Peak Element II, M
 
 
 
