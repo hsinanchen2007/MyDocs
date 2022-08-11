@@ -30,5 +30,34 @@ Explanation: The longest substring with no more than '10' distinct characters is
 
 */
 
+using namespace std;
+
+#include <iostream>
+#include <string>
+#include <unordered_map>
+
+class LongestSubstringKDistinct {
+ public:
+  static int findLength(const string& str, int k) {
+    int maxLength = 0;
+    // TODO: Write your code here
+    int start = 0;
+    unordered_map<int, int> hashTbl;
+    for (int end = 0; end < str.size(); end++) {
+      hashTbl[str[end]]++;
+      while (hashTbl.size() > k) {
+        maxLength = max(maxLength, end - start);
+        hashTbl[str[start]]--;
+        if (hashTbl[str[start]] == 0) {
+          hashTbl.erase(str[start]);
+        }
+        start++;
+      }
+      maxLength = max(maxLength, end -start + 1);
+    }
+    return maxLength;
+  }
+};
+
 
 
