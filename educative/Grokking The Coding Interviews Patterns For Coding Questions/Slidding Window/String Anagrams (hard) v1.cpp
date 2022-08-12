@@ -52,7 +52,7 @@ class StringAnagrams {
       hashTbl[item]++;
     }
     unordered_map<char, int> tmpTbl;
-    for (int end = 0; end < pattern.size(); end++) {
+    for (int end = 0; end < str.size(); end++) {
       tmpTbl[str[end]]++;
       if (end - start + 1 == patternSize) {
         bool isMatch = true;
@@ -76,24 +76,4 @@ class StringAnagrams {
     return resultIndices;
   }
 };
-
-// 2022.8.12, added by Hsinan for debugging purpose
-int main(int argc, char *argv[]) {
-  auto result = StringAnagrams::findStringAnagrams("ppqp", "pq");
-  for (auto num : result) {
-    cout << num << " ";
-  }
-  cout << endl;
-
-  result = StringAnagrams::findStringAnagrams("abbcabc", "abc");
-  for (auto num : result) {
-    cout << num << " ";
-  }
-  cout << endl;
-}
-
-
-
-
-
 
