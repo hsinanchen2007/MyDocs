@@ -77,6 +77,7 @@ class StringAnagrams {
   }
 };
 
+// 2022.8.12, added by Hsinan for debugging purpose
 int main(int argc, char *argv[]) {
   auto result = StringAnagrams::findStringAnagrams("ppqp", "pq");
   for (auto num : result) {
