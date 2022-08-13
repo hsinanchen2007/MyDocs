@@ -80,7 +80,8 @@
 			"valarray": "cpp",
 			"variant": "cpp",
 			"__split_buffer": "cpp",
-			"any": "cpp"
+			"any": "cpp",
+			"climits": "cpp"
 		},
 		"printcode.lineNumbers": "off"
 	}
