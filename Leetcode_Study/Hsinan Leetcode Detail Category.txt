@@ -133,7 +133,9 @@ Hash
 
 
 
-
+* Slidding Windows
+    * Basic
+        643. 子数组最大平均数 I/Maximum Average Subarray I, E
 
 
 
