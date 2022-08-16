@@ -332,6 +332,39 @@ public:
 /************************************************************************************************************/
 /************************************************************************************************************/
 
+/*
+    0 ~ 6 months
+    Amazon 58
+    Bloomberg 25
+    Microsoft 23
+    Apple 20
+    Facebook 15
+    Google 13
+    Adobe 9
+    Spotify 9
+    Uber 7
+    Goldman Sachs 6
+    VMware 5
+    Yahoo 4
+    Walmart Global Tech 4
+    Yandex 4
+    Paypal 3
+    eBay 3
+    Oracle 3
+    Zoho 3
+    PayTM 3
+    tiktok 3
+    Cisco 2
+    Twitch 2
+    Expedia 2
+    Intuit 2
+    Salesforce 2
+    Visa 2
+    Qualcomm 2
+    Zillow 2
+    Docusign 2
+    JPMorgan 2
+*/
 
 class Solution {
 public:
