@@ -114,10 +114,22 @@ int main()
     for_each(construct_to_vector.begin(), construct_to_vector.end(), [](int v) { cout << v << " ";});
     cout << endl;
 
+    // by purpose to add all "0" into to_vector first
+    to_vector.clear();
+    for (int i = 0; i < 10; i++) {
+        to_vector.push_back(0);
+    }
+    // then copy it from from_vector, now we can use to_vector.begin() because
+    // to_vector already has enough size to hold all elements from_vector
+    std::copy(from_vector.begin(), from_vector.end(), to_vector.begin());
+    for_each(to_vector.begin(), to_vector.end(), [](int v) { cout << v << " ";});
+    cout << endl;
+
     // 2022.8.20
     // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
+    // 0 1 2 3 4 5 6 7 8 9 
     // 0 1 2 3 4 5 6 7 8 9 
     // 0 1 2 3 4 5 6 7 8 9 
 }
