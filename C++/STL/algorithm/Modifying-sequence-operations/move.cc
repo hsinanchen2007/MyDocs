@@ -81,6 +81,7 @@ int main()
     // Note that based on C++ reference, the source may or may not contain same values after move, 
     // "After this operation the elements in the moved-from range will still contain valid values of the 
     // appropriate type, but not necessarily the same values as before the move."
+    // 如果源序列可以被替换或破坏，就可以选择使用 move() 算法。如果不想扰乱源序列，可以使用 copy() 算法。
     cout << "move elements from source to target ......" << endl;
     std::move(srce.begin(), srce.end(), dest.begin());
 
