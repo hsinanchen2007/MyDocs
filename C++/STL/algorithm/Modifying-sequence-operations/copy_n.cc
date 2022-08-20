@@ -78,6 +78,9 @@ int main()
     for_each(to_deque.begin(), to_deque.end(), [](int v) { cout << v << " ";});
     cout << endl;
 
+    // 2022.8.20
+    // from C++ 20, these functions will be under std::ranges, not under std::
+
     return 0;
     // 0 1 2 3 4 5 6 9 8 7 
     // 7 8 9 0 1 2 3 4 5 6 
