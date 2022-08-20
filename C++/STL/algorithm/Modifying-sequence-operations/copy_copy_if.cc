@@ -125,6 +125,17 @@ int main()
     for_each(to_vector.begin(), to_vector.end(), [](int v) { cout << v << " ";});
     cout << endl;
 
+    // by purpose to add all "0" into to_vector first
+    to_vector.clear();
+    for (int i = 0; i < 10; i++) {
+        to_vector.push_back(0);
+    }
+
+    // now, we only copy even numbers
+    std::copy_if(from_vector.begin(), from_vector.end(), to_vector.begin(), [](int v){ return (v % 2 == 0);});
+    for_each(to_vector.begin(), to_vector.end(), [](int v) { cout << v << " ";});
+    cout << endl;
+
     // 2022.8.20
     // from C++ 20, these functions will be under std::ranges, not under std::
 
@@ -132,4 +143,5 @@ int main()
     // 0 1 2 3 4 5 6 7 8 9 
     // 0 1 2 3 4 5 6 7 8 9 
     // 0 1 2 3 4 5 6 7 8 9 
+    // 0 2 4 6 8 0 0 0 0 0
 }
