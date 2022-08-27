@@ -262,7 +262,7 @@ public:
 };
 
 
-class Solution {
+class Solution92 {
     // 2022.8.26, from https://github.com/liuyubobobo/Play-Leetcode/blob/master/0001-0500/0424-Longest-Repeating-Character-Replacement/cpp-0424/main.cpp
     // Two Pointers
     // Time Complexity: O(n)
@@ -298,6 +298,64 @@ private:
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution91 {
+public:
+    // 2022.8.27, a copy my code at https://www.educative.io/courses/grokking-the-coding-interview/R8DVgjq78yR
+    int characterReplacement(string s, int k) {
+        int maxLength = 0;
+        // TODO: Write your code here
+        int start = 0;
+        int maxRepeat = 0;
+        unordered_map<char, int> hashTbl;
+        for (int end = 0; end < s.size(); end++) {
+            hashTbl[s[end]]++;
+            maxRepeat = max(maxRepeat, hashTbl[s[end]]);
+            if (end - start + 1 - maxRepeat > k) {
+                hashTbl[s[start]]--;
+                start++;
+            }
+            maxLength = max(maxLength, end - start + 1);
+        }
+
+        return maxLength;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.8.27, a copy official code at https://www.educative.io/courses/grokking-the-coding-interview/R8DVgjq78yR
+    static int characterReplacement(const string &str, int k) {
+        int windowStart = 0, maxLength = 0, maxRepeatLetterCount = 0;
+        unordered_map<char, int> letterFrequencyMap;
+        // try to extend the range [windowStart, windowEnd]
+        for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char rightChar = str[windowEnd];
+            letterFrequencyMap[rightChar]++;
+
+            // we don't need to place the maxRepeatLetterCount under the below 'if', see the 
+            // explanation in the 'Solution' section above.
+            maxRepeatLetterCount = max(maxRepeatLetterCount, letterFrequencyMap[rightChar]);
+
+            // current window size is from windowStart to windowEnd, overall we have a letter which is
+            // repeating 'maxRepeatLetterCount' times, this means we can have a window which has one
+            // letter repeating 'maxRepeatLetterCount' times and the remaining letters we should replace.
+            // if the remaining letters are more than 'k', it is the time to shrink the window as we
+            // are not allowed to replace more than 'k' letters
+            if (windowEnd - windowStart + 1 - maxRepeatLetterCount > k) {
+                char leftChar = str[windowStart];
+                letterFrequencyMap[leftChar]--;
+                windowStart++;
+            }
+
+            maxLength = max(maxLength, windowEnd - windowStart + 1);
+        }
+
+        return maxLength;
+    }
+};
 
 
 // @lc code=end
