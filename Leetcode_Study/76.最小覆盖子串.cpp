@@ -446,7 +446,7 @@ public:
 };
 
 
-class Solution {
+class Solution90 {
 public:
     // 2022.8.27, from https://ke.algomooc.com/detail/v_62bd711ee4b0a51feef9895d/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_62b96d90e4b00a4f371ee3ad
     // 登录 AlgoMooc 官网获取更多算法图解
@@ -551,6 +551,112 @@ public:
         // 根据 s 中是否涵盖了 t 所有字符的子串来获取结果
         return windowLength == s.length() + 1 ? "" : s.substr(start, windowLength);
 
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.8.27, from https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
+    /*
+        note : this first problem has been brutally analyzed as this is a tricky concept and forms the basis to 
+        solve the next 5. Master this one and try the rest on your own, that would be the best way to learn.
+
+        In the previous example the window was of a fixed size, but here we use a window of variable size determined 
+        by begin and end markers. A brute force approach would be to iterate through all possible substrings and 
+        determine the minimum window which contains all characters of T. How do you see if a substring has all 
+        characters of T ? You could use the frequency table of T which stores character to number of occurrences as 
+        follows :
+
+        # initialize frequency table
+        for char c in T do 
+            table[c]++;
+        end
+        counter = table.size()                 # unique chars in T
+        for char c in string B do
+            if(char c in table){ 
+                table[c]--;                    # decrement count for c
+                if(table[c] == 0) counter--;
+            }
+        end
+        if(counter == 0){ # B has every character in T }
+
+        So we are basically assuring that every unique character in T exists in B as many times as it exists in T 
+        by maintaining a counter. It is fine if there are 4 ‘K’s in T and B has 7 ‘K’s , the table count for ‘K’ would 
+        simply go negative, but it goes to 0 at some point before that, proving string B has at least 4 'K’s in it, 
+        satisfying the need with respect to “K”, extending the logic to other chars in T if counter = 0, B has all 
+        chars in T.
+
+        Okay so coming to the sliding window part here, we keep sliding end to the right examining each new character 
+        and updating the count in table. As soon as we hit counter = 0, it means we have a valid answer so we try to 
+        trim it down removing the unessential characters from the start by sliding begin right. We constantly keep 
+        trying to validate / invalidate the string by manipulating counter and table counts.
+
+        Take a moment, understand this code. Walk through it on paper for this example : [ S : ADOBECODEBANC | T :"ABC" ] . 
+        Do not worry, the code is just heavily annotated, it is actually very concise.
+
+        Intuition : the best substring for the answer would simply be a permutation of T if such a substring exists 
+        in S, but otherwise we could have wasteful characters sitting in between the essential characters that make 
+        the substring valid as an answer. Our attempt here is to remove such chars without losing the necessary ones. 
+        After trimming down as much as possible we resume with sliding end right and repeating the whole process.
+
+        Whenever counter = 0 we have a valid candidate for our ans, but we update ans only if it is shorter than previously 
+        recorded minimum length ans.
+    */ 
+    string minWindow(string s, string t) {
+        unordered_map<char, int> table;
+        
+        // initialize frequency table for t
+        for(char c : t){
+            table[c]++;
+        }
+        
+        // initialize sliding window
+        int begin = 0, end = 0;
+        int counter = table.size();
+        int len = INT_MAX;
+        
+        string ans = "";
+        
+        // start sliding window
+        while(end < s.length()){
+            char endchar = s[end];
+            
+            // if current char found in table, decrement count
+            if(table.find(endchar) != table.end()){
+                table[endchar]--;
+                if(table[endchar] == 0) counter--;
+            }
+            
+            end++;
+            
+            // if counter == 0, means we found an answer, now try to trim that window by sliding begin to right.
+            while(counter == 0){
+                // store new answer if smaller than previously best
+                if(end-begin < len){
+                    len = end - begin;
+                    ans = s.substr(begin, end - begin); 
+                }
+                
+                // begin char could be in table or not, 
+                // if not then good for us, it was a wasteful char and we shortened the previously found substring.
+                
+                // if found in table increment count in table, as we are leaving it out of window and moving ahead, 
+                // so it would no longer be a part of the substring marked by begin-end window
+                // table only has count of chars required to make the present substring a valid candidate
+                // if the count goes above zero means that the current window is missing one char to be an answer candidate
+                int startchar = s[begin];
+                
+                if(table.count(startchar) == 1){
+                   table[startchar]++;
+                   if(table[startchar] > 0) counter++; 
+                }
+                
+                begin++;
+            }
+        }
+        
+        return ans;
     }
 };
 

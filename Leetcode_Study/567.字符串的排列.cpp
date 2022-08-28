@@ -379,7 +379,7 @@ public:
 };
 
 
-class Solution {
+class Solution88 {
 public:
     // 2022.8.27, from https://ke.algomooc.com/detail/v_62c24811e4b00a4f37219707/3?from=p_6243bcc1e4b04e8d90291891&type=8&parent_pro_id=p_62b96d90e4b00a4f371ee3ad
     bool checkInclusion(string s1, string s2) {
@@ -451,6 +451,47 @@ public:
         // 【5、返回所需要的答案】
         return false;
 
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.8.27, from https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
+    bool checkInclusion(string s1, string s2) {
+        unordered_map<char, int> table;
+        
+        for(char c : s1){
+            table[c]++;
+        }
+        
+        int begin = 0, end = 0, counter = table.size();
+        
+        while(end < s2.length()){
+            char endchar = s2[end];
+            
+            if(table.count(endchar) == 1){
+                table[endchar]--;
+                if(table[endchar] == 0) counter--;
+            }
+            
+            end++;
+            
+            while(counter == 0){
+                if(end - begin == s1.length()) return true;
+                
+                char startchar = s2[begin];
+                
+                if(table.count(startchar) == 1){
+                    table[startchar]++;
+                    if(table[startchar] > 0) counter++;
+                }
+                
+                begin++;
+            }
+        }
+        
+        return false;
     }
 };
 

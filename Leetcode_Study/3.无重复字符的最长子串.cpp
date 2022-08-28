@@ -366,7 +366,7 @@ public:
     JPMorgan 2
 */
 
-class Solution {
+class Solution89 {
 public:
     // 2022.8.14, by Hsinan
     int lengthOfLongestSubstring(string s) {
@@ -380,6 +380,40 @@ public:
         return maxSize;
     }
 };
+
+
+class Solution {
+public:
+    // 2022.8.27, from https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> seen;
+        
+        int begin = 0, end = 0;
+        int len = 0;
+        
+        string ans = "";
+        
+        while(end < s.length()){
+            char current = s[end];
+            
+            if(seen.count(current) == 1 && seen[current] >= begin){
+                begin = seen[current] + 1;
+            }
+            else{
+                seen[current] = end;
+                end++;            
+            }
+            
+            if(end - begin > len){
+                len = end - begin;
+                ans = s.substr(begin, end - begin);
+            }
+        }
+        
+        return len;
+    }
+};
+
 
 // @lc code=end
 

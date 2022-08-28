@@ -470,7 +470,7 @@ public:
 };
 
 
-class Solution {
+class Solution89 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/239
     /*
@@ -498,6 +498,25 @@ public:
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution {
+public:
+    // 2022.8.27, from https://leetcode-solution.cn/book
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> res;
+        multiset<int> mysetting;
+        for (int i = 0; i < nums.size(); i++) {
+            mysetting.insert(nums[i]);
+            if (i >= k - 1) {
+                res.push_back(*mysetting.rbegin());
+                mysetting.erase(mysetting.find(nums[i - k + 1]));
+            }
+        }
+        return res;
+    }
+};
+
 
 
 // @lc code=end
