@@ -43,6 +43,29 @@ https://leetcode.cn/problems/sliding-window-maximum/
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+    2022.8.27
+
+    For data structure, we might think about STL "priority_queue". However, this data structure will only allow
+    push/pop/top access, we cannot remove a specific element in the middle or anywhere in the priority queue, so
+    priority queue is not practical.
+
+    We need a way to know largest element in the window all the time when slidding window is moving.
+
+    The solution from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.md
+        1. Use STDL deque so we can access front and back sides
+        2. In the push() function, the "while" condition is the key. It basically removes all smaller elements before 
+           adding new element, if this new element is larger than those elements in the deque
+        3. In the pop(), if the specified one is not the largest one, do nothing
+
+*/
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // @lc code=start
 class Solution100 {
 public:
@@ -172,6 +195,23 @@ public:
        };
       
        这样我们就用deque实现了一个单调队列，接下来解决滑动窗口最大值的问题就很简单了，直接看代码吧。
+
+       在来看一下时间复杂度，使用单调队列的时间复杂度是 O(n)。
+
+       有的同学可能想了，在队列中 push元素的过程中，还有pop操作呢，感觉不是纯粹的O(n)。
+
+       其实，大家可以自己观察一下单调队列的实现，nums 中的每个元素最多也就被 push_back 和 pop_back 各一次
+       没有任何多余操作，所以整体的复杂度还是 O(n)。
+
+       空间复杂度因为我们定义一个辅助队列，所以是O(k)。
+
+       扩展
+       大家貌似对单调队列 都有一些疑惑，首先要明确的是，题解中单调队列里的pop和push接口，仅适用于本题哈。
+       单调队列不是一成不变的，而是不同场景不同写法，总之要保证队列里单调递减或递增的原则，所以叫做单调队列。 
+       不要以为本题中的单调队列实现就是固定的写法哈。
+
+       大家貌似对deque也有一些疑惑，C++中deque是stack和queue默认的底层实现容器（这个我们之前已经讲过啦），
+       deque是可以两边扩展的，而且deque里元素并不是严格的连续分布的。
     */
 private:
     class MyQueue { //单调队列（从大到小）
@@ -516,7 +556,6 @@ public:
         return res;
     }
 };
-
 
 
 // @lc code=end
