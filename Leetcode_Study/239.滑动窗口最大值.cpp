@@ -49,21 +49,79 @@ https://leetcode.cn/problems/sliding-window-maximum/
 
     For data structure, we might think about STL "priority_queue". However, this data structure will only allow
     push/pop/top access, we cannot remove a specific element in the middle or anywhere in the priority queue, so
-    priority queue is not practical.
+    priority queue is not common, but Solution90 provides a way by using STL's priority queue
 
     We need a way to know largest element in the window all the time when slidding window is moving.
+    Few ways are:
+        1. By using C++ STL's deque
+        2. By using C++ STL's multiset
+        3. By using C++ STL's priority queue
 
-    The solution from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.md
-        1. Use STDL deque so we can access front and back sides
+    The solution99 from https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0239.%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC.md
+        1. Use STL deque so we can access front and back sides
         2. In the push() function, the "while" condition is the key. It basically removes all smaller elements before 
            adding new element, if this new element is larger than those elements in the deque
         3. In the pop(), if the specified one is not the largest one, do nothing
 
+        // 每次弹出的时候，比较当前要弹出的数值是否等于队列出口元素的数值，如果相等则弹出。
+        // 同时pop之前判断队列当前是否为空。
+        void pop(int value) {
+            if (!que.empty() && value == que.front()) {     --> only pop the element if it is largest one
+                que.pop_front();
+            }
+        }
+        // 如果push的数值大于入口元素的数值，那么就将队列后端的数值弹出，直到push的数值小于等于队列入口
+        // 元素的数值为止。这样就保持了队列里的数值是单调从大到小的了。
+        void push(int value) {
+            while (!que.empty() && value > que.back()) {    --> use "while" to remove all smaller elements
+                que.pop_back();
+            }
+            que.push_back(value);
+
+        }
+
+    2022.8.28
+
+    The solution98 from 程序员吴师兄 is similar to above, by using deque and push/pop, but in one function
+
+    The solution97 and solution96 are using deque to hold index or value
+
+    The solution95/solution94/solution93/solution92 are using deque to hold index or value, similar to 
+    solution97/96 above
+
+    The solution91 is using multiset, which can hold same value into multiset, also do a sorting when adding
+    the value, so we don't have to push/pop values in deque like all above solutions
+        -- 使用 STL 自带的 multiset 就能满足我们的需求，这是一种基于红黑树的数据结构，可以自动对元素进行排序，又允许有重复值，
+           完美契合。
+    But, there is a tricky place
+        -- 我们只想删除一个，而 erase 默认是将所有和目标值相同的元素都删掉，所以我们只能提供一个 iterator，代表一个确定的删除位置，
+           先通过 find() 函数找到左边界 nums[i-k] 在集合中的位置，再删除即可。
+
+    Solution90 is a surprise to me, by using priority queue. I was thinking that priority queue cannot be
+    used as it can only access top by push/pop/top, but, it also using std::pair() and by using index, it 
+    will pop out elements not within the slidding window by using "while" loop. That means, it is similar
+    to the way by using deque, remove elements by value (if the incomnig element value is larger than elements
+    in the deque), or by index (if the index of element is already out of slidding window), so the priority
+    queue here will maintain all elements within the slidding window (by index) where the largest one can be 
+    accessed from top all the time!
+
+        for (int i = 0; i < nums.size(); ++i) {
+            while (!q.empty() && q.top().second <= i - k) q.pop();
+            q.push({nums[i], i});
+            if (i >= k - 1) res.push_back(q.top().first);
+        }
+
+    Solution89 is using deque, same as above solution97/96
+
+    Last solution is from https://leetcode-solution.cn/book, which is using multiset. Again, to get largest
+    value within multiset, use rbegin() as it is increasing order, last element is the largest one. To remove
+    the specific element, use find() by value to get the specific iterator of that value, then remove it, 
+    othereise if we remove by just value, it will remove all of them as long as value is same. Refer this link:
+    https://en.cppreference.com/w/cpp/container/multiset/erase
+
+    Note that based on LC's runtime result, deque < priority queue < multiset. If we want fastest runtime result
+    answer, use deque one
 */
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // @lc code=start
@@ -468,7 +526,7 @@ public:
         都删掉，所以我们只能提供一个 iterator，代表一个确定的删除位置，先通过 find() 函数找到左边界 nums[i-k] 
         在集合中的位置，再删除即可。然后将当前数字插入到集合中，此时看若 i >= k-1，说明窗口大小正好是k，就
         需要将最大值加入结果 res 中，而由于 multiset 是按升序排列的，最大值在最后一个元素，我们可以通过 
-        rbeng() 来取出，参见代码如下：
+        rbegin() 来取出，参见代码如下：
 
         解法一：
     */
@@ -540,7 +598,7 @@ public:
 /************************************************************************************************************/
 
 
-class Solution {
+class Solution0 {
 public:
     // 2022.8.27, from https://leetcode-solution.cn/book
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
