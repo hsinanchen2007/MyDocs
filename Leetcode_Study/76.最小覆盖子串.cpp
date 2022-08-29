@@ -555,7 +555,7 @@ public:
 };
 
 
-class Solution {
+class Solution89 {
 public:
     // 2022.8.27, from https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
     /*
@@ -658,6 +658,45 @@ public:
         
         return ans;
     }
+};
+
+
+class Solution {
+    // 2022.8.28, from https://leetcode-solution.cn/book
+    public:
+        string minWindow(string s, string t) {
+            if (s.size() == 0 || t.size() == 0 || t.size() > s.size())
+                return "";
+
+            vector<int> remaining(128, 0);
+            int required = t.size();
+
+            for (int i = 0; i < required; i++)
+                remaining[t[i]]++;
+
+            int min = INT_MAX, start = 0, left = 0, i = 0;
+            while (i <= s.size() && start < s.size()) {
+                if (required) {
+                    if (i == s.size())
+                        break;
+                    remaining[s[i]]--;
+                    if (remaining[s[i]] >= 0)
+                        required--;
+                    i++;
+                } else {
+                    if (i - start < min) {
+                        min = i - start;
+                        left = start;
+                    }
+                    remaining[s[start]]++;
+                    if (remaining[s[start]] > 0)
+                        required++;
+                    start++;
+                }
+            }
+
+            return min == INT_MAX ? "" : s.substr(left, min);
+        }
 };
 
 
