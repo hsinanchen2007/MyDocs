@@ -598,7 +598,7 @@ public:
 /************************************************************************************************************/
 
 
-class Solution0 {
+class Solution {
 public:
     // 2022.8.27, from https://leetcode-solution.cn/book
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
