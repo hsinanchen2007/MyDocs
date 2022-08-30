@@ -48,6 +48,24 @@ s 和 t 由英文字母组成
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+    2022.8.29
+        For sure we need a slidding window with different size, and a hash table to keep tracking the elements in 
+        the slidding window, and when the window contains all elements from pattern, get its size and see if the
+        string is smallest one. Since we won't know what's the final one, the returned string may keep changing. 
+
+        Solution100 is tricky and hard to understand at first time to read.
+
+        
+
+
+
+
+
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // @lc code=start
 class Solution100 {
 public:
