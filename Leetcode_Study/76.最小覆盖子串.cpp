@@ -57,12 +57,13 @@ s 和 t 由英文字母组成
 
         Solution100 is tricky and hard to understand at first time to read.
 
-        
+        Solution99 is more clear, "先扩展，再收缩，就好像一个窗口一样，先扩大右边界，然后再收缩左边界". 为啥要用 HashMap，而不是 
+        HashSet，现在应该很显而易见了吧，因为要统计T串中字母的个数，而不是仅仅看某个字母是否在T串中出现。如果减1后的映射值仍大于等于0，
+        说明当前遍历到的字母是T串中的字母，使用一个计数器 cnt，使其自增1。当 cnt 和T串字母个数相等时，说明此时的窗口已经包含了T串中的
+        所有字母
 
-
-
-
-
+        Stop reading different solutions as it's difficult to be able to finish code in short time yet. Leave it
+        as TODO now.
 */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
