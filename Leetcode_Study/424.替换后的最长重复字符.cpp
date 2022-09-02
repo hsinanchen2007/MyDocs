@@ -38,6 +38,22 @@ s 仅由大写英文字母组成
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+    2022.8.29
+        The key condition to check is, when (end - start + 1 - max # of repeated ones > k), then we need to move 
+        start pointer.
+
+    Solution100 uses two for loop, by A-Z and by string s's beginning to end, to check if the window contains over
+    # of can be replaced characters K, then move j (start pointer). As this solution has two for loops, not a 
+    good one
+
+    
+
+
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // @lc code=start
 class Solution100 {
 public:
