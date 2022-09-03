@@ -340,7 +340,7 @@ public:
 };
 
 
-class Solution {
+class Solution90 {
 public:
     // 2022.8.27, a copy official code at https://www.educative.io/courses/grokking-the-coding-interview/R8DVgjq78yR
     static int characterReplacement(const string &str, int k) {
@@ -371,6 +371,53 @@ public:
 
         return maxLength;
     }
+};
+
+
+class Solution89 {
+    public:
+        // 2022.9.2, from https://leetcode-solution.cn/book
+        int characterReplacement(string s, int k) {
+            int res = 0, left = 0, right = 0, size = s.size(), localMaxFreq = 0;
+
+            vector<int> count(26, 0);
+            for (; right < size; right++) {
+                count[s[right] - 'A'] += 1;
+                localMaxFreq = max(localMaxFreq, count[s[right] - 'A']);
+
+                if ((right - left + 1) - localMaxFreq > k) {
+                    res = max(res, (right - left));
+                    count[s[left] - 'A'] -= 1;
+                    left += 1;
+                    localMaxFreq = *(max_element(count.begin(), count.end()));
+                }
+            }
+
+            return max(res, right - left);
+        }
+};
+
+
+class Solution {
+    public:
+        // 2022.9.2, from https://leetcode-solution.cn/book
+        int characterReplacement(string s, int k) {
+            int res = 0;
+            int maxf = 0;
+            vector<int> count(26, 0);
+            
+            for (int i = 0; i < s.size(); i++) {
+                count[s[i] - 'A'] += 1;
+                maxf = max(maxf, count[s[i] - 'A']);
+                
+                if (res - maxf < k)
+                    res += 1;
+                else
+                    count[s[i - res] - 'A'] -= 1;
+            }
+
+            return res;
+        }
 };
 
 
