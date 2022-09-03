@@ -502,6 +502,7 @@ public:
 
 class Solution {
     public:
+        // 2022.9.2, from https://leetcode-solution.cn/book
         bool checkInclusion(string s1, string s2) {
             vector<int> cnts(256, 0);
             for (char ch: s1)
