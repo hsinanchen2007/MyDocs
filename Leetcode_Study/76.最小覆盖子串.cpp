@@ -777,6 +777,8 @@ public:
     string minWindow(string &str, string &pattern) {
         int windowStart = 0, matched = 0, minLength = str.length() + 1, subStrStart = 0;
         unordered_map<char, int> charFrequencyMap;
+
+        // build up hash table for pattern first
         for (auto chr : pattern) {
             charFrequencyMap[chr]++;
         }
@@ -784,6 +786,8 @@ public:
         // try to extend the range [windowStart, windowEnd]
         for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
             char rightChar = str[windowEnd];
+
+            // if given character existed in pattern hash table
             if (charFrequencyMap.find(rightChar) != charFrequencyMap.end()) {
                 charFrequencyMap[rightChar]--;
                 if (charFrequencyMap[rightChar] >= 0) {  // count every matching of a character

@@ -469,7 +469,7 @@ public:
 /************************************************************************************************************/
 
 
-class Solution {
+class Solution91 {
 public:
     // 2022.8.2, by Hsinan, can't use binary_search() as this function return boolean, but this LC
     // ask for index value. Also, why don't use upper_bound()? because it will for sure return the 
@@ -482,6 +482,75 @@ public:
         } else { 
             return -1;
         }
+    }
+};
+
+
+class Solution90 {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int l = 0, h = n - 1;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                h = mid - 1;
+            }
+        }
+        return -1;
+    }
+};
+
+
+class Solution89 {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int l = 0, h = n;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                // when we use "while (l < h)", h is one over its size
+                h = mid;
+            }
+        }
+        return -1;
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int l = 0, h = n - 1;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            if (nums[mid] == target) {
+                h = mid - 1;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                h = mid - 1;
+            }
+        }
+
+        // check bound or target value
+        if (l >= nums.size() || nums[l] != target) return -1;
+
+        // always return left if valid
+        return l;
     }
 };
 
