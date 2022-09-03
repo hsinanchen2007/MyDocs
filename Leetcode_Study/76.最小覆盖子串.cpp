@@ -372,16 +372,16 @@ public:
         ++count[c];
 
         for (int l = 0, r = 0; r < s.length(); ++r) {
-        if (--count[s[r]] >= 0)
-            --required;
-        while (required == 0) {
-            if (r - l + 1 < minLength) {
-            bestLeft = l;
-            minLength = r - l + 1;
+            if (--count[s[r]] >= 0)
+                --required;
+            while (required == 0) {
+                if (r - l + 1 < minLength) {
+                    bestLeft = l;
+                    minLength = r - l + 1;
+                }
+                if (++count[s[l++]] > 0)
+                    ++required;
             }
-            if (++count[s[l++]] > 0)
-            ++required;
-        }
         }
 
         return bestLeft == -1 ? "" : s.substr(bestLeft, minLength);
@@ -680,47 +680,140 @@ public:
 };
 
 
-class Solution {
+class Solution88 {
+public:
     // 2022.8.28, from https://leetcode-solution.cn/book
-    public:
-        string minWindow(string s, string t) {
-            if (s.size() == 0 || t.size() == 0 || t.size() > s.size())
-                return "";
+    string minWindow(string s, string t) {
+        if (s.size() == 0 || t.size() == 0 || t.size() > s.size())
+            return "";
 
-            vector<int> remaining(128, 0);
-            int required = t.size();
+        vector<int> remaining(128, 0);
+        int required = t.size();
 
-            for (int i = 0; i < required; i++)
-                remaining[t[i]]++;
+        for (int i = 0; i < required; i++)
+            remaining[t[i]]++;
 
-            int min = INT_MAX, start = 0, left = 0, i = 0;
-            while (i <= s.size() && start < s.size()) {
-                if (required) {
-                    if (i == s.size())
-                        break;
-                    remaining[s[i]]--;
-                    if (remaining[s[i]] >= 0)
-                        required--;
-                    i++;
-                } else {
-                    if (i - start < min) {
-                        min = i - start;
-                        left = start;
-                    }
-                    remaining[s[start]]++;
-                    if (remaining[s[start]] > 0)
-                        required++;
-                    start++;
+        int min = INT_MAX, start = 0, left = 0, i = 0;
+        while (i <= s.size() && start < s.size()) {
+            if (required) {
+                if (i == s.size())
+                    break;
+                remaining[s[i]]--;
+                if (remaining[s[i]] >= 0)
+                    required--;
+                i++;
+            } else {
+                if (i - start < min) {
+                    min = i - start;
+                    left = start;
                 }
+                remaining[s[start]]++;
+                if (remaining[s[start]] > 0)
+                    required++;
+                start++;
             }
-
-            return min == INT_MAX ? "" : s.substr(left, min);
         }
+        return min == INT_MAX ? "" : s.substr(left, min);
+    }
 };
 
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution87 {
+public:
+    // 2022.9.3, from https://labuladong.github.io/algo/1/12/
+    string minWindow(string s, string t) {
+        unordered_map<char, int> need, window;
+        for (char c : t) need[c]++;
+
+        int left = 0, right = 0;
+        int valid = 0;
+        // 记录最小覆盖子串的起始索引及长度
+        int start = 0, len = INT_MAX;
+        while (right < s.size()) {
+            // c 是将移入窗口的字符
+            char c = s[right];
+            // 扩大窗口
+            right++;
+            // 进行窗口内数据的一系列更新
+            if (need.count(c)) {
+                window[c]++;
+                if (window[c] == need[c])
+                    valid++;
+            }
+
+            // 判断左侧窗口是否要收缩
+            while (valid == need.size()) {
+                // 在这里更新最小覆盖子串
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
+                }
+                // d 是将移出窗口的字符
+                char d = s[left];
+                // 缩小窗口
+                left++;
+                // 进行窗口内数据的一系列更新
+                if (need.count(d)) {
+                    if (window[d] == need[d])
+                        valid--;
+                    window[d]--;
+                }                    
+            }
+        }
+        // 返回最小覆盖子串
+        return len == INT_MAX ?
+            "" : s.substr(start, len);
+    }
+};
+
+
+class Solution {
+public:
+    // 2022.9.3, from https://www.educative.io/courses/grokking-the-coding-interview/xoyL4q6ApNE
+    string minWindow(string &str, string &pattern) {
+        int windowStart = 0, matched = 0, minLength = str.length() + 1, subStrStart = 0;
+        unordered_map<char, int> charFrequencyMap;
+        for (auto chr : pattern) {
+            charFrequencyMap[chr]++;
+        }
+
+        // try to extend the range [windowStart, windowEnd]
+        for (int windowEnd = 0; windowEnd < str.length(); windowEnd++) {
+            char rightChar = str[windowEnd];
+            if (charFrequencyMap.find(rightChar) != charFrequencyMap.end()) {
+                charFrequencyMap[rightChar]--;
+                if (charFrequencyMap[rightChar] >= 0) {  // count every matching of a character
+                    matched++;
+                }
+            }
+
+            // shrink the window if we can, finish as soon as we remove a matched character
+            while (matched == pattern.length()) {
+                if (minLength > windowEnd - windowStart + 1) {
+                    minLength = windowEnd - windowStart + 1;
+                    subStrStart = windowStart;
+                }
+
+                char leftChar = str[windowStart++];
+                if (charFrequencyMap.find(leftChar) != charFrequencyMap.end()) {
+                    // note that we could have redundant matching characters, therefore we'll decrement the
+                    // matched count only when a useful occurrence of a matched character is going out of the
+                    // window
+                    if (charFrequencyMap[leftChar] == 0) {
+                        matched--;
+                    }
+                    charFrequencyMap[leftChar]++;
+                }
+            }
+        }
+
+        return minLength > str.length() ? "" : str.substr(subStrStart, minLength);
+    }
+};
 
 
 // @lc code=end
