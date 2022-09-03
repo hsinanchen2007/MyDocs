@@ -455,7 +455,7 @@ public:
 };
 
 
-class Solution {
+class Solution87 {
 public:
     // 2022.8.27, from https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
     bool checkInclusion(string s1, string s2) {
@@ -498,6 +498,31 @@ public:
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution {
+    public:
+        bool checkInclusion(string s1, string s2) {
+            vector<int> cnts(256, 0);
+            for (char ch: s1)
+                cnts[ch]++;
+
+            int left = s1.size();
+            for (int i = 0, j = 0; j < s2.size(); j++) {
+                if (cnts[s2[j]]-- > 0)
+                    left--;
+
+                while (left == 0) {
+                    if (j + 1 - i == s1.size())
+                        return true;
+                    if (++cnts[s2[i++]] > 0)
+                        left++;
+                }
+            }
+
+            return false;
+        }
+};
 
 
 // @lc code=end
