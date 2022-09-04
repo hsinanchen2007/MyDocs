@@ -325,7 +325,7 @@ public:
 };
 
 
-class Solution {
+class Solution88 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/153
     /*
@@ -347,6 +347,26 @@ public:
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int findMin(vector<int>& nums) {
+        int l = 0, h = nums.size() - 1;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            if (l == h) {
+                return nums[l];
+            } else if (nums[mid] > nums[h]) {
+                l = mid + 1;
+            } else {
+                h = mid;
+            }
+        }
+        return -1;
+    }
+};
 
 
 // @lc code=end

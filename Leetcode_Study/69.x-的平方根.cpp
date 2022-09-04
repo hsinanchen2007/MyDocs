@@ -302,7 +302,7 @@ public:
 };
 
 
-class Solution {
+class Solution88 {
 public:
     // 2022.7.27, from https://github.com/grandyang/leetcode/issues/69
     /*
@@ -322,6 +322,30 @@ public:
 
 /************************************************************************************************************/
 /************************************************************************************************************/
+
+
+class Solution {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int mySqrt(int x) {
+        long l = 0, h = x;
+        while (l <= h) {
+            long mid = l + (h - l) / 2;
+            if (l == h || l + 1 == h) {
+                break;
+            } else if (mid * mid > x) {
+                h = mid - 1;
+            } else {
+                l = mid;
+            }
+        }
+        if (h * h <= x) {
+            return (int)h;
+        } else {
+            return (int)l;
+        }
+    }
+};
 
 
 // @lc code=end

@@ -296,7 +296,7 @@ public:
 /************************************************************************************************************/
 
 
-class Solution {
+class Solution90 {
 public:
     // 2022.8.2, by Hsinan, use max_element() to find max one in the given vector
     // then get its index by distance()
@@ -305,6 +305,28 @@ public:
         return (top != nums.end() ? distance(nums.begin(), top) : -1);
     }
 };
+
+
+class Solution {
+public:
+    // 2022.9.3, from https://leetcode-solution.cn/book
+    int findPeakElement(vector<int>& nums) {
+        int n = nums.size();
+        int l = 0, h = n - 1;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            if (mid + 1 < n && nums[mid] < nums[mid + 1]) {
+                l = mid + 1;
+            } else if (mid - 1 >= 0 && nums[mid] < nums[mid - 1]) {
+                h = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+};
+
 
 // @lc code=end
 
