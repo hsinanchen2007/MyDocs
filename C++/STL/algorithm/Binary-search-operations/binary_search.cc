@@ -140,6 +140,15 @@ int main()
         cout << "Target number 5 not found" << endl;
     }
 
+    // decreasing order and still use STL's binary_search()
+    vector<int> myV2 = {10, 8, 6, 4, 2, 0};
+    bool ret2 = binary_search(myV2.begin(), myV2.end(), 8, [](int v1, int v2){ return (v1 > v2) ? true : false; });
+    if (ret2) {
+	cout << "Target number 8 found" << endl;
+    } else {
+        cout << "Target number 8 not found" << endl;
+    }	
+
     // 2022.8.3
     // Note that this function will only return true/false, not index
     // from C++ 20, these functions will be under std::ranges, not under std:: 
