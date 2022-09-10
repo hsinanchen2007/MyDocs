@@ -144,14 +144,25 @@ int main()
     vector<int> myV2 = {10, 8, 6, 4, 2, 0};
     bool ret2 = binary_search(myV2.begin(), myV2.end(), 8, [](int v1, int v2){ return (v1 > v2) ? true : false; });
     if (ret2) {
-	cout << "Target number 8 found" << endl;
+	    cout << "Target number 8 found" << endl;
     } else {
         cout << "Target number 8 not found" << endl;
-    }	
+    }
+
+    // decreasing, but use rbegin()/rend() without compare function
+    bool ret3 = binary_search(myV2.rbegin(), myV2.rend(), 8);
+    if (ret3) {
+	    cout << "Target number 8 found" << endl;
+    } else {
+        cout << "Target number 8 not found" << endl;
+    }
 
     // 2022.8.3
     // Note that this function will only return true/false, not index
     // from C++ 20, these functions will be under std::ranges, not under std:: 
+
+    // 2022.9.10
+    // add decreasing order way by compare function or by rbegin()/rend()
 
     return 0;
     // Target number 5 found
