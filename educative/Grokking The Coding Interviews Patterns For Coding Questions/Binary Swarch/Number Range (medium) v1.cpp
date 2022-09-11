@@ -28,7 +28,7 @@ using namespace std;
 #include <vector>
 #include <algorithm>
 
-class FindRange {
+class FindRange100 {
  public:
   static pair<int, int> findRange(const vector<int> &arr, int key) {
     pair<int, int> result(-1, -1);
@@ -39,6 +39,22 @@ class FindRange {
     int indexL = distance(arr.begin(), low);
     int indexH = distance(arr.begin(), high) - 1; /* upper_bound return will be always next larger element */
     return {indexL, indexH};
+  }
+};
+
+class FindRange {
+ public:
+  static pair<int, int> findRange(const vector<int> &arr, int key) {
+    pair<int, int> result(-1, -1);
+    // TODO: Write your code here
+    auto ret = equal_range(arr.begin(), arr.end(), key);
+    if (ret.first != arr.end() && ret.second != arr.end() && *ret.first == key) {
+      int indexL = distance(arr.begin(), ret.first);
+      int indexH = distance(arr.begin(), ret.second) - 1; /* equal_range's second iterator also points to next larger element */
+      return {indexL, indexH};
+    } else {
+      return result;
+    }
   }
 };
 
