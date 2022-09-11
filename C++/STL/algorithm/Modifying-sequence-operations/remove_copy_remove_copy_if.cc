@@ -59,6 +59,9 @@ int main()
     std::cout << endl << "After removing blocklist names: " << endl;
     for_each(validated.begin(), validated.end(), [](const Name& name){ cout << name.first << " " << name.second << endl; });
 
+    // 2022.9.11
+    // from C++ 20, these functions will be under std::ranges, not under std::
+
     return 0;
     // before: "#Return #Value #Optimization"
     // after:  "Return Value Optimization"
