@@ -136,4 +136,43 @@ int main()
     // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
+    // 1
+    // 3
+    // 3
+    // 3
+    // 4
+    // 5
+    // 9
+    // 8
+    // 7
+    // 6
+    // 1
+    // 10
+    // 10
+    // Size of myV1 is 18
+    // 1
+    // 3
+    // 3
+    // 3
+    // 4
+    // 5
+    // 9
+    // 8
+    // 7
+    // 6
+    // 1
+    // 10
+    // 10
+    // Size of myV2 is 13
+    // 2
+    // 2
+    // 2
+    // 2
+    // 4
+    // 8
+    // 6
+    // 2
+    // 10
+    // 10
+    // Size of myV3 is 10
 }
