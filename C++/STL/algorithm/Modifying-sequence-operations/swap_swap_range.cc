@@ -33,17 +33,6 @@ Return value
 (none)
 
 
-1) Exchanges elements between range [first1, last1) and another range starting at first2.
- Precondition: the two ranges [first1, last1) and [first2, last2) do not overlap, where last2 = 
- std::next(first2, std::distance(first1, last1)).
-2) Same as (1), but executed according to policy. This overload does not participate in overload 
-resolution unless std::is_execution_policy_v<std::decay_t<ExecutionPolicy>> (until C++20) 
-std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>> (since C++20) is true.
-
-Return value
-Iterator to the element past the last element exchanged in the range beginning with first2.
-
-
 可以用 swap_ranges() 算法来交换两个序列。这个算法需要 3 个正向迭代器作为参数。前两个参数分别是第一个序列的开始和结束迭代器，
 第三个参数是第二个序列的开始迭代器。显然，这两个序列的长度必须相同。这个算法会返回一个迭代器，它指向第二个序列的最后一个被交换
 元素的下一个位置。例如：
@@ -101,14 +90,7 @@ namespace Ns {
     };
 }
 
-auto print = [](auto comment, auto const& seq) {
-    std::cout << comment;
-    for (const auto& e : seq) { std::cout << e << ' '; }
-    std::cout << '\n';
-};
-
-// example from https://en.cppreference.com/w/cpp/algorithm/swap and
-// https://en.cppreference.com/w/cpp/algorithm/swap_ranges
+// example from https://en.cppreference.com/w/cpp/algorithm/swap 
 int main()
 {
     int a = 5, b = 3;
@@ -147,24 +129,6 @@ int main()
     for_each(v1.begin(), v1.end(), [](int v){ cout << v << endl;});
     for_each(v2.begin(), v2.end(), [](int v){ cout << v << endl;});
 
-    // now we want to swap partial elements in v1 and v2
-    // let's swap the 2nd element
-    // Note that the begin()+number, which is the nth element
-    // below statement means swap 2th element, end at 3rd element, from v1
-    // to 2th element in v2
-    swap_ranges(v1.begin()+2, v1.begin()+3, v2.begin()+2);
-
-    std::vector<char> v = {'a', 'b', 'c', 'd', 'e'};
-    std::list<char> l = {'1', '2', '3', '4', '5'};
- 
-    print("Before swap_ranges:\n" "v: ", v);
-    print("l: ", l);
- 
-    std::swap_ranges(v.begin(), v.begin()+3, l.begin());
- 
-    print("After swap_ranges:\n" "v: ", v);
-    print("l: ", l);
-
     return 0;
     // 5 3
     // 3 5
@@ -199,12 +163,6 @@ int main()
     // 2
     // 3
     // 6
-    // Before swap_ranges:
-    // v: a b c d e 
-    // l: 1 2 3 4 5 
-    // After swap_ranges:
-    // v: 1 2 3 d e 
-    // l: a b c 4 5 
 }
 
 
