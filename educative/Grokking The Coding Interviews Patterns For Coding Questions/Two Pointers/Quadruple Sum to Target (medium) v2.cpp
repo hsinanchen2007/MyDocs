@@ -7,6 +7,13 @@ We can follow a similar approach to iterate through the array, taking one number
 At every step during the iteration, we will search for the quadruplets similar to Triplet Sum to 
 Zero whose sum is equal to the given target.
 
+Time complexity#
+Sorting the array will take O(N*logN). Overall searchQuadruplets() will take O(N * logN + N^3)
+, which is asymptotically equivalent to O(N^3).
+
+Space complexity#
+The space complexity of the above algorithm will be O(N) which is required for sorting.
+
 */
 
 using namespace std;
