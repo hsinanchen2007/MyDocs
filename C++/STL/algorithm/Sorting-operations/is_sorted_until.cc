@@ -55,6 +55,8 @@ int main()
     for (int sorted_size = 0; sorted_size < min_sorted_size; )
     {
         std::shuffle(nums, nums + N, g);
+
+        // return the iterator of last element that is still sorted
         int *const sorted_end = std::is_sorted_until(nums, nums + N);
         sorted_size = std::distance(nums, sorted_end);
         assert(sorted_size >= 1);
