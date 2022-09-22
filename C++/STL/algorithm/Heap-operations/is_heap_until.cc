@@ -48,6 +48,10 @@ int main()
     v.push_back(6);
  
     // check the heap until the iterator
+    // note that this is one important function in heap operation,
+    // as it can distinguish the range of heap and normal vector
+    // for example, push_heap()/pop_heap() will add last/move first
+    // elements into/from heap
     auto heap_end = std::is_heap_until(v.begin(), v.end());
  
     std::cout << "all of v: ";
