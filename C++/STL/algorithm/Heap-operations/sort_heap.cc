@@ -56,9 +56,45 @@ int main()
     if (!std::is_heap(v.begin(), v.end(), less<int>{})) {
         std::cout << "Not max heap anymore after sort_heap()" << endl;
     }
-    
+
+    // sort from less to larger
+    std::cout << "sort() from less to larger:\t";
+    sort(v.begin(), v.end(), less<int>());
+    for (const auto &i : v) {                                                   
+        std::cout << i << ' ';
+    }   
+    std::cout << '\n';
+
+    // sort from larger to less
+    std::cout << "sort() from larger to less:\t";
+    sort(v.begin(), v.end(), greater<int>());
+    for (const auto &i : v) {                                                   
+        std::cout << i << ' ';
+    }   
+    std::cout << '\n';
+
+    // max heap
+    std::make_heap(v.begin(), v.end(), less<int>());
+    std::cout << "max heap:\t";
+    for (const auto &i : v) {
+        std::cout << i << ' ';
+    }   
+    std::cout << '\n';
+
+    // min heap
+    std::make_heap(v.begin(), v.end(), greater<int>());
+    std::cout << "min heap:\t";
+    for (const auto &i : v) {
+        std::cout << i << ' ';
+    }   
+    std::cout << '\n';
+
     return 0;
     // heap:	9 5 4 1 1 3 
     // sorted:	1 1 3 4 5 9 
-    // Not max heap anymore after sort_heap()   
+    // Not max heap anymore after sort_heap()
+    // sort() from less to larger:	1 1 3 4 5 9 
+    // sort() from larger to less:	9 5 4 3 1 1 
+    // max heap:	9 5 4 3 1 1 
+    // min heap:	1 1 4 3 5 9 
 }
