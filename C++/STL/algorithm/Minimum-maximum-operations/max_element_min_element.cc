@@ -35,6 +35,8 @@ Iterator to the greatest element in the range [first, last). If several elements
 to the greatest element, returns the iterator to the first such element. Returns last if the range is empty.
 
 
+https://en.cppreference.com/w/cpp/algorithm/min_element
+
 Finds the smallest element in the range [first, last).
 
 1) Elements are compared using operator<.

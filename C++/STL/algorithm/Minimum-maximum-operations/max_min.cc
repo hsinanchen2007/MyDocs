@@ -35,6 +35,8 @@ Return value
 the leftmost one.
 
 
+https://en.cppreference.com/w/cpp/algorithm/min
+
 Returns the smaller of the given values.
 
 1-2) Returns the smaller of a and b.
