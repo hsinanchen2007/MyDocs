@@ -81,7 +81,8 @@
 			"variant": "cpp",
 			"__split_buffer": "cpp",
 			"any": "cpp",
-			"climits": "cpp"
+			"climits": "cpp",
+			"stack": "cpp"
 		},
 		"printcode.lineNumbers": "off"
 	}
