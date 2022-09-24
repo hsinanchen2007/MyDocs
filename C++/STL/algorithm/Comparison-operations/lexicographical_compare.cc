@@ -68,7 +68,8 @@ std::cout << std::endl;
 the tigers of wrath are not less than the horses of instruction
 
 可以在 lexicographical_compare() 调用中添加一个参数，得到相反的结果：
-auto less = std::lexicographical_compare (std::begin (phrase1), std::end (phrase1),std::begin(phrase2), std::end(phrase2), [](const string& s1, const string& s2) { return s1.length() < s2.length(); });
+auto less = std::lexicographical_compare (std::begin (phrase1), std::end (phrase1),std::begin(phrase2), std::end(phrase2), 
+[](const string& s1, const string& s2) { return s1.length() < s2.length(); });
 这个算法会使用作为第 3 个参数的 lambda 表达式来比较元素。这里会比较序列中字符串的长度，因为 phrase1 中第 4 个元素的长度小于 phrase2 
 中对应的元素，所以 phrase1 小于 phrase2。
 
@@ -107,4 +108,7 @@ int main()
     std::cout << '\n';
 
     return 0;
+    // a b c d >= a b c d 
+    // c b a d >= b a c d 
+    // a b c d <  d a c b 
 }
