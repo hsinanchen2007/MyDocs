@@ -157,10 +157,6 @@ int main()
         cout << "Target number 8 not found" << endl;
     }
 
-    // 2022.8.3
-    // Note that this function will only return true/false, not index
-    // from C++ 20, these functions will be under std::ranges, not under std:: 
-
     // 2022.9.10
     // add decreasing order way by compare function or by rbegin()/rend()
 

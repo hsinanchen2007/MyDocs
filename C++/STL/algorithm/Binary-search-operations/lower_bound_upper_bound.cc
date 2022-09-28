@@ -179,7 +179,6 @@ int main()
     // Note, that means when lower_bound and upper_bound returns one iterator and same, that doesn't 
     // mean the given target value existed based on above example. It may return the next one that 
     // is >= or > target value
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // lower_bound returns 5 at index 3
