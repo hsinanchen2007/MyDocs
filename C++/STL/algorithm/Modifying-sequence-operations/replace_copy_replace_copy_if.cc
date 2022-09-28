@@ -54,9 +54,6 @@ int main()
     for_each(result.begin(), result.end(), [](int v){ cout << v << " "; });
     cout << endl;
 
-    // 2022.9.11
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // 5 99 4 2 99 99 1 99 0 3 
     // 1 2 3 4 99 99 99 99 99 4 3 2 1 

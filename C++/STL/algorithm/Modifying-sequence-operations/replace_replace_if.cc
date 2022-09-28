@@ -102,9 +102,6 @@ int main()
     std::replace_if(std::begin(password), std::end(password),[](char ch){return std::isspace(ch);}, '_');
     cout << password << endl;
 
-    // 2022.9.11
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // 5 7 4 2 88 6 1 9 0 3 
     // 5 7 55 55 88 6 55 9 55 55 

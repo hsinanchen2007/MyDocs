@@ -132,9 +132,6 @@ int main()
     for_each(myV3.begin(), myV3.end(), [](int v) { cout << v << endl; });
     cout << "Size of myV3 is " << myV3.size() << endl;
 
-    // 2022.9.11
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // 1
     // 3

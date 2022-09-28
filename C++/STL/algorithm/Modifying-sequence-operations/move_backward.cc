@@ -57,7 +57,6 @@ int main()
     // remain same, so we cannot use size to determine whether items are already moved or not
     // the "value" of item are all gone and moved to target
     // at target side, new values will overwrite original values
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // qux

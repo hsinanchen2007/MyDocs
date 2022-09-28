@@ -112,9 +112,6 @@ int main()
     for_each(dest.begin(), dest.end(), [](int v){ cout << v << " "; });
     cout << endl;
 
-    // 2022.8.20
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // source before move contains: 
     // 1 2 3 4 

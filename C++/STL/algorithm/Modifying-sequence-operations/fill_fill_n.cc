@@ -100,7 +100,6 @@ int main()
 
     // 2022.8.20
     // Note that 2nd parameter is size, and 3rd parameter is value to fill in fill_n() call
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 

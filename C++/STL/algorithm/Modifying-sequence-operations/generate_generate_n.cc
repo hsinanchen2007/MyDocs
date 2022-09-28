@@ -154,7 +154,6 @@ int main()
 
     // 2022.8.20
     // Above code example needed to use C++ 23 to compile, just for reference
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // v: 1 2 3 4 5 

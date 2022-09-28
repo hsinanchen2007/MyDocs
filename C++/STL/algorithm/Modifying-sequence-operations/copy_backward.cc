@@ -113,9 +113,6 @@ int main()
     }
     cout << endl;
 
-    // 2022.8.20
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // to_vector from back contains: 0 0 0 0 0 0 1 2 3 4 5 6 7 8 9 
     // to_vector from front contains: 0 1 2 3 4 5 6 7 8 9 5 6 7 8 9 

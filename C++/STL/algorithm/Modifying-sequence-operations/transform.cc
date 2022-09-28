@@ -195,9 +195,6 @@ int main()
     }
     std::cout << '\n';
 
-    // 2022.8.20
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // s = "HELLO"
     // g = "HELLO"
