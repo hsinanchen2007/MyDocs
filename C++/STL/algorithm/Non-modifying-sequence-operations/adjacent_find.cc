@@ -139,7 +139,6 @@ int main()
 
     // 2022.8.6
     // this function doesn't require a sorted input
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // The first adjacent matched element is 6 at index 6

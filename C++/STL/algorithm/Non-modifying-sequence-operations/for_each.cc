@@ -75,9 +75,6 @@ int main()
     for_each(myV.begin(), myV.end(), [myResult = 0](int value) mutable { 
         myResult = myResult + value; cout << "Result5 of sum now is " << myResult << endl; });
 
-    // 2022.7.31
-    // from C++ 20, these functions will be under std::ranges, not under std::
-
     return 0;
     // Result1 of sum is 25
     // Result2 of sum is 25

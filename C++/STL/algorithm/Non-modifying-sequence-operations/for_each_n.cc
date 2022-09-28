@@ -56,7 +56,6 @@ int main()
     // Need C++ 17 or above to compile
     // Note: The return value
     // An iterator equal to first + n, or more formally, to std::advance(first, n).
-    // from C++ 20, these functions will be under std::ranges, not under std::
     
     return 0;
 }

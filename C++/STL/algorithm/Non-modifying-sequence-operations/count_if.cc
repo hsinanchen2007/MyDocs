@@ -52,7 +52,6 @@ int main()
 
     // 2022.7.31
     // when we need lambdas function, we need to use count_if(). count() can only hold a specific value
-    // from C++ 20, these functions will be under std::ranges, not under std:: 
 
     return 0;
 }

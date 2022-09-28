@@ -171,7 +171,6 @@ int main()
     // note that the check from myV2 is strict, that means it needed to find exact match in myV1
     // if it is not 100% match, end iterator will return
     // this may be useful for string question to find last happened substring from a given string
-    // from C++ 20, these functions will be under std::ranges, not under std:: 
 
     return 0;
     // Returned from find_end() is 6, index 11

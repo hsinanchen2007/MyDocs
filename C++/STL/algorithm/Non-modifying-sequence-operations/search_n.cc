@@ -166,7 +166,6 @@ int main()
     // 2022.8.6
     // this function will specify the target and number of times showing up in the given input
     // while find_first_of() will return the first target immediately once it is found
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // Input : { 100101010001010100001010101 }

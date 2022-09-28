@@ -225,7 +225,6 @@ int main()
     // 2022.8.6
     // search() will return the iterator of first matched element with 100% match between 
     // input and keyword, similar to find_end()
-    // from C++ 20, these functions will be under std::ranges, not under std::
 
     return 0;
     // 1
