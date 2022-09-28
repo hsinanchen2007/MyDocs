@@ -78,4 +78,6 @@ int main()
                     std::plus<int>{}, times_10);
 
     return 0;
+    // 10 times exclusive sum: 0 30 40 80 90 140 230 250 
+    // 10 times inclusive sum: 30 40 80 90 140 230 250 310
 }

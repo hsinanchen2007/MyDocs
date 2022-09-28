@@ -110,5 +110,21 @@ int main()
     print_sum_squared(1);
     print_sum_squared(1'000);
     print_sum_squared(1'000'000);
+    // num = 1
+    // accumulate(): 30
+    // reduce(): 30
+    // transform_reduce(): 30
+    //
+    // num = 1,000
+    // accumulate(): 30,000
+    // reduce(): -7,025,681,278,312,630,348
+    // transform_reduce(): 30,000
+    //
+    // num = 1,000,000
+    // accumulate(): 30,000,000
+    // reduce(): -5,314,886,882,370,003,032
+    // transform_reduce(): 30,000,000
+    // Compile-options for parallel execution on POSIX:
+    // g++ -O2 -std=c++17 -Wall -Wextra -pedantic -DPARALLEL ./example.cpp -ltbb -o tr; ./tr
 }
 
