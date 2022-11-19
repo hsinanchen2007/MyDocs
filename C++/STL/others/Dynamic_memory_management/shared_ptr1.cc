@@ -61,3 +61,7 @@ int main()
     // print some internal data
     cout << "use_count: " << whoMadeCoffee[0].use_count() << endl;
 }
+
+// Jutta  Jutta  Nico  Jutta  Nico  
+// Jutta  Jutta  Nicolai  Jutta  Nicolai  
+// use_count: 4
