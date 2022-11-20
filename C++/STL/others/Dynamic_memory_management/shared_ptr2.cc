@@ -62,7 +62,7 @@
     shared_ptr is a psuedo pointer
     shared_ptr acts as normal pointer i.e. we can use * and -> with shared_ptr object and can also compare it like other shared_ptr objects;
 
-    Complete example is as follows,
+    Complete example is as follows
 */
 
 #include <iostream>

@@ -39,7 +39,7 @@
     // Creating a shared+ptr with custom deleter
     std::shared_ptr<Sample> p3(new Sample[12], deleter);
 
-    Check complete example as follows,
+    Check complete example as follows
 */
 
 #include <iostream>
