@@ -223,12 +223,11 @@ public:
 
     std::string operator()(std::string data) {
         for (int i = 0; i < data.size(); i++)
-            if ((data[i] >= ‘a’ && data[i] <= ‘z’)
-                    || (data[i] >= ‘A’ && data[i] <= ‘Z’))
+            if ((data[i] >= 'a' && data[i] <= 'z') || (data[i] >= 'A' && data[i] <= 'Z'))
                 if (m_isIncremental)
                     data[i] = data[i] + m_count;
                 else
-                    data[i] = data[i] – m_count;
+                    data[i] = data[i] - m_count;
         return data;
     }
 };
@@ -255,3 +254,7 @@ int main() {
 
     return 0;
 }
+
+// [IFBEFS]TbnqmfTusjoh[GppUFS]
+// [JGCFGT]UcorngUvtkpi[HqqVGT]
+// [GD@CDQ]R`lokdRsqhmf[EnnSDQ]
