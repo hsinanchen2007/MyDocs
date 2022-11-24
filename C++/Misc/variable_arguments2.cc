@@ -106,3 +106,6 @@ int main()
     findSum(5,7,8,2,1,0);
     return 0;
 }
+
+// Sum = 7
+// Sum = 18
