@@ -1,0 +1,17 @@
+//dowhile.cpp
+#include <iostream>
+#define MAX 6
+using namespace std;
+
+int main()
+{
+    int i;
+    i = 1;
+
+    do {
+        cout << i << endl;
+        i++;
+    } while (i <= MAX);
+
+    return 0;
+}

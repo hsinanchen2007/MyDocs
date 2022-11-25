@@ -1,0 +1,17 @@
+//array&Pointer3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int ary[3][4] = {{1,2,3,4}, {5,6,7,8},{9,10,11,12}};
+    int *ptr[3] = {ary[0], ary[1], ary[2]};
+    int i;
+          
+    printf("\n");
+    for (i=0; i<3; i++)
+        cout << "ptr[" << i << "]=" << *ptr[i]
+             << ", **(ptr+" << i << ")=" << **(ptr+i) << endl;
+
+    return 0;
+}

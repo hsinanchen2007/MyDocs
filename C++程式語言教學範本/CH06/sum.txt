@@ -1,0 +1,23 @@
+//sum.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number;
+    int total = 0, item = 1;
+
+    cout << item << ". 請輸入一整數: ";
+    cin >> number;
+    while (number != -999) {
+        total = total + number;
+        cout << ++item << ". 請輸入一整數: ";
+        cin >> number;
+    }
+
+    item--;
+    cout << "\n共有 "<< item << " 數字加總," << endl;
+    cout << "　總和為 " << total << endl;
+
+    return 0;
+}

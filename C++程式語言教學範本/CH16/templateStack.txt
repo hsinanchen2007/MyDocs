@@ -1,0 +1,93 @@
+//templateStack.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 3
+
+template <typename T>
+class Stack {
+public:
+    Stack();
+    void push(T);
+    T pop();
+    void display();
+
+private:
+    T stack[SIZE];
+    int pointTo;
+};
+
+template <typename T>
+Stack<T>::Stack()
+{
+    pointTo = -1;
+}
+
+template <typename T>
+void Stack<T>::push(T data)
+{
+    if (pointTo < SIZE-1) {
+        pointTo += 1;
+        stack[pointTo] = data;
+        cout << "加入資料於堆疊: " << data << endl;
+    }
+    else {
+        cout << "Stack overflow" << endl;
+    }
+
+}
+
+template <typename T>
+T Stack<T>::pop()
+{
+    T temp;
+    if (pointTo >= 0) {
+        temp = stack[pointTo];
+        pointTo -= 1;
+        cout << "從堆疊刪除資料: " << temp << endl;
+        return temp;
+    }
+    else {
+        cout << "Stack underflow" << endl;
+        return 0;
+    }
+}
+
+template <typename T>
+void Stack<T>::display()
+{
+    cout << "堆疊資料如下: ";
+    for (int i=pointTo; i>=0; i--) {
+        cout << stack[i] << "->";
+    }
+    cout << "NULL" << endl;
+}
+
+int main()
+{
+    Stack<int> stackObj;
+    cout << "堆疊的物件是整數" << endl;
+    stackObj.push(100);
+    stackObj.push(200);
+    stackObj.push(300);
+    stackObj.push(400);
+    stackObj.display();
+    stackObj.pop();
+    stackObj.display();
+    stackObj.pop();
+    stackObj.display();
+    
+    cout << endl;
+    Stack<double> stackObj2;  
+    cout << "堆疊的物件是浮點數" << endl;
+    stackObj2.push(1.1);
+    stackObj2.push(2.2);
+    stackObj2.push(3.3);
+    stackObj2.push(4.4);
+    stackObj2.display();
+    stackObj2.pop();
+    stackObj2.display();
+    stackObj2.pop();
+    stackObj2.display();
+    
+    return 0;
+}

@@ -1,0 +1,22 @@
+//twoVector.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    unsigned int i;
+    vector<vector<int>> twoArray(3); //Three rows
+    for (i=0; i<3; i++) {
+        twoArray[i] = vector<int>(2); //Two columns
+    }
+    
+    int value = 10;
+    for (int x=0; x<3; x++) {
+        for (int y=0; y<2; y++) {
+            twoArray[x][y] = value++;
+            cout << setw(5) << twoArray[x][y];
+        }
+        cout << endl;
+    }

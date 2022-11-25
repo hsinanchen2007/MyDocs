@@ -1,0 +1,18 @@
+//ptrToaVar.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 10;
+    int *ptr_num;
+
+    cout << "num = " << num << ", &num = " << &num << endl;
+
+    ptr_num = &num;
+    cout << "*ptr_num = " << *ptr_num << endl;
+    cout << "ptr_num = " << ptr_num << endl;
+    cout << "&ptr_num = " << &ptr_num << endl;
+
+    return 0;
+}

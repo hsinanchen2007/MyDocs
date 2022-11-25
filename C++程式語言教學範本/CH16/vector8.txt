@@ -1,0 +1,54 @@
+//vector8.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> intVector;
+    unsigned int i;
+    cout << setfill('*');
+    cout << "intVector is empty? " << intVector.empty() << endl;
+    
+    for (i=0; i<intVector.size(); i++) {
+        cout << setw(5) << intVector[i];
+    }
+    
+    if (!intVector.empty()) {
+        for (i=0; i<intVector.size(); i++) {
+            cout << setw(5) << intVector[i];
+        }
+    }
+    else {
+        cout << "vector is empty.";
+    }
+    cout << endl;
+    
+    intVector.push_back(100);
+    intVector.push_back(200);
+    intVector.push_back(300);
+
+    cout << "intVector: ";
+    for (i=0; i<intVector.size(); i++) {
+        cout << setw(5) << intVector[i];
+    }
+    cout << endl;
+    
+    cout << setw(5) << "intVector[1]: " << intVector.at(1) << endl;
+    
+    //swap intVector and v2
+    vector<int> v2;
+    v2.swap(intVector);
+    //change v2[1] to 666
+    v2.at(1) = 666;  //the same as v2[1]    
+    cout << "intVector is empty? " << intVector.empty() << endl;
+    cout << "v2 is empty? " << v2.empty() << endl;
+    cout << "V2 Vector: ";
+    for (i=0; i<v2.size(); i++) {
+        cout << setw(5) << v2[i];
+    }
+    cout << endl;
+    
+    return 0;
+}

@@ -1,0 +1,168 @@
+//multipleInheritance.cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    A();
+    void setAdata(int x);
+    int getAdata();
+    void displayAdata();
+    
+private:
+    int Adata;
+};
+
+A::A()
+{
+    Adata = 100;
+}
+
+void A::setAdata(int x)
+{
+    Adata = x;
+}
+
+int A::getAdata()
+{
+    return Adata;
+}
+
+void A::displayAdata()
+{
+    cout << "Adata: " << Adata << endl;
+}
+
+class B: public A {
+public:
+    B();
+    void setBdata(int);
+    int getBdata();
+    void displayBdata();
+
+private:
+    int Bdata;
+};
+
+B::B()
+{
+    Bdata = 200;
+}
+
+void B::setBdata(int x)
+{
+    Bdata = x;
+}
+
+int B::getBdata()
+{
+    return Bdata;
+}
+
+void B::displayBdata()
+{
+    cout << "Bdata: " << Bdata << endl;
+}
+
+class C: public A {
+public:
+    C();
+    void setCdata(int);
+    int getCdata();
+    void displayCdata();
+
+private:
+    int Cdata;
+};
+
+C::C()
+{
+    Cdata = 300;
+}
+
+void C::setCdata(int x)
+{
+    Cdata = x;
+}
+
+int C::getCdata()
+{
+    return Cdata;
+}
+
+void C::displayCdata()
+{
+    cout << "Cdata: " << Cdata << endl;
+}
+
+class D: public B, public C {
+public:
+    D();
+    void setDdata(int);
+    int getDdata();
+    void displayDdata();
+    
+private:
+    int Ddata;
+};
+
+D::D()
+{
+    Ddata = 400;
+}
+
+void D::setDdata(int x)
+{
+    Ddata = x;
+}
+
+int D::getDdata()
+{
+    return Ddata;
+}
+
+void D::displayDdata()
+{
+    cout << "Ddata: " << Ddata << endl;
+}
+
+int main() 
+{
+    A aObj;
+    aObj.displayAdata();
+    cout << endl;
+    
+    B bObj;
+    bObj.displayBdata();
+    bObj.setBdata(666);
+    bObj.displayBdata();
+    bObj.setAdata(777);
+    bObj.displayAdata();
+    cout << endl;
+    
+    C cObj;
+    cObj.displayCdata();
+    cObj.setCdata(888);
+    cObj.displayCdata();
+    cObj.setAdata(999);
+    cObj.displayAdata();
+    cout << endl;
+    
+    D dObj;
+    dObj.displayDdata();
+    dObj.setDdata(1000);
+    cout << "Ddata: " << dObj.getDdata() << endl;
+    cout << endl;
+    
+    //dObj.displayAdata(); 　NO OK
+    dObj.B::displayAdata(); 　//必需註明是哪一個基礎類別
+    dObj.C::displayAdata();
+    cout << endl;
+    
+    dObj.B::setAdata(667);
+    dObj.B::displayAdata();
+    dObj.C::setAdata(887);
+    dObj.C::displayAdata();
+    
+    return 0;
+}

@@ -1,0 +1,16 @@
+//funDebug7-1.cpp
+#include <iostream>
+using namespace std;
+void walking()
+
+int main()
+{
+    walking();
+
+    return 0;
+}
+
+void walking();
+{
+    printf("小明正在走路...\n");
+}

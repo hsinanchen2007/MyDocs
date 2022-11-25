@@ -1,0 +1,12 @@
+//string20.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string pname2;
+    cout << "請輸入你的英文名字：";
+    cin >> pname2;
+    cout << "Hi, " << pname2 << endl;
+    return 0;
+}

@@ -1,0 +1,14 @@
+//for1.cpp
+#include <iostream>
+#define MAX 6
+using namespace std;
+
+int main()
+{
+    int i;
+
+    for (i=1; i<= MAX; i++)
+        cout << i << endl;
+
+    return 0;
+}

@@ -1,0 +1,23 @@
+//ptrDebug4.cpp
+#include <iostream>
+using namespace std;
+
+void swap(int, int);
+int main()
+{
+    int a = 10, b = 20;
+    cout << "a=" << a << ", b=" << b << endl;
+    cout << "調換 a 變數和b變數的內容後...";
+    swap(a, b);
+    cout << "a=" << a << ", b=" << b << endl;
+
+    return 0;
+}
+
+void swap(int a, int b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}

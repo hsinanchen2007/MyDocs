@@ -1,0 +1,18 @@
+//debug11-2.cpp
+#include <iostream>
+using namespace std;
+
+struct Student {
+    char name[20];
+    int score;
+};
+
+int main()
+{
+    Student stu = {"John", 89};
+    Student *ptr = stu;
+    cout << "學生的姓名是 " << ptr.name << endl;
+    cout << "學生的分數是 " << ptr.score << endl;
+
+    return 0;
+}

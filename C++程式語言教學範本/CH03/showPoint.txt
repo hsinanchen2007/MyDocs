@@ -1,0 +1,15 @@
+//showPoint.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    double d = 123.456;
+    cout << d << endl;
+    cout << setprecision(2) << d << endl;
+    cout << setprecision(8) << d << endl;
+    cout << showpoint << setprecision(8) << d << endl;
+    cout << fixed << setprecision(2) << d << endl;
+    return 0;
+}

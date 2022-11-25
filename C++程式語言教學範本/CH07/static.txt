@@ -1,0 +1,27 @@
+//static.cpp
+#include <iostream>
+using namespace std;
+void test(void);
+
+int main()
+{
+    int i;
+    
+    cout << "static variable testing ...\n\n";
+    for (i=0; i<5; i++) {
+        cout << "  Iteration " << i+1 << ": ";
+        test();
+    }
+
+    return 0;
+}
+
+void test(void)
+{
+
+    int auto_var = 1;
+    static int static_var = 1;
+
+    cout << " auto_var = " << auto_var++
+         << ", static_var = " << static_var++ << endl;
+}

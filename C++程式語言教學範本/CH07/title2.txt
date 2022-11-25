@@ -1,0 +1,48 @@
+//title2.cpp
+#include <iostream>
+void title(void);
+using namespace std;
+
+int main()
+{
+    char ch;
+    
+    title();
+    cout << "\n    Choose ===> ";
+    cin >> ch;
+    cout << "\n    Echo : ";
+    switch (ch) {
+        case '1':  cout << "ONE";
+                      break;
+        case '2':  cout << "TWO";
+                      break;
+        case '3':  cout << "THREE";
+                      break;
+        case '4':  cout << "FOUR";
+    }
+    
+    cout << endl << endl;
+    title();
+    cout << "\n    Choose ===> ";
+    cin >> ch;
+    cout << "\n    Echo : ";
+    switch (ch) {
+        case '1' :  cout << "ONE";
+                      break;
+        case '2' :  cout << "TWO";
+                      break;
+        case '3' :  cout << "THREE";
+                      break;
+        case '4' :  cout << "FOUR";
+    }
+    cout << endl;
+    
+    return 0;
+}
+
+void title(void)
+{
+    cout << "    ====MENU====\n";
+    cout << " [1] one    [2] two\n";
+    cout << " [3] three  [4] four\n";
+}

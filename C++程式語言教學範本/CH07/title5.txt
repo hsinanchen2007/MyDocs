@@ -1,0 +1,54 @@
+//title5.cpp
+#include <iostream>
+void title();
+void choose(char);
+char getData();
+using namespace std;
+
+int main()
+{
+    char ch2;
+    title();
+    ch2 = getData();
+    while (ch2 != 'Q' and ch2 != 'q') {
+        choose(ch2);
+        cout << endl;
+        title();
+        ch2 = getData();
+    }
+    
+    return 0;
+}
+
+void title()
+{
+    cout << "    ====MENU====\n";
+    cout << " [1] one    [2] two\n";
+    cout << " [3] three  [4] four\n";
+}
+
+void choose(char ch)
+{
+    cout << "\n    Echo : ";
+    switch (ch) {
+        case '1':  cout << "ONE";
+                    break;
+        case '2':  cout << "TWO";
+                    break;
+        case '3':  cout << "THREE";
+                    break;
+        case '4':  cout << "FOUR";
+                    break;
+        default:  cout << "Invalid character";
+    }
+    cout << endl;
+}
+
+char getData()
+{
+    char ch;
+    cout << "\n    Choose ===> ";
+    cin >> ch;
+
+    return ch;
+}

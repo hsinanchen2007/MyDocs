@@ -1,0 +1,20 @@
+//priority.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x, y, z;
+    int res1, res2;
+
+    x = 2;
+    y = 5;
+    z = 10;
+
+    res1 = x + y * x - z / x;
+    res2 = (x + y) * (x - (z / x));
+    cout << "res1 = " << res1 << endl;
+    cout << "res2 = " << res2 << endl;
+
+    return 0;
+}

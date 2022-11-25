@@ -1,0 +1,16 @@
+//inlineFun.cpp
+#include <iostream>
+using namespace std;
+inline void inlineFun(int, int, int);
+
+int main()
+{
+    int year = 2020, month = 3, day = 27;
+    inlineFun(year, month, day);
+    return 0;
+}
+
+inline void inlineFun(int year, int month, int day)
+{
+    cout << year << "/" << month << "/" << day << endl;
+}

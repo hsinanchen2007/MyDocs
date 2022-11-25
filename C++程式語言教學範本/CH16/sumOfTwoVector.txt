@@ -1,0 +1,40 @@
+//sumOfTwoVector.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int sumOfTwoVector(vector<vector<int>> &);
+int main()
+{
+    unsigned int i;
+    int sum = 0;
+    vector<vector<int>> twoArray(3); //Three rows
+    for (i=0; i<3; i++) {
+        twoArray[i] = vector<int>(2); //Two columns
+    }
+    
+    int value = 10;
+    for (int x=0; x<3; x++) {
+        for (int y=0; y<2; y++) {
+            twoArray[x][y] = value++;
+            cout << setw(5) << twoArray[x][y];
+        }
+        cout << endl;
+    }
+    sum = sumOfTwoVector(twoArray);
+    cout << "\nsum is " << sum << endl;
+    return 0;
+}
+
+int sumOfTwoVector(vector<vector<int>> &twoVector)
+{
+    int tot = 0;
+    unsigned int row, col;
+    for (row=0; row<twoVector.size(); row++) {
+        for (col=0; col<twoVector[row].size(); col++) {
+            tot += twoVector[row][col];
+        }
+    }
+    return tot;
+}

@@ -1,0 +1,131 @@
+//inheritance4.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define PI 3.14159
+
+class Point {
+public:
+    Point();
+    void setX1andY1(int, int);
+    int getX1();
+    int getY1();
+
+private:
+    int x1, y1;
+};
+
+//預設點座標為(0, 0)
+Point::Point()
+{
+    x1 = 0;
+    y1 = 0;
+}
+
+void Point::setX1andY1(int x, int y) {
+    x1 = x;
+    y1 = y;
+}
+
+int Point::getX1()
+{
+    return x1;
+}
+
+int Point::getY1()
+{
+    return y1;
+}
+
+//Rectangle 類別繼承 Point
+class Rectangle: public Point
+{
+public:
+    Rectangle();
+    void setX2andY2(int, int);
+    int getWidth();
+    int getHeight();
+    double getArea();
+    double getPerimeter();
+    int getX2();
+    int getY2();
+
+private:
+    int x2, y2;
+    int width;
+    int height;
+};
+
+//Rectangle 建構函式預設另一點為(1, 1)
+Rectangle::Rectangle()
+{
+    x2 = 1;
+    y2 = 1;
+}
+
+void Rectangle::setX2andY2(int x, int y)
+{
+    x2 = x;
+    y2 = y;
+}
+
+int Rectangle::getWidth()
+{
+    width = abs(x2 - getX1());
+    return width;
+}
+
+int Rectangle::getHeight()
+{
+    height = abs(y2 - getY1());
+    return height;
+}
+
+double Rectangle::getArea()
+{
+    return width * height;
+}
+
+double Rectangle::getPerimeter()
+{
+    return (2 * (width + height));
+}
+
+int Rectangle::getX2()
+{
+    return x2;
+}
+
+int Rectangle::getY2()
+{
+    return y2;
+}
+
+int main()
+{
+    Point pointObj;
+    cout << "基礎類別的點座標為: " << "(" << pointObj.getX1()
+         << ", " << pointObj.getY1() << ")" << endl;
+    cout << "----------------------" << endl;
+    
+    Rectangle rectObj;
+    cout << "長方形的兩點座標為: " << "(" << rectObj.getX1()
+         << ", " << rectObj.getY1() << "), (" << rectObj.getX2()
+         << ", " << rectObj.getY2() << ")" << endl;
+    cout << "長方形的寬 = " << rectObj.getWidth() << endl;
+    cout << "長方形的高 = " << rectObj.getHeight() << endl　<< endl;
+    //更改兩點座標
+    rectObj.setX1andY1(2, 2);
+    rectObj.setX2andY2(5, 6);
+    cout << "長方形的兩點座標更改為: " << "(" << rectObj.getX1()
+         << ", " << rectObj.getY1() << "), (" << rectObj.getX2()
+         << ", " << rectObj.getY2() << ")" << endl;
+    cout << "長方形的寬 = " << rectObj.getWidth() << endl;
+    cout << "長方形的高 = " << rectObj.getHeight() << endl;
+    double rectArea = rectObj.getArea();
+    cout << "長方形的面積 = " << rectArea << endl;
+    double rectPerimeter = rectObj.getPerimeter();
+    cout << "長方形的周長 = " << rectPerimeter << endl << endl;
+
+    return 0;
+}

@@ -1,0 +1,56 @@
+//classDebug-2.cpp
+#include <iostream>
+#include <ctime>
+#define SIZE 10
+using namespace std;
+
+class A {
+public:
+    void A();
+    void getAData();
+    int findMax();
+    ~A();
+
+private:
+    int *data;
+};
+
+void A::A()
+{
+    cout << "執行建構函式..." << endl << endl;
+    data = new int[SIZE];
+}
+
+void A::getAData()
+{
+    srand(unsigned(time(0)));
+    for (int i=0; i<SIZE; i++) {
+        data[i] = rand() % 1000;
+        cout << "data" << "[" << i << "] = " << data[i]  << endl;
+    }
+}
+
+int A::findMax()
+{
+    int max = data[0];
+    for (int i=1; i<SIZE; i++) {
+        if (data[i] > max) {
+            max = data[i];
+        }
+    }
+    return max;
+}
+
+~A::A()
+{
+   cout << "\n執行解構函式..." << endl;
+    delete data;
+}
+
+int main()
+{
+    A aobj;
+    aobj.getAData();
+    cout << "最大值: " << aobj.findMax() << endl;
+    return 0;
+}

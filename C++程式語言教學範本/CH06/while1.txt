@@ -1,0 +1,16 @@
+//while1.cpp
+#include <iostream>
+#define MAX 6
+using namespace std;
+
+int main()
+{
+    int i;
+    i = 1;
+    while (i <= MAX) {
+        cout << i << endl;
+        i++;
+    }
+    
+    return 0;
+}

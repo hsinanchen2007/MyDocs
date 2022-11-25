@@ -1,0 +1,32 @@
+//cond.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x,y;
+    int abs, max;
+    int year;
+
+    cout << "Input x: ";
+    cin >> x;
+    abs = (x >= 0) ? x : -x;
+    cout << "|x| = " << abs << endl;
+
+    cout << "\nInput y: ";
+    cin >> y;
+
+    abs = (y >= 0) ? y : -y;
+    cout << "|y| = " << abs << endl;
+
+    max = (x > y) ? x : y;
+    cout << "\nMaximum value of " << x << " and " << y 
+          << " is " << max << endl;
+
+    cout << "\nHow old are you? ";
+    cin >> year;
+    cout << "You are " << year << " year" 
+          << ((year > 1) ? "s " : " ") << "old." << endl;
+
+    return 0;
+}

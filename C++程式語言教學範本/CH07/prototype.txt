@@ -1,0 +1,50 @@
+//prototype.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+double getScore(void);
+char level(double, double, double);
+
+int main()
+{
+    double s1,s2,s3;
+    char grade;
+
+    s1 = getScore();
+    s2 = getScore();
+    s3 = getScore();
+
+    grade = level(s1, s2, s3);
+    cout << "\nYour score grade is " << grade << endl;
+
+    return 0;
+}
+
+double getScore(void)
+{
+    double temp;
+
+    cout << "Input your score: ";
+    cin >> temp;
+    return temp;
+}
+
+char level(double a1, double a2, double a3)
+{
+    double avg;
+    cout << fixed << setprecision(2);
+    cout << "\n  Score: " << a1 << ", " << a2 << ", " << a3 << endl;
+    avg = (a1 + a2 + a3) / 3;
+    cout << "  Average: " << avg << endl;
+    if(avg >= 90)
+        return ('A');
+    if(avg >= 80)
+        return ('B');
+    if(avg >= 70)
+        return ('C');
+    if(avg >= 60)
+        return ('D');
+    return('E');
+}
+
+}

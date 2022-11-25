@@ -1,0 +1,72 @@
+//inheritanceDebug-1.cpp
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+    A(int a=100);
+    void setAdata(int);
+    int getAdata();
+    
+protected:
+    int aData;
+};
+
+A::A(int a)
+{
+    aData = a;
+}
+
+void A::setAdata(int a)
+{
+    aData = a;
+}
+
+int A::getAdata()
+{
+    return aData;
+}
+
+class B: private A
+{
+public:
+    B(int b=200);
+    void setBdata(int);
+    int getBdata();
+    
+private:
+    int bData;
+};
+
+B::B(int b)
+{
+    bData = b;
+}
+
+void B::setBdata(int b)
+{
+    bData = b;
+}
+
+int B::getBdata()
+{
+    return bData;
+}
+
+int main()
+{
+    A aObj;
+    cout << "adata: " << aObj.getAdata() << endl;
+    aObj.setAdata(666);
+    cout << "adata: " << aObj.getAdata() << endl << endl;
+    
+    B bObj;
+    cout << "bdata: " << bObj.getBdata() << endl;
+    bObj.setBdata(888);
+    cout << "bdata: " << bObj.getBdata() << endl << endl;
+    
+    cout << "Adata: " << bObj.getAdata() << endl;
+    
+    return 0;
+}

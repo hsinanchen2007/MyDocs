@@ -1,0 +1,46 @@
+//matrix.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+#define ROW 3
+#define COLUMN 5
+
+int main()
+{
+    int matrix[ROW][COLUMN];
+    int trans[COLUMN][ROW];
+    int i, j;
+
+    cout << "Input source matrix 3*5 :" << endl;
+    for (i=0; i<ROW; i++) {
+        for (j=0; j<COLUMN; j++) {
+            cout << " matrix[" << i << "][" << j << "] ===> ";
+            cin >> matrix[i][j];
+        }
+        printf("\n");
+    }
+    
+    //Matrix Transpose
+    for (i=0; i<ROW; i++)
+        for (j=0; j<COLUMN; j++)
+            trans[j][i] = matrix[i][j];
+    
+    cout << "Source matrix :" << endl;
+    for (i=0; i<ROW; i++) {
+        for (j=0; j<COLUMN; j++)
+            cout << setw(5) << matrix[i][j];
+        printf("\n");
+    }
+    
+    cout << "\nAfter transposing ..." << endl;
+    
+    cout << "\nTransposed matrix :\n";
+    for (i=0; i<COLUMN; i++) {
+        for (j=0; j<ROW; j++)
+            cout << setw(5) << trans[i][j];
+        cout << endl;
+    }
+
+    return 0;
+}

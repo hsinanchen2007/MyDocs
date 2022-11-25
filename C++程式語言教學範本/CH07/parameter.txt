@@ -1,0 +1,26 @@
+///parameter.cpp
+#include <iostream>
+using namespace std;
+
+void list(char, int);
+int main()
+{
+    int i;
+
+    list ('*', 10);
+    list('#', 15);
+
+    i = 20;
+    list ('A', i);
+    
+    return 0;
+}
+
+void list(char ch, int count)
+{
+    int i;
+
+    for(i=1; i<=count; i++)
+        cout << ch;
+    cout << endl;
+}

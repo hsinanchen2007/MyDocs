@@ -1,0 +1,53 @@
+//structure.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+#define NUM 4
+struct Client
+{
+    char name[10];
+    char id[8];
+    int age;
+    int weight;
+};
+   
+int main()
+{
+    Client who[NUM];
+    int i;
+    int total;
+   
+    cout << "Input personal data...\n\n";
+    for (i = 0; i<NUM; i++) {
+        cout << "#" << i+1 << ": " << endl;
+        cout << "  Who? ";
+        cin >> who[i].name;
+          
+        cout << "  ID number? ";
+        cin >> who[i].id;
+          
+        cout << "  How old? ";
+        cin >> who[i].age;
+          
+        cout << "  Weight? ";
+        cin >> who[i].weight;
+        cout << endl;
+    }
+
+    cout << "\nDATA LISTING ...\n\n";
+    cout << "    No.    NAME      ID    AGE   WEIGHT";
+    cout << "\n";
+    for (i = 0; i<NUM; i++) {
+        cout << "    #" << i+1;
+        cout << setw(10) << who[i].name << setw(8) << who[i].id;
+        cout << setw(5) << who[i].age << setw(8) << who[i].weight;
+        cout << "\n";
+    }
+
+    for (i = 0,total = 0; i<NUM; i++)
+        total += who[i].weight;
+    cout << "\nTotal Weight :  "  << total << "kg" << endl;
+
+    return 0;
+}

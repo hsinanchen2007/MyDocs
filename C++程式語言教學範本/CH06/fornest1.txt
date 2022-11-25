@@ -1,0 +1,17 @@
+//fornest1.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    char row, column;
+
+    for(row='A'; row <='G'; row++){
+        for(column=row; column<='G'; column++)
+            cout << setw(2) << column;
+        cout << endl;
+    }
+
+    return 0;
+}

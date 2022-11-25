@@ -1,0 +1,16 @@
+//selDebug5-4.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int score = 70;
+    if (score >= 60)
+        cout << "耶!!!及格了" << endl;
+    if (score >= 80)
+        cout << "耶!!!考高分!!!" << endl;
+    else
+        cout << "不及格...需要再加強!!!" << endl;
+
+    return 0;
+}

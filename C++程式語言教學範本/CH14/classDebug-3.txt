@@ -1,0 +1,74 @@
+//classDebug-3.cpp
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    Student();
+    string compareScore(double);
+    void setName(string);
+    void setScore(double);
+    string getName();
+    double getScore();
+    
+private:
+    string name;
+    double score;
+};
+
+Student::Student()
+{
+    name = "None";
+    score = 0;
+}
+
+void Student::setName(string name)
+{
+     name = name;
+}
+
+void Student::setScore(double score)
+{
+    score = score;
+}
+
+string Student::getName()
+{
+    return name;
+}
+
+double Student::getScore()
+{
+    return score;
+}
+
+string Student::compareScore(double score)
+{
+    if (score > score) {
+        return "Pass";
+    }
+    else {
+        return "Fail";
+    }
+}
+
+int main()
+{
+    Student stu1, stu2, stu3;
+    stu1.setName("Amy");
+    stu1.setScore(90.4);
+    stu2.setName("Chloe");
+    stu2.setScore(92.8);
+    stu3.setName("John");
+    stu3.setScore(59);
+
+    cout << stu1.getName() << ": " << stu1.score << endl;
+    cout << stu2.getName() << ": " << stu2.score << endl;
+    cout << stu3.getName() << ": " << stu2.score << endl;
+    cout << endl;
+    
+    cout << stu1.name << ": " << (stu1.compareScore(60)) << endl;
+    cout << stu2.name << ": " << (stu2.compareScore(60)) << endl;
+    cout << stu3.name << ": " << (stu3.compareScore(60)) << endl;
+    return 0;
+}

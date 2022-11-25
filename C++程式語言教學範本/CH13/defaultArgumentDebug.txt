@@ -1,0 +1,28 @@
+//defaultArgumentDebug.cpp
+#include <iostream>
+double sum(double x=1.0, double y, double z);
+using namespace std;
+
+int main()
+{
+    double t1, t2, t3, t4;
+    t1 = total(1.1, 2.2, 3.3);
+    cout << "t1 = " << t1 << endl;
+    
+    t2 = total(1.1, 2.2);
+    cout << "t2 = " << t2 << endl;
+    
+    t3 = total(1.1);
+    cout << "t3 = " << t3 << endl;
+    
+    t4 = total();
+    cout << "t4 = " << t4 << endl;
+    return 0;
+}
+
+int sum(int x, int y, int z)
+{
+    int tot;
+    tot = x + y + z;
+    return tot;
+}

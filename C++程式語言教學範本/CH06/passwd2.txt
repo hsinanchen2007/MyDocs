@@ -1,0 +1,26 @@
+//passwd2.cpp
+#include <iostream>
+#include <cstdlib>
+#define PASSWD 1462
+using namespace std;
+
+int main()
+{
+    int passwd, tryTimes;
+    bool ok = false;
+    tryTimes = 0;
+
+    do {
+        cout << ++tryTimes << ". Enter your password: ";
+        cin >> passwd;
+        if (passwd == PASSWD)
+            ok = true;
+    } while (!ok && (tryTimes < 3));
+
+    if (ok)
+        cout << endl << "Congratulations!" << endl;
+    else
+        cout << endl << "You are rejected!" << endl;
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+//defaultArgument.cpp
+#include <iostream>
+int total(int x=1, int y=1, int z=1);
+using namespace std;
+
+int main()
+{
+    int t1, t2, t3, t4;
+    t1 = total(10, 20, 30);
+    cout << "t1 = " << t1 << endl;
+    
+    t2 = total(10, 20);
+    cout << "t2 = " << t2 << endl;
+    
+    t3 = total(10);
+    cout << "t3 = " << t3 << endl;
+    
+    t4 = total();
+    cout << "t4 = " << t4 << endl;
+    return 0;
+}
+
+int total(int x, int y, int z)
+{
+    int tot;
+    tot = x + y + z;
+    return tot;
+}

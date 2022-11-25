@@ -1,0 +1,33 @@
+//stringWidth.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    char str1[] = "Pineapple", str2[] = "Banana" , str3[] = "Kiwi";
+    cout << str1 << " " << str2 << " " << str3 << endl;
+    cout << str2 << " " << str3 << " " << str1 << endl;
+    cout << str3 << " " << str1 << " " << str2 << endl;
+    
+    cout << "\nUsing width" << endl;
+    cout << "123456789012345678901234567890" << endl;
+    cout << setw(10) << str1 << setw(10) << str2 << setw(10) << str3;
+    cout << endl;
+    cout << setw(10) << str2 << setw(10) << str3 << setw(10) << str1;
+    cout << endl;
+    cout << setw(10) << str3 << setw(10) << str1 << setw(10) << str2;
+    cout << endl << endl;
+    
+    cout << "\nUsing width and left alignment" << endl;
+    cout << left;
+    cout << "123456789012345678901234567890" << endl;
+    cout << setw(10) << str1 << setw(10) << str2 << setw(10) << str3;
+    cout << endl;
+    cout << setw(10) << str2 << setw(10) << str3 << setw(10) << str1;
+    cout << endl;
+    cout << setw(10) << str3 << setw(10) << str1 << setw(10) << str2;
+    cout << endl;
+    
+    return 0;
+}

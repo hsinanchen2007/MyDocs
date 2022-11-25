@@ -1,0 +1,51 @@
+//extern.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 5
+
+void extern_fun(void);
+void void_fun(void);
+void default_fun(void);
+
+int ary[SIZE] = {1, 2, 3, 4, 5};
+
+int main()
+{
+    cout << "extern variable testing ...\n\n";
+    extern_fun();
+    void_fun();
+    default_fun();
+
+    return 0;
+}
+ 
+void extern_fun(void)
+{
+    extern int ary[SIZE];
+    int i;
+
+    cout << "    In extern_fun() :\n\n";
+    for (i=0; i<SIZE; i++)
+        cout << "    ary[" << i << "] = " << ary[i] << endl;
+    cout << endl << endl;
+}
+
+void void_fun(void)
+{
+    int i;
+    cout << "    In void_fun() :\n\n";
+    for (i=0; i<SIZE; i++)
+        cout << "    ary[" << i << "] = " << ary[i] << endl;
+    cout << endl << endl;
+}
+
+void default_fun(void)
+{
+    int ary[SIZE];
+    int i;
+
+    cout << "    In default_fun() :\n\n";
+    for (i=0; i<SIZE; i++)
+        cout << "    ary[" << i << "] = " << ary[i] << endl;
+    cout << endl << endl;
+}

@@ -1,0 +1,34 @@
+//op4s.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define PI 3.14
+
+int main()
+{
+    int r1, r2;
+    double area1, area2;
+    double total, diff;
+
+    cout << "計算圓面積..." << endl << endl;
+    cout << "  請輸入第一個圓的半徑: ";
+    cin >> r1;
+
+    cout << fixed << setprecision(2);
+    area1 = PI * r1 * r1;
+    cout << "  ===> 第一個圓的面積為 " << area1 << endl << endl;
+
+    cout << "  請輸入第二個圓的半徑: ";
+    cin >> r2;
+
+    area2 = PI * r2 * r2;
+    cout << "  ===> 第二個圓的面積為 " << area2 << endl << endl;
+
+    total = area1 + area2;
+    diff = area1 - area2;
+    cout << "總共面積為 " << total << endl;
+    cout << "兩個圓的面積相差為 " << diff << endl;
+
+    return 0;
+}
+

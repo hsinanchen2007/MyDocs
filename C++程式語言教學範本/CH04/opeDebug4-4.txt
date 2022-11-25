@@ -1,0 +1,15 @@
+//opeDebug4-4.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num1 = 10, num2 = 20;
+    //璝痷肚 1, 璝安玥肚 0
+    cout << "num1 ┪单 num2: " << (num1 < num2) << endl;
+    cout << "num1 ┪单 num2: " << (num1 > num2) << endl;
+    cout << "num1 单 num2: " << (num1 = num2) << endl;
+    cout << "num1 ぃ单 num2: " << (num1 <> num2) << endl;
+
+    return 0;
+}

@@ -1,0 +1,12 @@
+//stringAtWhere.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str = "C++ language";
+    cout << str[0] << endl;
+    cout << str.at(0) << endl;
+    cout << str.at(str.length()-1) << endl;
+    return 0;
+}

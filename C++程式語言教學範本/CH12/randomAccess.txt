@@ -1,0 +1,70 @@
+//randomAccess.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+#define SIZE 6
+
+int main()
+{
+    fstream binaryFile;
+    struct Student {
+        char name[20];
+        int score;
+    };
+    
+    binaryFile.open("students.dat", ios::out|ios::binary);
+    Student stu;
+    for (int i=1; i<=SIZE; i++) {
+        cout << "#" << i << ":" << endl;
+        cout << "Enter name: ";
+        cin >> stu.name;
+        cout << "Enter score: ";
+        cin >> stu.score;
+        cout << endl;
+        binaryFile.write(reinterpret_cast<char *>(&stu), sizeof(Student));
+    }
+    binaryFile.close();
+    
+    //read
+    binaryFile.open("students.dat", ios::in|ios::binary);
+    Student stu2;
+    cout << "reading data from file" << endl;
+    while (binaryFile.read(reinterpret_cast<char *>(&stu2),
+                             sizeof(Student))) {
+        
+        cout << setw(12) << stu2.name << " "
+             << setw(5) << stu2.score << endl;
+    }
+    binaryFile.close();
+    
+    //random access
+    Student randomStu;
+    binaryFile.open("students.dat", ios::in|ios::binary);
+    cout << "\nsize of structure: " << sizeof(Student) << endl << endl;
+    
+    //random access
+    int n;
+
+    while (true) {
+        cout << "你要查詢第幾位學生的資料: ";
+        cin >> n;
+        if (n == -999) {
+            break;
+        }
+        if (n > SIZE) {
+            cout << "查無此學生" << endl << endl;
+        }
+        else {
+            //尋找中
+            binaryFile.seekg((n-1)*sizeof(Student), ios::beg);
+            cout << "curret position is " << binaryFile.tellg();
+            binaryFile.read(reinterpret_cast<char *>(&randomStu),
+                                          sizeof(Student));
+            cout << "\n你要找的學生是: " << randomStu.name
+                 << setw(5) << randomStu.score << endl << endl;
+        }
+    }
+    binaryFile.close();
+
+    return 0;
+}

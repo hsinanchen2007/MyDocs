@@ -1,0 +1,45 @@
+//init_2d.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int aaa[2][4] = {{1,2,3,4},{5,6,7,8}};
+    int bbb[2][4] = {1,2,3,4,5,6};
+    int ccc[2][4] = {{1,2,3},{4,5,6}};
+    int ddd[][4] = {1,2,3,4,5,6,7,8};
+    int i,j;
+    cout << "Array aaa[2][4]:" << endl;
+    for (i=0; i<2; i++) {
+        for (j=0; j<4; j++)
+            cout << setw(5) << aaa[i][j];
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Array bbb[2][4]:" << endl;
+    for (i=0; i<2; i++) {
+        for (j=0; j<4; j++)
+            cout << setw(5) << bbb[i][j];
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Array ccc[2][4]:" << endl;
+    for (i=0; i<2; i++) {
+        for (j=0; j<4; j++)
+            cout << setw(5) << ccc[i][j];
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Array ddd[2][4]:" << endl;
+    for (i=0; i<2; i++) {
+        for (j=0; j<4; j++)
+            cout << setw(5) << ddd[i][j];
+        cout << endl;
+    }
+
+    return 0;
+}

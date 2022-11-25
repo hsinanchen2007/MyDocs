@@ -1,0 +1,62 @@
+//binaryFile10.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Student {
+public:
+    Student();
+    Student(string, int);
+    void display();
+    string getName();
+    int getScore();
+    
+private:
+    string name;
+    int score;
+};
+
+Student::Student()
+{
+    name = "John";
+    score = 60;
+}
+
+Student::Student(string name2, int score2)
+{
+    name = name2;
+    score = score2;
+}
+
+void Student::display()
+{
+    cout << name << " " << score << endl;
+    
+}
+
+int main()
+{   
+    fstream binaryIO;
+    Student stu1;
+    Student stu2("Mary", 92);
+    
+    //write
+    binaryIO.open("classObj.dat", ios::out|ios::binary);
+    binaryIO.write(reinterpret_cast<char *>(&stu1), sizeof(Student));
+    binaryIO.write(reinterpret_cast<char *>(&stu2), sizeof(Student));
+    binaryIO.close();
+    
+    //read
+    binaryIO.open("classObj.dat", ios::in|ios::binary);
+    Student stu3;
+    binaryIO.read(reinterpret_cast<char *>(&stu3), sizeof(Student));
+    cout << "reading data from file" << endl;
+    stu3.display();
+    
+    binaryIO.read(reinterpret_cast<char *>(&stu3), sizeof(Student));
+    cout << "reading data from file" << endl;
+    stu3.display();
+    binaryIO.close();
+
+    return 0;
+}

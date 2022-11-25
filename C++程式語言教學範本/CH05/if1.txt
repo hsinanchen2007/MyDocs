@@ -1,0 +1,20 @@
+///if1.cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+
+    cout << "請輸入介於1~100之間的數字: ";
+    cin >> num;
+
+    if (num < 50)
+        cout << num << " 小於 50" << endl;
+    if (num == 50)
+        cout << num  << " 等於 50" << endl;
+    if (num > 50)
+        cout << num << " 大於50" << endl;
+
+    return 0;
+}

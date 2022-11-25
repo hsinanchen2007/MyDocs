@@ -1,0 +1,28 @@
+//stringCompare.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string car1 = "Porsche Cayenne";
+    string car2 = "Porsche Macan";
+    string car3 = "BMW X6";
+    string car4 = "BMW X5";
+    int result;
+
+    result = car1.compare(car2);
+    cout << result << endl;
+    
+    result = car3.compare(car4);
+    cout << result << endl;
+    
+    result = car1.compare(0, 7, car2, 0, 7);
+    cout << result << endl;
+    
+    cout << car1.substr(0, 7) << endl;
+    cout << car2.substr(0, 7) << endl;
+    result = car1.substr(0, 7) == car2.substr(0, 7);
+    cout << result << endl;
+    
+    return 0;
+}

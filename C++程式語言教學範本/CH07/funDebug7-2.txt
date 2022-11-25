@@ -1,0 +1,16 @@
+//funDebug7-2.cpp
+#include <iostream>
+using namespace std;
+void sum(double, double);
+int main()
+{
+    int a = 5, b = 6, total;
+    total = sum(a, b);
+    cout << " " << a  << " + " << b << " = " << total << endl;
+    return 0;
+}
+
+int sum(int a, int b)
+{
+    return a + b;
+}

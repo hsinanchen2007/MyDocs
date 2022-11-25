@@ -1,0 +1,74 @@
+//StackIsInt.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 3
+
+class Stack {
+public:
+    Stack();
+    void push(int);
+    int pop();
+    void display();
+
+private:
+    int stack[SIZE];
+    int pointTo;
+};
+
+Stack::Stack()
+{
+    pointTo = -1;
+}
+
+void Stack::push(int data)
+{
+    if (pointTo < SIZE-1) {
+        pointTo += 1;
+        stack[pointTo] = data;
+        cout << "加入資料於堆疊: " << data << endl;
+    }
+    else {
+        cout << "Stack overflow" << endl;
+    }
+
+}
+
+int Stack::pop()
+{
+    int temp;
+    if (pointTo >= 0) {
+        temp = stack[pointTo];
+        pointTo -= 1;
+        cout << "從堆疊刪除資料: " << temp << endl;
+        return temp;
+    }
+    else {
+        cout << "Stack underflow" << endl;
+        return 0;
+    }
+}
+
+void Stack::display()
+{
+    cout << "堆疊資料如下: ";
+    for (int i=pointTo; i>=0; i--) {
+        cout << stack[i] << "->";
+    }
+    cout << "NULL" << endl;
+}
+
+int main()
+{
+    Stack stackObj;
+    stackObj.push(100);
+    stackObj.push(200);
+    stackObj.push(300);
+    stackObj.push(400);
+    stackObj.display();
+    stackObj.pop();
+    stackObj.display();
+    stackObj.pop();
+    stackObj.display();
+    
+    return 0;
+}

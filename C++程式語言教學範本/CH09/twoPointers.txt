@@ -1,0 +1,17 @@
+//twoPointers.cpp
+#include <iostream>
+using namespace std;
+
+int main( )
+{
+    int a[] = {0, 1, 2, 3, 4};
+    int *p[] = {a, a+1, a+2, a+3, a+4};
+    int **pp = p;
+    
+    cout << "*p[2] = " << *p[2] << endl;
+    cout << "**pp = " << **pp << endl;
+    cout << "**(pp+2) = " << **(pp+2) << endl;
+    cout << "*(*(pp+2)+2) = " << *(*(pp+2)+2) << endl;
+
+    return 0;
+}

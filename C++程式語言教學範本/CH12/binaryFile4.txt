@@ -1,0 +1,25 @@
+//binaryFile4.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream binaryIO;
+    binaryIO.open("integer.dat", ios::out|ios::binary);
+    int intValue = 911;
+    cout << "writing 911 into file" << endl;
+
+¡@¡@ //write
+    binaryIO.write(reinterpret_cast<char *>(&intValue), sizeof(int));
+    binaryIO.close();
+    
+    //read
+    binaryIO.open("integer.dat", ios::in|ios::binary);
+    int intValue2;
+    binaryIO.read(reinterpret_cast<char *>(&intValue2), sizeof(int));
+    cout << "reading data from file" << endl;
+    cout << "intValue2: " << intValue2 << endl;
+    binaryIO.close();
+    return 0;
+}

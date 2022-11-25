@@ -1,0 +1,15 @@
+//selDebug5-6.cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 40;
+    if (num > 0)
+        cout << "计タ俱计" << endl;
+    elseif (num = 0)
+        cout << "计 0" << endl;
+    else
+        cout << "计璽俱计" << endl;
+
+    return 0;
+}

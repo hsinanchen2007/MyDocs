@@ -1,0 +1,14 @@
+//string10.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char name[20] = "Bright";
+    char pname[20];
+    cout << "請輸入一姓名：";
+    cin >> pname;
+
+    cout << name << " 的好朋友是 " << pname << endl;
+    return 0;
+}

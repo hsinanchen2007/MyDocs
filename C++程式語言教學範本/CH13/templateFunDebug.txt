@@ -1,0 +1,23 @@
+//templateFunDebug.cpp
+#include <iostream>
+template <typename T> int smaller(int a, int b);
+using namespace std;
+
+int main()
+{
+    int res = smaller(10, 20);
+    cout << "smaller of (10, 20) is " << res << endl;
+    double rest = smaller(66.6, 88.8);
+    cout << "smaller of (66.6, 88.8) is " << rest << endl;
+    string str1 = "Honda CR-V";
+    string str2 = "Toyota RAV4";
+    string st = smaller(str1, str2);
+    cout << "smaller of (" << str1 << ", " << str2 <<") is "
+         << st << endl;
+    return 0;
+}
+
+int smaller(int a, int b)
+{
+    return a < b ? a : b;
+}

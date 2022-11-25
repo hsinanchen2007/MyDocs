@@ -1,0 +1,50 @@
+//templateSort.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 10
+
+template <typename T> void bubbleSort(T data[], int n);
+double doubleData[] = {1.2, 3.2, 0.5, 2.2, 0.8};
+int main()
+{
+    int num[SIZE];
+    srand((unsigned int) time(NULL));
+    cout << "Original data: " << endl;
+    for (int i=0; i<SIZE; i++) {
+        num[i] = rand() % 100 + 1;
+        cout << num[i] << " ";
+    }
+    bubbleSort(num, SIZE);
+    cout << "\nSorted data: " << endl;
+    for (int j=0; j<SIZE; j++) {
+        cout << num[j] << " ";
+    }
+    cout << endl << endl;
+    
+    //double data
+    cout << "Original data: " << endl;
+    for (int j=0; j<5; j++) {
+        cout << doubleData[j] << " ";
+    }
+    bubbleSort(doubleData, 5);
+    cout << "\nSorted data: " << endl;
+    for (int j=0; j<5; j++) {
+        cout << doubleData[j] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
+template <typename T> void bubbleSort(T data[], int n)
+{
+    T temp;
+    for (int i=0; i<n-1; i++) {
+        for (int j=0; j<n-i-1; j++) {
+            if (data[j] > data[j+1]) {
+                temp = data[j];
+                data[j] = data[j+1];
+                data[j+1] = temp;
+            }
+        }
+    }
+}

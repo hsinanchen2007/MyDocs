@@ -1,0 +1,25 @@
+//nest3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+
+    cout << "叫块ざ 1~100 计: ";
+    cin >> num;
+
+    if (num >= 1) {
+        if (num <= 100)
+            cout << "猭计: " << num << endl;
+        else
+            cout << "ぃ猭计: " << num << endl;
+    }
+    else {
+        cout << "ぃ猭计: " << num << endl;
+    }
+    cout << "Bye Bye!" << endl;
+    
+    return 0;
+}
+

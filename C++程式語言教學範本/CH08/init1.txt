@@ -1,0 +1,16 @@
+//init1.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 10
+
+int main()
+{
+    int init1[SIZE] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    int i;
+    
+    cout << "Array init1 :\n\n";
+    for (i=0; i<SIZE; i++)
+        cout << " init1[" << i << "] ===> " << init1[i] << endl;
+
+    return 0;
+}

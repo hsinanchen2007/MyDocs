@@ -1,0 +1,21 @@
+//for2.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int item;
+    int num;
+
+    item = 1;
+    cout << "   Number    Square" << endl << endl;
+
+    for(num = 1; num*num < 500; num += 4){
+        cout << item++ << ".";
+        cout<< "    "  << setw(2) << num << "      " << setw(4)
+            << num*num << endl;
+    }
+
+    return 0;
+}

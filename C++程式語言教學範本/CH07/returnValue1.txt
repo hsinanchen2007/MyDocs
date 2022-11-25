@@ -1,0 +1,27 @@
+//returnValue1.cpp
+#include <iostream>
+using namespace std;
+
+int find_max(int, int);
+
+int main()
+{
+    int a, b;
+    int max;
+
+    cout << "Input two integer: ";cin >> a;
+    cin >> b;
+
+    max = find_max(a, b);
+    cout << "MAX(" << a << ", " << b << ") is " << max << endl;
+
+    return 0;
+}
+
+int find_max(int x, int y)
+{
+    if (x > y)
+        return(x);
+    else
+        return(y);
+}

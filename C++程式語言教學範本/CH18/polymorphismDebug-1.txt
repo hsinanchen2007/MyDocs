@@ -1,0 +1,196 @@
+//polymorphismDebug-1.cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+#define PI 3.14159
+
+class Point {
+public:
+    Point();
+    void setX1AndY1(int, int);
+    int getX1();
+    int getY1();
+    double getArea();
+    double getPerimeter();
+    
+protected:
+    int x1, y1;
+};
+
+//預設點座標為(0, 0)
+Point::Point()
+{
+    x1 = 0;
+    y1 = 0;
+}
+
+void Point::setX1AndY1(int x, int y) {
+    x1 = x;
+    y1 = y;
+}
+
+int Point::getX1()
+{
+    return x1;
+}
+
+int Point::getY1()
+{
+    return y1;
+}
+
+double Point::getArea()
+{
+    cout << "點面積: ";
+    return 1.0;
+}
+
+double Point::getPerimeter()
+{
+    cout << "點周長: ";
+    return 1.0;
+}
+
+//Circle 類別繼承　Point 類別
+class Circle: public Point {
+public:
+    Circle();
+    void setRadius(int);
+    int getRadius();
+    double getArea();
+    double getPerimeter();
+
+private:
+    int radius;
+};
+
+//Circle 建構函式，設定半徑為 1
+Circle::Circle()
+{
+    radius = 1;
+}
+
+void Circle::setRadius(int r)
+{
+    radius = r;
+}
+
+int Circle::getRadius()
+{
+    return radius;
+}
+
+double Circle::getArea()
+{
+    cout << "圓形面積: ";
+    return (PI * radius * radius);
+}
+
+double Circle::getPerimeter()
+{
+    cout << "圓形周長: ";
+    return (2 * PI * radius);
+}
+
+//Rectangle 類別繼承　Point 類別
+class Rectangle: public Point {
+public:
+    Rectangle();
+    void setX2AndY2(int, int);
+    int getX2();
+    int getY2();
+    int getWidth();
+    int getHeight();
+    double getArea();
+    double getPerimeter();
+    
+private:
+    int x2, y2;
+    int width;
+    int height;
+};
+
+//Rectangle 建構函式預設另一點為(1, 1)
+Rectangle::Rectangle()
+{
+    x2 = 1;
+    y2 = 1;
+}
+
+void Rectangle::setX2AndY2(int x, int y)
+{
+    x2 = x;
+    y2 = y;
+}
+
+int Rectangle::getWidth()
+{
+    width = abs(x2 - x1);
+    return width;
+}
+
+int Rectangle::getHeight()
+{
+    height = abs(y2 - y1);
+    return height;
+}
+
+double Rectangle::getArea()
+{
+    cout << "長方形面積: ";
+    return width * height;
+}
+
+double Rectangle::getPerimeter()
+{
+    cout << "長方形周長: ";
+    return (2 * (width + height));
+}
+
+int Rectangle::getX2()
+{
+    return x2;
+}
+
+int Rectangle::getY2()
+{
+    return y2;
+}
+
+void displayAreaAndPerimeter(Point *obj)
+{
+    cout << fixed << setprecision(2);
+    cout << obj.getArea() << endl;
+    cout << obj.getPerimeter() << endl;
+}
+
+int main()
+{
+    Point pointObj;
+    cout << "原點: " << "(" << pointObj.getX1() << ", "
+         << pointObj.getY1() << ")" << endl;
+    displayAreaAndPerimeter(&pointObj);
+    cout << endl;
+
+    Circle circleObj2;
+    circleObj2.setX1AndY1(1, 1);
+    circleObj2.setRadius(3);
+    cout << "圓心: " << "(" << circleObj2.x1 << ", "
+         << circleObj2.y1 << ")" << endl;
+    cout << "半徑: " << circleObj2.radius << endl;
+    displayAreaAndPerimeter(&circleObj2);
+    cout << endl;
+    
+    Rectangle rectObj2;
+    rectObj2.setX1AndY1(2, 2);
+    rectObj2.setX2AndY2(5, 6);
+    cout << "長方形的兩個點: " << "(" << rectObj2.getX1() << ", "
+         << rectObj2.getY1() << "), " << "(" << rectObj2.getX2()
+         << ", " << rectObj2.getY2() << ")" << endl;
+    cout << "寬: " << rectObj2.getWidth() << endl;
+    cout << "高: " << rectObj2.getHeight() << endl;
+    displayAreaAndPerimeter(&rectObj2);
+    return 0;
+}

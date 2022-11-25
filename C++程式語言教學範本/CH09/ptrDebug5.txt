@@ -1,0 +1,22 @@
+//ptrDebug5.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 5
+
+int sum(int, int);
+int main()
+{
+    int arr[SIZE] = {100, 110, 120, 130, 140};
+    cout << "陣列的總和為 " << sum(arr, SIZE);
+
+    return 0;
+}
+
+int sum(int arr, int n)
+{
+    int total;
+    int i;
+    for (i=0; i<n; i++)
+        total += arr[i];
+    return total;
+}

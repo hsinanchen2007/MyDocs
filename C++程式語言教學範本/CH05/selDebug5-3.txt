@@ -1,0 +1,14 @@
+//selDebug5-3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 50;
+    If (num = 100)
+        cout << "计单100" << endl;
+    Else
+        cout << "计ぃ单100" << endl;
+
+    return 0;
+}

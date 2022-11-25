@@ -1,0 +1,20 @@
+//funDebug7-5.cpp
+#include <iostream>
+using namespace std;
+int count = 0;
+void run();
+
+int main()
+{
+    run();
+
+    return 0;
+}
+
+void run()
+{
+    //想辦法讓小明停下來並剛好跑完10圈
+    cout << "小明正在跑操場..." << endl;
+    cout << "小明跑完了第 " << ++count << " 圈" << endl << endl;
+    run();
+}

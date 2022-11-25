@@ -1,0 +1,14 @@
+//stringLength.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str = "C language";
+    //strlen 用以計算字串長度
+    unsigned long int size = str.length();
+    cout << "C language 的長度為: ";
+    cout << size << endl;
+
+    return 0;
+}

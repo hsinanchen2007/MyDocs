@@ -1,0 +1,21 @@
+//nest1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+
+    cout << "請輸入介於 1~100 的數字: ";
+    cin >> num;
+
+    if (num >= 1)
+        if (num <= 100)
+            cout << "合法的數字: " << num << endl;
+        else
+            cout << "不合法數字: " << num << endl;
+
+    cout << "Bye Bye!" << endl;
+    
+    return 0;
+}

@@ -1,0 +1,14 @@
+//loopDebug6-5.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i = 1, total = 0;
+    do {
+        total += ++i;
+    } while(i <= 100)
+    cout << "1加到100的總和為 " << total << endl;
+
+    return 0;
+}

@@ -1,0 +1,11 @@
+//selDebug5-5.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a = 80, b = 50;
+    cout << ((a > b?) "跑计 b ゑ跑计 a ";"跑计 a ゑ跑计 b ";
+
+    return 0;
+}

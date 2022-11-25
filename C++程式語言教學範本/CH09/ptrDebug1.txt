@@ -1,0 +1,14 @@
+//ptrDebug1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 30;
+    int *ptr;
+    ptr = num;
+    cout << "num 的內容為 " << num << endl;
+    cout << "透過 ptr 取得 num 的值為 " << ptr << endl;
+
+    return 0;
+}

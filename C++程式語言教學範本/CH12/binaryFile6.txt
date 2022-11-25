@@ -1,0 +1,28 @@
+//binaryFile6.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream binaryIO;
+    binaryIO.open("values.dat", ios::out|ios::binary);
+
+    //write
+    int arrData[] = {1, 2, 3, 4, 5};
+    binaryIO.write(reinterpret_cast<char *>(arrData), sizeof(arrData));
+    binaryIO.close();
+    
+    //read
+    binaryIO.open("values.dat", ios::in|ios::binary);
+    int arrData2[5];
+    binaryIO.read(reinterpret_cast<char *>(arrData2), sizeof(arrData2));
+    cout << "reading data from file" << endl;
+    binaryIO.close();
+    
+    for (int i=0; i<5; i++) {
+        cout << setw(5) << arrData2[i];
+    }
+    cout << endl;
+    return 0;
+}

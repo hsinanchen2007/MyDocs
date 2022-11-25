@@ -1,0 +1,32 @@
+//switch3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char grade;
+
+    cout << "What's your score grade (A-E)? ";
+    cin >> grade;
+
+    switch (grade) {
+        case 'A':
+        case 'a': cout << "Score 90 to 100." << endl;
+
+        case 'B':
+        case 'b': cout << "Score 80 to 89." << endl;
+
+        case 'C':
+        case 'c': cout << "Score 70 to 79." << endl;
+
+        case 'D':
+        case 'd': cout << "Score 60 to 69." << endl;
+
+        case 'E':
+        case 'e': cout << "Score under 60." << endl;
+
+        default: cout << "Wrong grade!" << endl;
+    }
+
+    return 0;
+}

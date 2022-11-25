@@ -1,0 +1,19 @@
+//arrDebug3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num[2][3];
+    int i, j;
+    for (i=0; i<3; i++)
+        for (j=0; j<2; j++)
+            cout << "請輸入num[" << i << "][" << j << "]: " << num[i][j];
+            cin >> num[i][j];
+    cout << "\n印出陣列num的所有元素\n";
+    for (i=0; i<3; i++)
+        for (j=0; j<2; j++)
+         cout << "請輸入num[" << i << "][" << j << "]: " << num[i][j];
+
+    return 0;
+}

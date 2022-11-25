@@ -1,0 +1,38 @@
+//vector10.cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<double> doubleVector;
+    vector<double>::iterator it;
+    int i;
+    
+    for (i=0; i<10; i++) {
+        doubleVector.push_back(i+1.1);
+        cout << doubleVector[i] << " ";
+    }
+    cout << endl;
+
+    cout << "第一個物件: " << *(doubleVector.begin()) << endl;
+    cout << "最後一個物件: " << *(doubleVector.end()-1) << endl;
+    cout << endl;
+    
+    it = doubleVector.begin();
+    doubleVector.insert(it+2, 88.88);
+    cout << "加入88.88於向量的第三個位置... " << endl;
+    for (it=doubleVector.begin(); it<doubleVector.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl << endl;
+    
+    it = doubleVector.begin();
+    doubleVector.erase(it+1);
+    cout << "刪除向量的第二個物件... " << endl;
+    for (it=doubleVector.begin(); it<doubleVector.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+    return 0;
+}

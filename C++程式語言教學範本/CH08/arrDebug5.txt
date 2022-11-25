@@ -1,0 +1,22 @@
+//arrDebug5.cpp
+#include <iostream>
+using namespace std;
+
+void multiply(int);
+int main()
+{
+    int num[5] = {1, 3, 5, 7, 9};
+    int i;
+    multiply(num);
+    cout << "將每個元素乘以 10 後" << endl;
+    for (i=0; i<5; i++)
+        cout << "num[" << i << "]=" << num[i] << endl;
+    return 0;
+}
+
+void multiply(int[] arr)
+{
+    int i;
+    for (i=0; i<5; i++)
+        num[i] *= 10;
+}

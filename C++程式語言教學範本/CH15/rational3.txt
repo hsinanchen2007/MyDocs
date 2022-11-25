@@ -1,0 +1,86 @@
+//rational3.cpp
+//overloading prefix and postfix ++ operator
+#include <iostream>
+using namespace std;
+
+class Rational
+{    
+public:
+    Rational(int numerator=1, int denominator=1);
+    static int gcd(int n, int d);
+    int getNumerator();
+    int getDenominator();
+    Rational operator++();
+    Rational operator++(int);
+
+private:
+    int numerator;
+    int denominator;
+};
+
+Rational::Rational(int numerator, int denominator)
+{
+    int factor = gcd(numerator, denominator);
+    this->numerator = numerator / factor;
+    this->denominator = denominator / factor;
+}
+
+int Rational::gcd(int n, int d)
+{
+    int num1 = abs(n);
+    int num2 = abs(d);
+    int gcd = 1;
+    for (int i=1; i<=num1 && i<=num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            gcd = i;
+        }
+    }
+    return gcd;
+}
+
+int Rational::getNumerator()
+{
+    return numerator;
+}
+
+int Rational::getDenominator()
+{
+    return denominator;
+}
+
+//多載前置加
+Rational Rational::operator++()
+{
+    numerator += denominator;
+    return *this;
+}
+
+//多載後繼加
+Rational Rational::operator++(int)
+{
+    Rational t(numerator, denominator);
+    numerator += denominator;
+    return t;
+}
+
+int main()
+{
+    //前置加
+    Rational ratObj3(1, 3);
+    Rational ratObj4 = ++ratObj3;
+    cout << "ratOjb3 = " << ratObj3.getNumerator() 
+　　　　　<< "/" << ratObj3.getDenominator() << endl;
+    cout << "ratOjb4 = " << ratObj4.getNumerator() 
+　　　　　<< "/" << ratObj4.getDenominator() << endl;
+    cout << endl << endl;
+    
+    //後繼加
+    Rational ratObj5(3, 4);
+    Rational ratObj6 = ratObj5++;
+    cout << "ratOjb5 = " << ratObj5.getNumerator() 
+　　　　　<< "/" << ratObj5.getDenominator() << endl;
+    cout << "ratOjb6 = " << ratObj6.getNumerator() 
+　　　　　<< "/" << ratObj6.getDenominator();
+    cout << endl << endl;
+    return 0;
+}

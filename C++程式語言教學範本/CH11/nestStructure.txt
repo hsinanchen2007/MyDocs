@@ -1,0 +1,41 @@
+//nestStructure.cpp
+#include <iostream>
+using namespace std;
+
+struct Name
+{
+       string first;
+       string last;
+};
+   
+struct Address
+{
+       string city;
+       string road;
+};
+   
+struct Client
+{
+       struct Name name;
+       struct Address address;
+       int age;
+       int height;
+       char sex;
+};
+   
+int main()
+{
+    Client somebody = {{"Joan", "Lin"}, 
+¡@¡@¡@¡@¡@¡@¡@¡@¡@¡@¡@¡@¡@ {"Taipei", "110 Chung-shan St."}, 
+                           22,173, 'F' };
+                   
+    cout << "NAME: " << somebody.name.first <<  " " 
+                        <<  somebody.name.last << endl;
+    cout << "ADDRESS: " << somebody.address.road << ", " 
+                            << somebody.address.city << endl;
+    cout << "AGE: "<< somebody.age << endl;
+    cout << "HEIGHT: " << somebody.height << endl;
+    cout << "SEX: " << somebody.sex << endl;
+
+    return 0;
+}

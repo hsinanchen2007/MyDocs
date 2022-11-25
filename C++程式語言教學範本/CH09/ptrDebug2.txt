@@ -1,0 +1,14 @@
+//ptrDebug2.cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    int num = 30;
+    int *ptr = num;
+    cout << "num 的值為 " << num << endl;
+    cout << "透過 ptr 指標對 num 加上 20" << endl;
+    ptr += 20;
+    cout << "num 的值為 " << num << endl;
+
+    return 0;
+}

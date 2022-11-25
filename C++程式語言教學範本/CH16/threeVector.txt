@@ -1,0 +1,31 @@
+//threeVector.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    unsigned int i, j;
+    vector<vector<vector<int>>> threeArray(2); //有兩個二維vector
+    for (i=0; i<2; i++) {
+        threeArray[i] = vector<vector<int>>(3); //有三列
+        for (j=0; j<threeArray[i].size(); j++) {
+            threeArray[i][j] = vector<int>(2);  //每一列有兩行
+        }
+    }
+    
+    int value = 1;
+    for (int x=0; x<2; x++) {
+        for (int y=0; y<3; y++) {
+            for (int z=0; z<2; z++) {
+                threeArray[x][y][z] = value++;
+                cout << setw(5) << threeArray[x][y][z];
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+    
+    return 0;
+}

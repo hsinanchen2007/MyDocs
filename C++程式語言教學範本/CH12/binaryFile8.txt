@@ -1,0 +1,29 @@
+//binaryFile8.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream binaryIO;
+    struct Student {
+        char name[20];
+        int score;
+    };
+    Student stu1 = {"Bright", 97};
+    
+    //write
+    binaryIO.open("struct.dat", ios::out|ios::binary);
+    binaryIO.write(reinterpret_cast<char *>(&stu1), sizeof(Student));
+    binaryIO.close();
+    
+    //read
+    binaryIO.open("struct.dat", ios::in|ios::binary);
+    Student stu2;
+    binaryIO.read(reinterpret_cast<char *>(&stu2), sizeof(Student));
+    cout << "reading data from file" << endl;
+    cout << stu2.name << " " << stu2.score << endl;
+    binaryIO.close();
+
+    return 0;
+}

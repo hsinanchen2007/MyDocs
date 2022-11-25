@@ -1,0 +1,15 @@
+//while3.cpp
+#include <iostream>
+#define MAX 6
+using namespace std;
+
+int main()
+{
+    int i;
+    i = 0;
+    while (++i <= MAX) {
+        cout << i << endl;
+    }
+    
+    return 0;
+}

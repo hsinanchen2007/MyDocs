@@ -1,0 +1,28 @@
+//t_f2.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    if (1)
+        cout << "1 is TRUE." << endl;
+    else
+        cout << "1 is FALSE." << endl;
+
+    if (0)
+        cout << "0 is TRUE." << endl;
+    else
+        cout << "0 is FALSE." << endl;
+
+    if (14)
+        cout << "14 is TRUE." << endl;
+    else
+        cout << "14 is FALSE." << endl;
+
+    if (-62)
+        cout << "-62 is TRUE." << endl;
+    else
+        cout << "-62 is FALSE." << endl;
+
+    return 0;
+}

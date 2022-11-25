@@ -1,0 +1,23 @@
+//continue.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i=1, num, total = 0;
+    while (i<=10) {
+        cout << "輸入 5 的倍數將不予以加總: ";
+        cin >> num;
+        if (num % 5 == 0) {
+            cout << "   此數不予以加總" << endl;
+            i++;
+            continue;
+        }
+        total += num;
+        i++;
+    }
+    cout << "total = " << total << endl;
+
+    return 0;
+}
+

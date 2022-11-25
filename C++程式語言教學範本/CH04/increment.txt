@@ -1,0 +1,22 @@
+//increment.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x,y;
+    int result;
+
+    x = 3;
+    y = 5;
+    result = x * (y++);
+    cout << "result = " << result << ", x = " << x << ", y = " << y << endl;
+
+    x = 3;
+    y = 5;
+    result = x * (++y);
+    cout << "result = " << result << ", x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
+

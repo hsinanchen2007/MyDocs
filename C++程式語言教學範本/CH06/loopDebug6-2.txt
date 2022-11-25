@@ -1,0 +1,14 @@
+// loopDebug6-2.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i;
+    for (i=1; i<=5; i+1)
+        cout << "小明正在跑步..." << endl;
+        cout << "小明跑完了第" << i << "圈" << endl;
+    cout << "小明跑完了!!!" << endl;
+
+    return 0;
+}

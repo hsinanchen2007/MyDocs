@@ -1,0 +1,23 @@
+//templateFun10.cpp
+#include <iostream>
+template <typename T> T larger(T a, T b);
+using namespace std;
+
+int main()
+{
+    int res = larger(10, 20);
+    cout << "Larger of (10, 20) is " << res << endl;
+    double rest = larger(66.6, 88.8);
+    cout << "Larger of (66.6, 88.8) is " << rest << endl;
+    string str1 = "Porsche";
+    string str2 = "Maserati";
+    string st = larger(str1, str2);
+    cout << "Larger of (" << str1 << ", " << str2 <<") is "
+¡@¡@¡@¡@¡@<< st << endl;¡@¡@
+    return 0;
+}
+
+template <typename T> T larger(T a, T b)
+{
+    return a > b ? a : b;
+}

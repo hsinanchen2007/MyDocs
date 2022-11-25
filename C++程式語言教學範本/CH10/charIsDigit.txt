@@ -1,0 +1,17 @@
+//charIsDigit.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str = "BMW X6";
+    int ans;
+    int i;
+    cout << "檢視字元是否為數字" << endl;
+    for (i=0; i<str.length(); i++) {
+        ans = isdigit(str[i]);
+        cout << str[i] << ": " << ans << endl;
+    }
+
+    return 0;
+}

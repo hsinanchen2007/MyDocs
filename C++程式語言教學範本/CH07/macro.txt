@@ -1,0 +1,17 @@
+//macro.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define MSG "macro message!\n"
+#define PI 3.14
+#define RADIUS 10
+#define AREA PI*RADIUS*RADIUS
+
+int main()
+{
+    cout << "MACRO MSG: " << MSG;
+    cout << "Area of circle with radius 10 is " << AREA << endl;
+
+    return 0;
+}
+

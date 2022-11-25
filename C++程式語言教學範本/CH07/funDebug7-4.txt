@@ -1,0 +1,20 @@
+//funDebug7-4.cpp
+#include <iostream>
+using namespace std;
+int number = 0;
+void count();
+
+int main()
+{
+    while (number++ < 10) {
+        count();
+        cout << "這是第 " << number << " 次呼叫count()" << endl;
+    }
+
+    return 0;
+}
+
+void count()
+{
+    number++;
+}

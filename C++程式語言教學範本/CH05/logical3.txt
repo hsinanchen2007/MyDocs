@@ -1,0 +1,17 @@
+/* logical3.cpp */
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+    cout << "請輸入 0~24 的數字: ";
+    cin >> num;
+
+    if ((num != 0) && !(24 % num))
+        cout << num << " 是 24 因數." << endl;
+    else
+        cout << num << " 不是 24 因數." << endl;
+
+    return 0;
+}

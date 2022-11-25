@@ -1,0 +1,15 @@
+//intAndDoubleToString.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int inum = 11;
+    double fnum = 123.456;
+    string idata = to_string(inum);
+    string fdata = to_string(fnum);
+    cout << "iPhone" + idata << endl;
+    cout << fdata + " is double number" << endl;
+
+    return 0;
+}

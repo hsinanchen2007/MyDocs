@@ -1,0 +1,53 @@
+//textFile6.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream fileObj;
+    string id, name;
+    double score;
+    
+    //write data into file
+    fileObj.open("score.dat", ios::out);
+    cout << "請輸入ID: ";
+    cin >> id;
+    cout << "請輸入姓名: ";
+    cin >> name;
+    cout << "請輸入分數: ";
+    cin >> score;
+    
+    cout << "\nwriting ... " << endl << endl;
+    fileObj << id << " " << name << " " << score << endl;
+
+    cout << "請輸入ID: ";
+    cin >> id;
+    cout << "請輸入姓名: ";
+    cin >> name;
+    cout << "請輸入分數: ";
+    cin >> score;
+    
+    cout << "\nwriting ... " << endl << endl;
+    fileObj << id << " " << name << " " << score << endl;
+    fileObj.close();
+    cout << "close file" << endl << endl;
+    
+    //read data from file
+    fileObj.open("score.dat", ios::in);
+    if (fileObj.fail()) {
+        cout << "File does not exist" << endl;
+        return 0;
+    }
+    cout << "reading ... " << endl;
+    fileObj >> id >> name >> score;
+    while (!fileObj.eof()) {
+        cout << id << " " << name << " " << score << endl;
+        fileObj >> id >> name >> score;
+    }
+
+    fileObj.close();
+    cout << "close file" << endl;
+    
+    return 0;
+}

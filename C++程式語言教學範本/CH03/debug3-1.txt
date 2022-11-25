@@ -1,0 +1,16 @@
+//debug3-1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 123456;
+    cout << setfill('^');
+    cout << num << endl;
+    cout << setw(8) << num << endl;
+    cout << left << setw(8) << num << endl;
+    cout << setw(8) << num << endl;
+
+    return 0;
+}
+

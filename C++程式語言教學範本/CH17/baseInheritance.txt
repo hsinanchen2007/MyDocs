@@ -1,0 +1,53 @@
+//baseInheritance.cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    A(int a=1);
+    void displayAdata();
+    
+private:
+    int aData;
+};
+
+A::A(int a)
+{
+    aData = a;
+}
+
+void A::displayAdata()
+{
+    cout << "aData: " << aData << endl;
+}
+
+class B: public A
+{
+public:
+    B(int, int);
+    void displayBdata();
+private:
+    int bData;
+};
+
+B::B(int a, int b): A(a)
+{
+    bData = b;
+}
+
+void B::displayBdata()
+{
+    cout << "bData: " << bData << endl;
+}
+
+int main() {
+    A aObj(100);
+    cout << "call by A class" << endl;
+    aObj.displayAdata();
+           
+    B bObj(77, 88);
+    cout << "\ncall by B class" << endl;
+    bObj.displayAdata();
+    bObj.displayBdata();
+    return 0;
+}

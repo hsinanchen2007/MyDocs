@@ -1,0 +1,121 @@
+//overloadingInput&Output2.cpp
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+class Rational {
+public:
+    Rational();
+    Rational(int, int);
+    int getNumerator();
+    int getDenominator();
+    Rational operator+(Rational&);
+    static int gcd(int, int);
+    string toString();
+    friend ostream& operator<<(ostream&, const Rational&);
+    friend istream& operator>>(istream&, Rational&);
+
+private:
+    int numerator;
+    int denominator;
+};
+
+Rational::Rational()
+{
+    numerator = 0;
+    denominator = 1;
+}
+
+Rational::Rational(int numerator, int denominator)
+{
+    int factor = gcd(numerator, denominator);
+    this->numerator = numerator / factor;
+    this->denominator = denominator / factor;
+}
+
+int Rational::getNumerator()
+{
+    return numerator;
+}
+
+int Rational::getDenominator()
+{
+    return denominator;
+}
+
+Rational Rational::operator+(Rational &r2)
+{
+    int n = numerator * r2.denominator +
+            denominator * r2.numerator;
+    int d = denominator * r2.denominator;
+    return Rational(n, d);
+}
+
+int Rational::gcd(int n, int d)
+{
+    int num1 = abs(n);
+    int num2 = abs(d);
+    int gcd = 1;
+    for (int i=1; i<=num1 && i<=num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0) {
+            gcd = i;
+        }
+    }
+    return gcd;
+}
+
+string Rational::toString()
+{
+    stringstream ss;
+    ss << numerator;
+    if (denominator > 1) {
+        ss << "/" << denominator;
+    }
+    return ss.str();
+}
+
+ostream& operator<<(ostream& out, const Rational& rational)
+{
+    if (rational.denominator == 1) {
+        out << rational.numerator;
+    }
+    else {
+        out << rational.numerator << "/" << rational.denominator;
+    }
+    return out;
+}
+
+istream& operator>>(istream& in, Rational& rational)
+{
+    cout << "Enter numerator: ";
+    in >> rational.numerator;
+    
+    cout << "Enter denominatro: ";
+    in >> rational.denominator;
+    return in;
+}
+
+int main()
+{
+    Rational rObj1, rObj2;
+    cin >> rObj1;
+    cout << "第一個分數: ";
+    cout << rObj1;
+    cout << endl << endl;
+    
+    cin >> rObj2;
+    cout << "第二個分數: ";
+    cout << rObj2;
+    cout << endl << endl;
+    
+    Rational addValue = rObj1 + rObj2;
+    string str1 = rObj1.toString();
+    string str2 = rObj2.toString();
+
+    string str = addValue.toString();
+    cout << str1 << " + " << str2 << " = " << str;
+
+    cout << endl;
+    return 0;
+}

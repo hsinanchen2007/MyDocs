@@ -1,0 +1,15 @@
+//loopDebug6-6.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i, j;
+    cout << "九九乘法表:" << endl;
+    for (i=1; i<=9; i++)
+        for (j=1; j<=9; j++)
+            cout << j << "*" << i << "=" << setw(2) << i*j;
+        cout << endl;
+
+    return 0;
+}

@@ -1,0 +1,17 @@
+//stringFind.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string car= "Porsche Cayenne";
+    string toilet = "ToTo";
+    cout << car.find("Cayenne") << endl; 
+    cout << car.find("Por") << endl;
+    cout << car.find('e') << endl;
+    cout << car.rfind('e') << endl;
+    cout << toilet.find("To") << endl;
+    cout << toilet.rfind("To") << endl;
+    return 0;
+}
+

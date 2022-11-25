@@ -1,0 +1,14 @@
+//mySecondProg.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+    int square;
+    num = 10;
+    square = num * num;
+    cout << "Square of number " << num << " is " << square << endl;
+
+    return 0;
+}

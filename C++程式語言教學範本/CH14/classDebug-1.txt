@@ -1,0 +1,56 @@
+//classDebug-1.cpp
+#include <iostream>
+using namespace std;
+
+class Fruits {
+public:
+    Fruits();
+    void setFruitsName(string);
+    void setFruitsPrice();
+    string getFruitsName();
+    double getFruitsPrice();
+    
+private:
+    string name;
+    double price;
+};
+
+Fruits::Fruits()
+{
+    name = "Kiwi";
+    price = 20.3;
+}
+
+void  setFruitsName(string s)
+{
+    name = s;
+}
+
+void  setFruitsPrice(double p)
+{
+    price = p;
+}
+
+string  getFruitsName()
+{
+    return name;
+}
+
+double  getFruitsPrice()
+{
+    return price;
+}
+
+int main()
+{
+    Fruits fruitsObj;
+    cout << "水果名: " << fruitsObj.name << endl;
+    cout << "單價: " << fruitsObj.price << endl << endl;
+    
+    fruitsObj.setFruitsName("Apple");
+    fruitsObj.setFruitsPrice(30.8);
+    cout << "水果名: " << fruitsObj.name << endl;
+    cout << "單價: " << fruitsObj.price << endl << endl;
+
+    return 0;
+}

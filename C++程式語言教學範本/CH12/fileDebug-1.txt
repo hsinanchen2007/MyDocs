@@ -1,0 +1,48 @@
+//fileDebug-1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+　ofstream outFile;
+　string id, name;
+　double score;
+
+　//write data into file
+　outFile.open("score.dat");
+　while (TRUE) {
+　　cout << " 請輸入ID: ";
+　　cin >> id;
+　　cout << " 請輸入姓名: ";
+　　cin >> name;
+　　cout << " 請輸入分數: ";
+　　cin >> score;
+　　if (score = -999) {
+　　　　break;
+　　}
+　　cout << "\nwriting ... " << endl << endl;
+　　outFile << id << " " << name << " " << score << endl;
+　}
+
+　outFile.close();
+　cout << "\nclose file" << endl << endl;
+　
+　//read data from file
+　inFile.open("score.dat");
+
+　if (inFile.fail()) {
+　　cout << "File does not exist" << endl;
+　　return 0;
+　}
+　cout << "reading ... " << endl;
+
+　while (inFile.eof()) {
+　　inFile >> id >> name >> score;
+　　cout << id << " " << name << " " << score << endl;
+　}
+
+　inFile.close();
+　cout << "close file" << endl;
+　
+　return 0;
+}

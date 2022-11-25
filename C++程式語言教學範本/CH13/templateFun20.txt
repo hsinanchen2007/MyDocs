@@ -1,0 +1,42 @@
+//templateFun20.cpp
+#include <iostream>
+#include <string>
+using namespace std;
+template <typename T> T larger(T a, T b);
+double larger(int, double);
+
+int main()
+{
+    int res  = larger(100, 200);
+    cout << "Larger of (100, 200) is " << res << endl;
+    
+    double res1 = larger(88.8, 88.99);
+    cout << "Larger of (88.8, 88.99) is " << res1 << endl;
+    
+    int res2  = larger(100, 2.2);
+     cout << "Larger of (100, 2.2) is " << res2 << endl;
+    
+    string st = larger("Pyhton", "C++");
+    cout << "Larger of (\"Pyhton\", \"C++\") is " << st << endl;
+    return 0;
+}
+
+template <typename T> T larger(T x, T y)
+{
+    if (x > y) {
+        return x;
+    }
+    else {
+        return y;
+    }
+}
+
+double larger(int x, double y)
+{
+    if (x > y) {
+        return x;
+    }
+    else {
+        return y;
+    }
+}

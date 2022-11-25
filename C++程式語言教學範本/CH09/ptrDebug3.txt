@@ -1,0 +1,24 @@
+//ptrDebug3.cpp
+#include <iostream>
+using namespace std;
+#define SIZE 5
+
+int main()
+{
+    int arr[5] = {1, 3, 5, 7, 9};
+    int arrLen = 5;
+    int *ptr = arr;
+    int i;
+    cout << "原陣列: ";
+    for (i=0; i<SIZE; i++)
+        cout << *ptr + i;
+    cout << endl;
+    cout << "將所有陣列元素乘以 10 後: ";
+    for (i=0; i<SIZE; i++) {
+        *ptr+i *= 10;
+        cout << *ptr+i;
+    }
+    cout << endl;
+
+    return 0;
+}

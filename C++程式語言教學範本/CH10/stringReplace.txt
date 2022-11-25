@@ -1,0 +1,12 @@
+//stringReplace.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string fruit = "Kiwi Orange Banana ";
+    cout << fruit.replace(5, 6, "PineApple") << endl;
+    cout << fruit.replace(0, 4, "PineApple", 4, 5) << endl;
+
+    return 0;
+}

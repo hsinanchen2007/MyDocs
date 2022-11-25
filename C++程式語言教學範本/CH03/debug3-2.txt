@@ -1,0 +1,19 @@
+//debug3-2.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    double f2 = 1234.578;
+    cout << "1234567890" << endl;
+    cout << setw(10)  << f2 << endl;
+    cout << setfill('*');
+    cout << setw(10)  << f2 << endl;
+    cout << left;
+    cout << setw(10)  << f2 << endl;
+¡@¡@cout << resetiosflags(ios::left);
+    cout << setw(10)  << f2 << endl;
+
+    return 0;
+}

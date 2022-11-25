@@ -1,0 +1,24 @@
+//mod.cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    unsigned int sec, min, hour;
+    cout << "時間轉換..." << endl << endl;
+
+    cout << "請問有多少秒:\n  ===> ";
+    cin >> sec;
+    min = sec / 60;
+    sec = sec % 60;
+
+    hour = min / 60;
+    min = min % 60;
+
+    cout << endl;
+    cout << hour << " 小時, " << min << " 分, "
+         << sec << " 秒" << endl;
+
+    return 0;
+}
+
+

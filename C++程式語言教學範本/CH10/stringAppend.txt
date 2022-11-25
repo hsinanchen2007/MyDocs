@@ -1,0 +1,26 @@
+//stringAppend.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str1 = "C++";
+    string str2 = "Welcome ";
+    str2.append(str1);
+    cout << "str2: " << str2 << endl;
+    
+    string str3 = "Learning ";
+    str3 += "C++ now!";
+    cout << "str3: " << str3<< endl;
+    
+    string str4 = "Porsche ";
+    str4.append("Cayenne Coupe", 7);
+    cout << "str4: " << str4 << endl;
+    
+    string str5;
+    str5.append("Porsche Cayenne Coupe", 8, 7);
+    cout << "str5: " << str5 << endl;
+    
+    str1.append(3, '!');
+    cout << "str1: " << str1 << endl;
+}

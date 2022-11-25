@@ -1,0 +1,19 @@
+//stringCopyN.cpp
+#include <iostream>
+using namespace std;
+
+#define N 7
+int main()
+{
+    string source = "Porsche Cayenne";
+    string dest{source, 0, 7};
+    string dest2{source, 8};
+    string dest3{source, 8, 7};
+    cout << source << endl;
+    cout << dest << endl;
+    cout << dest2 << endl;
+    cout << dest3 << endl;
+
+    return 0;
+}
+

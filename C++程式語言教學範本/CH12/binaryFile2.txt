@@ -1,0 +1,25 @@
+//binaryFile2.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream binaryIO;
+    binaryIO.open("fruits.dat", ios::out|ios::binary);
+    char str[] = "Banana";
+    cout << "writing \"Banana\" into file" << endl;
+
+    //write
+    binaryIO.write(str, sizeof(str));
+    binaryIO.close();
+    
+    //read
+    binaryIO.open("fruits.dat", ios::in|ios::binary);
+    char str2[20];
+    binaryIO.read(str2, sizeof(str));
+    cout << "reading data from file" << endl;
+    cout << "str2: " << str2 << endl;
+    binaryIO.close();
+    return 0;
+}

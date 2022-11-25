@@ -1,0 +1,70 @@
+//file1Debug-2.cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Student {
+public:
+¡@Student();
+¡@Student(string, int);
+¡@void writeToFile();
+¡@void display();
+¡@string getName();
+¡@int getScore();
+
+private:
+¡@string name;
+¡@int score;
+};
+
+Student::Student()
+{
+¡@name = "John";
+¡@score = 60;
+}
+
+Student::Student(string name2, int score2)
+{
+¡@name = name2;
+¡@score = score2;
+}
+
+void setData()
+{
+¡@Student stu;
+¡@cout << "Enter name: ";
+¡@cin >> name;
+¡@cout << "Enter score: ";
+¡@cin >> score;
+¡@cout << endl;
+}
+
+void Student::display()
+{
+¡@cout << name << " " << score << endl;
+}
+
+int main()
+{
+¡@fstream binaryIO;
+¡@binaryIO.open("classObj.dat", ios::out|ios::binary);
+¡@int i;
+¡@while (i<=3) {
+¡@¡@Student stu;
+¡@¡@stu.setData();
+¡@¡@binaryIO.write(reinterpret_cast<char *>(stu), sizeof(Student));
+¡@¡@i++;
+¡@}
+¡@binaryIO.close();
+
+¡@//read data from file
+¡@Student studentData;
+¡@cout << "reading data..." << endl;
+¡@binaryIO.open("classObj.dat");
+¡@while (binaryIO.read(reinterpret_cast<char *>(&studentData))) {
+¡@¡@studentData.display();
+¡@}
+¡@binaryIO.close();
+¡@
+¡@return 0;
+}

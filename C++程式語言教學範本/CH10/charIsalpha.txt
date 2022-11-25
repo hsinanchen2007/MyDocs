@@ -1,0 +1,17 @@
+//charIsalpha.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str = "BMW X6";
+    int ans;
+    int i;
+    cout << "檢視字元是否為英文字母" << endl;
+    for (i=0; i<str.length(); i++) {
+        ans = isalpha(str[i]);
+        cout << str[i] << ": " << ans << endl;
+    }
+
+    return 0;
+}

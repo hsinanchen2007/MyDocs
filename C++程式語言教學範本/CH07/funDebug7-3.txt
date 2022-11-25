@@ -1,0 +1,16 @@
+//funDebug7-3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num = 5;
+    cout << num << " 的平方為 " << square(num) << endl;
+
+    return 0;
+}
+
+void square(int num)
+{
+    return num * num
+}

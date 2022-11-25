@@ -1,0 +1,28 @@
+//sizeof.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    short short_num = 0;
+    int int_num = 0;
+    long long_num = 0;
+
+    cout << "Operator sizeof in Byte(s)..." << endl << endl;
+
+    cout << "¡@Type <char>: " <<  sizeof(char) << " byte(s)." << endl;
+    cout << "¡@Type <short>: " <<  sizeof(short) << " byte(s)." << endl;
+    cout << "¡@Type <int>: " <<  sizeof(int) << " byte(s)." << endl;
+    cout << "¡@Type <long>: " <<  sizeof(long) << " byte(s)." << endl;
+    cout << "¡@Type <float>: " <<  sizeof(float) << " byte(s)." << endl;
+    cout << "¡@Type <double>: " <<  sizeof(double) << " byte(s)." << endl;
+    cout << "¡@Type <long double>: " <<  sizeof(long double) << " byte(s)." << endl;
+
+    cout << endl;
+    cout << "¡@vaiable short_num>: " <<  sizeof(short_num) << " byte(s)." << endl;
+    cout << "¡@vaiable int_num>: " <<  sizeof(int_num) << " byte(s)." << endl;
+    cout << "¡@vaiable long_num>: " <<  sizeof(long_num) << " byte(s)." << endl;
+    
+    return 0;
+}
+

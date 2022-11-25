@@ -1,0 +1,15 @@
+//atoiAndatof.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string inum = "123";
+    string fnum = "123.456";
+    int idata = stoi(inum);
+    double fdata = stof(fnum);
+    cout << "idata + 100 = " << idata+100 << endl;
+    cout << "fdata + 100 = " << fdata+100 << endl;
+
+    return 0;
+}

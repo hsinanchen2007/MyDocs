@@ -1,0 +1,30 @@
+//swap3.cpp
+#include <iostream>
+using namespace std;
+
+void swap(int *, int *);
+int main()
+{
+    int x = 14, y = 62;
+
+    cout << "Initial ..." << endl;
+    cout << "  x = " << x << ", y = " << y << endl;
+    swap(&x, &y);
+    cout << "\nAfter swapping ..." << endl;
+    cout << "  x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
+
+void swap(int *a, int *b)
+{
+    int temp;
+
+    cout << "\nIn swap() ..." << endl;
+    cout << "  *a = " << *a << ", *b = " << *b << endl;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+    cout << "End swap() ..." << endl;
+    cout << "  *a = " << *a << ", *b = " << *b << endl;
+}

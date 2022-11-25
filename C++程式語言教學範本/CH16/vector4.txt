@@ -1,0 +1,34 @@
+//vector4.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> intVector(6);
+    int i;
+    
+    for (i=0; i<intVector.size(); i++) {
+        cout << setw(5) << intVector[i];
+    }
+    cout << endl;
+    
+    intVector.push_back(100);
+    intVector.push_back(200);
+    intVector.push_back(300);
+
+    for (i=0; i<intVector.size(); i++) {
+        cout << setw(5) << intVector[i];
+    }
+    cout << endl;
+    
+    intVector.pop_back();
+    
+    for (i=0; i<intVector.size(); i++) {
+        cout << setw(5) << intVector[i];
+    }
+    cout << endl;
+    
+    return 0;
+}

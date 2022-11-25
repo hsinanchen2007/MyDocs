@@ -1,0 +1,41 @@
+//array.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int even[5];
+    int odd[5];
+    int sum[5];
+    int i;
+    
+    for (i=0; i<5; i++) {
+        even[i] = 2 * i;
+        odd[i] = 2 * i + 1;
+    }
+    
+    cout <<"    Array even[0..19]" << endl;
+    for (i=0; i<5; i++) {
+        cout << setw(5) << even[i];
+    }
+    cout << endl << endl;
+    
+    cout <<"    Array odd[0..19]" << endl;
+    for (i=0; i<5; i++) {
+        cout << setw(5) << odd[i];
+    }
+    cout << endl << endl;
+    
+    //array addition
+    for (i=0; i<5; i++)
+        sum[i] = even[i] + odd[i];
+        
+    cout <<"    Array sum[0..19]" << endl;
+    for (i=0; i<5; i++) {
+        cout << setw(5) << sum[i];
+    }
+    cout << endl << endl;
+
+    return 0;
+}

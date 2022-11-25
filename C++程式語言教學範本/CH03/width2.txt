@@ -1,0 +1,20 @@
+//width2.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int a = 123, b = 1234567, c = 12345;
+    cout << a << " " << b << " " << c << endl;
+    cout << b << " " << c << " " << a << endl;
+    cout << c << " " << a << " " << b << endl;
+    
+    cout << "\nUsing width" << endl;
+    cout << "123456789012345678901234567890" << endl;
+    cout << setw(9) << a << setw(9) << b << setw(9) << c << endl;
+    cout << setw(9) << b << setw(9) << c << setw(9) << a << endl;
+    cout << setw(9) << c << setw(9) << a << setw(9) << b << endl;
+    return 0;
+}
+

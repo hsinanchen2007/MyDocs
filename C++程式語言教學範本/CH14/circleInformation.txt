@@ -1,0 +1,102 @@
+//circleInformation 專案（共有circle.h, circle.cpp, testCircle.cpp）
+程式檔案: circle.h
+//circle.h
+#define PI 3.14159
+
+class Circle {
+public:
+    Circle();
+    void setXandY(int, int);
+    int getX();
+    int getY();
+    void setRadius(int);
+    int getRadius();
+    double getArea();
+    double getPerimeter();
+
+private:
+    int radius;
+    int x, y;
+};
+
+程式檔案: circle.cpp
+//circle.cpp
+#include "circle.h"
+#include <iostream>
+using namespace std;
+
+Circle::Circle() 
+{
+    cout << "執行建構函式" << endl;
+    radius = 1;
+    x = 1;
+    y = 1;
+}
+
+void Circle::setXandY(int x2, int y2)
+{
+    x = x2;
+    y = y2;
+}
+
+int Circle::getX()
+{
+    return x;
+}
+    
+int Circle::getY()
+{
+    return y;
+}
+
+void Circle::setRadius(int x) 
+{
+    radius = x;
+}
+
+int Circle::getRadius() 
+{
+    return radius;
+}
+
+double Circle::getArea() 
+{
+    return PI * radius * radius;
+}
+
+double Circle::getPerimeter() 
+{
+    return 2 * PI * radius;
+}
+
+程式檔案: testCircle.cpp
+//testCircle.cpp
+#include <iostream>
+#include <iomanip>
+#include "circle.h"
+using namespace std;
+
+int main()
+{
+    Circle circleObj, circleObj2;
+    cout << fixed << setprecision(2);
+    cout << "圓心座標: " << "(" << circleObj.getX() << ", "
+         << circleObj.getY() << ")" << endl;
+    cout << "半徑: " << circleObj.getRadius() << endl;
+    double circleArea = circleObj.getArea();
+    cout << "圓面積: " << circleArea << endl;
+    double circlePerimeter = circleObj.getPerimeter();
+    cout << "圓的周長: " << circlePerimeter << endl << endl;
+    
+    cout << "另一個圓: " << endl;
+    circleObj2.setRadius(5);
+    circleObj2.setXandY(2, 2);
+    cout << "圓心座標: " << "(" << circleObj2.getX() << ", "
+         << circleObj2.getY() << ")" << endl;
+    cout << "半徑: " << circleObj2.getRadius() << endl;
+    double circleArea2 = circleObj2.getArea();
+    cout << "圓面積: " << circleArea2 << endl;
+    double circlePerimeter2 = circleObj2.getPerimeter();
+    cout << "圓的周長: " << circlePerimeter2 << endl;
+    return 0;
+}

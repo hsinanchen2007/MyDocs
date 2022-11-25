@@ -1,0 +1,35 @@
+//friendFunDegug1.cpp
+#include <iostream>
+using namespace std;
+
+class LearningCPP
+{    
+public:
+    LearningCPP(int, int, int);
+    void friend display();
+
+private:
+    int year;
+    int month;
+    int day;
+};
+
+LearningCPP::LearningCPP(int year, int month, int day)
+{
+    this->year = year;
+    this->month = month;
+    this->day = day;
+}
+
+void LearningCPP::display()
+{
+    LearningCPP obj(2020, 3, 3);
+    cout << obj.year << "/" << obj.month << "/" << obj.day << endl;
+}
+
+int main()
+{
+    cout << "Learning C++ data is ";
+    display();
+    return 0;
+}

@@ -1,0 +1,23 @@
+//stringAssign.cpp
+#include <iostream>
+using namespace std;
+
+#define N 7
+int main()
+{
+    string source = "Porsche Cayenne";
+    string dest;
+    string dest2;
+    string dest3;
+    
+    dest.assign(source, 0, 7);
+    dest2.assign(source, 8);
+    dest3.assign(source, 8, 7);
+    
+    cout << source << endl;
+    cout << dest << endl;
+    cout << dest2 << endl;
+    cout << dest3 << endl;
+
+    return 0;
+}

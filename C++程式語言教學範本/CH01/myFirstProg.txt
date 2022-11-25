@@ -1,0 +1,15 @@
+//myFirstProg.cpp
+/* This is my first C++ program
+ 主要是在輸出一些訊息，並且從中練習如何操作 C++ 編譯器 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello, ";
+    cout << "world." << endl;
+    cout << "Learning C now.\n";
+
+    return 0;
+}

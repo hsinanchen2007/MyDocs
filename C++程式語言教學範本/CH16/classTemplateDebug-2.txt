@@ -1,0 +1,114 @@
+//classTemplateDebug-2.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+template <typename T>
+class Rectangle {
+public:
+    Rectangle();
+    Rectangle(int, T);
+    T getWidth();
+    T getHeight();
+    void setWidth(T);
+    void setHeight(T);
+    int getRectArea();
+    int getRectPerimeter();
+    
+private:
+    int width;
+    int height;
+};
+
+template <typename T>
+Rectangle<T>::Rectangle()
+{
+   width = 1;
+   height = 1;
+}
+
+Rectangle::Rectangle(T w, T h)
+{
+   width = w;
+   height = h;
+}
+
+T Rectangle::getWidth()
+{
+    return width;
+}
+
+T Rectangle::getHeight()
+{
+    return height;
+}
+
+void Rectangle::setWidth(T w)
+{
+    width = w;
+}
+
+void Rectangle::setHeight(T h)
+{
+    height = h;
+}
+
+T Rectangle::getRectArea()
+{
+    return width*height;
+}
+
+T Rectangle::getRectPerimeter()
+{
+    return 2*(width+height);
+}
+ 
+int main()
+{
+    int rectangleArea;
+    int rectanglePerimeter;
+    Rectangle rectObj;
+    rectangleArea = rectObj.getRectArea();
+    rectanglePerimeter = rectObj.getRectPerimeter();
+    cout << "width: " << rectObj.getWidth() << endl;
+    cout << "height: " << rectObj.getHeight() << endl;
+    cout << "Rectangle area: " << rectangleArea << endl;
+    cout << "Rectangle perimeter: " << rectanglePerimeter << endl;
+    cout << endl;
+    
+    Rectangle rectObj2;
+    rectObj2.setWidth(5);
+    rectObj2.setHeight(6);
+    rectangleArea = rectObj2.getRectArea();
+    rectanglePerimeter = rectObj2.getRectPerimeter();
+    cout << "width: " << rectObj2.getWidth() << endl;
+    cout << "height: " << rectObj2.getHeight() << endl;
+    cout << "Rectangle area: " << rectangleArea << endl;
+    cout << "Rectangle perimeter: " << rectanglePerimeter << endl;
+    cout << endl;
+    
+    Rectangle rectObj3(1.1, 2.2);
+    rectangleArea3 = rectObj3.getRectArea();
+    rectanglePerimeter3 = rectObj3.getRectPerimeter();
+    cout << "width: " << rectObj3.getWidth() << endl;
+    cout << "height: " << rectObj3.getHeight() << endl;
+    cout << fixed << setprecision(1);
+    cout << "Rectangle area: " << rectangleArea3 << endl;
+    cout << "Rectangle perimeter: " << rectanglePerimeter3 << endl;
+}
+
+¿é¥Xµ²ªG
+width: 1
+height: 1
+Rectangle area: 1
+Rectangle perimeter: 4
+
+width: 5
+height: 6
+Rectangle area: 30
+Rectangle perimeter: 22
+
+width: 1.1
+height: 2.2
+Rectangle area: 2.4
+Rectangle perimeter: 6.6

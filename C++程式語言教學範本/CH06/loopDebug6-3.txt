@@ -1,0 +1,13 @@
+//loopDebug6-3.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i, total;
+    for (i=1; i<100; i++)
+        total + i;
+    cout << "1加到100的總和為 " << total << endl;
+
+    return 0;
+}

@@ -1,0 +1,19 @@
+//selDebug5-7.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int choice = 1;
+    switch (choice)
+    case 1
+        cout << "你是1號學生" << endl;
+    case 2
+        cout << "你是2號學生" << endl;
+    case 3
+        cout << "你是3號學生" << endl;
+    default
+        cout << "你不是1~3號的學生" << endl;
+
+    return 0;
+}

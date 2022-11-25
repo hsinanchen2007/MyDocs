@@ -1,0 +1,14 @@
+//selDebug5-1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int score = 40;
+    if {score <= 60} then
+        score += 10
+    cout << "score = " << score;
+
+    return 0;
+}
+

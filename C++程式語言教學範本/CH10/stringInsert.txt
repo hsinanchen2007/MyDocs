@@ -1,0 +1,26 @@
+//stringInsert.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str1 = "C++";
+    string str2 = "Welcome ";
+    str2.insert(8, str1);
+    cout << "str2: " << str2 << endl;
+    
+    string str3 = "Learning ";
+    string str4 = "C++ now!";
+    str3.insert(9, str4, 0, 7);
+    cout << "str3: " << str3 << endl;
+    
+    string str5 = " is fun";
+    string str6 = "C++";
+    str6.insert(3, str5, 0);
+    cout << "str6: " << str6 << endl;
+    
+    str6.insert(10, 2, '*');
+    cout << "str6: " << str6 << endl;
+    
+    return 0;
+}

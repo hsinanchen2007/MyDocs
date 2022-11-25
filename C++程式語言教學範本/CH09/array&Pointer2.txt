@@ -1,0 +1,17 @@
+//array&Pointer2.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i;
+    int a[] = {1, 2, 3, 4, 5};
+    int *ptr=a;
+   
+    for (i=0; i<sizeof(a)/sizeof(int); i++) {
+        cout << " a[" << i << "] = " << a[i] << endl;
+        cout << " *(ptr+" << i << ") = " << *(ptr+i) << endl << endl;
+    }
+
+    return 0;
+}

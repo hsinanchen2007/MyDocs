@@ -1,0 +1,29 @@
+//debug11-4.cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+struct Student {
+    char name[20];
+    int score;
+    Student *next;
+};
+
+int main()
+{
+    Student stu1 = {"Mary", 95, NULL};
+    Student stu2 = {"Gina", 80, NULL};
+    Student *ptr;
+    int i;
+    
+    stu1.next = stu2;
+    ptr = &stu1;
+    cout << "利用ptr印出所有資料\n\n";
+    cout << setw(15) << "學生姓名" << setw(8) << "  學生成績" << endl;
+    while (ptr == NULL) {
+        cout << setw(16) << ptr->name << setw(8) << ptr->score ;
+        *ptr = *ptr->next;
+    }
+
+    return 0;
+}

@@ -1,0 +1,17 @@
+//charIsLower.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string str2 = "New BMW X6";
+    int ans;
+    int i;
+    cout << "檢視字元是否為小寫英文字母" << endl;
+    for (i=0; i<str2.length(); i++) {
+        ans = islower(str2[i]);
+        cout << str2[i] << ": " << ans << endl;
+    }
+
+    return 0;
+}

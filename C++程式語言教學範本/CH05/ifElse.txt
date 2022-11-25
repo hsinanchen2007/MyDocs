@@ -1,0 +1,25 @@
+//ifElse.cpp 
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char ch;
+
+    cout << "Play again[Y/y] ?  ";
+    cin >> ch;
+
+    if (ch == 'y')
+        ch = 'Y';
+    if (ch == 'Y') {
+        cout << "Play again!" << endl;
+        cout << "I like this game..." << endl;
+    }
+    else {
+        cout << "Exit the game!" << endl;
+        cout << "I don't like this game." << endl;
+    }
+    cout << "Test over!" << endl;
+    
+    return 0;
+}

@@ -1,0 +1,34 @@
+//vector2.cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<double> doubleVector;
+    int i;
+    
+    for (i=0; i<10; i++) {
+        doubleVector.push_back(i+1.1);
+    }
+    
+    cout << "第一個向量物件: " << doubleVector.front() << endl;
+    cout << "最後一個向量物件: " << doubleVector.back() << endl << endl;
+    
+    cout << "doubleVector 向量的物件計有: " << endl;
+    for (i=0; i<doubleVector.size(); i++) {
+        cout << setw(5) << doubleVector[i];
+    }
+    cout << endl << endl;
+    
+    doubleVector.pop_back();
+    
+    cout << "刪除最後一個向量物件後，doubleVector 向量的物件計有: " << endl;
+    for (i=0; i<doubleVector.size(); i++) {
+        cout << setw(5) << doubleVector[i];
+    }
+    cout << endl;
+    
+    return 0;
+}

@@ -1,0 +1,83 @@
+//class22.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define PI 3.14159
+
+class Circle {
+public:
+    Circle();
+    Circle(int, int, int);
+    int getX();
+    int getY();
+    int getRadius();
+    double getArea();
+    double getPerimeter();
+private:
+    int radius;
+    int x, y;
+};
+
+Circle::Circle()
+{
+    radius = 1;
+    x = 1;
+    y = 1;
+}
+
+Circle::Circle(int r, int xPoint, int yPoint)
+{
+    radius = r;
+    x = xPoint;
+    y = yPoint;
+}
+
+int Circle::getX()
+{
+    return x;
+}
+    
+int Circle::getY()
+{
+    return y;
+}
+
+int Circle::getRadius()
+{
+    return radius;
+}
+
+double Circle::getArea()
+{
+    return PI * radius * radius;
+}
+
+double Circle::getPerimeter()
+{
+    return 2 * PI * radius;
+}
+
+int main()
+{
+    Circle circleObj;
+    cout << "圓心座標: " << "(" << circleObj.getX() << ", "
+         << circleObj.getY() << ")" << endl;
+    cout << "半徑: " << circleObj.getRadius() << endl;
+    cout << fixed << setprecision(2);
+    double circleArea = circleObj.getArea();
+    cout << "圓面積: " << circleArea << endl;
+    double circlePerimeter = circleObj.getPerimeter();
+    cout << "圓的周長: " << circlePerimeter << endl << endl;
+    
+    cout << "另一個圓: " << endl;
+    Circle circleObj2(5, 2, 2);
+    cout << "圓心座標: " << "(" << circleObj2.getX() << ", "
+         << circleObj2.getY() << ")" << endl;
+    cout << "半徑: " << circleObj2.getRadius() << endl;
+    cout << fixed << setprecision(2);
+    double circleArea2 = circleObj2.getArea();
+    cout << "圓面積: " << circleArea2 << endl;
+    double circlePerimeter2 = circleObj2.getPerimeter();
+    cout << "圓的周長: " << circlePerimeter2 << endl;
+    return 0;
+}

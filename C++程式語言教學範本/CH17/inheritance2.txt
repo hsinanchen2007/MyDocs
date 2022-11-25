@@ -1,0 +1,103 @@
+//inheritance2.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define PI 3.14159
+
+class Point {
+public:
+    Point();
+    void setX1andY1(int, int);
+    int getX1();
+    int getY1();
+    
+private:
+    int x1, y1;
+};
+
+//預設點座標為(0, 0)
+Point::Point()
+{
+    x1 = 0;
+    y1 = 0;
+}
+
+void Point::setX1andY1(int x, int y) {
+    x1 = x;
+    y1 = y;
+}
+
+int Point::getX1()
+{
+    return x1;
+}
+
+int Point::getY1()
+{
+    return y1;
+}
+
+//Circle 類別繼承　Point
+class Circle: public Point {
+public:
+    Circle();
+    void setRadius(int);
+    int getRadius();
+    double getArea();
+    double getPerimeter();
+
+private:
+    int radius;
+};
+
+//Circle 建構函式，設定半徑為 1
+Circle::Circle()
+{
+    radius = 1;
+}
+
+void Circle::setRadius(int r)
+{
+    radius = r;
+}
+
+int Circle::getRadius()
+{
+    return radius;
+}
+
+double Circle::getArea()
+{
+    return (PI * radius * radius);
+}
+
+double Circle::getPerimeter()
+{
+    return (2 * PI * radius);
+}
+
+int main()
+{
+    Point pointObj;
+    cout << fixed << setprecision(2);
+    cout << "基礎類別的點座標為: " << "(" << pointObj.getX1() << ", "
+         << pointObj.getY1() << ")" << endl;
+    cout << "----------------------" << endl;
+    
+    Circle circleObj;
+    cout << "圓心座標為: " << "(" << circleObj.getX1() << ", "
+         << circleObj.getY1() << ")" << endl;
+    cout << "圓形半徑: " << circleObj.getRadius() << endl << endl;
+    //更改圓心和半徑
+    circleObj.setX1andY1(1, 1);
+    circleObj.setRadius(3);
+    cout << "圓心座標更改為: " << "(" << circleObj.getX1()
+            << ", " << circleObj.getY1() << ")" << endl;
+    cout << "圓形更改為半徑: " << circleObj.getRadius() << endl;
+    double circleArea = circleObj.getArea();
+    cout << "圓形面積: " << circleArea << endl;
+    double circlePerimeter = circleObj.getPerimeter();
+    cout << "圓形周長: " << circlePerimeter << endl << endl;
+
+    return 0;
+}

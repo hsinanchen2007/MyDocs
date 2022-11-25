@@ -1,0 +1,23 @@
+//debug11-3.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+struct Student {
+    char name[20];
+    int score;
+};
+
+int main()
+{
+    Student stu[3] = {{"Amy", 90}, {"Tina", 85}, {"Sam", 91}};
+    int i;
+    cout << left;
+    cout << setw(20) << "學生姓名" << setw(20) << "學生成績" << endl;
+    cout << "------------------------\n";
+    for (i=0; i<3; i++)
+        printf("%-16s%-8d\n", (stu+i).name, (stu+i).score);
+    cout << "------------------------\n";
+
+    return 0;
+}

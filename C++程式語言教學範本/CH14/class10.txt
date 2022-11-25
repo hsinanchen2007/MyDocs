@@ -1,0 +1,77 @@
+//class10.cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+#define PI 3.14159
+
+class Circle {
+public:
+    //member function
+    void setXandY(int, int);
+    int getX();
+    int getY();
+    int getRadius();
+    void setRadius(int);
+    double getArea();
+    double getPerimeter();
+
+private:
+    //data member
+    int radius;
+    int x, y;
+};
+
+void Circle::setXandY(int x2, int y2)
+{
+    x = x2;
+    y = y2;
+}
+    
+int Circle::getX()
+{
+    return x;
+}
+    
+int Circle::getY()
+{
+    return y;
+}
+    
+int Circle::getRadius()
+{
+    return radius;
+}
+    
+void Circle::setRadius(int x) 
+{
+    radius = x;
+}
+    
+double Circle::getArea() 
+{
+    return PI * radius * radius;
+}
+    
+double Circle::getPerimeter() 
+{
+    return 2 * PI * radius;
+}
+
+int main()
+{
+    Circle circleObj;
+    circleObj.setXandY(1, 1);
+    circleObj.setRadius(5);
+    
+    cout << "圓心座標: " << "(" << circleObj.getX() << ", "
+         << circleObj.getY() << ")" << endl;
+    cout << "半徑: " << circleObj.getRadius() << endl;
+    
+    cout << fixed << setprecision(2);
+    double circleArea = circleObj.getArea();
+    cout << "圓面積: " << circleArea << endl;
+    
+    double circlePerimeter = circleObj.getPerimeter();
+    cout << "圓的周長: " << circlePerimeter << endl;
+    return 0;
+}

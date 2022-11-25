@@ -1,0 +1,12 @@
+//loopDebug6-1.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "¦L¥X¾ã¼Æ1~10:" << endl;
+    For (int i=1: i<=10: i++)
+        cout << i << endl;
+
+    return 0;
+}

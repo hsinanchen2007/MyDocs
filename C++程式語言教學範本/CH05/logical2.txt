@@ -1,0 +1,19 @@
+//logical2.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+
+    cout << "請輸入介於　1~100　之間的數字: ";
+    cin >> num;
+
+    if ((num >= 1) && (num <= 100))
+        cout << num << " 是合法的數字" << endl;
+    else
+        cout << num << " 是不合法的數字" << endl;
+    cout << "Bye Bye!" << endl;
+
+    return 0;
+}

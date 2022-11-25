@@ -1,0 +1,20 @@
+//break.cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num, total = 0;
+    while (true) {
+        cout << "輸入 5 的倍數將結束執行: ";
+        cin >> num;
+        if (num % 5 == 0) {
+            break;
+        }
+        total += num;
+    }
+    cout << "total = " << total << endl;
+
+    return 0;
+}
+
