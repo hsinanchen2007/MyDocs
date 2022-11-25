@@ -1,0 +1,24 @@
+// 显示读入的月份所属的季节
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int month;
+
+	cout << "判断季节。\n月份：";
+	cin >> month;
+
+	if (month < 1 || month > 12)
+		cout << "\a没有这个月份。\n";
+	else if (month <= 5)						//  3月 4月 5月
+		cout << "这是春季。\n";
+	else if (month <= 8)						//  6月 7月 8月
+		cout << "这是夏季。\n";
+	else if (month <= 11)						//  9月 10月 11月
+		cout << "这是秋季。\n";
+	else										// 12月 1月 2月
+		cout << "这是冬季。\n";
+}
