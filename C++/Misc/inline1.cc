@@ -69,6 +69,103 @@
         executable file. Thrashing in memory causes performance of computer to degrade.
 
     The following program demonstrates the use of use of inline function.
+
+
+    From https://cplusplus.com/articles/2LywvCM9/
+
+    What is C++ inline functions
+        In C, we have used Macro function an optimized technique used by compiler to reduce the execution 
+        time etc. So Question comes in mind that what’s there in C++ for that and in what all better ways? 
+        Inline function is introduced which is an optimization technique used by the compilers especially 
+        to reduce the execution time. We will cover “what, why, when & how” of inline functions.
+
+    What is inline function :
+        The inline functions are a C++ enhancement feature to increase the execution time of a program. 
+        Functions can be instructed to compiler to make them inline so that compiler can replace those function 
+        definition wherever those are being called. Compiler replaces the definition of inline functions 
+        at compile time instead of referring function definition at runtime.
+        
+        NOTE- This is just a suggestion to compiler to make the function inline, if function is big (in term 
+        of executable instruction etc) then, compiler can ignore the “inline” request and treat the function 
+        as normal function.
+
+    How to make function inline:
+        To make any function as inline, start its definitions with the keyword “inline”.
+
+        Example –
+            Class A
+            {
+            Public:
+                inline int add(int a, int b)
+                {
+                return (a + b);
+                };
+            }
+
+            Class A
+            {
+            Public:
+                int add(int a, int b);
+            };
+
+            inline int A::add(int a, int b)
+            {
+            return (a + b);
+            }
+
+    Why to use –
+        In many places we create the functions for small work/functionality which contain simple and less number 
+        of executable instruction. Imagine their calling overhead each time they are being called by callers.
+        When a normal function call instruction is encountered, the program stores the memory address of the instructions 
+        immediately following the function call statement, loads the function being called into the memory, copies 
+        argument values, jumps to the memory location of the called function, executes the function codes, stores 
+        the return value of the function, and then jumps back to the address of the instruction that was saved just 
+        before executing the called function. Too much run time overhead.
+
+        The C++ inline function provides an alternative. With inline keyword, the compiler replaces the function call 
+        statement with the function code itself (process called expansion) and then compiles the entire code. Thus, 
+        with inline functions, the compiler does not have to jump to another location to execute the function, and then 
+        jump back as the code of the called function is already available to the calling program.
+        With below pros, cons and performance analysis, you will be able to understand the “why” for inline keyword
+
+        Pros :-
+        1. It speeds up your program by avoiding function calling overhead.
+        2. It save overhead of variables push/pop on the stack, when function calling happens.
+        3. It save overhead of return call from a function.
+        4. It increases locality of reference by utilizing instruction cache.
+        5. By marking it as inline, you can put a function definition in a header file (i.e. it can be included in 
+        multiple compilation unit, without the linker complaining)
+
+        Cons :-
+        1. It increases the executable size due to code expansion.
+        2. C++ inlining is resolved at compile time. Which means if you change the code of the inlined function, 
+        you would need to recompile all the code using it to make sure it will be updated
+        3. When used in a header, it makes your header file larger with information which users don’t care.
+        4. As mentioned above it increases the executable size, which may cause thrashing in memory. More number 
+        of page fault bringing down your program performance.
+        5. Sometimes not useful for example in embedded system where large executable size is not preferred at all 
+        due to memory constraints.
+
+    When to use -
+        Function can be made as inline as per programmer need. Some useful recommendation are mentioned below-
+        1. Use inline function when performance is needed.
+        2. Use inline function over macros.
+        3. Prefer to use inline keyword outside the class with the function definition to hide implementation details.
+
+    Key Points -
+        1. It’s just a suggestion not compulsion. Compiler may or may not inline the functions you marked as inline. 
+        It may also decide to inline functions not marked as inline at compilation or linking time.
+        2. Inline works like a copy/paste controlled by the compiler, which is quite different from a pre-processor macro: 
+        The macro will be forcibly inlined, will pollute all the namespaces and code, won't be easy to debug.
+        3. All the member function declared and defined within class are Inline by default. So no need to define explicitly.
+        4. Virtual methods are not supposed to be inlinable. Still, sometimes, when the compiler can know for sure 
+        the type of the object (i.e. the object was declared and constructed inside the same function body), even a virtual 
+        function will be inlined because the compiler knows exactly the type of the object.
+        5. Template methods/functions are not always inlined (their presence in an header will not make them automatically 
+        inline).
+        6. Most of the compiler would do in-lining for recursive functions but some compiler provides #pragmas-
+        microsoft c++ compiler - inline_recursion(on) and once can also control its limit with inline_depth.
+        In gcc, you can also pass this in from the command-line with --max-inline-insns-recursive
 */
 
 #include <iostream>
