@@ -74,12 +74,12 @@
     perform optimization for the volatile variable which is pointed by statusPtr.
 
     In the context of our discussion about “volatile“, we quote C language standard i.e. ISO/IEC 9899 C11 – 
-    clause 6.7.3 
-    “An object that has volatile-qualified type may be modified in ways unknown to the implementation or have 
-    other unknown side effects.” 
-    “A volatile declaration may be used to describe an object corresponding to a memory-mapped input/output port 
-    or an object accessed by an asynchronously interrupting function. Actions on objects so declared shall not be 
-    ‘‘optimized out’’ by an implementation or reordered except as permitted by the rules for evaluating expressions.”
+    clause 6.7.3 “An object that has volatile-qualified type may be modified in ways unknown to the implementation 
+    or have other unknown side effects.” “A volatile declaration may be used to describe an object corresponding 
+    to a memory-mapped input/output port or an object accessed by an asynchronously interrupting function. Actions 
+    on objects so declared shall not be ‘‘optimized out’’ by an implementation or reordered except as permitted 
+    by the rules for evaluating expressions.”
+
     Basically, C standard says that “volatile” variables can change from outside the program and that’s why 
     compilers aren’t supposed to optimize their access. Now, you can guess that having too many ‘volatile‘ variables 
     in your program would also result in lesser & lesser compiler optimization. We hope it gives you enough background 
@@ -89,7 +89,8 @@
     
     The following article explains volatile through more examples. 
     Understanding “volatile” qualifier in C | Set 2 (Examples)
-    If you like GeeksforGeeks and would like to contribute, you can also write an article using write.geeksforgeeks.org or mail your article to review-team@geeksforgeeks.org. See your article appearing on the GeeksforGeeks main page and help other Geeks.
+    If you like GeeksforGeeks and would like to contribute, you can also write an article using write.geeksforgeeks.org or mail 
+    your article to review-team@geeksforgeeks.org. See your article appearing on the GeeksforGeeks main page and help other Geeks.
     Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above.
 
 
