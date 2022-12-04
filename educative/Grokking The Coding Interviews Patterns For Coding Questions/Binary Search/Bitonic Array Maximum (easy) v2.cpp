@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/RMyRR6wZoYK
+
 Solution#
 A bitonic array is a sorted array; the only difference is that its first part is sorted in ascending order 
 and the second part is sorted in descending order. We can use a similar approach as discussed in Order-agnostic 

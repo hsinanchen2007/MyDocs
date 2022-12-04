@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/qA5wW7R8ox7
+
 Solution#
 This problem follows the Binary Search pattern. Since Binary Search helps us find a number in a sorted array 
 efficiently, we can use a modified version of the Binary Search to find the ceiling of a number.
