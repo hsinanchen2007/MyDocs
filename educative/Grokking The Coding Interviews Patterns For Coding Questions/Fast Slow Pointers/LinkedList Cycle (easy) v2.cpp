@@ -102,6 +102,12 @@ where the slow pointer moves first. Here is a visual representation of the above
 Code
 Here is what our algorithm will look like:
 
+Time and Space Complexity: The above algorithm runs in O(N)
+O(N)
+ time complexity and O(1)
+O(1)
+ space complexity.
+
 */
 
 using namespace std;
