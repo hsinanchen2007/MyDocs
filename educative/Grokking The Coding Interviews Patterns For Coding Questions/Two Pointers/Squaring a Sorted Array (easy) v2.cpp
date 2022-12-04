@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/R1ppNG3nV9R
+
 Solution
 This is a straightforward question. The only trick is that we can have negative numbers in the input array, 
 which will make it a bit difficult to generate the output array with squares in sorted order.

@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/xog6q15W9GP
+
 An Alternate approach#
 Instead of using a two-pointer or a binary search approach, we can utilize a HashTable to search for 
 the required pair. We can iterate through the array one number at a time. Let’s say during our iteration 

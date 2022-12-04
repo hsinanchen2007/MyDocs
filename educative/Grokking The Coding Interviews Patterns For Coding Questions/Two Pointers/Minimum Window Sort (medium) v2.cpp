@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/gxL951y9xj3
+
 Solution#
 As we know, once an array is sorted (in ascending order), the smallest number is at the beginning and 
 the largest number is at the end of the array. So if we start from the beginning of the array to find 

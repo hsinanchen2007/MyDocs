@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/xog6q15W9GP
+
 Solution#
 Since the given array is sorted, a brute-force solution could be to iterate through the array, 
 taking one number at a time and searching for the second number through Binary Search. The time 

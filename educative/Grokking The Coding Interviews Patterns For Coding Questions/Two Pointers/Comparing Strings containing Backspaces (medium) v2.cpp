@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/xVKE8MJDlzq
+
 Solution #
 To compare the given strings, first, we need to apply the backspaces. An efficient way to do this would 
 be from the end of both the strings. We can have separate pointers, pointing to the last element of the 

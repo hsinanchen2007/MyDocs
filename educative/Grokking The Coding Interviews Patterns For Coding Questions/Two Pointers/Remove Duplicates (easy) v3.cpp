@@ -1,5 +1,7 @@
 /*
 
+https://www.educative.io/courses/grokking-the-coding-interview/mEEA22L5mNA
+
 Similar Questions#
 Problem 1: Given an unsorted array of numbers and a target ‘key’, remove all instances 
 of ‘key’ in-place and return the new length of the array.
