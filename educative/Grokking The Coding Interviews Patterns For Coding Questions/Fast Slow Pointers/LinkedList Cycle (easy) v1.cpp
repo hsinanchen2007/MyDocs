@@ -16,17 +16,6 @@ onto this problem to understand the Fast & Slow pattern.
 
 https://www.educative.io/courses/grokking-the-coding-interview/N7rwVyAZl6D
 
-LinkedList Cycle (easy)
-We'll cover the following
-
-Problem Statement
-Try it yourself
-Solution
-Code
-Time Complexity
-Space Complexity
-Similar Problems
-Problem Statement
 Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
 
  Example:  
@@ -46,8 +35,6 @@ Given the head of a Singly LinkedList, write a function to determine if the Link
     5   
     6   
  head  
-Try it yourself
-Try solving this question here:
 
 */
 

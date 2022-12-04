@@ -3,14 +3,15 @@
 https://www.educative.io/courses/grokking-the-coding-interview/39q3ZWq27jM
 
 Happy Number (medium)
-We'll cover the following
 
+We'll cover the following
 Problem Statement
 Try it yourself
 Solution
 Code
 Time Complexity
 Space Complexity
+
 Problem Statement
 
 Any number will be called a happy number if, after repeatedly replacing it with a number equal to the sum of 
@@ -138,9 +139,6 @@ Explanations: Here are the steps to find out that 12 is not a happy number:
  
  = 25 + 64 = 89
 Step ‘13’ leads us back to step ‘5’ as the number becomes equal to ‘89’, this means that we can never reach ‘1’, therefore, ‘12’ is not a happy number.
-
-Try it yourself
-Try solving this question here:
 
 */
 

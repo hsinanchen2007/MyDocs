@@ -2,12 +2,6 @@
 
 https://www.educative.io/courses/grokking-the-coding-interview/B1PzmqOKDLQ
 
-Problem Challenge 1
-We'll cover the following
-
-Palindrome LinkedList (medium)
-Try it yourself
-Palindrome LinkedList (medium)
 Given the head of a Singly LinkedList, write a method to check if the LinkedList is a palindrome or not.
 
 Your algorithm should use constant space and the input LinkedList should be in the original form once the 
@@ -24,8 +18,6 @@ Example 2:
 
 Input: 2 -> 4 -> 6 -> 4 -> 2 -> 2 -> null
 Output: false
-Try it yourself
-Try solving this question here:
 
 */
 

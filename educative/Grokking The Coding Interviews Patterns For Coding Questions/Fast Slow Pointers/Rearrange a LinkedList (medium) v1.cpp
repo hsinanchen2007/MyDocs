@@ -2,13 +2,6 @@
 
 https://www.educative.io/courses/grokking-the-coding-interview/YQJ4mr7yOrW
 
-Problem Challenge 2
-We'll cover the following
-
-Rearrange a LinkedList (medium)
-Try it yourself
-Rearrange a LinkedList (medium)
-
 Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes 
 from the second half of the LinkedList are inserted alternately to the nodes from the first half in 
 reverse order. So if the LinkedList has nodes 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null, your method should 
@@ -24,8 +17,6 @@ Example 2:
 
 Input: 2 -> 4 -> 6 -> 8 -> 10 -> null
 Output: 2 -> 10 -> 4 -> 8 -> 6 -> null
-Try it yourself
-Try solving this question here:
 
 */
 

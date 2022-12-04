@@ -1,30 +1,7 @@
 /*
 
-Solution Review: Problem Challenge 1
-We'll cover the following
+https://www.educative.io/courses/grokking-the-coding-interview/JERG3q0p912
 
-Palindrome LinkedList (medium)
-Solution
-Code
-Time complexity
-Space complexity
-Palindrome LinkedList (medium)
-Given the head of a Singly LinkedList, write a method to check if the LinkedList is a palindrome or not.
-
-Your algorithm should use constant space and the input LinkedList should be in the original form once the 
-lgorithm is finished. The algorithm should have O(N)
-
-O(N)
- time complexity where ‘N’ is the number of nodes in the LinkedList.
-
-Example 1:
-
-Input: 2 -> 4 -> 6 -> 4 -> 2 -> null
-Output: true
-Example 2:
-
-Input: 2 -> 4 -> 6 -> 4 -> 2 -> 2 -> null
-Output: false
 Solution
 As we know, a palindrome LinkedList will have nodes values that read the same backward or forward. 
 This means that if we divide the LinkedList into two halves, the node values of the first half in the forward 
@@ -43,14 +20,10 @@ Code
 Here is what our algorithm will look like:
 
 Time complexity
-The above algorithm will have a time complexity of O(N)
-O(N)
- where ‘N’ is the number of nodes in the LinkedList.
+The above algorithm will have a time complexity of O(N) where ‘N’ is the number of nodes in the LinkedList.
 
 Space complexity
 The algorithm runs in constant space O(1)
-O(1)
-.
 
 */
 

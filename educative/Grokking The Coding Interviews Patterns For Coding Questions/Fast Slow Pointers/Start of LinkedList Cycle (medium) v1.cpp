@@ -2,17 +2,6 @@
 
 https://www.educative.io/courses/grokking-the-coding-interview/N7pvEn86YrN
 
-Start of LinkedList Cycle (medium)
-We'll cover the following
-
-Problem Statement
-Try it yourself
-Solution
-Code
-Time Complexity
-Space Complexity
-Problem Statement
-
 Given the head of a Singly LinkedList that contains a cycle, write a function to find the starting node 
 of the cycle.
 
@@ -42,8 +31,6 @@ of the cycle.
  head  
  head  
  Cycle start  
-Try it yourself
-Try solving this question here:
 
 */
 
