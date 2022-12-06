@@ -10,6 +10,8 @@ number and that the start of the cycle will always point to the duplicate number
 use the fast & the slow pointer method to find the duplicate number or the start of the cycle similar to 
 Start of LinkedList Cycle.
 
+The time complexity of the above algorithm is O(n) and the space complexity is O(1)
+
 */
 
 using namespace std;
