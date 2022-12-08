@@ -23,6 +23,7 @@ head of the reversed LinkedList.
     10   
     null   
  Original List:  
+ 
  Reversed List:  
  Example:  
     2   

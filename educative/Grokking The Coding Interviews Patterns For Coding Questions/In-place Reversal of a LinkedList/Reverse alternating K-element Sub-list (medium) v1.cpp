@@ -20,7 +20,8 @@ If, in the end, you are left with a sub-list with less than ‘k’ elements, re
     6   
     7   
     8   
-    null   
+    null
+       
  Reversed Sub-list:  
  k=2  
     2   
