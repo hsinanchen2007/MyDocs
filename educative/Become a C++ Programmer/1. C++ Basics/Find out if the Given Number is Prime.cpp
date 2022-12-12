@@ -2,6 +2,29 @@
 
 https://www.educative.io/module/lesson/cpp-basics/xVyzvQNmGKE
 
+Problem statement
+You are given a number. Your task is to find whether the given number is prime or not.
+
+📝 A number is prime if it is only divisible by 1 and itself.
+
+📝 1 is not a prime number, and 2 is the only even prime number.
+
+Input
+We have already initialized the variable number at the backend.
+
+Output
+If the given number is prime, you should print prime to the console.
+
+If the given number is not prime, you should print not prime to the console.
+
+Sample input
+int number = 31;
+
+Sample output
+prime
+
+
+
 Explanation
 We have initialized the variable isPrime of type bool that keeps track of the number. 
 If the given number is prime, we set isPrime to true. If not, we set it to false. Initially, 
