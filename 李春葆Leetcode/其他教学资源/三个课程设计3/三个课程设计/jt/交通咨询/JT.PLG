@@ -1,0 +1,115 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Jt - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\windows\TEMP\RSPF2.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Jt.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Windows\Desktop\Ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\Jt.c"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSPF2.TMP" 
+Creating temporary file "c:\windows\TEMP\RSP00F3.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Jt.pdb" /debug /machine:I386 /out:"Debug/Jt.exe" /pdbtype:sept 
+".\Debug\Jt.obj"
+]
+Creating command line "link.exe @c:\windows\TEMP\RSP00F3.TMP"
+<h3>Output Window</h3>
+Compiling...
+Jt.c
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(89) : warning C4013: 'Administer' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(90) : warning C4013: 'UserDemand' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(91) : warning C4013: 'PrintGraph' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(112) : warning C4013: 'initgraph' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(114) : warning C4013: 'cityedit' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(116) : warning C4013: 'flightedit' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(118) : warning C4013: 'trainedit' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(139) : warning C4013: 'createcityfile' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(140) : warning C4013: 'createplanefile' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(141) : warning C4013: 'createtrainfile' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(142) : warning C4013: 'CreateGraph' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(168) : warning C4033: 'createcityfile' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(324) : warning C4033: 'CreateGraph' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(390) : warning C4033: 'CreateGraph' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(454) : warning C4129: 'í' : unrecognized character escape sequence
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(480) : warning C4033: 'save' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(510) : warning C4033: 'save' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(533) : warning C4013: 'EnterVertex' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(535) : warning C4013: 'DeleteVertex' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(526) : warning C4101: 'q' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(548) : warning C4033: 'EnterVertex' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(563) : warning C4033: 'EnterVertex' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(666) : warning C4033: 'DeleteVertex' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(680) : warning C4013: 'EnterplaneArc' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(682) : warning C4013: 'DeleteplaneArc' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(673) : warning C4101: 'q' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(696) : warning C4013: 'EntertrainArc' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(698) : warning C4013: 'DeletetrainArc' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(689) : warning C4101: 'q' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(745) : warning C4033: 'EnterplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(749) : warning C4033: 'EnterplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(785) : warning C4033: 'EnterplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(832) : warning C4033: 'EntertrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(836) : warning C4033: 'EntertrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(872) : warning C4033: 'EntertrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(900) : warning C4033: 'DeleteplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(904) : warning C4033: 'DeleteplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(939) : warning C4033: 'DeleteplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(948) : warning C4033: 'DeleteplaneArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(976) : warning C4033: 'DeletetrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(980) : warning C4033: 'DeletetrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1015) : warning C4033: 'DeletetrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1024) : warning C4033: 'DeletetrainArc' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1039) : warning C4013: 'DemandDispose' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1109) : warning C4013: 'ExpenditureDispose' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1111) : warning C4013: 'TimeDispose' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1113) : warning C4013: 'TransferDispose' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1057) : warning C4101: 'name' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1235) : warning C4033: 'TransferDispose' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1330) : warning C4033: 'ExpenditureDispose' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1429) : warning C4013: 'CreateTimeTree' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1437) : warning C4013: 'VisitTimeTree' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1448) : warning C4013: 'DestoryTimeTree' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1416) : warning C4101: 'q' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1483) : warning C4013: 'CopyTimeTree' undefined; assuming extern returning int
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1455) : warning C4101: 'r' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1520) : warning C4101: 'q' : unreferenced local variable
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1673) : warning C4033: 'TimeDispose' must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(127) : warning C4716: 'Administer' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(147) : warning C4716: 'initgraph' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(173) : warning C4716: 'createcityfile' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(235) : warning C4716: 'createplanefile' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(297) : warning C4716: 'createtrainfile' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(439) : warning C4716: 'CreateGraph' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(536) : warning C4716: 'cityedit' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(565) : warning C4716: 'EnterVertex' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(667) : warning C4716: 'DeleteVertex' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(683) : warning C4716: 'flightedit' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(699) : warning C4716: 'trainedit' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(786) : warning C4716: 'EnterplaneArc' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(873) : warning C4716: 'EntertrainArc' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(949) : warning C4716: 'DeleteplaneArc' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1025) : warning C4716: 'DeletetrainArc' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1052) : warning C4716: 'UserDemand' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1127) : warning C4716: 'DemandDispose' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1256) : warning C4716: 'TransferDispose' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1378) : warning C4716: 'ExpenditureDispose' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1491) : warning C4716: 'CreateTimeTree' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1514) : warning C4716: 'CopyTimeTree' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1595) : warning C4716: 'VisitTimeTree' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1613) : warning C4716: 'DestoryTimeTree' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1731) : warning C4716: 'TimeDispose' : must return a value
+c:\windows\desktop\ds ÑİÊ¾¸å\¡¶ ds ÉÏ»ú ¡·\¡¶ ds ¿Î³ÌÉè¼Æ ¡·\Éè¼Æ±¨¸æ£¨2001¼¶£©\³ÂÓÂĞ¡×é\Ğ¡×éÌâ\Ğ¡×éÌâ³ÌĞò\jt.c(1779) : warning C4716: 'PrintGraph' : must return a value
+Linking...
+
+
+
+<h3>Results</h3>
+Jt.exe - 0 error(s), 83 warning(s)
+</pre>
+</body>
+</html>
