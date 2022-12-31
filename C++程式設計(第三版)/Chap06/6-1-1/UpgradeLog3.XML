@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="6-1-1">
+</Property><Property Name="方案檔" Value="C:\Documents and Settings\wei\桌面\VC10\Chap06\6-1-1\6-1-1.sln">
+</Property><Property Name="Date" Value="2011年3月14日">
+</Property><Property Name="Time" Value="下午 14:35:33">
+</Property><Property Name="記錄檔編號" Value="3">
+</Property></Properties><Event ErrorLevel="2" Project="6-1-1" Source="6-1-1.vcproj" Description="剖析 XML 時發生下列錯誤:&#xA;&#xA;檔案: C:\Documents and Settings\wei\桌面\VC10\Chap06\6-1-1\6-1-1.vcproj&#xA;行: 10&#xA;資料行: 2&#xA;錯誤訊息:&#xA;'9.00' 違反 '7.00 7,00 7.10 7,10 8.00 8,00' 的 'enumeration' 條件。&#xA;屬性 'Version' 和與值 '9.00' 的剖析失敗。&#xA;&#xA;檔案 'C:\Documents and Settings\wei\桌面\VC10\Chap06\6-1-1\6-1-1.vcproj' 載入失敗。">
+</Event><Event ErrorLevel="2" Project="6-1-1" Source="6-1-1.vcproj" Description="專案升級失敗。">
+</Event><Event ErrorLevel="3" Project="6-1-1" Source="6-1-1.vcproj" Description="未轉換">
+</Event></UpgradeLog>

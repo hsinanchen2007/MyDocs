@@ -1,0 +1,14 @@
+﻿已經開始建置於 2016/2/3 下午 02:05:52。
+     1>節點 2 (Build 目標) 上的專案 "C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\2-2-2\2-2-2.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Test2.cpp
+         Test2.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\Debug\2-2-2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\Debug\2-2-2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\Debug\2-2-2.lib" /MACHINE:X86 /SAFESEH Debug\Test2.obj
+     1>Test2.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
+         2-2-2.vcxproj -> C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\Debug\2-2-2.exe
+     1>專案 "C:\Users\Steve\Desktop\Code 修改 (20160203)\修改\Code-Visual C++\Chap02\2-2-2\2-2-2.vcxproj" (Build 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:00.89

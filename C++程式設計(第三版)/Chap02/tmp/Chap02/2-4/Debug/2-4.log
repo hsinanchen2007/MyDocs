@@ -1,0 +1,14 @@
+﻿已經開始建置於 2016/2/4 上午 11:21:35。
+     1>節點 2 (Build 目標) 上的專案 "D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\2-4\2-4.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt PTest.cpp
+         PTest.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\Debug\2-4.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\Debug\2-4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\Debug\2-4.lib" /MACHINE:X86 /SAFESEH Debug\PTest.obj
+     1>PTest.obj : warning LNK4075: 忽略 '/EDITANDCONTINUE'，由於 '/SAFESEH' 規格
+         2-4.vcxproj -> D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\Debug\2-4.exe
+     1>專案 "D:\7. C++程式設計_(老師書本修改)\C++程式設計_修改( 20160120 )\2. 光碟檔案\Code-Visual C++\Chap02\2-4\2-4.vcxproj" (Build 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:23.67
