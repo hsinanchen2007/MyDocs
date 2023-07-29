@@ -1,0 +1,119 @@
+//Memory Limit Exceeded
+#include<iostream>
+#include<queue>
+#include<cstring>
+using namespace std;
+#define INF 0x3f3f3f3f
+#define MAXN 12
+int A[MAXN][MAXN];
+int n;
+int bestd;							//保存最小时间
+struct QNode
+{
+	int i;							//解空间的层次 
+	int v;							//当前顶点
+	bool used[MAXN];
+	int cost;
+	double lb;						//限界函数值(下界)
+	bool operator<(const QNode&b) const
+	{
+		return lb>b.lb;
+	}
+};
+void bound(QNode&e)					//限界函数(下界)
+{
+	int mind=INF;
+	for(int i=0;i<=n;i++)			//求部分解x中所有行的不在路径上的最小元素 
+	{
+		if(e.used[i]==1)
+		{
+			for(int j=0;j<=n;j++)
+				if(e.used[j]==0 && A[e.v][j]<mind)
+					mind=A[i][j];
+		}
+	}
+	int mind1=INF,mind2=INF;
+	for(int i=0;i<=n;i++)			//求不在部分解x中所有行的两个最小元素 
+	{
+		if(e.used[i]==0)
+		{
+			for(int j=0;j<=n;j++)
+			{
+				if(A[i][j]<mind1)
+				{	mind2=mind1;
+					mind1=A[i][j];
+				}
+				else if(A[i][j]<mind2)
+					mind2=A[e.v][j];
+			}
+		}
+	}
+	e.lb=(2*e.cost+mind+mind1+mind2)/2;
+}
+void bfs(int s)					//分支限界法算法
+{
+	QNode e,e1;
+	priority_queue<QNode> qu;
+	e.i=0;
+	e.v=s;							//起始顶点为s
+	e.cost=0;
+	memset(e.used,0,sizeof(e.used));
+	e.used[e.v]=1;					//表示e.v顶点已经访问
+	bound(e);
+	qu.push(e);
+	while(!qu.empty())
+	{
+		e=qu.top(); qu.pop(); 		//出队一个结点e
+		e1.i=e.i+1;						//扩展下一层 
+		for(int j=0;j<=n;j++)
+		{
+			if(e.used[j]==1)
+				continue;
+			e1.v=j;						//e1.i层选择顶点j
+			for(int k=0;k<=n;k++)		//复制双亲结点的used 
+				e1.used[k]=e.used[k]; 
+			e1.used[j]=1;				//顶点j已经访问
+			e1.cost=e.cost+A[e.v][e1.v];	//累计路径长度
+			if(e1.i==n)						//e1为一个叶子结点
+			{
+				if(e1.cost+A[e1.v][0]<bestd)	//比较求更优解 
+					bestd=e1.cost+A[e1.v][0];
+			}
+			else							//e1为非叶子结点
+			{
+				bound(e1);
+				if(e1.lb+A[e1.v][0]<bestd) 			//剪支
+				{
+					qu.push(e1);				//e1进队
+				}
+			}
+		}
+	}
+} 
+void TSP2(int s)								//求解TSP(起始点为s)
+{
+	bestd=INF;
+	bfs(s);
+}
+void Floyd()						//计算最短路径距离
+{
+    for(int k=0;k<=n;k++)
+        for(int i=0;i<=n;i++)
+            for(int j=0;j<=n;j++)
+                if(A[i][j]>A[i][k]+A[k][j])
+                    A[i][j]=A[i][k]+A[k][j];
+}
+int main()
+{
+	//freopen("abc.txt","r",stdin);
+    while(scanf("%d",&n)==1 &&n)
+    {
+        for(int i=0;i<=n;i++)
+            for(int j=0;j<=n;j++)
+                scanf("%d",&A[i][j]);
+        Floyd();						//计算最短路径距离
+        TSP2(0);
+        printf("%d\n",bestd);
+    }
+    return 0;
+}
