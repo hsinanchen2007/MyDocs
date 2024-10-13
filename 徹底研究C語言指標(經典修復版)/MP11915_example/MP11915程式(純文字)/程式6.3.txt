@@ -1,0 +1,35 @@
+/*
+** 提供一個指標指向以NULL結尾的指標列表，
+** 並在字串列表中搜尋一個特定的字元。
+** 這個函數將破壞這些指標，
+** 所以它只適用於這組字串只使用一次的情況。
+*/
+
+#include <stdio.h>
+#include <assert.h>
+
+#define TRUE    1
+#define FALSE   0
+
+int
+find_char( char **strings, int value )
+{
+        assert( strings != NULL );
+
+        /*
+        ** 對於列表中的每個字串...
+        */
+        while( *strings != NULL ){
+                /*
+                ** 觀察字串中的每個字元，
+                ** 看看它是不是我們搜尋的那個。
+                */
+                while( **strings != '\0' ){
+                        if( *(*strings)++ == value )
+                                return TRUE;
+                }
+                strings++;
+        }
+        return FALSE;
+}
+

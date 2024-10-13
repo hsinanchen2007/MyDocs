@@ -1,0 +1,19 @@
+/*
+** 將標準輸入複製到標準輸出，每次複製一列。
+** 每列的長度不超過80個字元。
+*/
+
+#include <stdio.h>
+
+#define	BUFSIZE	81 /* 80個資料位元組加上NUL位元組 */
+
+main()
+{
+        char    buf[BUFSIZE];
+
+        while( gets( buf ) != NULL )
+                puts( buf );
+
+        return EXIT_SUCCESS;
+}
+

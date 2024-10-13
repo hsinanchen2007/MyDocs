@@ -1,0 +1,40 @@
+/*
+** 使用sscanf處理可變格式的輸入
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+#define	DEFAULT_A    1    /* 或其他 ... */
+#define	DEFAULT_B    2    /* 或其他 ... */
+
+void
+function( char *buffer )
+{
+        int    a, b, c;
+
+        /* 
+        ** 看看3個值是否都已給出。
+        */
+        if( sscanf( buffer, "%d %d %d", &a, &b, &c ) != 3 ){
+        /*
+        ** 否，對a使用預設值，
+        ** 看看其他兩個值是否都已給出。  
+        */
+                a = DEFAULT_A;
+                if( sscanf( buffer, "%d %d", &b, &c ) != 2 ){
+                /*
+                ** 也為b使用預設值，尋找剩餘的值。  
+                */
+                    b = DEFAULT_B;
+                    if( sscanf( buffer, "%d", &c ) != 1 ){
+                        fprintf( stderr, "Bad input: %s",
+                        buffer );
+                        exit( EXIT_FAILURE );
+                    }
+                }
+        }
+        /* 
+        ** 處理a, b, c 
+        */
+}
+

@@ -1,0 +1,30 @@
+/* 
+** 釋放存貨記錄的函數。
+*/
+
+#include <stdlib.h>
+#include "inventor.h"
+
+void
+discard_inventory_record( Invrec *record )
+{
+    /* 
+    ** 刪除記錄中的變體部分
+    */
+    switch( record->type ){
+    case SUBASSY:
+            free( record->info.subassy->part );
+            free( record->info.subassy );
+            break;
+
+    case PART:
+            free( record->info.part );
+            break;
+    }
+
+    /* 
+    ** 刪除記錄的主體部分 
+    */
+    free( record );
+}
+

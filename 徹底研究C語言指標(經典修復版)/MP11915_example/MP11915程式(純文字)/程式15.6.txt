@@ -1,0 +1,17 @@
+/* 
+** 從一個檔案讀取一個特定的記錄。
+** 參數分別是進行讀取的串流、
+** 需要讀取的記錄數和
+** 指向放置資料的緩衝區的指標。
+*/
+#include <stdio.h>
+#include "student_info.h"
+
+int
+read_random_record( FILE *f, size_t rec_number, StudentInfo *buffer )
+{
+        fseek( f, (long)rec_number * sizeof( StudentInfo ),
+               SEEK_SET );
+        return fread( buffer, sizeof( StudentInfo ), 1, f );
+}
+

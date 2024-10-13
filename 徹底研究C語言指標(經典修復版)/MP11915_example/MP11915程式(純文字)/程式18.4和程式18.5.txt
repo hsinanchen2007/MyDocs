@@ -1,0 +1,31 @@
+|
+| 對三個整數求和，並返回這個值。
+|
+        .text
+
+        .globl    _sum_three_values
+_sum_three_values:
+        movl    sp@(4),d0    |Get 1st arg,
+        addl    sp@(8),d0    |add 2nd arg,
+        addl    sp@(12),d0   |add last arg.
+        rts                  |Return.
+
+
+
+|
+| 需要列印三個值，x,y和z。
+|
+        movl    z,sp@-        | Push args on the
+        movl    y,sp@-        | stack in reverse
+        movl    x,sp@-        | order: format, x,
+        movl    #format,sp@-  | y, and z.
+        jbsr    _printf       | Now call printf
+        addl    #16,sp        | Clean up stack
+        \&...
+        .data
+format: .ascii  "x = %d, y = %d, and z = %d"
+        .byte   012, 0        | Newline and null
+        .even
+x:      .long   25
+y:      .long   45
+z:      .long   50

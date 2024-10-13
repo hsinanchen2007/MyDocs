@@ -1,0 +1,12 @@
+/*
+** 用遞迴方法計算第n個斐波那契數的值。
+*/
+
+long
+fibonacci( int n )
+{
+        if( n <= 2 )
+            return 1;
+
+        return fibonacci( n - 1 ) + fibonacci( n - 2 );
+}

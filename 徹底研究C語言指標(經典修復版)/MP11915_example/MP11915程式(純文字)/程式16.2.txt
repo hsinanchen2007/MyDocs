@@ -1,0 +1,60 @@
+/*
+** 一個說明setjmp用法的程式。
+*/
+#include "trans.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <setjmp.h>
+
+/*  
+** 用於儲存setjmp的狀態資訊的變數。
+*/
+jmp_buf	restart;
+
+int
+main()
+{
+    int      value;
+    Trans    *transaction;
+
+    /* 
+    ** 確立一個希望在longjmp的呼叫之後
+    ** 執行流恢復執行的地點。
+    */
+    value = setjmp( restart );
+
+    /* 
+    ** 從longjmp返回後判斷下一步執行什麼。  
+    */
+    switch( setjmp( restart ) ){
+    default:
+        /*  
+      	**longjmp被呼叫 -- 致命錯誤。
+       	*/
+       	fputs( "Fatal error.\n", stderr );
+       	break;
+
+    case 1:
+       	/* 
+       	**longjmp被呼叫 -- 小錯誤。
+       	*/
+       	fputs( "Invalid transaction.\n", stderr );
+       	/* FALL THROUGH 並繼續進行處理 */
+
+    case 0:
+       	/*
+       	** 最初從setjmp返回的地點：執行正常的處理。
+       	*/
+       	while( (transaction = get_trans()) != NULL )
+                process_trans( transaction );
+
+    }
+
+    /*
+    ** 保存資料並退出程式。
+    */
+    write_data_to_file();
+
+    return value == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+

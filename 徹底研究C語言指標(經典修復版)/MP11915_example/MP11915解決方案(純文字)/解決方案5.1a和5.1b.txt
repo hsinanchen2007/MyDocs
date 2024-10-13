@@ -1,0 +1,39 @@
+/*
+** 將標準輸入複製到標準輸出，
+** 將所有大寫字母轉換為小寫字母。
+** 注意，它依賴於這個事實:如果參數並非大寫字母，
+** tolower函數將不修改它的參數，直接返回它的值。
+*/
+#include <stdio.h>
+#include <ctype.h>
+
+int
+main( void )
+{
+        int  ch;
+
+        while( (ch = getchar()) != EOF )
+                putchar( tolower( ch ) );
+}
+
+
+
+
+/*
+** 將標準輸入複製到標準輸出，
+** 把所有的大寫字母轉換為小寫字母。
+*/
+#include <stdio.h>
+
+int
+main( void )
+{
+        int  ch;
+
+        while( (ch = getchar()) != EOF ){
+                if( ch >= 'A' && ch <= 'Z' )
+                    ch += 'a' - 'A';
+                putchar( ch );
+        }
+}
+

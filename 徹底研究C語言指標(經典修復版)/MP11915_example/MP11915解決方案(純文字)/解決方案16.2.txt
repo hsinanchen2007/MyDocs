@@ -1,0 +1,31 @@
+/*
+** 透過返回一個範圍為1~6的值，
+** 模擬擲一個六邊的骰子。
+*/
+#include <stdlib.h>
+#include <stdio.h>
+
+/*
+** 計算將產生6作為骰子值的
+** 隨機數產生器所返回的最大數。
+*/
+#define MAX_OK_RAND\
+    (int)( ( ( (long)RAND_MAX + 1 ) / 6 ) * 6 - 1 )
+
+int
+throw_die( void ){
+        static int is_seeded = 0;
+        int value;
+
+        if( !is_seeded ){
+                is_seeded = 1;
+                srand( (unsigned int)time( NULL ) );
+        }
+
+        do {
+                value = rand();
+        } while( value > MAX_OK_RAND );
+
+        return value % 6 + 1;
+}
+

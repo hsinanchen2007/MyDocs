@@ -1,0 +1,36 @@
+/*
+** ﹃狡籹ㄧ计
+** ヘ夹把计ソЮ夹(セ1)
+*/
+
+#include <string.h>
+
+char *
+my_strcpy_end( char *dst, char const *src )
+{
+        strcpy( dst, src );
+
+        return dst + strlen( dst );
+}
+
+
+
+
+
+/*
+** ﹃狡籹ㄧ计
+** ヘ夹把计ソЮ夹ぃㄏノヴ
+** 夹非ㄧΑ畐じ矪瞶ㄧ计(セ2)
+*/
+
+#include <string.h>
+
+char *
+my_strcpy_end( register char *dst, register char const *src )
+{
+        while( ( *dst++ = *src++ ) != '\0' )
+                ;
+
+        return dst - 1;
+}
+

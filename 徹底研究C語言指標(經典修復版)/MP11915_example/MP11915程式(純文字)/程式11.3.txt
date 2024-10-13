@@ -1,0 +1,30 @@
+/* 
+** 用動態分配記憶體製作一個字串的一份複製。
+** 注意：呼叫程式應該負責檢查
+** 這塊記憶體是否成功分配！
+** 這樣做允許呼叫程式
+** 以任何它所希望的方式對錯誤做出反應。
+*/
+#include <stdlib.h>
+#include <string.h>
+
+char *
+strdup( char const *string )
+{
+    char  *new_string;
+
+    /* 
+    ** 請求足夠長度的記憶體，
+    ** 用於儲存字串和它的結尾NUL位元組。
+    */
+    new_string = malloc( strlen( string ) + 1 );
+
+    /* 
+    ** 如果我們得到記憶體，就複製字串。 
+    */
+    if( new_string != NULL )
+        strcpy( new_string, string );
+
+    return new_string;
+}
+

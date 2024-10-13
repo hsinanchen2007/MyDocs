@@ -1,0 +1,58 @@
+/* 
+** 把一個新值插入到一個雙向連結串列中。
+** rootp是一個指向根節點的指標，
+** value是需要插入的新值。
+** 返回值：如果連結串列原先已經存在這個值，函數返回0。
+** 如果為新值分配記憶體失敗，函數返回-1。
+** 如果新值成功地插入到連結串列中，函數返回1。 
+*/
+#include <stdlib.h>
+#include <stdio.h>
+#include "doubly_liked_list_node.h"
+
+int
+dll_insert( register Node *rootp, int value )
+{
+    register Node  *this;
+    register Node  *next;
+    register Node  *newnode;
+
+    /* 
+    ** 查看value是否已經存在於連結串列中，如果是就返回。
+    ** 否則，為新值建立一個新節點（"newnode"將指向它）。
+    ** "this"將指向應該在新節點之前的那個節點，
+    ** "next"將指向應該在新節點之後的那個節點。
+    */
+    for( this = rootp; (next = this->fwd) != NULL; this = next ){
+        if( next->value == value )
+            return 0;
+        if( next->value > value )
+            break;
+    }
+    newnode = (Node *)malloc( sizeof( Node ) );
+    if( newnode == NULL )
+            return -1;
+    newnode->value = value;
+
+    /* 
+    ** 把新節點添加到連結串列中。
+    */
+    newnode->fwd = next;
+    this->fwd = newnode;
+
+    if( this != rootp )
+        newnode->bwd = this;
+    else
+        newnode->bwd = NULL;
+
+    if( next != NULL )
+        next->bwd = newnode;
+    else
+        rootp->bwd = newnode;
+
+    return 1;
+}
+
+
+
+

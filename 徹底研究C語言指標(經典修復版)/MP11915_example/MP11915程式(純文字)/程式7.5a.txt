@@ -1,0 +1,35 @@
+/*
+** 地址列表模組的宣告。
+*/
+
+/*
+** 資料特徵
+**
+**   各種資料的最大長度(包括結尾的
+**   NUL位元組)和地址的最大數量。
+*/
+#define NAME_LENGTH    30   /* 允許出現的最長姓名 */
+#define ADDR_LENGTH    100  /* 允許出現的最長地址 */
+#define PHONE_LENGTH   11   /* 允許出現的最長電話號碼 */
+
+#define MAX_ADDRESSES  1000 /* 允許出現的最多地址個數 */
+
+/*
+** 介面函數
+**
+**   提供一個姓名，搜尋對應的地址。
+*/
+char const *
+lookup_address( char const *name );
+
+/*
+**   提供一個姓名，搜尋對應的電話號碼。
+*/
+char const *
+lookup_phone( char const *name );
+
+
+
+
+
+

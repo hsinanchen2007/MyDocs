@@ -1,0 +1,31 @@
+/*
+** 提供一個指標指向以NULL結尾的指標列表，
+** 並在字串列表中搜尋一個特定的字元。
+*/
+
+#include <stdio.h>
+
+#define TRUE        1
+#define FALSE       0
+
+int
+find_char( char **strings, char value )
+{
+        char*string;      /* 我們目前正在搜尋的字串 */
+
+        /*
+        ** 對於列表中的每個字串 ...
+        */
+        while( ( string = *strings++ ) != NULL ){
+                /*
+                ** 觀察字串中的每個字元，
+                ** 看看它是不是我們搜尋的那個。
+                */
+                while( *string != '\0' ){
+                        if( *string++ == value )
+                                return TRUE;
+                }
+        }
+        return FALSE;
+}
+

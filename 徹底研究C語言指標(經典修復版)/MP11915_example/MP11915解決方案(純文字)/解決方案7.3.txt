@@ -1,0 +1,30 @@
+/*
+** 把一個數字字串轉換為一個整數。
+*/
+
+int
+ascii_to_integer( char *string )
+{
+        int  value;
+
+        value = 0;
+
+        /*
+        ** 逐個把字串的字元轉換為數字。
+        */
+        while( *string >= '0' && *string <= '9' ){
+                value *= 10;
+                value += *string - '0';
+                string++;
+        }
+
+        /*
+        ** 錯誤檢查：如果由於遇到一個非數字
+        ** 字元而終止，把結果設置為0。
+        */
+        if( *string != '\0' )
+                value = 0;
+
+        return value;
+}
+

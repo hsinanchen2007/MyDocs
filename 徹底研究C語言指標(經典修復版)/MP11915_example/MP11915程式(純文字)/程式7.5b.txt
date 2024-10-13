@@ -1,0 +1,64 @@
+/*
+** 用於維護一個地址列表的抽象資料類型。
+*/
+
+#include "addrlist.h"
+#include <stdio.h>
+
+/*
+**   每個地址的三個部分，
+**   分別保存於三個陣列的對應元素中。
+*/
+static  char  name[MAX_ADDRESSES][NAME_LENGTH];
+static  char  address[MAX_ADDRESSES][ADDR_LENGTH];
+static  char  phone[MAX_ADDRESSES][PHONE_LENGTH];
+
+/*
+**   這個函數在陣列中搜尋一個姓名
+**   並返回搜尋到的位置的索引。
+**   如果這個姓名在陣列中並不存在，函數返回-1。
+*/
+static int
+find_entry( char const *name_to_find )
+{
+        int  entry;
+
+        for( entry = 0; entry < MAX_ADDRESSES; entry += 1 )
+                if( strcmp( name_to_find, name[ entry ] ) == 0 )
+                        return entry;
+
+    return -1;
+}
+
+/*
+**   給定一個姓名，搜尋並返回對應的地址。
+**   如果姓名沒有找到，函數返回一個NULL指標。
+*/
+char const *
+lookup_address( char const *name )
+{
+        int  entry;
+
+        entry = find_entry( name );
+        if( entry == -1 )
+                return NULL;
+        else
+                return address[ entry ];
+}
+
+/*
+**   給定一個姓名，搜尋並返回對應的電話號碼。
+**   如果姓名沒有找到，函數返回一個NULL指標。
+*/
+char const *
+lookup_phone( char const *name )
+{
+        int  entry;
+
+        entry = find_entry( name );
+        if( entry == -1 )
+                return NULL;
+        else
+                return phone[ entry ];
+}
+

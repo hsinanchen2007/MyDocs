@@ -1,0 +1,46 @@
+/*
+** 用bsearch在一個元素類型為結構的陣列中尋找。
+*/
+#include <stdlib.h>
+#include <string.h>
+
+typedef	struct	{
+        char    key[ 10 ];  /* 陣列的排序關鍵字。 */
+        int     other_data; /* 與關鍵字關聯的資料。 */
+} Record;
+
+/*
+** 比較函數：只比較關鍵字的值。
+*/
+int r_compare( void const *a, void const *b ){
+        return strcmp( ((Record *)a)->key, ((Record *)b)->key );
+}
+ 
+int
+main()
+{
+        Record  array[ 50 ];
+        Record  key;
+        Record  *ans;
+
+        /*
+        ** 用50個元素填充陣列並進行排序的程式碼
+        */
+
+        /*
+        ** 建立一個關鍵字結構
+        ** (只用需要尋找的值填充關鍵字欄位)，
+        ** 並在陣列中尋找。
+        */
+        strcpy( key.key, "value" );
+        ans = bsearch( &key, array, 50, sizeof( Record ),
+            r_compare );
+
+        /* 
+        ** ans現在指向關鍵字欄位與值匹配的資料元素，
+        ** 如果無匹配，ans為NULL
+        */
+
+        return EXIT_SUCCESS;
+}
+

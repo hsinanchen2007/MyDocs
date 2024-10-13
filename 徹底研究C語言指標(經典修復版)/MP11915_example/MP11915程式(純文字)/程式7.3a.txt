@@ -1,0 +1,14 @@
+/*
+** 交換呼叫程式中的兩個整數(沒有效果!)
+*/
+
+void
+swap( int x, int y )
+{
+        int temp;
+
+        temp = x;
+        x = y;
+        y = temp;
+}
+

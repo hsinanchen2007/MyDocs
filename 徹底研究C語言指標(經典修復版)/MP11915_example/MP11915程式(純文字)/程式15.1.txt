@@ -1,0 +1,42 @@
+/* 
+** 處理每個檔案名稱出現於命令列的檔案。
+*/
+#include <stdlib.h>
+#include <stdio.h>
+
+int
+main( int ac, char **av )
+{
+        int   exit_status = EXIT_SUCCESS;
+        FILE  *input;
+
+        /* 
+        ** 當還有更多的檔案名稱時... 
+        */
+        while( *++av != NULL ){
+            /* 
+            ** 試圖打開這個檔案。
+            */
+            input = fopen( *av, "r" );
+            if( input == NULL ){
+                perror( *av );
+                exit_status = EXIT_FAILURE;
+                continue;
+            }
+
+            /* 
+            ** 在這裡處理這個檔案...  
+            */
+
+            /* 
+            ** 關閉檔案(期望這裡不會發生什麼錯誤)。
+            */
+            if( fclose( input ) != 0 ){
+                perror( "fclose" );
+                exit( EXIT_FAILURE );
+            }
+        }
+
+        return exit_status;
+}
+

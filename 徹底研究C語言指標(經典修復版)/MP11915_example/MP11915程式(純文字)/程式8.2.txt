@@ -1,0 +1,31 @@
+/*
+** 判斷參數是否與一個關鍵字列表中的
+** 任何單詞匹配，並返回匹配的索引值。
+** 如果未找到匹配，函數返回-1。
+*/
+
+#include <string.h>
+
+int
+lookup_keyword( char const * const desired_word,
+    char const *keyword_table[], int const size )
+{
+        char const **kwp;
+
+        /*
+        ** 對於表中的每個單詞 ...
+        */
+        for( kwp = keyword_table; kwp < keyword_table + size; kwp++ )
+                /*
+                ** 如果這個單詞與我們所搜尋的單詞
+                ** 匹配，返回它在表中的位置。
+                */
+                if( strcmp( desired_word, *kwp ) == 0 )
+                        return kwp - keyword_table;
+
+        /*
+        ** 沒有找到。
+        */
+        return -1;
+}
+

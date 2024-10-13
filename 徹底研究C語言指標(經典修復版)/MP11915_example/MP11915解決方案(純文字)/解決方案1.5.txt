@@ -1,0 +1,60 @@
+/*
+** 處理一個輸入列，方法是把指定列的字元連接在一起。 
+** 輸出列用NUL結尾。
+*/
+
+void
+rearrange( char *output, char const *input,
+    int const n_columns, int const columns[] )
+{
+        int  col;           /* columns陣列的索引 */
+        int  output_col;    /* 輸出行計數器 */
+        int  len;           /* 輸入列的長度 */
+
+        len = strlen( input );
+        output_col = 0;
+
+        /*
+        ** 處理每對列號。
+        */
+        for( col = 0; col < n_columns; col += 2 ){
+                int   nchars = columns[col + 1] - columns[col] + 1;
+
+                /*
+                **  如果輸入列沒這麼長，跳過這個範圍。
+                */
+                if( columns[col] >= len )
+                        continue;
+
+                /*
+                ** 如果輸出陣列已滿，任務就完成。
+                */
+                if( output_col == MAX_INPUT - 1 )
+                        break;
+
+                /*
+                ** 如果輸出陣列空間不夠，只複製可以容納的部分。
+                */
+                if( output_col + nchars > MAX_INPUT - 1 )
+                        nchars = MAX_INPUT - output_col - 1;
+
+                /*
+                ** 觀察輸入列中多少個字元在這個範圍裡面。
+                ** 如果它小於nchars，對nchars的值進行調整。
+                */
+                if( columns[col] + nchars - 1 >= len )
+                        nchars = len - columns[col];
+
+                /*
+                ** 複製相關的資料。
+                */
+                strncpy( output + output_col, input + columns[col],
+                        nchars );
+                output_col += nchars;
+        }
+
+        output[output_col] = '\0';
+}
+
+
+

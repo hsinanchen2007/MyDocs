@@ -1,0 +1,62 @@
+/*
+** 從標準輸入讀取一列由EOF結尾的整數
+** 並返回一個包含這些值的動態分配的陣列。
+** 陣列的第1個元素是陣列所包含的值的數量。
+*/
+
+#include <stdio.h>
+#include <malloc.h>
+
+#define	DELTA  100
+
+int *
+readints()
+{
+    int *array;
+    int size;
+    int count;
+    int value;
+
+    /*
+    ** 獲得最初的陣列，大小足以容納DELTA個值。
+    */
+    size = DELTA;
+    array = malloc( ( size + 1 ) * sizeof( int ) );
+    if( array == NULL )
+        return NULL;
+
+    /*
+    ** 從標準輸入獲得值。
+    */
+    count = 0;
+    while( scanf( "%d", &value ) == 1 ){
+        /*
+        ** 如果需要，使陣列變大，然後儲存這個值。
+        */
+        count += 1;
+        if( count > size ){
+            size += DELTA;
+            array = realloc( array,
+                ( size + 1 ) * sizeof( int ) );
+            if( array == NULL )
+                return NULL;
+    }
+    array[ count ] = value;
+}
+
+/*
+** 改變陣列的長度，使其剛剛正好，
+** 然後儲存計數值並返回這個陣列。
+** 這樣做絕不會使陣列更大，所以它
+** 絕不應該失敗(但還是應該進行檢查!)。
+*/
+    if( count < size ){
+        array = realloc( array,
+            ( count + 1 ) * sizeof( int ) );
+        if( array == NULL )
+            return NULL;
+    }
+    array[ 0 ] = count;
+    return array;
+}
+

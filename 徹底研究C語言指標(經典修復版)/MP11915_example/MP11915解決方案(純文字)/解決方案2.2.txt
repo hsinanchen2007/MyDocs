@@ -1,0 +1,46 @@
+/*
+** 檢查一個程式的大括號對。
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int
+main()
+{
+        int ch;
+        int braces;
+
+        braces = 0;
+
+        /*
+        ** 逐字元讀取程式。
+        */
+        while( (ch = getchar()) != EOF ){
+            /*
+            ** 左大括號始終是合法的。
+            */
+            if( ch == '{' )
+                braces += 1;
+
+            /*
+            ** 右大括號只有當它和一個左大括號
+            ** 匹配時才是合法的。
+            */
+            if( ch == '}' )
+                if( braces == 0 )
+                    printf( "Extra closing brace!\n" );
+                else
+                    braces -= 1;
+  		}
+
+            /*
+            ** 沒有更多輸入:驗證不存在
+            ** 任何未被匹配的左大括號。
+            */
+            if( braces > 0 )
+                printf( "%d unmatched opening brace(s)!\n", braces );
+
+            return EXIT_SUCCESS;
+}
+

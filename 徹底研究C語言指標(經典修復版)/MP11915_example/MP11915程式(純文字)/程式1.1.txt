@@ -1,0 +1,122 @@
+/*
+** 這個程式從標準輸入中讀取輸入列，
+** 並在標準輸出中列印。
+** 列印時只擷取其中的一部分。
+**
+** 輸入的第1列是索引數字列表，數列最後以一個負數結尾。
+** 這些數字成對出現，用來標記輸入列的列印範圍。
+** 例如0 3 10 12 -1表示要列印第0個到第3個字元，
+** 以及第10個到第12個字元。
+*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_COLS  20    /* 能夠處理的最多索引數量 */
+#define MAX_INPUT 1000  /* 每個輸入列的最大長度 */
+
+int  read_column_numbers( int columns[], int max );
+void rearrange( char *output, char const *input,
+     int n_columns, int const columns[] );
+
+int main( void )
+{
+    int     n_columns;         /* 進行處理的索引數字 */
+    int     columns[MAX_COLS]; /* 需要處理的索引數字 */
+    char  input[MAX_INPUT];    /* 容納輸入列的陣列 */
+    char  output[MAX_INPUT];   /* 容納輸出列的陣列 */
+
+    /*
+    ** 讀取索引數字列表。
+    */
+    n_columns = read_column_numbers( columns, MAX_COLS );
+
+    /*
+    ** 讀取、處理和列印剩餘的輸入列。
+    */
+    while( gets( input ) != NULL ){
+        printf( "Original input : %s\n", input );
+        rearrange( output, input, n_columns, columns );
+        printf( "Rearranged line: %s\n", output );
+    }
+
+    return EXIT_SUCCESS;
+}
+
+/*
+** 讀取索引數字列表，如果超出規定範圍則不予理會。
+*/
+int read_column_numbers( int columns[], int max )
+{
+    int  num = 0;
+    int  ch;
+
+    /*
+    ** 取得索引數字列表，如果所讀取的數字小於0則停止。
+    */
+    while( num < max && scanf( "%d", &columns[num] ) == 1
+        && columns[num] >= 0 )
+        num += 1;
+
+    /*
+    ** 確認已讀取的數字為偶數個，因為它們是以成對的形式出現。
+    */
+    if( num % 2 != 0 ){
+        puts( "Last column number is not paired." );
+        exit( EXIT_FAILURE );
+    }
+
+    /*
+    ** 丟棄該列中含有最後一個數字的該部分內容。
+    */
+    while( (ch = getchar()) != EOF && ch != '\n' )
+        ;
+
+    return num;
+}
+
+/*
+** 將指定位置的字元串連起來並加以處理，輸出列以NUL做結尾。
+*/
+void rearrange( char *output, char const *input,
+    int n_columns, int const columns[] )
+{
+    int   col;        /* 作為數字陣列的索引*/
+    int   output_col; /* 輸出字元計數器 */
+    int   len;        /* 輸入列的長度 */
+
+    len = strlen( input );
+    output_col = 0;
+
+    /*
+    ** 處理每對索引數字。
+    */
+    for( col = 0; col < n_columns; col += 2 ){
+        int nchars = columns[col + 1] - columns[col] + 1;
+
+        /*
+        ** 如果輸入列沒那麼長或輸出列陣列已滿，就結束任務。
+        */
+        if( columns[col] >= len ||
+            output_col == MAX_INPUT - 1 )
+                break;
+
+        /*
+        ** 如果輸出列資料空間不夠，只複製可以容納的資料。
+        */
+        if( output_col + nchars > MAX_INPUT - 1 )
+            nchars = MAX_INPUT - output_col - 1;
+
+        /*
+        ** 複製相關的資料。
+        */
+        strncpy( output + output_col, input + columns[col],
+            nchars );
+        output_col += nchars;
+    }
+
+    output[output_col] = '\0';
+}
+
+

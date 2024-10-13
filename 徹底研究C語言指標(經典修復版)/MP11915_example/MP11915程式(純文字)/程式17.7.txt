@@ -1,0 +1,28 @@
+/*
+** 二元搜尋樹模組的介面。
+*/
+
+
+#define	TREE_TYPE int    /* 樹的數值型別 */
+
+/*
+** insert
+** 向樹添加一個新值。
+** 參數是需要被添加的值，它必須原先並不存在於樹中。
+*/
+void insert( TREE_TYPE value );
+
+/*
+** find
+** 尋找一個特定的值，這個值作為第1個參數傳遞給函數。
+*/
+TREE_TYPE *find( TREE_TYPE value );
+
+/*
+** pre_order_traverse
+** 執行樹的前序巡訪。它的參數是一個回呼函數指標，
+** 它所指向的函數將在樹中處理每個節點時被呼叫，
+** 節點的值作為參數傳遞給這個函數。
+*/
+void pre_order_traverse(void (*callback)( TREE_TYPE value ));
+

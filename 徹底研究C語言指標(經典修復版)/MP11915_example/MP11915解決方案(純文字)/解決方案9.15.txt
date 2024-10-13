@@ -1,0 +1,48 @@
+/*
+** р计﹃'src'锣传じ
+** ㎝だΑ纗'dst'
+*/
+
+#include <stdio.h>
+
+void
+dollars( register char *dst, register char const *src )
+{
+        int  len;
+
+        if( dst == NULL || src == NULL )
+            return;
+
+        *dst++ = '$';
+        len = strlen( src );
+
+        /*
+        ** 狦计﹃ì镑
+        ** 狡籹盢瞷计翴オ娩计
+        ** 続讽竚睰硆腹
+        ** 狦﹃祏3计
+        ** 计翴玡睰'0'
+        */
+        if( len >= 3 ){
+            int i;
+
+            for( i = len - 2; i > 0; ){
+                *dst++ = *src++;
+                if( --i > 0 && i % 3 == 0 )
+                    *dst++ = ',';
+            }
+        } else
+            *dst++ = '0';
+
+        /*
+        ** 纗计
+        ** 礛纗'src'い逞緇计
+        ** 狦'src'い计ぶ2计
+        ** ノ'0'恶礛'dst'い睰NUL挡じ
+        */
+        *dst++ = '.';
+        *dst++ = len < 2 ? '0' : *src++;
+        *dst++ = len < 1 ? '0' : *src;
+        *dst = 0;
+}
+

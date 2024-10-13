@@ -1,0 +1,19 @@
+/* 
+** ㄤ㏑把计祘Α 
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int
+main( int argc, char **argv )
+{
+        /*
+        ** 把计
+        ** 笿NULL夹(ゼㄏノargc)
+        ** 祘Α嘿砆铬筁
+        */
+        while( *++argv != NULL )
+                printf( "%s\n", *argv );
+        return EXIT_SUCCESS;
+}
+

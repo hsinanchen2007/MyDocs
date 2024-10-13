@@ -1,0 +1,37 @@
+/*
+** 從一個單向連結串列刪除一個指定的節點。
+** 第1個參數指向連結串列的根指標，
+** 第2個參數指向需要被刪除的節點。
+** 如果它可以被刪除，函數返回TRUE，否則返回FALSE。
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+#include "singly_linked_list_node.h"
+
+#define	FALSE  0
+#define TRUE   1
+
+int
+sll_remove( struct NODE **linkp, struct NODE *delete )
+{
+        register Node*current;
+
+        assert( delete != NULL );
+
+        /*
+        ** 尋找要求刪除的節點。
+        */
+        while( ( current = *linkp ) != NULL && current != delete )
+                linkp = &current->link;
+
+        if( current == delete ){
+                *linkp = current->link;
+                free( current );
+                return TRUE;
+        }
+        else 
+                return FALSE;
+}
+

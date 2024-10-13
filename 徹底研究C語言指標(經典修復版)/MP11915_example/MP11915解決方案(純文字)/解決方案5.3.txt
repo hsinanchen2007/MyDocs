@@ -1,0 +1,34 @@
+/*
+** 在一個不帶正負號的整數值中
+** 翻轉位元的順序。
+*/
+
+unsigned int
+reverse_bits( unsigned int value )
+{
+    unsigned int  answer;
+    unsigned int  i;
+
+    answer = 0;
+
+    /*
+    ** 只要i不是0就繼續進行。這就使迴圈
+    ** 與機器的字長無關，進而避免了可攜性問題。
+    */
+    for( i = 1; i != 0; i <<= 1 ){
+            /*
+            ** 把舊的answer左移1位元，
+            ** 為下一個位元留下空間；
+            ** 如果value的最後一位元是1，
+            ** answer就與1進行OR操作；
+            ** 然後將value右移至下一個位元。
+            */
+            answer <<= 1;
+            if( value & 1 )
+                    answer |= 1;
+            value >>= 1;
+    }
+
+    return answer;
+}
+

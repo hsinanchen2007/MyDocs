@@ -1,0 +1,45 @@
+/*
+** 插入到一個有序單向連結串列。函數的
+** 參數是一個指向連結串列第1個節點的指標，
+** 以及一個需要插入的新值。
+*/
+#include <stdlib.h>
+#include <stdio.h>
+#include "sll_node.h"
+
+#define  FALSE  0
+#define  TRUE   1
+
+int
+sll_insert( register Node **linkp, int new_value )
+{
+    register Node  *current;
+    register Node  *new;
+
+    /* 
+    ** 尋找正確的插入位置，
+    ** 方法是按序存取連結串列，
+    ** 直到到達一個其值大於或等於新值的節點。
+    */
+    while( ( current = *linkp ) != NULL &&
+        current->value < new_value )
+          linkp = &current->link;
+
+    /* 
+    ** 為新節點分配記憶體，
+    ** 並把新值儲存到新節點中，
+    ** 如果記憶體分配失敗，函數返回FALSE。
+    */
+    new = (Node *)malloc( sizeof( Node ) );
+    if( new == NULL )
+        return FALSE;
+    new->value = new_value;
+
+    /* 
+    ** 在連結串列中插入新節點，並返回TRUE。
+    */
+    new->link = current;
+    *linkp = new;
+    return TRUE;
+}
+

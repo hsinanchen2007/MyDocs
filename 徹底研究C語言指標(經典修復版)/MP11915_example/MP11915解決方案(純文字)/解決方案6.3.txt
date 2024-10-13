@@ -1,0 +1,31 @@
+/*
+** 翻轉參數字串。
+*/
+
+void reverse_string( char *str )
+{
+    char  *last_char;
+
+    /*
+    ** 把last_char設置為指向字串的
+    ** 最後一個字元。
+    */
+    for( last_char = str; *last_char != '\0'; last_char++ )
+            ;
+
+    last_char--;
+
+    /*
+    ** 交換str和last_char指向的字元，
+    ** 然後str前進一步，last_char後退一步，
+    ** 在兩個指標相遇或擦肩而過之前重複這個過程。
+    */
+    while( str < last_char ){
+            char temp;
+
+            temp = *str;
+            *str++ = *last_char;
+            *last_char-- = temp;
+    }
+}
+

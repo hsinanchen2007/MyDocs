@@ -1,0 +1,23 @@
+/*
+** 在一個單向連結串列中
+** 尋找一個指定值的函數。它的參數是
+** 一個指向連結串列第1個節點的指標、
+** 一個指向我們需要尋找的值的指標
+** 和一個函數指標，它所指向的函數
+** 用於比較儲存於連結串列中的類型的值。
+*/
+#include <stdio.h>
+#include "node.h"
+
+Node *
+search_list( Node *node, void const *value,
+    int (*compare)( void const *, void const * ) )
+{
+        while( node != NULL ){ 
+                if( compare( &node->value, value ) == 0 )
+                    break;
+        node = node->link;
+        }
+        return node;
+}
+

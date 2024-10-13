@@ -1,0 +1,8 @@
+/* 
+** 把新節點添加到連結串列中。
+*/
+newnode->fwd = next;
+this->fwd = newnode;
+newnode->bwd = this != rootp ? this : NULL;
+( next != NULL ? next : rootp )->bwd = newnode;
+

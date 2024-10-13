@@ -1,0 +1,10 @@
+/* 
+** 定義一個不易發生錯誤的記憶體分配器。 
+*/
+#include <stdlib.h>
+
+#define malloc            /*不要直接呼叫malloc!*/
+#define MALLOC(num,type) (type *)alloc( (num) * sizeof(type) )
+extern  void *alloc( size_t size );
+
+

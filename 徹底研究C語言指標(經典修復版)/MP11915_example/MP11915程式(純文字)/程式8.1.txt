@@ -1,0 +1,15 @@
+/*
+** 把第2個參數中的字串，
+** 複製到第1個參數指定的緩衝區。
+*/
+void
+strcpy( char *buffer, char const *string )
+{
+        /*
+        ** 重覆複製字元，
+        ** 直到遇見NUL位元組。
+        */
+        while( (*buffer++ = *string++) != '\0' )
+                ;
+}
+

@@ -1,0 +1,24 @@
+/*
+** 在陣列中尋找某個特定整數型值的儲存位置，
+** 並返回一個指向該位置的指標。
+*/
+#include <stdio.h>
+
+int *
+find_int( int key, int array[], int array_len )
+{
+        int     i;
+
+        /*
+        ** 對於陣列中的每個位置 ...
+        */
+        for( i = 0; i < array_len; i += 1 )
+                /*
+                ** 檢查這個位置的值是否為需要搜尋的值。
+                */
+                if( array[ i ] == key )
+                        return &array[ i ];
+
+        return NULL;
+}
+

@@ -1,0 +1,20 @@
+/*
+** 計算一個字串的長度。
+*/
+
+#include <stdlib.h>
+
+size_t
+strlen( char *string )
+{
+        int     length = 0;
+
+        /*
+        ** 依次存取字串的內容，計算字元數，直到遇見NUL終止符號。
+        */
+        while( *string++ != '\0' )
+                length += 1;
+
+        return length;
+}
+

@@ -1,0 +1,17 @@
+/*
+** 接受一個整數型值(無符號)，
+** 把它轉換為字元並列印它。刪除前置零。
+*/
+#include <stdio.h>
+
+void
+binary_to_ascii( unsigned int value )
+{
+        unsigned int    quotient;
+
+        quotient = value / 10;
+        if( quotient != 0 )
+                binary_to_ascii( quotient );
+        putchar( value % 10 + '0' );
+}
+

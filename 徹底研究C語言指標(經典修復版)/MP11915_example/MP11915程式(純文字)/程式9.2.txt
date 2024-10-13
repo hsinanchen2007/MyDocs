@@ -1,0 +1,43 @@
+/*
+** 在字串s1中搜尋
+** 字串s2從最右邊開始第1次出現的位置，
+** 並返回一個指向該位置的指標。
+*/
+#include <string.h>
+
+char  *
+my_strrstr( char const *s1, char const *s2 )
+{
+        register char  *last;
+        register char  *current;
+        /*
+        ** 把指標初始化為我們已經找到的
+        ** 前一次匹配位置。
+        */
+        last = NULL;
+
+        /*
+        ** 只在第2個字串不為空時才進行搜尋，
+        ** 如果s2為空，返回NULL。
+        */
+        if( *s2 != '\0' ){
+                /*
+                ** 搜尋s2在s1中第1次出現的位置。
+                */
+                current = strstr( s1, s2 );
+
+                /*
+                ** 每次找到字串時，
+                ** 讓指標指向它的起始位置。
+                ** 然後搜尋該字串下一個匹配位置。
+                */
+                while( current != NULL ){
+                        last = current;
+                        current = strstr( last + 1, s2 );
+                }
+        }
+
+        /* 返回指向找到的最後一次匹配的起始位置的指標。*/
+        return last;
+}
+

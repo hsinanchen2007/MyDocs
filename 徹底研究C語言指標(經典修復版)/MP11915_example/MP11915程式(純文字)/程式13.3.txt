@@ -1,0 +1,53 @@
+/* 
+** 處理命令列參數。 
+*/
+#include <stdio.h>
+#define	  TRUE 1
+
+/*  
+** 執行實際任務的函數的原型。
+*/
+void  process_standard_input( void );
+void  process_file( char *file_name );
+
+/*  
+** 選項旗標，預設初始化為FALSE。
+*/
+int   option_a, option_b  /* etc. */ ;
+
+void
+main( int argc, char **argv )
+{
+        /* 
+        ** 處理選項參數：跳到下一個參數，
+        ** 並檢查它是否以一個橫槓開頭。
+        */
+        while( *++argv != NULL && **argv == '-' ){  
+                /* 
+                ** 檢查橫槓後面的字母。
+                */
+                switch( *++*argv ){
+                case 'a':
+                    option_a = TRUE;
+                    break;
+
+                case 'b':
+                    option_b = TRUE;
+                    break;
+
+                /* etc. */
+                }
+        }
+
+        /* 
+        ** 處理檔案名稱參數 
+        */
+        if( *argv == NULL )
+                process_standard_input();
+        else {
+                do {
+                    process_file( *argv );
+                } while( *++argv != NULL );
+        }
+}
+

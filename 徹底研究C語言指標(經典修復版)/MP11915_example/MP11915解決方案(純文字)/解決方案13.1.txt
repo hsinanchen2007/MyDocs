@@ -1,0 +1,92 @@
+/*
+** 計算從標準輸入讀取的
+** 各類字元的百分比。
+*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
+/*
+** 定義一個函數，判斷一個字元
+** 是否為可列印字元。這可以消除
+** 下面程式碼中這種類型的特殊情況。
+*/
+int is_not_print( int ch )
+{
+        return !isprint( ch );
+}
+
+/*
+** 用於區別每種類型的分類函數的跳轉表。
+*/
+static  int(*test_func[])( int ) = {
+        iscntrl,
+        isspace,
+        isdigit,
+        islower,
+        isupper,
+        ispunct,
+        is_not_print
+};
+#define	N_CATEGORIES  \
+        ( sizeof( test_func ) / sizeof( test_func[ 0 ] ) )
+
+/*
+** 每種字元類型的名稱。
+*/
+char*label[] = {
+    "control",
+    "whitespace",
+    "digit",
+    "lower case",
+    "upper case",
+    "punctuation",
+    "non-printable"
+};
+
+/*
+** 目前見到的每種類型的字元數以及字元的總量。
+*/
+int count[ N_CATEGORIES ];
+int total;
+
+main()
+{
+    int  ch;
+    int  category;
+
+    /*
+    ** 讀取和處理每個字元。
+    */
+    while( (ch = getchar()) != EOF ){
+            total += 1;
+
+            /*
+            ** 為這個字元呼叫每個測試函數。
+            ** 如果結果為真，增加對應計數器的值。
+            */
+            for( category = 0; category < N_CATEGORIES;
+                category += 1 ){
+                    if( test_func[ category ]( ch ) )
+                        count[ category ] += 1;
+            }
+    }
+
+    /*
+    ** 列印結果。
+    */
+    if( total == 0 ){
+        printf( "No characters in the input!\n" );
+    }
+    else {
+        for( category = 0; category < N_CATEGORIES;
+            category += 1 ){
+                printf( "%3.0f%% %s characters\n",
+                    count[ category ] * 100.0 / total,
+                    label[ category ] );
+        }
+    }
+
+    return EXIT_SUCCESS;
+}
+

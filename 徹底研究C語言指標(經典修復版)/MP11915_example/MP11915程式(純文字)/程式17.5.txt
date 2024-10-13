@@ -1,0 +1,54 @@
+/*
+** ︻家舱ざ
+*/
+
+#include <stdlib.h>
+
+#define	QUEUE_TYPE    int/* ︻じ摸 */
+
+/*
+** create_queue
+** ミ︻把计﹚
+** ︻纗じ程计秖
+** 猔種:硂ㄧ计続ノㄏノ笆篈だ皌皚︻
+*/
+void create_queue( size_t size );
+
+/* 
+** destroy_queue
+** 綪反︻
+** 猔種:硂ㄧ计続ノ渺Α㎝笆篈だ皌皚︻
+*/
+void  destroy_queue( void );
+
+/*
+** insert
+** ︻睰穝じ把计碞琌惠璶睰じ
+*/
+void  insert( QUEUE_TYPE value );
+
+/*
+** delete
+** 眖︻い簿埃じ盢ㄤメ斌
+*/
+void  delete( void );
+
+/*
+** first
+** ︻い材じぃэ︻セō
+*/
+QUEUE_TYPE first( void );
+
+/*
+** is_empty
+** 狦︻TRUE玥FALSE
+*/
+int  is_empty( void );
+
+/*
+** is_full
+** 狦︻骸TRUE玥FALSE
+*/
+int  is_full( void );
+
+

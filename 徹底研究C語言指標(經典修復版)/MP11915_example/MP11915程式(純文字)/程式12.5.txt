@@ -1,0 +1,34 @@
+/*  
+** 把新節點添加到連結串列中。
+*/
+if( next != NULL ){
+    /* 
+    ** 情況1或2:並非位於連結串列尾部。
+    */
+        newnode->fwd = next;
+        if( this != rootp ){   /* 情況1:並非位於連結串列起始位置 */
+                this->fwd = newnode;
+                newnode->bwd = this;
+        }
+        else {                  /* 情況2:位於連結串列起始位置 */
+                rootp->fwd = newnode;
+                newnode->bwd = NULL;
+        }
+        next->bwd = newnode;
+}
+else {
+    /* 
+    ** 情況3或4: 位於連結串列尾部。 
+    */
+        newnode->fwd = NULL;
+        if( this != rootp ){   /* 情況3:並不位於連結串列起始位置 */
+                this->fwd = newnode;
+                newnode->bwd = this;
+        }
+        else {                  /* 情況4:位於連結串列起始位置 */
+                rootp->fwd = newnode;
+                newnode->bwd = NULL;
+        }
+        rootp->bwd = newnode;
+}
+

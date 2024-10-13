@@ -1,0 +1,39 @@
+/*
+** 使用隨機數在牌桌上洗「牌」。
+** 第2個參數指定牌的數目。
+** 當這個函數第1次被呼叫時，
+** 呼叫srand函數初始化隨機數產生器。
+*/
+#include <stdlib.h>
+#include <time.h>
+#define	TRUE    1
+#define	FALSE   0
+
+void shuffle( int *deck, int n_cards )
+{
+       int    i;
+       static int    first_time = TRUE;
+
+/* 
+** 如果尚未進行初始化，
+** 則用當天的當前時間作為隨機數產生器。
+*/
+if( first_time ){
+        first_time = FALSE;
+        srand( (unsigned int)time( NULL ) );
+}
+
+/*  
+** 透過交換隨機對的牌進行「洗牌」。
+*/
+for( i = n_cards - 1; i > 0; i -= 1 ){
+        int    where;
+        int    temp;
+
+        where = rand() % i;
+        temp = deck[ where ];
+        deck[ where ] = deck[ i ];
+        deck[ i ] = temp;
+    }
+}
+

@@ -1,0 +1,110 @@
+/*
+** 一個用連結串列形式實作的佇列，
+** 它沒有長度限制。
+*/
+#include "queue.h"
+#include <stdio.h>
+#include <assert.h>
+
+/*
+** 定義一個結構用於保存一個值。
+** link欄位將指向佇列中的下一個節點。
+*/
+typedef struct QUEUE_NODE {
+               QUEUE_TYPE value;
+               struct QUEUE_NODE *next;
+} QueueNode;
+
+/*
+** 指向佇列第1個和最後1個節點的指標。
+*/
+static QueueNode *front;
+static QueueNode *rear;
+
+/*
+** destroy_queue
+*/
+void
+destroy_queue( void )
+{
+        while( !is_empty() )
+                delete();
+}
+
+/*
+** insert
+*/
+void
+insert( QUEUE_TYPE value )
+{
+        QueueNode *new_node;
+
+        /*
+        ** 分配一個新節點，
+        ** 並填充它的各個欄位。
+        */
+        new_node = (QueueNode *)malloc( sizeof( QueueNode ) );
+        assert( new_node != NULL );
+        new_node->value = value;
+        new_node->next = NULL;
+
+        /*
+        ** 把它插入到佇列的尾部。
+        */
+        if( rear == NULL ){
+                front = new_node;
+        }
+        else {
+                rear->next = new_node;
+        }
+        rear = new_node;
+}
+
+/*
+** delete
+*/
+void
+delete( void )
+{
+        QueueNode *next_node;
+
+        /*
+        ** 從佇列的頭部刪除一個節點，
+        ** 如果它是最後一個節點，
+        ** 將rear也設置為NULL。
+        */
+        assert( !is_empty() );
+        next_node = front->next;
+        free( front );
+        front = next_node;
+        if( front == NULL )
+                rear = NULL;
+}
+
+/*
+** first
+*/
+QUEUE_TYPE first( void )
+{
+        assert( !is_empty() );
+        return front->value;
+}
+
+/*
+** is_empty
+*/
+int
+is_empty( void )
+{
+        return front == NULL;
+}
+
+/*
+** is_full
+*/
+int
+is_full( void )
+{
+        return 0;
+}
+

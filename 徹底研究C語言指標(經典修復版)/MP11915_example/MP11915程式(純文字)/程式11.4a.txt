@@ -1,0 +1,37 @@
+/* 
+** 存貨記錄的宣告。
+*/
+
+/*
+** 包含零件專用資訊的結構。 
+*/
+typedef struct	{
+        int  cost;    
+        int  supplier;
+        /* 其他資訊。 */
+} Partinfo;
+
+/*  
+** 儲存裝配件專用資訊的結構。
+*/
+typedef	struct	{
+        int  n_parts;
+        struct  SUBASSYPART {
+                char   partno[10];
+                short  quan;
+        } *part;
+} Subassyinfo;
+
+/* 
+** 存貨記錄結構，它是一個變體記錄。
+*/
+typedef struct	{
+        char  partno[10];
+        int   quan;
+        enum  { PART, SUBASSY }  type;
+        union   {
+                Partinfo      *part;
+                Subassyinfo   *subassy;
+        } info;
+} Invrec;
+

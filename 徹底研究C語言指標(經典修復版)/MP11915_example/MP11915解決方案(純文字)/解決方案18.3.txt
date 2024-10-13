@@ -1,0 +1,37 @@
+/*
+** 標準函式庫檔案
+** stdarg.h所定義的巨集的替代品。
+*/
+
+/*
+** va_list
+**   為一個變數進行類型定義，
+**   這個變數保存
+**   一個指向參數清單可變部分的指標。
+**   這裡使用的是char，
+**   因為作用於它們之上的運算並沒有經過調整。
+*/
+typedef char *va_list;
+
+/*
+** va_start
+**   用於初始化一個va_list變數的巨集，
+**   使它指向堆疊中第1個可變參數。
+*/
+#define va_start(arg_ptr,arg) arg_ptr = (char *)&arg + sizeof( arg )
+
+/*
+** va_arg
+**   用於返回堆疊中下一個變數值的巨集，
+**   它同時增加arg_ptr的值，
+**   使它指向下一個參數。
+*/
+#define	va_arg(arg_ptr,type) *((type *)arg_ptr)++
+
+/*
+** va_end
+**   在可變參數最後的存取之後呼叫。
+**   在這個環境中，它不需要執行任何任務。
+*/
+#define va_end(arg_ptr)
+

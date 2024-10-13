@@ -1,0 +1,28 @@
+/*
+** 計算Hermite Polynomial的值
+**
+** 輸入:
+**     n, x: 用於識別值
+**
+** 輸出:
+**     polynomial的值 (返回值)
+*/
+
+int
+hermite( int n, int x )
+{
+        /*
+        ** 處理不需要遞迴的特殊情況。
+        */
+        if( n <= 0 )
+            return 1;
+        if( n == 1 )
+            return 2 * x;
+
+        /*
+        ** 否則，遞迴地計算結果值。
+        */
+        return 2 * x * hermite( n - 1, x ) -
+            2 * ( n - 1 ) * hermite( n - 2, x );
+}
+

@@ -1,0 +1,17 @@
+/* 
+** 把標準輸入讀取的文本列逐列複製到標準輸出。
+*/
+#include <stdio.h>
+
+#define	MAX_LINE_LENGTH  1024  /* 可以複製的最長列 */
+
+void
+copylines( FILE *input, FILE *output )
+{
+        char  buffer[MAX_LINE_LENGTH];
+
+        while( fgets( buffer, MAX_LINE_LENGTH, input ) != NULL )
+                fputs( buffer, output );
+}
+
+

@@ -1,0 +1,35 @@
+/*
+** 使用qsort對一個元素為某種結構的陣列進行排序。
+*/
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct	{
+        char key[ 10 ];	/* 陣列的排序關鍵字。 */
+        int  other_data;/* 與關鍵字關聯的資料。 */
+} Record;
+
+/*
+** 比較函數：只比較關鍵字的值。
+*/
+int r_compare( void const *a, void const *b ){
+        return strcmp( ((Record *)a)->key, ((Record *)b)->key );   
+}
+
+int
+main()
+{
+        Record  array[ 50 ];
+
+        /* 
+        ** 用50個元素填充陣列的程式碼 
+        */
+        qsort( array, 50, sizeof( Record ), r_compare );
+      
+        /* 
+        ** 現在，陣列已經根據結構的關鍵字欄位排序完畢。 
+        */
+
+        return EXIT_SUCCESS;
+}
+

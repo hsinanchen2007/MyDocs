@@ -1,0 +1,21 @@
+/*
+** 璸计ㄤじぇ1计
+*/
+int
+count_one_bits( unsigned value )
+{
+        int ones;
+
+        /*
+        ** 讽临Τㄇじ1...
+        */
+        for( ones = 0; value != 0; value = value >> 1 )
+                /*
+                ** 狦程じ1璸计糤1
+                */
+                if( value % 2 != 0 )
+                        ones = ones + 1;
+
+        return ones;
+}
+

@@ -1,0 +1,51 @@
+/* 
+** 用於建立SUBASSEMBLY(裝配件)存貨記錄的函數。
+*/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "inventor.h"
+
+Invrec *
+create_subassy_record( int n_parts )
+{
+Invrec *new_rec; 
+
+        /* 
+        ** 試圖為Invrec部分分配記憶體。
+        */
+        new_rec = malloc( sizeof( Invrec ) );
+        if( new_rec != NULL ){
+            /* 
+            ** 記憶體分配成功，
+            ** 現在儲存SUBASSYINFO部分。
+            */
+            new_rec->info.subassy =
+                malloc( sizeof( Subassyinfo ) );
+            if( new_rec->info.subassy != NULL ){
+                /* 
+                ** 為零件獲取一個足夠大的陣列。
+                */
+                new_rec->info.subassy->part = malloc(
+                    n_parts * sizeof( struct SUBASSYPART ) );
+                if( new_rec->info.subassy->part != NULL ){
+                    /* 
+                    ** 獲取記憶體，
+                    ** 填滿我們已知道值的欄位，然後返回。
+                    */
+                    new_rec->type = SUBASSY;
+                    new_rec->info.subassy->n_parts =
+                        n_parts;
+                    return new_rec;
+                }
+
+                /* 
+  	        ** 記憶體已用完，釋放我們原先分配的記憶體。
+  	        */
+                free( new_rec->info.subassy );
+        }
+        free( new_rec );
+    }
+    return NULL;
+}
+

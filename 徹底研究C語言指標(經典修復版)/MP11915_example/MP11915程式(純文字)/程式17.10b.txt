@@ -1,0 +1,45 @@
+/*
+** 一個使用泛型堆疊模組
+** 建立兩個容納不同類型資料的堆疊的使用者程式。
+*/
+#include <stdlib.h>
+#include <stdio.h>
+#include "g_stack.h"
+
+/*
+** 建立兩個堆疊，一個用於容納整數，
+** 另一個用於容納浮點數。
+*/
+GENERIC_STACK( int, _int, 10 )
+GENERIC_STACK( float, _float, 5 )
+
+int
+main()
+{
+        /*
+        ** 往每個堆疊壓入幾個值。
+        */
+        push_int( 5 );
+        push_int( 22 );
+        push_int( 15 );
+        push_float( 25.3 );
+        push_float( -40.5 );
+
+        /*
+        ** 清空整數堆疊並列印這些值。
+        */
+        while( !is_empty_int() ){
+                printf( "Popping %d\n", top_int() );
+                pop_int();
+        }
+
+        /*
+        ** 清空浮點數堆疊並列印這些值。
+        */
+        while( !is_empty_float() ){
+                printf( "Popping %f\n", top_float() );
+                pop_float();
+        }
+
+        return EXIT_SUCCESS;
+}

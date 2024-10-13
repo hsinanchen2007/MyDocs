@@ -1,0 +1,46 @@
+/*
+** 將兩個矩陣相乘。
+*/
+
+void
+matrix_multiply( int *m1, int *m2, register int *r,
+    int x, int y, int z )
+{
+        register int  *m1p;
+        register int  *m2p;
+        register int  k;
+        int  row;
+        int  column;
+
+        /*
+        ** 外層的兩個迴圈逐個產生結果矩陣
+        ** 的元素。由於這是按照存在順序
+        ** 進行的，因此可以透過對r進行
+        ** 間接存取來存取這些元素。
+        */
+        for( row = 0; row < x; row += 1 ){
+                for( column = 0; column < z; column += 1 ){
+                        /*
+                        ** 計算結果的一個值。
+                        ** 這是透過獲得指向m1和m2
+                        ** 的合適元素的指標，在進行
+                        ** 迴圈時，使它們前進來實作的。
+                        */
+                        m1p = m1 + row * y;
+                        m2p = m2 + column;
+                        *r = 0;
+
+                        for( k = 0; k < y; k += 1 ){
+                                *r += *m1p * *m2p;
+                                m1p += 1;
+                                m2p += z;
+                        }
+
+                        /*
+                        ** r前進一步，指向下一個元素。
+                        */
+                        r++;
+                }
+        }
+}
+

@@ -1,0 +1,26 @@
+/* 
+** 用sscanf處理列導向(line-oriented)的輸入
+*/
+#include <stdio.h>
+#define BUFFER_SIZE  100  /* 我們將要處理的最長列 */
+
+void
+function( FILE *input )
+{
+        int    a, b, c, d, e;
+        char   buffer[ BUFFER_SIZE ];
+
+        while( fgets( buffer, BUFFER_SIZE, input ) != NULL ){
+                if( sscanf( buffer, "%d %d %d %d %d",
+                    &a, &b, &c, &d, &e ) != 4 ){
+                        fprintf( stderr, "Bad input skipped: %s",
+                            buffer );
+                        continue;
+                }
+
+                /* 
+                ** 處理這組輸入
+                */
+        } 
+}
+

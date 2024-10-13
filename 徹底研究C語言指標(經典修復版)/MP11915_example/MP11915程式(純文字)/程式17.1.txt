@@ -1,0 +1,38 @@
+/*
+** 一個堆疊模組的介面。 
+*/
+
+#define STACK_TYPE int/* 堆疊所儲存的值的類型。 */
+
+/*
+** push
+** 把一個新值壓入到堆疊中。
+** 它的參數是需要被壓入的值。
+*/
+void push( STACK_TYPE value );
+
+/*
+** pop
+** 從堆疊彈出一個值，並將其丟棄。
+*/
+void pop( void );
+
+/*
+** top
+** 返回堆疊頂部元素的值，但不對堆疊進行修改。
+*/
+STACK_TYPE top( void );
+
+/*
+** is_empty
+** 如果堆疊為空，返回TRUE，否則返回FALSE。
+*/
+int is_empty( void );
+
+/*
+** is_full
+** 如果堆疊已滿，返回TRUE，否則返回FALSE。
+*/
+int is_full( void );
+
+

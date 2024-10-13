@@ -1,0 +1,8 @@
+/*
+** Comment describing what the function or program does.
+*/
+
+void 
+function(){
+        /* something or other */
+}

@@ -1,0 +1,17 @@
+/*
+** 把一個陣列的所有元素都設置為零。
+*/
+
+void
+clear_array( int array[], int n_elements )
+{
+        /*
+        ** 從陣列最後一個元素開始，
+        ** 逐一清除陣列中的所有元素。
+        ** 注意前綴累加避免了
+        ** 越出陣列邊界的可能性。
+        */
+        while( n_elements > 0 )
+                array[ --n_elements ] = 0;
+}
+

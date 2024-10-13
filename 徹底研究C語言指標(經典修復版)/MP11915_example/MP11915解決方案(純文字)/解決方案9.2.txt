@@ -1,0 +1,21 @@
+/*
+** 安全的字串長度函數。
+** 它返回一個字串的長度，
+** 即使字串並未以NUL位元組結尾。
+** 'size'是儲存字串的緩衝區的長度。
+*/
+
+#include <string.h>
+#include <stddef.h>
+
+size_t
+my_strnlen( char const *string, int size )
+{
+        register size_t  length;
+
+        for( length = 0; length < size; length += 1 )
+                if( *string++ == '\0' )
+                        break;
+
+        return length;
+}

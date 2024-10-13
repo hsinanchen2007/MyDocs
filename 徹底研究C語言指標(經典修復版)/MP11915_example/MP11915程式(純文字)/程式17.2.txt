@@ -1,0 +1,66 @@
+/*
+** 用一個靜態陣列實作的堆疊。
+** 陣列的長度只能透過修改#define定義
+** 並對模組重新進行編譯來實作。
+*/
+
+#include "stack.h"
+#include <assert.h>
+
+#define	STACK_SIZE    100/* 堆疊中值數量的最大限制 */
+
+/* 
+** 儲存堆疊中值的陣列和一個指向堆疊頂部元素的指標。
+*/
+static STACK_TYPE    stack[ STACK_SIZE ];
+static int           top_element = -1;
+
+/*
+** push
+*/
+void
+push( STACK_TYPE value )
+{
+        assert( !is_full() );
+        top_element += 1;
+        stack[ top_element ] = value;
+}
+
+/*
+** pop  
+*/
+void
+pop( void )
+{
+        assert( !is_empty() );
+        top_element -= 1;
+}
+
+/*
+** top
+*/
+STACK_TYPE top( void )
+{
+        assert( !is_empty() );
+        return stack[ top_element ];
+}
+
+/*
+** is_empty
+*/
+int
+is_empty( void )
+{
+        return top_element == -1;
+}
+
+/*
+** is_full
+*/
+int
+is_full( void )
+{
+        return top_element == STACK_SIZE - 1;
+}
+
+

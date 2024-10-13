@@ -1,0 +1,17 @@
+/*
+** 用迭代方法計算n的階乘。
+*/
+
+long
+factorial( int n )
+{
+        int     result = 1;
+
+        while( n > 1 ){
+                result *= n;
+                n -= 1;
+        }
+
+        return result;
+}
+

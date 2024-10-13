@@ -1,0 +1,37 @@
+/*
+** 對一個陣列形式的二元搜尋樹執行層次巡訪。
+*/
+void
+breadth_first_traversal( void (*callback)( TREE_TYPE value ) )
+{
+        int current;
+        int child;
+
+        /*
+        ** 把根節點插入到佇列中。
+        */
+        queue_insert( 1 );
+
+        /*
+        ** 當佇列還沒有空時...
+        */
+        while( !is_queue_empty() ){
+                /*
+                ** 從佇列中取出第1個值並對它進行處理。
+                */
+                current = queue_first();
+                queue_delete();
+                callback( tree[ current ] );
+
+                /*
+                ** 將該節點的所有孩子添加到佇列中。
+                */
+                child = left_child( current );
+                if( child < ARRAY_SIZE && tree[ child ] != 0 )
+                        queue_insert( child );
+                child = right_child( current );
+                if( child < ARRAY_SIZE && tree[ child ] != 0 )
+                        queue_insert( child );
+        }
+}
+

@@ -1,0 +1,43 @@
+/*
+** 計算標準輸入中單詞the出現的次數。
+** 字母是區分大小寫的，輸入中的單詞
+** 由一個或多次空白字元分隔。
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+char const    whitespace[] = " \n\r\f\t\v";
+
+int
+main()
+{
+        char buffer[101];
+        int  count;
+
+        count = 0;
+
+        /*
+        ** 讀入文本列，直到發現EOF。
+        */
+        while( gets( buffer ) ){
+                char    *word;
+
+                /*
+                ** 從緩衝區逐個提取單詞，
+                ** 直到緩衝區內不再有單詞。
+                */
+                for( word = strtok( buffer, whitespace );
+                    word != NULL;
+                    word = strtok( NULL, whitespace ) ){
+                        if( strcmp( word, "the" ) == 0 )
+                            count += 1;
+                }
+        }
+
+        printf( "%d\n", count );
+
+        return EXIT_SUCCESS;
+}
+

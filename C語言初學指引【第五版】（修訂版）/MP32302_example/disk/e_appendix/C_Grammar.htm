@@ -1,0 +1,504 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>電子附錄 ANSI C 文法</title>
+<style>
+<!--
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman"
+	}
+-->
+</style>
+</head>
+
+<body>
+
+<p><font face="新細明體">電子附錄 ANSI C 文法(Grammar)<br>
+<br>
+以下是ANSI C的文法，欲發展C編譯器者可加以參閱。<br>
+它是在1988年10月31日送往<br>
+``American Standard for Information Systems - programming Language C, 
+X3.159-1989.''<br>
+審定之標準，<br>
+取材自C語言發明人Brian W. Kernighan及Dennis M. Ritchie<br>
+在其著作The C Programming Language之附錄。</font></p>
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none">
+  <tr>
+    <td width="557" valign="top" style="width: 418.1pt; border: 1.0pt solid windowtext; padding-left: 1.4pt; padding-right: 1.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>translation-unit</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>external-declaration</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>translation-unit external-declaration</em>
+    </font> </span>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>external-declaration</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>function-definition</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>function-definition</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-specifiers<sub>opt</sub> declarator declaration-list<sub>opt</sub> 
+    compound-statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">declaration-specifiers init-declarator-list</font><sub><font size="3">opt</font></sub></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-list declaration</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-specifiers</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>storage-class-specifier declaration-specifiers<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-specifier declaration-specifiers<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier declaration-specifiers<sub>opt</sub></em>
+    </font> </span>
+    </p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>storage-class specifier</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">auto 
+    register static extern typedef</span></tt><span lang="FR"><font size="3">
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>type specifier</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">void 
+    char short int long float double signed</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">unsigned</span></tt><span lang="FR"><font size="3">
+    <em>struct-or-union-specifier enum-specifier typedef-name</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">const 
+    volatile</span></tt><span lang="FR"><font size="3"> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-or-union-specifier</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-or-union identifier<sub>opt</sub></em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">{</span></tt><span lang="FR"><font size="3"> <em>
+    struct-declaration-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">}</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-or-union identifier</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-or-union</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">struct 
+    union</span></tt><span lang="FR"><font size="3"> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declaration-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct declaration</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declaration-list struct declaration</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>init-declarator-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>init-declarator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">init-declarator-list</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3">
+    <em>init-declarator</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>init-declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declarator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declarator</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">=</span></tt><span lang="FR"><font size="3"> <em>
+    initializer</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declaration</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">specifier-qualifier-list struct-declarator-list</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>specifier-qualifier-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-specifier specifier-qualifier-list<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier specifier-qualifier-list<sub>opt</sub></em>
+    </font> </span>
+    </p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declarator-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declarator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declarator-list</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    struct-declarator</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>struct-declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declarator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declarator<sub>opt</sub></em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">:</span></tt><span lang="FR"><font size="3"> <em>
+    constant-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>enum-specifier</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">enum</span></tt><span lang="FR"><font size="3">
+    <em>identifier<sub>opt</sub></em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">{</span></tt><span lang="FR"><font size="3"> <em>
+    enumerator-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">}</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">enum</span></tt><span lang="FR"><font size="3">
+    <em>identifier</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>enumerator-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>enumerator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>enumerator-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    enumerator</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>enumerator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">=</span></tt><span lang="FR"><font size="3"> <em>
+    constant-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>pointer<sub>opt</sub> direct-declarator</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">(</span></tt><em><span lang="FR"><font size="3">declarator</font></span></em><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">)</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-declarator</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">[</span></tt><span lang="FR"><font size="3"> <em>
+    constant-expression<sub>opt</sub></em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">]</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-declarator</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">(</span></tt><span lang="FR"><font size="3"> <em>
+    parameter-type-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">)</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-declarator</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">(</span></tt><span lang="FR"><font size="3"> <em>
+    identifier-list<sub>opt</sub></em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">)</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>pointer</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">*</span></tt><span lang="FR"><font size="3">
+    <em>type-qualifier-list<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">*</span></tt><span lang="FR"><font size="3">
+    <em>type-qualifier-list<sub>opt</sub> pointer</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>type-qualifier-list type-qualifier</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-type-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-list</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">, ...</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-declaration</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    parameter-declaration</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>parameter-declaration</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-specifiers declarator</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>declaration-specifiers abstract-declarator<sub>opt</sub></em>
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    identifier</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>initializer</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">{</span></tt><span lang="FR"><font size="3">
+    <em>initializer-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">}</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">{</span></tt><span lang="FR"><font size="3">
+    <em>initializer-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">, }</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>initializer-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>initializer</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>initializer-list</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    initializer</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>type-name</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>specifier-qualifier-list abstract-declarator<sub>opt</sub></em>
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>abstract-declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>pointer</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>pointer<sub>opt</sub> direct-abstract-declarator</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-abstract-declarator</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( <em>abstract-declarator</em> )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-abstract-declarator<sub>opt</sub></em> [<em>constant-expression<sub>opt</sub></em>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>direct-abstract-declarator<sub>opt</sub></em> (<em>parameter-type-list<sub>opt</sub></em>)
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>typedef-name</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>labeled-statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>expression-statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>compound-statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>selection-statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>iteration-statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>jump-statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>labeled-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">:</span></tt><span lang="FR"><font size="3"> <em>
+    statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">case</span></tt><span lang="FR"><font size="3">
+    <em>constant-expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">:</span></tt><span lang="FR"><font size="3"> <em>
+    statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">default 
+    :</span></tt><span lang="FR"><font size="3"> <em>statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>expression-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">expression</font><sub><font size="3">opt</font></sub></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>compound-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">{</span></tt><span lang="FR"><font size="3">
+    <em>declaration-list<sub>opt</sub> statement-list<sub>opt</sub></em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">}</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>statement-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>statement-list statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>selection-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">if</span></tt><span lang="FR"><font size="3"> 
+    (<em>expression</em>) <em>statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">if</span></tt><span lang="FR"><font size="3"> 
+    (<em>expression</em>) <em>statement</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">else</span></tt><span lang="FR"><font size="3">
+    <em>statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">switch</span></tt><span lang="FR"><font size="3"> 
+    (<em>expression</em>) <em>statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>iteration-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">while</span></tt><span lang="FR"><font size="3"> 
+    (<em>expression</em>) <em>statement</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">do</span></tt><span lang="FR"><font size="3">
+    <em>statement</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">while</span></tt><span lang="FR"><font size="3"> 
+    (<em>expression</em>)</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">for</span></tt><span lang="FR"><font size="3"> 
+    (</font><em><font size="3">expression</font><sub><font size="3">opt</font></sub></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    </font>
+    <em><font size="3">expression</font><sub><font size="3">opt</font></sub></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    <em>expression<sub>opt</sub></em>) <em>statement</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>jump-statement</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">goto</span></tt><span lang="FR"><font size="3">
+    </font>
+    <em><font size="3">identifier</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">continue;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">break;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">return</span></tt><span lang="FR"><font size="3">
+    </font>
+    <em><font size="3">expression</font><sub><font size="3">opt</font></sub></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">;</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    assignment-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>conditional-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>unary-expression assignment-operator assignment-expression</em>
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-operator</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">= 
+    *= /= %= += -= &lt;&lt;= &gt;&gt;= &amp;= ^= |=</span></tt><span lang="FR"><font size="3">
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>conditional-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-OR-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-OR-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">?</span></tt><span lang="FR"><font size="3"> <em>
+    expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">:</span></tt><span lang="FR"><font size="3"> <em>
+    conditional-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>constant-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>conditional-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-OR-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-AND-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-OR-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">||</span></tt><span lang="FR"><font size="3"> <em>
+    logical-AND-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-AND-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>inclusive-OR-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>logical-AND-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&amp;&amp;</span></tt><span lang="FR"><font size="3"> <em>
+    inclusive-OR-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>inclusive-OR-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>exclusive-OR-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>inclusive-OR-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">|</span></tt><span lang="FR"><font size="3"> <em>
+    exclusive-OR-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>exclusive-OR-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>AND-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>exclusive-OR-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">^</span></tt><span lang="FR"><font size="3"> <em>
+    AND-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>AND-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>equality-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>AND-expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&amp;</span></tt><span lang="FR"><font size="3"> <em>
+    equality-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>equality-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>equality-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">==</span></tt><span lang="FR"><font size="3"> <em>
+    relational-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>equality-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">!=</span></tt><span lang="FR"><font size="3"> <em>
+    relational-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>shift-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&lt;</span></tt><span lang="FR"><font size="3"> <em>
+    shift-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&gt;</span></tt><span lang="FR"><font size="3"> <em>
+    shift-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&lt;=</span></tt><span lang="FR"><font size="3"> <em>
+    shift-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>relational-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&gt;=</span></tt><span lang="FR"><font size="3"> <em>
+    shift-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>shift-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>additive-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>shift-expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&lt;&lt;</span></tt><span lang="FR"><font size="3"> <em>
+    additive-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>shift-expression</em> </font> </span><tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&gt;&gt;</span></tt><span lang="FR"><font size="3"> <em>
+    additive-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>additive-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>multiplicative-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>additive-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">+</span></tt><span lang="FR"><font size="3"> <em>
+    multiplicative-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>additive-expression</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">-</span></tt><span lang="FR"><font size="3"> <em>
+    multiplicative-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>multiplicative-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>multiplicative-expression</em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">*</span></tt><span lang="FR"><font size="3"> <em>
+    cast-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>multiplicative-expression</em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">/</span></tt><span lang="FR"><font size="3"> <em>
+    cast-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>multiplicative-expression</em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">%</span></tt><span lang="FR"><font size="3"> <em>
+    cast-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>cast-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>unary expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<em>type-name</em>) <em>cast-expression</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>unary-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>postfix expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">++</span></tt><em><span lang="FR"><font size="3">unary 
+    expression</font></span></em><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">--</span></tt><em><span lang="FR"><font size="3">unary 
+    expression</font></span></em><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>unary-operator cast-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">sizeof</span></tt><span lang="FR"><font size="3">
+    <em>unary-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">sizeof</span></tt><span lang="FR"><font size="3"> 
+    (<em>type-name</em>) </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>unary operator</em>: one of<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">&amp; 
+    * + - ~ !</span></tt><span lang="FR"><font size="3"> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>postfix-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>primary-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>postfix-expression</em>[<em>expression</em>]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>postfix-expression</em>(<em>argument-expression-list<sub>opt</sub></em>)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>postfix-expression</em>.<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">postfix-expression</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">-&gt;</span></tt><span lang="FR"><font size="3">+<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">postfix-expression</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">++</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">postfix-expression</font></em></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">--</span></tt></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>primary-expression</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>constant</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>string</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<em>expression</em>) </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>argument-expression-list</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>assignment-expression-list</em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">,</span></tt><span lang="FR"><font size="3"> <em>
+    assignment-expression</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>constant</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>integer-constant</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>character-constant</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>floating-constant</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>enumeration-constant</em> </font> </span></p>
+    <p style="text-align: justify; text-justify: inter-ideograph">
+    <span lang="FR"><font size="3">The following grammar for the preprocessor summarizes the 
+    structure of control lines, but is not suitable for mechanized parsing. It 
+    includes the symbol <em>text</em>, which means ordinary program text, 
+    non-conditional preprocessor control lines, or complete preprocessor 
+    conditional instructions. </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>control-line</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    define</span></tt><span lang="FR"><font size="3"> <em>identifier token-sequence</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    define</span></tt><span lang="FR"><font size="3"> <em>identifier</em>(<em>identifier, ... , 
+    identifier</em>) <em>token-sequence</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    undef</span></tt><span lang="FR"><font size="3"> <em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    include &lt;</span></tt><em><span lang="FR"><font size="3">filename</font></span></em><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">&gt;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    include &quot;</span></tt><em><span lang="FR"><font size="3">filename</font></span></em><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">&quot;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    line</span></tt><span lang="FR"><font size="3"> <em>constant</em> </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">&quot;</span></tt><em><span lang="FR"><font size="3">filename</font></span></em><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">&quot;</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    line</span></tt><span lang="FR"><font size="3"> <em>constant</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    error</span></tt><span lang="FR"><font size="3"> <em>token-sequence<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    pragma</span></tt><span lang="FR"><font size="3"> <em>token-sequence<sub>opt</sub></em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">#</span></tt><span lang="FR"><font size="3"><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>preprocessor-conditional</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>preprocessor-conditional</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>if-line text elif-parts else-part<sub>opt</sub></em>
+    </font> </span>
+    <tt style="font-family: Courier New">
+    <span lang="FR" style="font-size: 12pt">#endif</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>if-line</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    if</span></tt><span lang="FR"><font size="3"> <em>constant-expression</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    ifdef</span></tt><span lang="FR"><font size="3"> <em>identifier</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    ifndef</span></tt><span lang="FR"><font size="3"> <em>identifier</em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>elif-parts</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>elif-line text</em><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>elif-parts<sub>opt</sub></em> </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>elif-line</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt"># 
+    elif</span></tt><span lang="FR"><font size="3"> <em>constant-expression</em>
+    </font> </span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>else-part</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><em><font size="3">else-line text</font></em></span></p>
+    <p><span lang="FR"><font size="3">&nbsp;&nbsp;&nbsp;&nbsp;<em>else-line</em>:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span><tt style="font-family: Courier New"><span lang="FR" style="font-size: 12pt">#else</span></tt><span lang="FR"><font size="3">
+    </font>
+    </span></td>
+  </tr>
+</table>
+
+</body>
+
+</html>
